@@ -1,0 +1,2330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostilas - Auxílio Encceja</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+
+    <style>
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #D3D3D3;
+            margin-bottom: 80px; /* Espaço para o rodapé */
+        }
+        
+        /* Modo de alto contraste */
+        body.high-contrast {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        
+        body.high-contrast .sidebar {
+            background-color: #333333;
+        }
+        
+        body.high-contrast .sidebar .nav-link {
+            color: #ffffff;
+            background-color: #555555;
+        }
+        
+        body.high-contrast .sidebar .nav-link:hover {
+            background-color: #777777;
+            color: white;
+        }
+        
+        body.high-contrast .sidebar .nav-link.active {
+            background-color: #333333;
+            color: white;
+        }
+        
+        body.high-contrast .card {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        
+        body.high-contrast .card-header {
+            background-color: #555555;
+            color: #ffffff;
+        }
+        
+        body.high-contrast .resource-item {
+            background-color: #444444;
+            color: #ffffff;
+        }
+        
+        body.high-contrast .resource-item:hover {
+            background-color: #555555;
+        }
+        
+        body.high-contrast .card-footer {
+            background-color: #555555;
+            color: #ffffff;
+        }
+        
+        body.high-contrast .welcome-banner {
+            background: linear-gradient(135deg, #333333, #333333);
+            color: #ffffff;
+        }
+        
+        body.high-contrast .btn-primary {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+        
+        body.high-contrast .btn-outline-primary {
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+        
+        body.high-contrast .footer {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        
+        body.high-contrast .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        body.high-contrast .copyright {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        body.high-contrast .btn-enter {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+        
+        body.high-contrast .user-profile {
+            background-color: #333333;
+        }
+        
+        body.high-contrast .popover-header {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        
+        body.high-contrast .popover-body {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        
+        body.high-contrast .profile-stats {
+            background-color: #444444;
+            color: #ffffff;
+        }
+        
+        body.high-contrast .profile-menu-item {
+            color: #ffffff;
+        }
+        
+        body.high-contrast .profile-menu-divider {
+            background-color: #555555;
+        }
+        
+        body.high-contrast .logout-btn-profile {
+            color: #ffffff;
+            background-color: #555555;
+        }
+        
+        body.high-contrast .toast {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        
+        body.high-contrast .toast-header {
+            background-color: #444444;
+            color: #ffffff;
+        }
+
+        /* Menu Moderno */
+        .sidebar {
+            background-color: #34495e;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            padding-top: 20px;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .sidebar.collapsed {
+            margin-left: -250px;
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 5px;
+            border-radius: 5px;
+            padding: 12px 15px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .sidebar .nav-link.active {
+            background-color: #34495e;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar .btn {
+            text-align: left;
+            justify-content: flex-start !important;
+        }
+        
+        .logo {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .logo .logo-img {
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .logo .logo-text {
+            margin: 0;
+            color: white;
+            font-weight: 600;
+            display: block;
+        }
+
+        .logo .toggle-btn {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .content.expanded {
+            margin-left: 0;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background-color: #34495e;
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .card-header i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .session-title {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #212529;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+        }
+        
+        .resource-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        
+        .resource-item:hover {
+            background-color: #f1f3f5;
+            cursor: pointer;
+        }
+        
+        .resource-item i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .resource-item .title {
+            font-weight: 500;
+        }
+        
+        .resource-item .badge {
+            margin-left: auto;
+        }
+        
+        .card-footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid rgba(0,0,0,.125);
+            padding: 12px;
+        }
+        
+        .welcome-banner {
+            background: linear-gradient(135deg, #34495e, #34495e);
+            color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .welcome-banner h2 {
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .welcome-banner p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .btn-primary {
+            background-color: #34495e;
+            border-color: #34495e;
+            padding: 8px 20px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background-color: #34495e;
+            border-color: #34495e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline-primary {
+            color: #34495e;
+            border-color: #34495e;
+            padding: 8px 20px;
+            font-weight: 500;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: #34495e;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+            color: var(--bs-btn-active-color);
+            background-color: var(--bs-btn-active-bg);
+            border-color: var(--bs-btn-active-border-color);
+        }
+        
+        /* Estilos do rodapé */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #34495e;
+            color: white;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #34495e;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 250px;
+                margin-left: -250px;
+            }
+            
+            .sidebar.expanded {
+                margin-left: 0;
+            }
+            
+            .content {
+                margin-left: 0;
+            }
+            
+            .content.shifted {
+                margin-left: 250px;
+            }
+            
+            .mobile-toggle {
+                display: block !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content.shifted {
+                margin-left: 0;
+            }
+        }
+        
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background-color: #34495e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Badges personalizados */
+        .badge-success {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .badge-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+        
+        .badge-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .badge-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .badge-warning {
+            background-color: #ffc107;
+            color: white;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        
+        /* Estilos para o gráfico de progresso */
+        .progress-chart {
+            height: 250px;
+            position: relative;
+        }
+        
+        .progress-bar-custom {
+            height: 100%;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #34495e, #3498db);
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .progress-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #34495e;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        /* Estilos para a tabela de atividades */
+        .activity-table th {
+            background-color: #34495e;
+            color: white;
+        }
+        
+        .activity-table .activity-date {
+            width: 150px;
+        }
+        
+        .activity-table .activity-name {
+            width: 250px;
+        }
+        
+        .activity-table .activity-status {
+            width: 150px;
+        }
+        
+        .activity-table .activity-duration {
+            width: 100px;
+        }
+        
+        /* Estilos para o calendário */
+        .calendar {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .calendar-header {
+            background-color: #34495e;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background-color: #f8f9fa;
+        }
+        
+        .calendar-day {
+            background-color: white;
+            padding: 10px;
+            text-align: center;
+            min-height: 60px;
+            position: relative;
+        }
+        
+        .calendar-day.weekend {
+            background-color: #f8f9fa;
+        }
+        
+        .calendar-day.today {
+            background-color: #e8f4fd;
+            font-weight: bold;
+        }
+        
+        .calendar-day.has-activity::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 8px;
+            height: 8px;
+            background-color: #3498db;
+            border-radius: 50%;
+        }
+        
+        .calendar-day.has-activity.has-completed::after {
+            background-color: #2ecc71;
+        }
+        
+        .calendar-day.has-activity.has-pending::after {
+            background-color: #f39c12;
+        }
+        
+        /* Estilos para o modal de detalhes */
+        .modal-header {
+            background-color: #34495e;
+            color: white;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .detail-item {
+            margin-bottom: 15px;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #34495e;
+        }
+        
+        /* Estilos para o resumo de desempenho */
+        .performance-summary {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .performance-item {
+            text-align: center;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            margin: 0 5px;
+        }
+        
+        .performance-item h3 {
+            font-size: 2rem;
+            margin: 10px 0;
+            color: #34495e;
+        }
+        
+        .performance-item p {
+            color: #6c757d;
+            margin: 0;
+        }
+        
+        /* Estilos para o plano de estudo */
+        .study-plan-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .study-plan-item:last-child {
+            border-bottom: none;
+        }
+        
+        .study-plan-checkbox {
+            margin-right: 15px;
+        }
+        
+        .study-plan-content {
+            flex: 1;
+        }
+        
+        .study-plan-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .study-plan-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .study-plan-difficulty {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        
+        .study-plan-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Estilos do botão de configurações de acessibilidade */
+            .btn-accessibility {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 1001;
+                background-color: #28a745;
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s;
+            }
+            
+            .btn-accessibility:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .btn-accessibility:focus {
+                outline: none;
+                box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
+            }
+            
+            .btn-accessibility.high-contrast {
+                background-color: #ffffff;
+                color: #28a745;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            .btn-accessibility.high-contrast:hover {
+                background-color: #f8f9fa;
+            }
+            
+            /* Estilos do modal de configurações de acessibilidade */
+            .accessibility-modal {
+                display: none;
+                position: fixed;
+                z-index: 1050;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                animation: fadeIn 0.3s ease-out;
+            }
+            
+            .accessibility-modal.show {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .accessibility-modal-content {
+                background-color: #fff;
+                border-radius: 16px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                width: 90%;
+                max-width: 110vh;
+                max-height: 90vh;
+                overflow-y: auto;
+                animation: slideUp 0.3s ease-out;
+            }
+            
+            @keyframes slideUp {
+                from {
+                    transform: translateY(50px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+            
+            .accessibility-modal-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px 24px;
+                border-bottom: 1px solid #e9ecef;
+                background-color: #f8f9fa;
+                border-radius: 16px 16px 0 0;
+            }
+            
+            .accessibility-modal-title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: #212529;
+                margin: 0;
+                display: flex;
+                align-items: center;
+            }
+            
+            .accessibility-modal-title i {
+                margin-right: 12px;
+                color: #28a745;
+                font-size: 1.8rem;
+            }
+            
+            .accessibility-modal-close {
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: #6c757d;
+                cursor: pointer;
+                padding: 0;
+                width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                transition: all 0.2s;
+            }
+            
+            .accessibility-modal-close:hover {
+                background-color: #e9ecef;
+                color: #212529;
+            }
+            
+            .accessibility-modal-body {
+                padding: 24px;
+            }
+            
+            .accessibility-section {
+                margin-bottom: 28px;
+            }
+            
+            .accessibility-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            .accessibility-section-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: #34495e;
+                margin-bottom: 16px;
+                display: flex;
+                align-items: center;
+            }
+            
+            .accessibility-section-title i {
+                margin-right: 10px;
+                color: #34495e;
+            }
+            
+            .accessibility-options {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 16px;
+            }
+            
+            .accessibility-option {
+                background-color: #f8f9fa;
+                border-radius: 12px;
+                padding: 16px;
+                transition: all 0.2s;
+                border: 2px solid transparent;
+            }
+            
+            .accessibility-option:hover {
+                background-color: #e9ecef;
+                transform: translateY(-2px);
+            }
+            
+            .accessibility-option.active {
+                border-color: #28a745;
+                background-color: rgba(40, 167, 69, 0.1);
+            }
+            
+            .accessibility-option-header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 8px;
+            }
+            
+            .accessibility-option-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background-color: #28a745;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 12px;
+                font-size: 1.2rem;
+            }
+            
+            .accessibility-option-title {
+                font-weight: 600;
+                color: #212529;
+                font-size: 1rem;
+            }
+            
+            .accessibility-option-description {
+                color: #6c757d;
+                font-size: 0.9rem;
+                margin-left: 48px;
+            }
+            
+            .accessibility-toggle {
+                display: flex;
+                align-items: center;
+                margin-top: 12px;
+                margin-left: 48px;
+            }
+            
+            .accessibility-toggle-switch {
+                position: relative;
+                display: inline-block;
+                width: 48px;
+                height: 24px;
+                margin-right: 10px;
+            }
+            
+            .accessibility-toggle-switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            
+            .accessibility-toggle-slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                transition: .3s;
+                border-radius: 24px;
+            }
+            
+            .accessibility-toggle-slider:before {
+                position: absolute;
+                content: "";
+                height: 18px;
+                width: 18px;
+                left: 3px;
+                bottom: 3px;
+                background-color: white;
+                transition: .3s;
+                border-radius: 50%;
+            }
+            
+            input:checked + .accessibility-toggle-slider {
+                background-color: #28a745;
+            }
+            
+            input:checked + .accessibility-toggle-slider:before {
+                transform: translateX(24px);
+            }
+            
+            .accessibility-toggle-label {
+                font-size: 0.9rem;
+                color: #495057;
+                cursor: pointer;
+            }
+            
+            .accessibility-range-control {
+                margin-top: 12px;
+                margin-left: 48px;
+            }
+            
+            .accessibility-range-label {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 8px;
+                font-size: 0.9rem;
+                color: #495057;
+            }
+            
+            .accessibility-range {
+                width: 100%;
+                height: 6px;
+                border-radius: 3px;
+                background: #e9ecef;
+                outline: none;
+            }
+            
+            .accessibility-range::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                background: #28a745;
+                cursor: pointer;
+            }
+            
+            .accessibility-range::-moz-range-thumb {
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                background: #28a745;
+                cursor: pointer;
+            }
+            
+            .accessibility-modal-footer {
+                display: flex;
+                justify-content: space-between;
+                padding: 16px 24px;
+                border-top: 1px solid #e9ecef;
+                background-color: #f8f9fa;
+                border-radius: 0 0 16px 16px;
+            }
+            
+            .accessibility-reset-btn {
+                background: none;
+                border: none;
+                color: #6c757d;
+                font-size: 0.9rem;
+                padding: 8px 16px;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.2s;
+            }
+            
+            .accessibility-reset-btn:hover {
+                background-color: #e9ecef;
+                color: #212529;
+            }
+            
+            .accessibility-save-btn {
+                background-color: #28a745;
+                color: white;
+                border: none;
+                padding: 10px 24px;
+                border-radius: 8px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.2s;
+                display: flex;
+                align-items: center;
+            }
+            
+            .accessibility-save-btn:hover {
+                background-color: #218838;
+                transform: translateY(-2px);
+            }
+            
+            .accessibility-save-btn i {
+                margin-right: 8px;
+            }
+            
+            /* Estilos do toast */
+            .toast {
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                z-index: 1100;
+            }
+            
+            .toast-header {
+                background-color: #28a745;
+                color: white;
+            }
+            
+            .toast-body {
+                background-color: #f8f9fa;
+            }
+            
+            /* Estilos para o modo de leitura */
+            body.reading-mode {
+                line-height: 1.8;
+                font-size: 1.2rem;
+            }
+            
+            body.reading-mode .card {
+                margin-bottom: 30px;
+            }
+            
+            body.reading-mode .resource-item {
+                padding: 15px;
+            }
+            
+            body.reading-mode .welcome-banner {
+                padding: 40px;
+            }
+            
+            body.reading-mode .profile-stats {
+                padding: 20px;
+            }
+            
+            body.reading-mode .stat-value {
+                font-size: 1.5rem;
+            }
+            
+            body.reading-mode .stat-label {
+                font-size: 1rem;
+            }
+            
+            body.dark-mode {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .sidebar {
+                background-color: #1e1e1e;
+            }
+            
+            body.dark-mode .card {
+                background-color: #1e1e1e;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .card-header {
+                background-color: #2d2d2d;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .card-footer {
+                background-color: #2d2d2d;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .welcome-banner {
+                background: linear-gradient(135deg, #2d2d2d, #1e1e1e);
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .footer {
+                background-color: #1e1e1e;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .resource-item {
+                background-color: #2d2d2d;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .resource-item:hover {
+                background-color: #3d3d3d;
+            }
+            
+            body.dark-mode .user-profile {
+                background-color: #1e1e1e;
+            }
+            
+            body.dark-mode .accessibility-modal-content {
+                background-color: #2d2d2d;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .accessibility-modal-header {
+                background-color: #1e1e1e;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .accessibility-modal-footer {
+                background-color: #1e1e1e;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .accessibility-option {
+                background-color: #2d2d2d;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .accessibility-option:hover {
+                background-color: #3d3d3d;
+            }
+            
+            body.dark-mode .accessibility-option-title {
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .accessibility-option-description {
+                color: #b0b0b0;
+            }
+            
+            body.dark-mode .accessibility-toggle-label {
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .accessibility-range-label {
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .accessibility-range {
+                background: #3d3d3d;
+            }
+            
+            body.dark-mode .accessibility-reset-btn {
+                color: #b0b0b0;
+            }
+            
+            body.dark-mode .accessibility-reset-btn:hover {
+                background-color: #3d3d3d;
+                color: #e0e0e0;
+            }
+            
+            /* Estilos para aumento de fonte */
+            body.font-size-small {
+                font-size: 0.9rem;
+            }
+            
+            body.font-size-medium {
+                font-size: 1rem;
+            }
+            
+            body.font-size-large {
+                font-size: 1.2rem;
+            }
+            
+            body.font-size-xlarge {
+                font-size: 1.4rem;
+            }
+            
+            /* Estilos para espaçamento de linha */
+            body.line-height-normal {
+                line-height: 1.5;
+            }
+            
+            body.line-height-medium {
+                line-height: 1.7;
+            }
+            
+            body.line-height-large {
+                line-height: 2.0;
+            }
+            
+            /* Estilos para cursor de alto contraste */
+            body.high-contrast-cursor {
+                cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" fill="none" stroke="black" stroke-width="2"/></svg>') 16 16, auto;
+            }
+            
+            body.high-contrast-cursor a,
+            body.high-contrast-cursor button,
+            body.high-contrast-cursor input,
+            body.high-contrast-cursor select,
+            body.high-contrast-cursor textarea {
+                cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" fill="none" stroke="black" stroke-width="2"/></svg>') 16 16, pointer;
+            }
+            
+            /* Estilos para foco visível */
+            body.visible-focus *:focus {
+                outline: 3px solid #28a745 !important;
+                outline-offset: 2px !important;
+            }
+        
+    </style>
+
+</head>
+<body>
+
+     <!-- Botão de configurações de acessibilidade -->
+        <button class="btn-accessibility" id="accessibilityBtn" aria-label="Configurações de Acessibilidade" title="Configurações de Acessibilidade">
+            <i class="bi bi-universal-access"></i>
+        </button>
+        
+        <!-- Modal de configurações de acessibilidade -->
+        <div class="accessibility-modal" id="accessibilityModal">
+            <div class="accessibility-modal-content">
+                <div class="accessibility-modal-header">
+                    <h3 class="accessibility-modal-title">
+                        <i class="bi bi-universal-access"></i>
+                        Configurações de Acessibilidade
+                    </h3>
+                    <button class="accessibility-modal-close" id="accessibilityModalClose">
+                        <i class="bi bi-x"></i>
+                    </button>
+                </div>
+            <div class="accessibility-modal-body">
+
+            <!-- Seção de Visual -->
+            <div class="accessibility-section">
+                <h4 class="accessibility-section-title">
+                    <i class="bi bi-eye"></i>
+                        Opções Visuais
+                        </h4>
+                <div class="accessibility-options">
+                    <div class="accessibility-option" id="highContrastOption">
+                        <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                                <i class="bi bi-circle-half"></i>
+                        </div>
+                <div class="accessibility-option-title">Alto Contraste</div>
+                        </div>
+                    <div class="accessibility-option-description">
+                            Melhora a visibilidade com contraste elevado entre texto e fundo.
+                        </div>
+                <div class="accessibility-toggle">
+                    <label class="accessibility-toggle-switch">
+                        <input type="checkbox" id="highContrastToggle">
+                        <span class="accessibility-toggle-slider"></span>
+                    </label>
+                        <span class="accessibility-toggle-label">Ativar</span>
+                    </div>
+                </div>
+                            
+                <div class="accessibility-option" id="darkModeOption">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                            <i class="bi bi-moon-stars"></i>
+                        </div>
+                            <div class="accessibility-option-title">Modo Escuro</div>
+                    </div>
+                <div class="accessibility-option-description">
+                        Reduz a luminosidade da interface para maior conforto visual.
+                    </div>
+                <div class="accessibility-toggle">
+                        <label class="accessibility-toggle-switch">
+                            <input type="checkbox" id="darkModeToggle">
+                            <span class="accessibility-toggle-slider"></span>
+                        </label>
+                            <span class="accessibility-toggle-label">Ativar</span>
+                        </div>
+                    </div>
+                            
+                <div class="accessibility-option" id="readingModeOption">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                            <i class="bi bi-book"></i>
+                        </div>
+                <div class="accessibility-option-title">Modo de Leitura</div>
+                        </div>
+                <div class="accessibility-option-description">
+                            Aumenta o tamanho do texto e melhora o espaçamento para facilitar a leitura.
+                        </div>
+                <div class="accessibility-toggle">
+                    <label class="accessibility-toggle-switch">
+                        <input type="checkbox" id="readingModeToggle">
+                        <span class="accessibility-toggle-slider"></span>
+                    </label>
+                        <span class="accessibility-toggle-label">Ativar</span>
+                    </div>
+                </div>
+                            
+                <div class="accessibility-option" id="highContrastCursorOption">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                            <i class="bi bi-cursor"></i>
+                        </div>
+                <div class="accessibility-option-title">Cursor de Alto Contraste</div>
+                        </div>
+                <div class="accessibility-option-description">
+                        Torna o cursor mais visível com um círculo de contraste ao redor.
+                        </div>
+                <div class="accessibility-toggle">
+                        <label class="accessibility-toggle-switch">
+                            <input type="checkbox" id="highContrastCursorToggle">
+                            <span class="accessibility-toggle-slider"></span>
+                        </label>
+                            <span class="accessibility-toggle-label">Ativar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    
+            <!-- Seção de Texto -->
+                <div class="accessibility-section">
+                    <h4 class="accessibility-section-title">
+                        <i class="bi bi-fonts"></i>
+                            Opções de Texto
+                    </h4>
+                <div class="accessibility-options">
+                    <div class="accessibility-option">
+                        <div class="accessibility-option-header">
+                            <div class="accessibility-option-icon">
+                                <i class="bi bi-textarea-resize"></i>
+                            </div>
+                <div class="accessibility-option-title">Tamanho da Fonte</div>
+                            </div>
+                <div class="accessibility-option-description">
+                            Ajuste o tamanho do texto para melhor legibilidade.
+                            </div>
+                <div class="accessibility-range-control">
+                    <div class="accessibility-range-label">
+                        <span>Pequeno</span>
+                        <span id="fontSizeValue">Médio</span>
+                        <span>Grande</span>
+                    </div>
+                <input type="range" min="1" max="4" value="2" class="accessibility-range" id="fontSizeRange">
+            </div>
+        </div>
+                            
+                <div class="accessibility-option">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                            <i class="bi bi-text-paragraph"></i>
+                        </div>
+                    <div class="accessibility-option-title">Espaçamento entre Linhas</div>
+                        </div>
+                    <div class="accessibility-option-description">
+                            Ajuste o espaçamento entre linhas para melhor legibilidade.
+                        </div>
+                <div class="accessibility-range-control">
+                    <div class="accessibility-range-label">
+                        <span>Normal</span>
+                        <span id="lineHeightValue">Médio</span>
+                        <span>Alto</span>
+                </div>
+                    <input type="range" min="1" max="3" value="2" class="accessibility-range" id="lineHeightRange">
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    
+            <!-- Seção de Navegação -->
+                <div class="accessibility-section">
+                    <h4 class="accessibility-section-title">
+                        <i class="bi bi-mouse"></i>
+                            Opções de Navegação
+                    </h4>
+                <div class="accessibility-options">
+                    <div class="accessibility-option" id="visibleFocusOption">
+                        <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                            <i class="bi bi-bullseye"></i>
+                       </div>
+                <div class="accessibility-option-title">Foco Visível</div>
+                    </div>
+                <div class="accessibility-option-description">
+                           Destaca o elemento em foco para melhor navegação por teclado.
+                    </div>
+                <div class="accessibility-toggle">
+                    <label class="accessibility-toggle-switch">
+                        <input type="checkbox" id="visibleFocusToggle">
+                        <span class="accessibility-toggle-slider"></span>
+                    </label>
+                        <span class="accessibility-toggle-label">Ativar</span>
+                    </div>
+                </div>
+                            
+               <div class="accessibility-option" id="reduceMotionOption">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                            <i class="bi bi-pause-circle"></i>
+                    </div>
+                        <div class="accessibility-option-title">Reduzir Movimentos</div>
+                    </div>
+                <div class="accessibility-option-description">
+                            Desativa animações e efeitos visuais para reduzir distrações.
+                    </div>
+                <div class="accessibility-toggle">
+                    <label class="accessibility-toggle-switch">
+                        <input type="checkbox" id="reduceMotionToggle">
+                        <span class="accessibility-toggle-slider"></span>
+                    </label>
+                        <span class="accessibility-toggle-label">Ativar</span>
+                    </div>
+                </div>
+                            
+                <div class="accessibility-option" id="screenReaderOption">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                            <i class="bi bi-volume-up"></i>
+                        </div>
+                            <div class="accessibility-option-title">Leitor de Tela</div>
+                        </div>
+                    <div class="accessibility-option-description">
+                              Otimiza a interface para uso com leitores de tela.
+                        </div>
+                    <div class="accessibility-toggle">
+                        <label class="accessibility-toggle-switch">
+                            <input type="checkbox" id="screenReaderToggle">
+                            <span class="accessibility-toggle-slider"></span>
+                        </label>
+                            <span class="accessibility-toggle-label">Ativar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="accessibility-modal-footer">
+            <button class="accessibility-reset-btn" id="resetAccessibilitySettings">
+                <i class="bi bi-arrow-counterclockwise"></i> Restaurar Padrões
+            </button>
+                <button class="accessibility-save-btn" id="saveAccessibilitySettings">
+                      <i class="bi bi-check-lg"></i> Salvar Configurações
+                </button>
+            </div>
+        </div>
+    </div>
+        
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="accessibilityToast">
+            <div class="toast-header">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                <strong class="me-auto">Configurações de Acessibilidade</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fechar"></button>
+            </div>
+        <div class="toast-body" id="accessibilityToastMessage">
+                Configurações de acessibilidade salvas com sucesso!
+        </div>
+    </div>
+    
+    <!-- Botão de toggle para mobile -->
+    <button class="mobile-toggle" id="mobileToggle">
+        <i class="bi bi-list"></i>
+    </button>
+    
+    <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+            <div class="logo">
+                <img src="Logo 3.0.png" alt="Logo do Auxílio Encceja" class="logo-img">
+                <h4 class="logo-text">Auxílio Encceja</h4>
+                <button class="toggle-btn" id="toggleSidebar">
+                </button>
+            </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="index.html">
+                    <i class="bi bi-house-door"></i>
+                    <span>Página Inicial</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="videoaula.html">
+                    <i class="bi bi-camera-video me-2"></i>
+                    <span>Video aulas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2 active" href="apostila.html">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span>Apostilas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="exercicio.html">
+                    <i class="bi bi-pencil-square"></i>
+                    <span>Exercícios</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="simulado.html">
+                    <i class="bi bi-controller"></i>
+                    <span>Simulados</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="acompanhamento.html">
+                    <i class="bi bi-trophy"></i>
+                    <span>Acompanhamento</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="config.html">
+                    <i class="bi bi-gear"></i>
+                    <span>Configurações</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="content" id="content">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="welcome-banner animate-in">
+                        <h2>Apostilas para Estudo</h2>
+                        <p class="mb-4">Aqui você encontrará apostilas organizadas por disciplina e nível de ensino.</p>
+                        <button class="btn btn-light">Filtrar por Nível</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="session-title">Apostilas Disponíveis</h4>
+                </div>
+            </div>
+                        
+            <!-- Apostilas por Disciplina -->
+            <div class="row mb-4">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card animate-in delay-1">
+                <div class="card-header">
+                        <i class="bi bi-calculator"></i> Matemática
+                    </div>
+                <div class="card-body">
+                    <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Álgebra Básica</div>
+                        <span class="badge bg-primary">Fundamental</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Geometria</div>
+                        <span class="badge bg-primary">Fundamental</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Funções e Derivadas</div>
+                        <span class="badge bg-info">Médio</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Probabilidades e Estatística</div>
+                        <span class="badge bg-info">Médio</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Cálculo Integral</div>
+                        <span class="badge bg-warning">Superior</span>
+                    </div>
+                </div>
+            <div class="card-footer bg-white text-center">
+                    <a href="Apostilas/matematica.html" class="btn btn-primary">Ver todas as apostilas</a>
+                </div>
+            </div>
+        </div>
+                
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card animate-in delay-2">
+                    <div class="card-header">
+                        <i class="bi bi-book"></i> Português
+                    </div>
+                <div class="card-body">
+                    <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Gramática</div>
+                        <span class="badge bg-primary">Fundamental</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Literatura</div>
+                        <span class="badge bg-primary">Fundamental</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Redação</div>
+                        <span class="badge bg-info">Médio</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Análise Textual</div>
+                        <span class="badge bg-info">Médio</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Crítica Literária</div>
+                        <span class="badge bg-warning">Superior</span>
+                    </div>
+                </div>
+            <div class="card-footer bg-white text-center">
+                    <a href="Apostilas/portugues.html" class="btn btn-primary">Ver todas as apostilas</a>
+                </div>
+            </div>
+        </div>
+                
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card animate-in delay-3">
+                    <div class="card-header">
+                        <i class="bi bi-globe"></i> Ciências da Natureza
+                    </div>
+                <div class="card-body">
+                    <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Física Básica</div>
+                            <span class="badge bg-primary">Fundamental</span>
+                        </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Química</div>
+                        <span class="badge bg-primary">Fundamental</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    <div class="title">Apostila de Biologia</div>
+                        <span class="badge bg-primary">Fundamental</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    <div class="title">Apostila de Física Avançada</div>
+                        <span class="badge bg-info">Médio</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    <div class="title">Apostila de Bioquímica</div>
+                        <span class="badge bg-warning">Superior</span>
+                    </div>
+                </div>
+            <div class="card-footer bg-white text-center">
+                <a href="Apostilas/ciencias.html" class="btn btn-primary">Ver todas as apostilas</a>
+            </div>
+        </div>
+    </div>         
+                
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card animate-in delay-1">
+                    <div class="card-header">
+                        <i class="bi bi-calculator"></i> Ensino Fundamental
+                    </div>
+                <div class="card-body">
+                    <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Matemática Fundamental</div>
+                        <span class="badge bg-primary">Fundamental</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Português Fundamental</div>
+                        <span class="badge bg-primary">Fundamental</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    <div class="title">Apostila de Ciências Fundamental</div>
+                        <span class="badge bg-primary">Fundamental</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    <div class="title">Apostila de História Fundamental</div>
+                        <span class="badge bg-primary">Fundamental</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    <div class="title">Apostila de Geografia Fundamental</div>
+                        <span class="badge bg-primary">Fundamental</span>
+                    </div>
+                </div>
+            <div class="card-footer bg-white text-center">
+                <a href="Apostilas/fundamental.html" class="btn btn-primary">Ver todas as apostilas</a>
+            </div>
+        </div>
+    </div>
+                
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card animate-in delay-2">
+                    <div class="card-header">
+                        <i class="bi bi-calculator"></i> Ensino Médio
+                    </div>
+                <div class="card-body">
+                    <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Matemática Médio</div>
+                        <span class="badge bg-info">Médio</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    <div class="title">Apostila de Português Médio</div>
+                        <span class="badge bg-info">Médio</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    <div class="title">Apostila de Física Médio</div>
+                        <span class="badge bg-info">Médio</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    <div class="title">Apostila de Química Médio</div>
+                        <span class="badge bg-info">Médio</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    <div class="title">Apostila de História Médio</div>
+                        <span class="badge bg-info">Médio</span>
+                    </div>
+                </div>
+            <div class="card-footer bg-white text-center">
+                <a href="Apostilas/medio.html" class="btn btn-primary">Ver todas as apostilas</a>
+            </div>
+        </div>
+    </div>
+                
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card animate-in delay-3">
+                    <div class="card-header">
+                        <i class="bi bi-calculator"></i> Ensino Superior
+                    </div>
+                <div class="card-body">
+                    <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    <div class="title">Apostila de Cálculo Superior</div>
+                        <span class="badge bg-warning">Superior</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    <div class="title">Apostila de Física Avançada</div>
+                        <span class="badge bg-warning">Superior</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    <div class="title">Apostila de Química Orgânica</div>
+                        <span class="badge bg-warning">Superior</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    <div class="title">Apostila de Biologia Molecular</div>
+                        <span class="badge bg-warning">Superior</span>
+                    </div>
+                <div class="resource-item">
+                    <i class="bi bi-file-earmark-pdf text-danger"></i>
+                <div class="title">Apostila de Estatística</div>
+                    <span class="badge bg-warning">Superior</span>
+                </div>
+            </div>
+                <div class="card-footer bg-white text-center">
+                    <a href="Apostilas/superior.html" class="btn btn-primary">Ver todas as apostilas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+            
+        <!-- Dicas de Estudo -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card animate-in delay-4">
+                <div class="card-header">
+                    <i class="bi bi-lightbulb"></i> Dicas de Estudo
+                </div>
+                    <div class="card-body">
+                    <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Organização</h5>
+                    <p class="card-text">Organize seu tempo e crie um cronograma de estudos realista que inclua descansos. Use ferramentas como planners ou aplicativos de organização.</p>
+                </div>
+            </div>
+        </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Concentração</h5>
+                    <p class="card-text">Crie um ambiente de estudo livre de distrações. Durante o estudo, tente o método Pomodoro: 25 minutos de estudo e 5 minutos de descanso.</p>
+                </div>
+            </div>
+        </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Revisão</h5>
+                    <p class="card-text">Revisar o conteúdo estudado é fundamental. Tente revisar o material no dia seguinte e novamente após 1 semana.</p>
+                    </div>
+                        </div>
+                     </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+            
+        <!-- Recursos Adicionais -->
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="session-title">Recursos Adicionais</h4>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-md-6 mb-4">
+            <div class="card animate-in delay-1">
+                <div class="card-header">
+                    <i class="bi bi-book"></i> Biblioteca Digital
+                </div>
+            <div class="card-body">
+                <div class="resource-item">
+                    <i class="bi bi-file-earmark-text text-info"></i>
+                <div class="title">Guia Completo de Matemática</div>
+                    <span class="badge bg-secondary">PDF</span>
+                </div>
+            <div class="resource-item">
+                    <i class="bi bi-file-earmark-text text-info"></i>
+                <div class="title">Manual de Português</div>
+                    <span class="badge bg-secondary">PDF</span>
+                </div>
+            <div class="resource-item">
+                    <i class="bi bi-file-earmark-text text-info"></i>
+                <div class="title">Enciclopédia de Ciências</div>
+                    <span class="badge bg-secondary">PDF</span>
+                </div>
+            <div class="resource-item">
+                    <i class="bi bi-file-earmark-text text-info"></i>
+                <div class="title">Atlas Geográfico Digital</div>
+                    <span class="badge bg-secondary">PDF</span>
+                </div>
+            <div class="resource-item">
+                    <i class="bi bi-file-earmark-text text-info"></i>
+                <div class="title">História do Brasil Completa</div>
+                    <span class="badge bg-secondary">PDF</span>
+                </div>
+            </div>
+                <div class="card-footer bg-white text-center">
+                    <a href="biblioteca.html" class="btn btn-primary">Ver todos os documentos</a>
+                </div>
+            </div>
+        </div>
+                
+            <div class="col-md-6 mb-4">
+                <div class="card animate-in delay-2">
+                    <div class="card-header">
+                        <i class="bi bi-link-45deg"></i> Links Úteis
+                    </div>
+                <div class="card-body">
+                    <div class="resource-item">
+                        <i class="bi bi-link-45deg text-success"></i>
+                    <div class="title">Enciclopédia Britannica</div>
+                        <span class="badge bg-secondary">Website</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-link-45deg text-success"></i>
+                    <div class="title">National Geographic</div>
+                        <span class="badge bg-secondary">Website</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-link-45deg text-success"></i>
+                    <div class="title"> Khan Academy</div>
+                        <span class="badge bg-secondary">Website</span>
+                    </div>
+                <div class="resource-item">
+                        <i class=" bi-link-45deg text-success"></i>
+                    <div class="title">Museu Nacional</div>
+                        <span class="badge bg-secondary">Website</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-link-45deg text-success"></i>
+                    <div class="title">Planeta Educação</div>
+                        <span class="badge bg-secondary">Website</span>
+                    </div>
+                </div>
+                    <div class="card-footer bg-white text-center">
+                        <a href="links.html" class="btn btn-primary">Ver todos os links</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+     <!-- Rodapé com redes sociais -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+            <div class="col-md-6">
+                <div class="footer-links">
+                    <a href="termos.html">Termos de Uso</a>
+                    <a href="politica.html">Política de Privacidade</a>
+                    <a href="contato.html">Contato</a>
+                    <a href="sobre.html">Sobre Nós</a>
+                </div>
+            </div>
+        <div class="col-md-6">
+            <div class="social-icons">
+                    <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+          <div class="copyright text-center">
+            &copy; 2025 Plataforma de Estudos - Auxílio Encceja. Todos os Direitos Reservados.
+                </div>
+            </div>
+        </footer>
+    
+    <!-- Modal de Detalhes da Apostila -->
+    <div class="modal fade" id="apostilaDetailsModal" tabindex="-1" aria-labelledby="apostilaDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+        <div class="modal-header">
+                <h5 class="modal-title" id="apostilaDetailsModalLabel">Detalhes da Apostila</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                <div class="text-center mb-3">
+                    <i class="bi bi-file-earmark-pdf text-danger" style="font-size: 4rem;"></i>
+                    <h5 class="mt-3">Apostila de Matemática</h5>
+                    <span class="badge bg-primary">Fundamental</span>
+                </div>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="bi bi-download me-2"></i> Baixar PDF
+                    </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="bi bi-eye me-2"></i> Visualizar Online
+                    </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <i class="bi bi-printer me-2"></i> Imprimir
+                </a>
+            </div>
+        </div>
+            <div class="col-md-8">
+                <h5>Conteúdo da Apostila</h5>
+                <p>Esta apostila aborda os principais conceitos de matemática para o ensino fundamental, com foco em operações básicas, frações, geometria e introdução a equações.</p>
+                            
+                <h5>Sumário</h5>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Capítulo 1: Números e Operações
+                        <span class="badge bg-secondary">Páginas 1-15</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Capítulo 2: Frações e Decimais
+                        <span class="badge bg-secondary">Páginas 16-30</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Capítulo 3: Geometria Plana
+                        <span class="badge bg-secondary">Páginas 31-45</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Capítulo 4: Geometria Espacial
+                        <span class="badge bg-secondary">Páginas 46-60</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Capítulo 5: Introdução a Equações
+                        <span class="badge bg-secondary">Páginas 61-75</span>
+                    </li>
+                    </ul>
+                            
+                    <h5>Pré-requisitos</h5>
+                    <p>Esta apostila é ideal para estudantes do ensino fundamental (6º a 9º ano) e também pode ser útil para alunos do ensino médio que desejam revisar conceitos básicos de matemática.</p>
+                            
+                        <h5>Objetivos de Aprendizagem</h5>
+                        <ul>
+                            <li>Compreender os conceitos básicos de números e operações;</li>
+                            <li>Manipular frações e números decimais;</li>
+                            <li>Resolver problemas de geometria plana e espacial;</li>
+                            <li>Introduzir o conceito de equações e como resolvê-las;</li>
+                            <li>Aplicar os conhecimentos em problemas práticos.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Baixar Apostila</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função para toggle do menu lateral
+        document.getElementById('toggleSidebar').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const toggleIcon = this.querySelector('i');
+            
+            sidebar.classList.toggle('collapsed');
+            content.classList.toggle('expanded');
+            
+            if (sidebar.classList.contains('collapsed')) {
+                toggleIcon.classList.remove('bi-chevron-left');
+                toggleIcon.classList.add('bi-chevron-right');
+            } else {
+                toggleIcon.classList.remove('bi-chevron-right');
+                toggleIcon.classList.add('bi-chevron-left');
+            }
+        });
+        
+        // Função para toggle do menu em dispositivos móveis
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            sidebar.classList.toggle('expanded');
+            content.classList.toggle('shifted');
+        });
+        
+        // Função para responsividade
+        function handleResize() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            if (window.innerWidth < 992) {
+                sidebar.classList.remove('collapsed');
+                content.classList.remove('expanded');
+                sidebar.classList.remove('expanded');
+                content.classList.remove('shifted');
+                document.getElementById('toggleSidebar').style.display = 'none';
+            } else {
+                document.getElementById('toggleSidebar').style.display = 'block';
+            }
+        }
+        
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Chama na inicialização
+        
+        // Adiciona funcionalidade aos itens de apostilas
+        document.querySelectorAll('.resource-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const title = this.querySelector('.title').textContent;
+                const level = this.querySelector('.badge').textContent;
+                
+                // Mostra um toast notification
+                const toastContainer = document.createElement('div');
+                toastContainer.className = 'position-fixed bottom-0 end-0 p-3';
+                toastContainer.style.zIndex = '11';
+                
+                toastContainer.innerHTML = `
+                    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                            <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+                            <strong class="me-auto">Apostila</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            Você está acessando a apostila "${title}" (${level})
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(toastContainer);
+                
+                // Remove o toast após 3 segundos
+                setTimeout(() => {
+                    toastContainer.remove();
+                }, 3000);
+                
+                // Abre o modal com detalhes da apostila
+                const modal = new bootstrap.Modal(document.getElementById('apostilaDetailsModal'));
+                modal.show();
+            });
+        });
+        
+        // Adiciona funcionalidade aos ícones de redes sociais
+        document.querySelectorAll('.social-icons a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.getAttribute('title');
+                console.log(`Redirecionando para ${platform}`);
+                
+                // Aqui você pode adicionar o redirecionamento para as redes sociais
+                // Exemplo: window.open('https://www.linkedin.com', '_blank');
+            });
+        });
+        
+        // Responsividade
+        function handleResize() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            if (window.innerWidth < 992) {
+                sidebar.classList.remove('collapsed');
+                content.classList.remove('expanded');
+                sidebar.classList.remove('expanded');
+                content.classList.remove('shifted');
+                document.getElementById('toggleSidebar').style.display = 'none';
+            } else {
+                document.getElementById('toggleSidebar').style.display = 'block';
+            }
+        }
+        
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Chama na inicialização
+        
+        // Adiciona funcionalidade aos links de detalhes das apostilas
+        document.querySelectorAll('[data-bs-target="#apostilaDetailsModal"]').forEach(link => {
+            link.addEventListener('click', function() {
+                const apostilaType = this.closest('.card').querySelector('.card-header h4').textContent;
+                const level = this.closest('.card').querySelector('.badge').textContent;
+                
+                // Atualiza o título do modal
+                document.getElementById('apostilaDetailsModalLabel').textContent = `Detalhes da Apostila - ${apostilaType}`;
+                
+                // Atualiza o conteúdo do modal com base no tipo de apostila
+                const modal = document.getElementById('apostilaDetailsModal');
+                
+                // Atualiza o conteúdo do modal com base no tipo de apostila
+                if (apostilaType.includes('Matemática')) {
+                    modal.querySelector('.modal-body .text-center h5').textContent = `Apostila de ${apostilaType}`;
+                    modal.querySelector('.modal-body .badge').textContent = level;
+                }
+            });
+        });
+
+            // Modal de configurações de acessibilidade
+            const accessibilityModal = document.getElementById('accessibilityModal');
+            const accessibilityModalClose = document.getElementById('accessibilityModalClose');
+            const accessibilityBtn = document.getElementById('accessibilityBtn');
+            
+            // Abrir modal
+            accessibilityBtn.addEventListener('click', function() {
+                accessibilityModal.classList.add('show');
+            });
+            
+            // Fechar modal
+            accessibilityModalClose.addEventListener('click', function() {
+                accessibilityModal.classList.remove('show');
+            });
+            
+            // Fechar modal ao clicar fora
+            accessibilityModal.addEventListener('click', function(event) {
+                if (event.target === accessibilityModal) {
+                    accessibilityModal.classList.remove('show');
+                }
+            });
+            
+            // Controles de acessibilidade
+            const highContrastToggle = document.getElementById('highContrastToggle');
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const readingModeToggle = document.getElementById('readingModeToggle');
+            const highContrastCursorToggle = document.getElementById('highContrastCursorToggle');
+            const visibleFocusToggle = document.getElementById('visibleFocusToggle');
+            const reduceMotionToggle = document.getElementById('reduceMotionToggle');
+            const screenReaderToggle = document.getElementById('screenReaderToggle');
+            const fontSizeRange = document.getElementById('fontSizeRange');
+            const lineHeightRange = document.getElementById('lineHeightRange');
+            const fontSizeValue = document.getElementById('fontSizeValue');
+            const lineHeightValue = document.getElementById('lineHeightValue');
+            
+            // Atualizar valores dos ranges
+            fontSizeRange.addEventListener('input', function() {
+                const values = ['Pequeno', 'Médio', 'Grande', 'Muito Grande'];
+                fontSizeValue.textContent = values[this.value - 1];
+            });
+            
+            lineHeightRange.addEventListener('input', function() {
+                const values = ['Normal', 'Médio', 'Alto'];
+                lineHeightValue.textContent = values[this.value - 1];
+            });
+            
+            // Salvar configurações de acessibilidade
+            document.getElementById('saveAccessibilitySettings').addEventListener('click', function() {
+                // Aplicar modo de alto contraste
+                if (highContrastToggle.checked) {
+                    document.body.classList.add('high-contrast');
+                    document.getElementById('accessibilityBtn').classList.add('high-contrast');
+                } else {
+                    document.body.classList.remove('high-contrast');
+                    document.getElementById('accessibilityBtn').classList.remove('high-contrast');
+                }
+                
+                // Aplicar modo escuro
+                if (darkModeToggle.checked) {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+                
+                // Aplicar modo de leitura
+                if (readingModeToggle.checked) {
+                    document.body.classList.add('reading-mode');
+                } else {
+                    document.body.classList.remove('reading-mode');
+                }
+                
+                // Aplicar cursor de alto contraste
+                if (highContrastCursorToggle.checked) {
+                    document.body.classList.add('high-contrast-cursor');
+                } else {
+                    document.body.classList.remove('high-contrast-cursor');
+                }
+                
+                // Aplicar foco visível
+                if (visibleFocusToggle.checked) {
+                    document.body.classList.add('visible-focus');
+                } else {
+                    document.body.classList.remove('visible-focus');
+                }
+                
+                // Reduzir movimentos
+                if (reduceMotionToggle.checked) {
+                    document.body.style.setProperty('--transition-speed', '0s');
+                    document.querySelectorAll('.animate-in').forEach(el => {
+                        el.style.animation = 'none';
+                    });
+                } else {
+                    document.body.style.setProperty('--transition-speed', '0.3s');
+                }
+                
+                // Aplicar tamanho da fonte
+                document.body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large', 'font-size-xlarge');
+                if (fontSizeRange.value === '1') {
+                    document.body.classList.add('font-size-small');
+                } else if (fontSizeRange.value === '2') {
+                    document.body.classList.add('font-size-medium');
+                } else if (fontSizeRange.value === '3') {
+                    document.body.classList.add('font-size-large');
+                } else if (fontSizeRange.value === '4') {
+                    document.body.classList.add('font-size-xlarge');
+                }
+                
+                // Aplicar espaçamento entre linhas
+                document.body.classList.remove('line-height-normal', 'line-height-medium', 'line-height-large');
+                if (lineHeightRange.value === '1') {
+                    document.body.classList.add('line-height-normal');
+                } else if (lineHeightRange.value === '2') {
+                    document.body.classList.add('line-height-medium');
+                } else if (lineHeightRange.value === '3') {
+                    document.body.classList.add('line-height-large');
+                }
+                
+                // Mostrar toast de confirmação
+                const toastMessage = document.getElementById('accessibilityToastMessage');
+                toastMessage.textContent = 'Configurações de acessibilidade salvas com sucesso!';
+                
+                const accessibilityToast = new bootstrap.Toast(document.getElementById('accessibilityToast'));
+                accessibilityToast.show();
+                
+                // Fechar o modal
+                accessibilityModal.classList.remove('show');
+            });
+            
+            // Resetar configurações de acessibilidade
+            document.getElementById('resetAccessibilitySettings').addEventListener('click', function() {
+                // Resetar todos os controles
+                highContrastToggle.checked = false;
+                darkModeToggle.checked = false;
+                readingModeToggle.checked = false;
+                highContrastCursorToggle.checked = false;
+                visibleFocusToggle.checked = false;
+                reduceMotionToggle.checked = false;
+                screenReaderToggle.checked = false;
+                fontSizeRange.value = 2;
+                lineHeightRange.value = 2;
+                
+                // Atualizar valores dos ranges
+                fontSizeValue.textContent = 'Médio';
+                lineHeightValue.textContent = 'Médio';
+                
+                // Remover todas as classes de acessibilidade
+                document.body.classList.remove(
+                    'high-contrast', 
+                    'dark-mode', 
+                    'reading-mode', 
+                    'high-contrast-cursor', 
+                    'visible-focus',
+                    'font-size-small', 
+                    'font-size-medium', 
+                    'font-size-large', 
+                    'font-size-xlarge',
+                    'line-height-normal', 
+                    'line-height-medium', 
+                    'line-height-large'
+                );
+                
+                // Resetar transições
+                document.body.style.setProperty('--transition-speed', '0.3s');
+                
+                // Mostrar toast de confirmação
+                const toastMessage = document.getElementById('accessibilityToastMessage');
+                toastMessage.textContent = 'Configurações de acessibilidade restauradas com sucesso!';
+                
+                const accessibilityToast = new bootstrap.Toast(document.getElementById('accessibilityToast'));
+                accessibilityToast.show();
+            });
+
+    </script>
+    
+</body>
+</html>

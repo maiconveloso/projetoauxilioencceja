@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auxílio ENCCEJA - Sobre Nós</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6da7;
+            --secondary-color: #2980b9;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #d3d3d3;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        .logo i {
+            font-size: 24px;
+        }
+        
+        .logo h1 {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            padding: 40px 0;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .about-section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .about-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .mission-section {
+            padding: 60px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .mission-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .mission-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mission-card i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .mission-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .team-section {
+            padding: 60px 0;
+        }
+        
+        .team-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .team-card:hover .team-image img {
+            transform: scale(1.05);
+        }
+        
+        .team-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .team-info h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .team-info p {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        
+        .testimonials-section {
+            padding: 60px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .testimonials-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .testimonial-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-text {
+            flex-grow: 1;
+        }
+        
+        .testimonial-text p {
+            margin-bottom: 10px;
+            color: #555;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .contact-section {
+            padding: 60px 0;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .contact-item i {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-top: 5px;
+        }
+        
+        .contact-item-content h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .contact-item-content p {
+            color: #555;
+        }
+        
+        .contact-form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        footer {
+            background-color: #34495e;
+            color: #fff;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title h2 {
+                font-size: 26px;
+            }
+            
+            .mission-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: modalFadeIn 0.3s;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #333;
+        }
+        
+        .modal-title {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .success-icon {
+            font-size: 60px;
+            color: #2ecc71;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h1>Auxílio ENCCEJA</h1>
+                </a>
+                <div class="nav-links">
+                    <a href="sobre.html">Home</a>
+                    <a href="contato.html">Contato</a>
+                    <a href="suporte.html">Suporte</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Sobre Nós</h2>
+            <p>Conheça a equipe e a missão que nos move a ajudar você a conquistar seus objetivos com o ENCCEJA.</p>
+        </div>
+    </section>
+    
+
+    <section class="about-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossa História</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://picsum.photos/seed/encceja-team/600/400.jpg" alt="Equipe Auxílio ENCCEJA">
+                </div>
+                <div class="about-text">
+                    <h3>Quem Somos</h3>
+                    <p>O Auxílio ENCCEJA nasceu da necessidade de oferecer um suporte eficaz e personalizado para candidatos que buscam a certificação do Ensino Fundamental II e Médio pelo Exame Nacional para Certificação de Competências de Jovens e Adultos (ENCCEJA).</p>
+                    <p>Fundado em 2018 por um grupo de educadores com vasta experiência no ensino para jovens e adultos, nossa missão é fornecer recursos de qualidade, estratégias de estudo eficazes e um ambiente de aprendizado que capacite nossos alunos a superarem os desafios do exame.</p>
+                    <p>Desde nossa criação, já ajudamos milhares de candidatos a conquistarem seus diplomas, abrindo portas para novas oportunidades educacionais e profissionais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mission-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossa Missão</h2>
+            </div>
+            <div classmission-content">
+                <div class="mission-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Inspiração</h3>
+                    <p>Inspirar jovens e adultos a buscarem a qualificação por meio da educação, mostrando que é nunca tarde para aprender e crescer.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Educação de Qualidade</h3>
+                    <p>Oferecer conteúdo pedagógico relevante, atualizado e adaptado às necessidades específicas do ENCCEJA.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Comunidade</h3>
+                    <p>Criar uma comunidade de apoio onde os candidatos se sentem motivados, acolhidos e preparados para o desafio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossa Equipe</h2>
+            </div>
+            <div class="team-content">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://picsum.photos/seed/director/300/300.jpg" alt="Diretor">
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Carlos Silva</h3>
+                        <p>Diretor Educacional</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://picsum.photos/seed/teacher1/300/300.jpg" alt="Professor">
+                    </div>
+                    <div class="team-info">
+                        <h3>Prof.ª Ana Oliveira</h3>
+                        <p>Especialista em Português</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://picsum.photos/seed/teacher2/300/300.jpg" alt="Professor">
+                    </div>
+                    <div class="team-info">
+                        <h3>Prof. Marcelo Costa</h3>
+                        <p>Especialista em Matemática</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://picsum.photos/seed/teacher3/300/300.jpg" alt="Professor">
+                    </div>
+                    <div class="team-info">
+                        <h3>Prof.ª Julia Almeida</h3>
+                        <p>Especialista em Ciências Sociais</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Depoimentos</h2>
+            </div>
+            <div class="testimonials-content">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="testimonial-avatar">
+                            <img src="https://picsum.photos/seed/student1/100/100.jpg" alt="Aluno">
+                        </div>
+                        <div class="testimonial-text">
+                            <p>"Depois de tentar várias vezes, finalmente consegui passar no ENCCEJA graças ao suporte do Auxílio ENCCEJA. Os materiais e simulados foram essenciais para minha preparação."</p>
+                            <span class="testimonial-author">João Pereira</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <div class="testimonial-avatar">
+                            <img src="https://picsum.photos/seed/student2/100/100.jpg" alt="Aluno">
+                        </div>
+                        <div class="testimonial-text">
+                            <p>"Como mãe de dois filhos pequenos, eu precisava de um método de estudo flexível e eficaz. O Auxílio ENCCEJA me proporcionou isso e me ajudou a conquistar meu diploma de ensino médio."</p>
+                            <span class="testimonial-author">Marcos Souza</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Auxílio ENCCEJA</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Cursos</a></li>
+                        <li><a href="#">Material</a></li>
+                        <li><a href="#">Simulados</a></li>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#">Dúvidas Frequentes</a></li>
+                        <li><a href="#">Calendário ENCCEJA</a></li>
+                        <li><a href="#">Bibliografia</a></li>
+                        <li><a href="#">Vídeos Aulas</a></li>
+                        <li><a href="#">Aplicativo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Políticas</h3>
+                    <ul>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Acessibilidade</a></li>
+                        <li><a href="#">Certificação</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Redes Sociais</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        <li><a href="#"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Auxílio ENCCEJA. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2 class="modal-title">Mensagem Enviada!</h2>
+            <div class="success-message">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p>Obrigado por entrar em contato. Recebemos sua mensagem e retornaremos em breve.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Botão voltar ao topo
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Formulário de contato
+        const contactForm = document.getElementById('contactForm');
+        const successModal = document.getElementById('successModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simulando envio de formulário
+            setTimeout(() => {
+                successModal.style.display = 'flex';
+                contactForm.reset();
+            }, 1000);
+        });
+        
+        closeModal.addEventListener('click', () => {
+            successModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === successModal) {
+                successModal.style.display = 'none';
+            }
+        });
+        
+        // Animação de elementos quando rolam para a view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.about-image, .mission-card, .team-card, .testimonial');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Inicializa com opacidade 0 e translateY
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.about-image, .mission-card, .team-card, .testimonial');
+            
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            animateOnScroll();
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>

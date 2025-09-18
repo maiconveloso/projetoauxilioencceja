@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostilas de Português para ENCCEJA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #3a5a78;
+            --secondary-color: #D3D3D3;
+            --accent-color: #e63946;
+            --text-color: #333;
+            --light-text: #6c757d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: #D3D3D3;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: #f8f9fa !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #2c3e50);
+            color: #f8f9fa;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .apostila-card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .apostila-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+            border-bottom: none;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #2c4760;
+            border-color: #2c4760;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .topic-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .topic-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .topic-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .topic-list i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+        
+        @media (max-width: 768px) {
+            .apostila-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        /* Estilos para a modal de visualização */
+        .modal-content {
+            border-radius: 8px;
+            border: none;
+        }
+        
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .apostila-preview {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .preview-content p {
+            margin-bottom: 0.75rem;
+        }
+        
+        .preview-content ul {
+            padding-left: 1.5rem;
+        }
+        
+        .preview-content li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Preparação para o ENCCEJA</h1>
+            <p class="lead mb-4">Conheça nossas apostilas de português para te ajudar a alcançar a pontuação máxima no exame.</p>
+            <a href="#apostilas" class="btn btn-light btn-lg me-2">Ver Apostilas</a>
+            <a href="#contato" class="btn btn-outline-light btn-lg">Fale Conosco</a>
+        </div>
+    </section>
+    
+    <!-- Apostilas Section -->
+    <section id="apostilas" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Apostilas de Português</h2>
+            <div class="row g-4">
+                <!-- Apostila 1 - Gramática Básica -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-journal-text me-2"></i>
+                            Gramática Básica
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Conceitos fundamentais de gramática para o ENCCEJA, incluindo fonética, morfologia e sintaxe.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Fonética e fonologia</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Classes de palavras</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Concordância verbal e nominal</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Regência verbal e nominal</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Gramática Básica')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Gramática Básica')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 2 - Literatura Brasileira -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-book me-2"></i>
+                            Literatura Brasileira
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Principais movimentos literários e autores brasileiros para o ENCCEJA.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Período colonial</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Romantismo</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Realismo e Naturalismo</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Modernismo</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Literatura Brasileira')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Literatura Brasileira')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 3 - Redação e Texto Argumentativo -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-pencil-square me-2"></i>
+                            Redação e Texto Argumentativo
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Técnicas e estratégias para elaborar textos argumentativos para o ENCCEJA.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Tipos de texto</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Estrutura do texto argumentativo</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Argumentação e persuasão</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Revisão e correção</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Redação e Texto Argumentativo')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Redação e Texto Argumentativo')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 4 - Análise Textual -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-search me-2"></i>
+                            Análise Textual
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Conceitos e técnicas para análise de textos variados para o ENCCEJA.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Tipos textuais</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Estrutura e funcionamento dos textos</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Linguagem e registro</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Figuras de linguagem e recursos estilísticos</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Análise Textual')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Análise Textual')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 5 - Crítica Literária -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-lightbulb me-2"></i>
+                            Crítica Literária
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Abordagens e métodos para análise crítica de obras literárias para o ENCCEJA.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Teorias literárias</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Análise de gêneros literários</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Interpretação de textos literários</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Relação entre texto e contexto</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Crítica Literária')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Crítica Literária')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 6 - Gramática Avançada -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-puzzle me-2"></i>
+                            Gramática Avançada
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Conceitos avançados de gramática para o ENCCEJA, com foco em questões complexas.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Sintaxe complexa</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Concordância e regência complexas</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Uso de verbos e tempos verbais</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Pontuação e parênteses</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Gramática Avançada')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Gramática Avançada')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sobre Section -->
+    <section id="sobre" class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="mb-4">Sobre Nossas Apostilas</h2>
+                <p>As apostilas de matemática para o ENCCEJA foram desenvolvidas por especialistas em educação com foco no conteúdo programático do exame. Cada apostila foi cuidadosamente estruturada para proporcionar uma aprendizagem eficaz e direta.</p>
+                <p>As apostilas contêm:</p>
+                <ul>
+                    <li>Explicações claras e concisas dos conceitos matemáticos</li>
+                    <li>Exemplos práticos e resolvidos</li>
+                    <li>Exercícios para fixação do conteúdo</li>
+                    <li>Dicas e estratégias para resolver as questões do ENCCEJA</li>
+                </ul>
+                <p>Nossa metodologia é baseada na experiência de professores que já atuaram como corretores e elaboradores de questões para o ENCCEJA, garantindo que o conteúdo esteja alinhado com o que realmente cai na prova.</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="mb-4">Por que escolher nossas apostilas?</h3>
+                        <div class="d-flex mb-3">
+                            <div class="feature-icon">
+                                <!-- Ícone removido -->
+                            </div>
+                            <div>
+                                <h5>Conteúdo Atualizado</h5>
+                                <p class="mb-0">Nossas apostilas são atualizadas regularmente para acompanhar as mudanças no formato do ENCCEJA.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <div class="feature-icon">
+                                <!-- Ícone removido -->
+                            </div>
+                            <div>
+                                <h5>Metodologia Eficaz</h5>
+                                <p class="mb-0">Organização do conteúdo que facilita a absorção dos conceitos de língua portuguesa.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <div class="feature-icon">
+                                <!-- Ícone removido -->
+                            </div>
+                            <div>
+                                <h5>Material Completo</h5>
+                                <p class="mb-0">Cobertura de todos os tópicos de português que podem ser cobrados no ENCCEJA.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="feature-icon">
+                                <!-- Ícone removido -->
+                            </div>
+                            <div>
+                                <h5>Resultados Comprovados</h5>
+                                <p class="mb-0">Estudantes que utilizam nossas apostilas apresentam melhor desempenho no exame.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>  
+    <!-- Contato Section -->
+ <section id="contato" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="text-center mb-4">Fale Conosco</h2>
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-4">
+                            <form id="contactForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Nome</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">E-mail</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="subject" class="form-label">Assunto</label>
+                                        <input type="text" class="form-control" id="subject" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label">Mensagem</label>
+                                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="btn btn-primary px-4 py-2">Enviar Mensagem</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+    
+    <!-- Modal para visualização da apostila -->
+    <div class="modal fade" id="apostilaModal" tabindex="-1" aria-labelledby="apostilaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="apostilaModalLabel">Visualização da Apostila</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="apostila-preview">
+                        <h4 class="preview-title" id="previewTitle">Título da Apostila</h4>
+                        <div class="preview-content" id="previewContent">
+                            <!-- Conteúdo da apostila será inserido aqui -->
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-muted">Esta é uma visualização parcial da apostila. Baixe a versão completa para acessar todo o conteúdo.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="downloadFromModal">Baixar Apostila</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função para mostrar preview da apostila
+        function showPreview(apostila) {
+            const apostilaModal = new bootstrap.Modal(document.getElementById('apostilaModal'));
+            document.getElementById('previewTitle').textContent = apostila;
+            
+            // Conteúdo específico para cada apostila
+            let content = '';
+            switch(apostila) {
+                case 'Gramática Básica':
+                    content = `
+                        <p>Esta apostila aborda os conceitos fundamentais de gramática para o ENCCEJA.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Fonética: sons da língua portuguesa e suas representações</li>
+                            <li>Morfologia: classes de palavras e suas funções</li>
+                            <li>Sintaxe: estrutura das frases e orações</li>
+                            <li>Concordância verbal e nominal</li>
+                            <li>Regência verbal e nominal</li>
+                            <li>Uso de pronomes e advérbios</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Literatura Brasileira':
+                    content = `
+                        <p>Esta apostila aborda os principais movimentos literários e autores brasileiros para o ENCCEJA.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Período colonial: poesia barroca e arcádica</li>
+                            <li>Romantismo: gêneros, temas e autores representativos</li>
+                            <li>Realismo e Naturalismo: características e principais autores</li>
+                            <li>Modernismo: Vanguardas e principais manifestações</li>
+                            <li>Pós-Modernismo e contemporaneidade</li>
+                            <li>Análise de textos literários com foco no ENCCEJA</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Redação e Texto Argumentativo':
+                    content = `
+                        <p>Esta apostila aborda técnicas e estratégias para elaborar textos argumentativos para o ENCCEJA.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Tipos de texto e seus elementos constitutivos</li>
+                            <li>Estrutura do texto argumentativo: introdução, desenvolvimento e conclusão</li>
+                            <li>Argumentação: tipos de argumentos e técnicas de persuasão</li>
+                            <li>Coerência e coesão textual</li>
+                            <li>Revisão e correção de texto</li>
+                            <li>Exemplos de textos argumentativos com análise crítica</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Análise Textual':
+                    content = `
+                        <p>Esta apostila aborda os conceitos e técnicas para análise de textos variados para o ENCCEJA.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Tipos textuais e suas características</li>
+                            <li>Estrutura e funcionamento dos textos</li>
+                            <li>Linguagem e registro: formal, informal e técnico-científico</li>
+                            <li>Figuras de linguagem e recursos estilísticos</li>
+                            <li>Discurso direto e indireto</li>
+                            <li>Análise de gêneros textuais variados</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Crítica Literária':
+                    content = `
+                        <p>Esta apostila aborda as abordagens e métodos para análise crítica de obras literárias para o ENCCEJA.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Teorias literárias: formalismo, estruturalismo, pós-estruturalismo</li>
+                            <li>Análise de gêneros literários: romance, conto, poesia, teatro</li>
+                            <li>Interpretação de textos literários: métodos e técnicas</li>
+                            <li>Relação entre texto e contexto: histórico, social e cultural</li>
+                            <li>Leitura crítica de textos literários</li>
+                            <li>Exemplos de análises críticas de obras literárias</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Gramática Avançada':
+                    content = `
+                        <p>Esta apostila aborda os conceitos avançados de gramática para o ENCCEJA, com foco em questões complexas.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Sintaxe complexa: orações subordinadas e suas funções</li>
+                            <li>Concordância e regência complexas: casos especiais e exceções</li>
+                            <li>Uso de verbos e tempos verbais: perfeição, aspecto e modo</li>
+                            <li>Pontuação e uso de parênteses, colchetes e chaves</li>
+                            <li>Uso de crase</li>
+                            <li>Gramática textual: conexões e relações entre orações</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                default:
+                    content = '<p>Conteúdo da apostila não disponível.</p>';
+            }
+            
+            document.getElementById('previewContent').innerHTML = content;
+            
+            // Configurar o botão de download na modal
+            document.getElementById('downloadFromModal').onclick = function() {
+                apostilaModal.hide();
+                downloadApostila(apostila);
+            };
+            
+            apostilaModal.show();
+        }
+        
+        // Função para baixar apostila
+        function downloadApostila(apostila) {
+            showToast('Download Iniciado', `A apostila de ${apostila} está sendo baixada. Por favor, aguarde.`, 'success');
+            // Simulação de download
+            setTimeout(() => {
+                showToast('Download Concluído', `A apostila de ${apostila} foi baixada com sucesso!`, 'success');
+            }, 3000);
+        }
+        
+        // Função para mostrar toast
+        function showToast(title, message, type) {
+            const toastContainer = document.querySelector('.toast-container');
+            const toastId = 'toast-' + Date.now();
+            const iconClass = type === 'success' ? 'bi-check-circle-fill' : 
+                             type === 'info' ? 'bi-info-circle-fill' : 
+                             type === 'warning' ? 'bi-exclamation-triangle-fill' : 'bi-x-circle-fill';
+            
+            const toastHtml = `
+                <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <i class="bi ${iconClass} me-2 text-${type === 'info' ? 'primary' : type}"></i>
+                        <strong class="me-auto">${title}</strong>
+                        <small>Agora</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                </div>
+            `;
+            
+            toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement, { autohide: true, delay: 5000 });
+            toast.show();
+            
+            // Remove o toast do DOM após fechar
+            toastElement.addEventListener('hidden.bs.toast', function () {
+                toastElement.remove();
+            });
+        }
+        
+        // Formulário de contato
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            showToast('Mensagem Enviada', `Obrigado, ${name}! Sua mensagem foi enviada com sucesso. responderemos em breve.`, 'success');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

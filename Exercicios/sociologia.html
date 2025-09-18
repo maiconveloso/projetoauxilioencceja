@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de Sociologia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #6b8cbb;
+            --accent-color: #ff9a3c;
+            --light-color: #f5f7fa;
+            --dark-color: #333;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border: none;
+            outline: none;
+            border-radius: 8px 8px 0 0;
+            margin-right: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .exercise {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        
+        .exercise h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .exercise p {
+            margin-bottom: 15px;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .option {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .option:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .option.selected {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .option.correct {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .option.incorrect {
+            background-color: var(--danger-color);
+            color: white;
+        }
+        
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .feedback.correct {
+            background-color: rgba(40, 167, 69, 0.1);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+            display: block;
+        }
+        
+        .feedback.incorrect {
+            background-color: rgba(220, 53, 69, 0.1);
+            border: 1px solid var(--danger-color);
+            color: var(--danger-color);
+            display: block;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-check {
+            margin-top: 10px;
+        }
+        
+        .btn-next {
+            background-color: var(--accent-color);
+            color: white;
+            margin-top: 15px;
+            display: none; /* Escondendo o botão Próximo Exercício */
+        }
+        
+        .progress-container {
+            margin: 20px 0;
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: var(--accent-color);
+            width: 0%;
+            transition: width 0.3s;
+        }
+        
+        .score {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .formula {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+        
+        .explanation {
+            margin-top: 10px;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .result-container {
+            text-align: center;
+            padding: 20px;
+            display: none;
+        }
+        
+        .result-container h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .result-score {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        
+        .result-message {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        .btn-restart {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+        }
+        .tab-warning {
+            background-color: var(--warning-color);
+            color: var(--dark-color);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+        
+        .tab-warning.active {
+            display: block;
+        }
+        
+        .warning-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .warning-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .warning-title {
+            color: var(--danger-color);
+            margin-bottom: 15px;
+        }
+        
+        .warning-message {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .warning-count {
+            font-weight: bold;
+            color: var(--danger-color);
+        }
+        
+        .warning-close {
+            margin-top: 15px;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .tab {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Exercícios de Sociologia para ENCCEJA</h1>
+            <p class="subtitle">Prepare-se para a prova com exercícios práticos e feedback imediato</p>
+        </header>
+        <div class="tab-warning" id="tabWarning">
+            ⚠️ ATENÇÃO: Mudar de guia durante o teste é monitorado e pode resultar na anulação do teste.
+        </div>
+        
+        <div class="score">
+            Pontuação: <span id="score">0</span> / <span id="total">0</span>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+        
+            <div class="tabs">
+                <button class="tab active" data-tab="conceitos">Conceitos Sociológicos</button>
+                <button class="tab" data-tab="estruturas">Estruturas Sociais</button>
+                <button class="tab" data-tab="dinamicas">Dinâmicas Sociais</button>
+                <button class="tab" data-tab="estudos">Estudos Sociológicos</button>
+            </div>
+            
+            <div id="conceitos" class="tab-content active">
+                <div class="exercise" id="conceito1">
+                    <h3>Exercício 1: Conceitos Sociológicos</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "sociedade" na sociologia?</p>
+                    <div class="options">
+                        <div class="option" data-value="Conjunto de indivíduos que compartilham um território e uma cultura">A) Conjunto de indivíduos que compartilham um território e uma cultura</div>
+                        <div class="option" data-value="Grupo de pessoas que moram na mesma cidade">B) Grupo de pessoas que moram na mesma cidade</div>
+                        <div class="option" data-value="Conjunto de famílias relacionadas">C) Conjunto de famílias relacionadas</div>
+                        <div class="option" data-value="Pessoas que trabalham na mesma empresa">D) Pessoas que trabalham na mesma empresa</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('conceito1', 'Conjunto de indivíduos que compartilham um território e uma cultura')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Na sociologia, uma sociedade é definida como um conjunto de indivíduos que compartilham um território e uma cultura, interagindo de forma organizada.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="conceito2">
+                    <h3>Exercício 2: Conceitos Sociológicos</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "cultura" na sociologia?</p>
+                    <div class="options">
+                        <div class="option" data-value="Conjunto de crenças, valores, normas e práticas compartilhadas por um grupo">A) Conjunto de crenças, valores, normas e práticas compartilhadas por um grupo</div>
+                        <div class="option" data-value="Conhecimento adquirido em escolas">B) Conhecimento adquirido em escolas</div>
+                        <div class="option" data-value="Artefatos e tecnologias de um povo">C) Artefatos e tecnologias de um povo</div>
+                        <div class="option" data-value="Tradições religiosas de um grupo">D) Tradições religiosas de um grupo</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('conceito2', 'Conjunto de crenças, valores, normas e práticas compartilhadas por um grupo')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Cultura na sociologia refere-se ao conjunto de crenças, valores, normas, práticas, símbolos e conhecimentos que são compartilhados por um grupo social e transmitidos de geração em geração.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="conceito3">
+                    <h3>Exercício 3: Conceitos Sociológicos</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "status" na sociologia?</p>
+                    <div class="options">
+                        <div class="option" data-value="Posição social de um indivíduo em uma estrutura social">A) Posição social de um indivíduo em uma estrutura social</div>
+                        <div class="option" data-value="Comportamento que um indivíduo adota em uma situação específica">B) Comportamento que um indivíduo adota em uma situação específica</div>
+                        <div class="option" data-value="Relação entre duas pessoas">C) Relação entre duas pessoas</div>
+                        <div class="option" data-value="Ação voluntária de um indivíduo">D) Ação voluntária de um indivíduo</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('conceito3', 'Posição social de um indivíduo em uma estrutura social')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Status na sociologia refere-se à posição social de um indivíduo ou grupo dentro de uma estrutura social, que determina suas expectativas, direitos e deveres.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="conceito4">
+                    <h3>Exercício 4: Conceitos Sociológicos</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "rol" na sociologia?</p>
+                    <div class="options">
+                        <div class="option" data-value="Conjunto de expectativas sociais associadas a um status">A) Conjunto de expectativas sociais associadas a um status</div>
+                        <div class="option" data-value="Posição social de um indivíduo">B) Posição social de um indivíduo</div>
+                        <div class="option" data-value="Ação voluntária de um indivíduo">C) Ação voluntária de um indivíduo</div>
+                        <div class="option" data-value="Relação entre duas pessoas">D) Relação entre duas pessoas</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('conceito4', 'Conjunto de expectativas sociais associadas a um status')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Rol (ou papel) na sociologia refere-se ao conjunto de expectativas, normas e comportamentos que são associados a um status ou posição social específica.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="conceito5">
+                    <h3>Exercício 5: Conceitos Sociológicos</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "desigualdade social" na sociologia?</p>
+                    <div class="options">
+                        <div class="option" data-value="Diferenças sistemáticas nas oportunidades e recursos entre diferentes grupos sociais">A) Diferenças sistemáticas nas oportunidades e recursos entre diferentes grupos sociais</div>
+                        <div class="option" data-value="Variações individuais nas habilidades e talentos">B) Variações individuais nas habilidades e talentos</div>
+                        <div class="option" data-value="Diferenças culturais entre grupos">C) Diferenças culturais entre grupos</div>
+                        <div class="option" data-value="Variações nas preferências pessoais">D) Variações nas preferências pessoais</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('conceito5', 'Diferenças sistemáticas nas oportunidades e recursos entre diferentes grupos sociais')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Desigualdade social na sociologia refere-se a diferenças sistemáticas nas oportunidades, recursos, poder e status entre diferentes grupos sociais dentro de uma sociedade.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="estruturas" class="tab-content">
+                <div class="exercise" id="estrutura1">
+                    <h3>Exercício 6: Estruturas Sociais</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "família" como uma estrutura social?</p>
+                    <div class="options">
+                        <div class="option" data-value="Grupo de pessoas relacionadas por laços de parentesco">A) Grupo de pessoas relacionadas por laços de parentesco</div>
+                        <div class="option" data-value="Grupo de amigos que se ajudam mutuamente">B) Grupo de amigos que se ajudam mutuamente</div>
+                        <div class="option" data-value="Pessoas que moram na mesma casa">C) Pessoas que moram na mesma casa</div>
+                        <div class="option" data-value="Colega de trabalho">D) Colega de trabalho</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('estrutura1', 'Grupo de pessoas relacionadas por laços de parentesco')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Família como uma estrutura social é definida como um grupo de pessoas relacionadas por laços de parentesco (biológicos, legais ou adotivos) que compartilham responsabilidades sociais e econômicas.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="estrutura2">
+                    <h3>Exercício 7: Estruturas Sociais</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "estado" como uma estrutura social?</p>
+                    <div class="options">
+                        <div class="option" data-value="Instituição política que detém o poder soberano sobre um território">A) Instituição política que detém o poder soberano sobre um território</div>
+                        <div class="option" data-value="Grupo de pessoas que governa uma cidade">B) Grupo de pessoas que governa uma cidade</div>
+                        <div class="option" data-value="Organização não governamental">C) Organização não governamental</div>
+                        <div class="option" data-value="Conjunto de leis de um país">D) Conjunto de leis de um país</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('estrutura2', 'Instituição política que detém o poder soberano sobre um território')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Estado na sociologia é definido como uma instituição política que detém o poder soberano sobre um território e sua população, com capacidade de impor leis e coletar impostos.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="estrutura3">
+                    <h3>Exercício 8: Estruturas Sociais</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "mercado" como uma estrutura social?</p>
+                    <div class="options">
+                        <div class="option" data-value="Espaço social onde bens e serviços são trocados ou vendidos">A) Espaço social onde bens e serviços são trocados ou vendidos</div>
+                        <div class="option" data-value="Lugar físico onde pessoas se encontram">B) Lugar físico onde pessoas se encontram</div>
+                        <div class="option" data-value="Conjunto de leis que regem as transações econômicas">C) Conjunto de leis que regem as transações econômicas</div>
+                        <div class="option" data-value="Rede de relações sociais">D) Rede de relações sociais</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('estrutura3', 'Espaço social onde bens e serviços são trocados ou vendidos')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Mercado como uma estrutura social é definido como o espaço onde bens e serviços são trocados ou vendidos, envolvendo relações econômicas e sociais entre produtores e consumidores.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="estrutura4">
+                    <h3>Exercício 9: Estruturas Sociais</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "religião" como uma estrutura social?</p>
+                    <div class="options">
+                        <div class="option" data-value="Sistema de crenças e práticas relacionadas ao sagrado">A) Sistema de crenças e práticas relacionadas ao sagrado</div>
+                        <div class="option" data-value="Grupo de pessoas que compartilham ideias políticas">B) Grupo de pessoas que compartilham ideias políticas</div>
+                        <div class="option" data-value="Conjunto de leis de um país">C) Conjunto de leis de um país</div>
+                        <div class="option" data-value="Artefatos culturais de um povo">D) Artefatos culturais de um povo</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('estrutura4', 'Sistema de crenças e práticas relacionadas ao sagrado')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Religião como uma estrutura social é definida como um sistema de crenças, práticas, símbolos e instituições que se relacionam com o sagrado e que influenciam significativamente o comportamento social.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="estrutura5">
+                    <h3>Exercício 10: Estruturas Sociais</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "educação" como uma estrutura social?</p>
+                    <div class="options">
+                        <div class="option" data-value="Sistema formal de transmissão de conhecimento e valores">A) Sistema formal de transmissão de conhecimento e valores</div>
+                        <div class="option" data-value="Aprendizado informal com os pais">B) Aprendizado informal com os pais</div>
+                        <div class="option" data-value="Conjunto de livros de um biblioteca">C) Conjunto de livros de um biblioteca</div>
+                        <div class="option" data-value="Artefatos culturais de um povo">D) Artefatos culturais de um povo</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('estrutura5', 'Sistema formal de transmissão de conhecimento e valores')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Educação como uma estrutura social é definida como o sistema formal de instituições (escolas, universidades, etc.) que transmitem conhecimento, habilidades, valores e normas sociais de uma geração para outra.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="dinamicas" class="tab-content">
+                <div class="exercise" id="dinamica1">
+                    <h3>Exercício 11: Dinâmicas Sociais</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "mobilidade social" na sociologia?</p>
+                    <div class="options">
+                        <div class="option" data-value="Mudança na posição social de um indivíduo ou grupo ao longo do tempo">A) Mudança na posição social de um indivíduo ou grupo ao longo do tempo</div>
+                        <div class="option" data-value="Troca de bens entre indivíduos">B) Troca de bens entre indivíduos</div>
+                        <div class="option" data-value="Mudança de endereço de uma pessoa">C) Mudança de endereço de uma pessoa</div>
+                        <div class="option" data-value="Troca de opiniões entre grupos">D) Troca de opiniões entre grupos</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('dinamica1', 'Mudança na posição social de um indivíduo ou grupo ao longo do tempo')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Mobilidade social na sociologia refere-se à mudança na posição social de um indivíduo ou grupo ao longo do tempo, podendo ser vertical (ascendente ou descendente) ou horizontal.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="dinamica2">
+                    <h3>Exercício 12: Dinâmicas Sociais</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "conflito social" na sociologia?</p>
+                    <div class="options">
+                        <div class="option" data-value="Luta por recursos, poder ou valores entre grupos sociais">A) Luta por recursos, poder ou valores entre grupos sociais</div>
+                        <div class="option" data-value="Discussão amigável entre amigos">B) Discussão amigável entre amigos</div>
+                        <div class="option" data-value="Competição esportiva entre times">C) Competição esportiva entre times</div>
+                        <div class="option" data-value="Troca de presentes em família">D) Troca de presentes em família</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('dinamica2', 'Luta por recursos, poder ou valores entre grupos sociais')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Conflito social na sociologia refere-se a lutas por recursos, poder, status ou valores entre diferentes grupos sociais, que podem levar a mudanças sociais significativas.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="dinamica3">
+                    <h3>Exercício 13: Dinâmicas Sociais</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "globalização" como uma dinâmica social?</p>
+                    <div class="options">
+                        <div class="option" data-value="Processo de crescente interconexão entre sociedades e culturas no mundo">A) Processo de crescente interconexão entre sociedades e culturas no mundo</div>
+                        <div class="option" data-value="Desenvolvimento de novas tecnologias de comunicação">B) Desenvolvimento de novas tecnologias de comunicação</div>
+                        <div class="option" data-value="Crescimento da população mundial">C) Crescimento da população mundial</div>
+                        <div class="option" data-value="Aumento das diferenças culturais entre países">D) Aumento das diferenças culturais entre países</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('dinamica3', 'Processo de crescente interconexão entre sociedades e culturas no mundo')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Globalização como uma dinâmica social é definida como o processo de crescente interconexão entre sociedades, culturas, economias e políticas em nível mundial, facilitado por avanços tecnológicos e de comunicação.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="dinamica4">
+                    <h3>Exercício 14: Dinâmicas Sociais</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "modernização" como uma dinâmica social?</p>
+                    <div class="options">
+                        <div class="option" data-value="Processo de mudança de sociedades tradicionais para sociedades industriais e pós-industriais">A) Processo de mudança de sociedades tradicionais para sociedades industriais e pós-industriais</div>
+                        <div class="option" data-value="Aumento da população rural">B) Aumento da população rural</div>
+                        <div class="option" data-value="Mudança das crenças religiosas">C) Mudança das crenças religiosas</div>
+                        <div class="option" data-value="Desenvolvimento de novas formas de arte">D) Desenvolvimento de novas formas de arte</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('dinamica4', 'Processo de mudança de sociedades tradicionais para sociedades industriais e pós-industriais')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Modernização como uma dinâmica social é definida como o processo de mudança de sociedades tradicionais para sociedades industriais e pós-industriais, caracterizado por urbanização, crescimento econômico, educação formal e secularização.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="dinamica5">
+                    <h3>Exercício 15: Dinâmicas Sociais</h3>
+                    <p>Qual das seguintes opções define melhor o conceito de "urbanização" como uma dinâmica social?</p>
+                    <div class="options">
+                        <div class="option" data-value="Processo de crescimento da população urbana em relação à rural">A) Processo de crescimento da população urbana em relação à rural</div>
+                        <div class="option" data-value="Aumento da população rural">B) Aumento da população rural</div>
+                        <div class="option" data-value="Desenvolvimento de novas tecnologias agrícolas">C) Desenvolvimento de novas tecnologias agrícolas</div>
+                        <div class="option" data-value="Mudança das crenças religiosas">D) Mudança das crenças religiosas</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('dinamica5', 'Processo de crescimento da população urbana em relação à rural')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Urbanização como uma dinâmica social é definida como o processo de crescimento da população urbana em relação à rural, resultante de migrações de pessoas do campo para a cidade em busca de melhores oportunidades econômicas e sociais.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="estudos" class="tab-content">
+                <div class="exercise" id="estudo1">
+                    <h3>Exercício 16: Estudos Sociológicos</h3>
+                    <p>Qual das seguintes opções define melhor o método "etnografia" na sociologia?</p>
+                    <div class="options">
+                        <div class="option" data-value="Estudo detalhado de uma comunidade ou grupo social por meio da imersão do pesquisador">A) Estudo detalhado de uma comunidade ou grupo social por meio da imersão do pesquisador</div>
+                        <div class="option" data-value="Aplicação de questionários em larga escala">B) Aplicação de questionários em larga escala</div>
+                        <div class="option" data-value="Análise estatística de dados secundários">C) Análise estatística de dados secundários</div>
+                        <div class="option" data-value="Experimentos controlados em laboratório">D) Experimentos controlados em laboratório</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('estudo1', 'Estudo detalhado de uma comunidade ou grupo social por meio da imersão do pesquisador')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Etnografia na sociologia é um método de pesquisa qualitativa que envolve o estudo detalhado de uma comunidade ou grupo social por meio da imersão do pesquisador no ambiente do grupo, coleta de dados por um período prolongado e análise profunda das interações sociais e culturais.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="estudo2">
+                    <h3>Exercício 17: Estudos Sociológicos</h3>
+                    <p>Qual das seguintes opções define melhor o método "estudo de caso" na sociologia?</p>
+                    <div class="options">
+                        <div class="option" data-value="Análise profunda de um indivíduo, grupo ou instituição específica">A) Análise profunda de um indivíduo, grupo ou instituição específica</div>
+                        <div class="option" data-value="Aplicação de questionários em larga escala">B) Aplicação de questionários em larga escala</div>
+                        <div class="option" data-value="Análise estatística de dados secundários">C) Análise estatística de dados secundários</div>
+                        <div class="option" data-value="Experimentos controlados em laboratório">D) Experimentos controlados em laboratório</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('estudo2', 'Análise profunda de um indivíduo, grupo ou instituição específica')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Estudo de caso na sociologia é um método de pesquisa que envolve a análise profunda e detalhada de um indivíduo, grupo ou instituição específica, permitindo uma compreensão contextualizada e multifacetada do objeto de estudo.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="estudo3">
+                    <h3>Exercício 18: Estudos Sociológicos</h3>
+                    <p>Qual das seguintes opções define melhor o método "pesquisa por questionário" na sociologia?</p>
+                    <div class="options">
+                        <div class="option" data-value="Aplicação de questionários para coletar dados de um grande número de pessoas">A) Aplicação de questionários para coletar dados de um grande número de pessoas</div>
+                        <div class="option" data-value="Observação participante em comunidades">B) Observação participante em comunidades</div>
+                        <div class="option" data-value="Análise de documentos históricos">C) Análise de documentos históricos</div>
+                        <div class="option" data-value="Entrevistas em profundidade">D) Entrevistas em profundidade</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('estudo3', 'Aplicação de questionários para coletar dados de um grande número de pessoas')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Pesquisa por questionário na sociologia é um método quantitativo que envolve a aplicação de questionários padronizados para coletar dados de um grande número de pessoas, permitindo a análise estatística a generalização de resultados.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="estudo4">
+                    <h3>Exercício 19: Estudos Sociológicos</h3>
+                    <p>Qual das seguintes opções define melhor o método "entrevista" na sociologia?</p>
+                    <div class="options">
+                        <div class="option" data-value="Conversa estruturada ou semi-estruturada com um indivíduo para coletar informações">A) Conversa estruturada ou semi-estruturada com um indivíduo para coletar informações</div>
+                        <div class="option" data-value="Aplicação de questionários em larga escala">B) Aplicação de questionários em larga escala</div>
+                        <div class="option" data-value="Análise estatística de dados secundários">C) Análise estatística de dados secundários</div>
+                        <div class="option" data-value="Entrevistas em profundidade">D) Entrevistas em profundidade</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('estudo4', 'Conversa estruturada ou semi-estruturada com um indivíduo para coletar informações')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Entrevista na sociologia é um método de pesquisa qualitativa que envolve uma conversa estruturada ou semi-estruturada com um indivíduo para coletar informações detalhadas sobre suas percepções, experiências e comportamentos.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="estudo5">
+                    <h3>Exercício 20: Estudos Sociológicos</h3>
+                    <p>Qual das seguintes opções define melhor o método "análise de conteúdo" na sociologia?</p>
+                    <div class="options">
+                        <div class="option" data-value="Exame sistemático e objetivo do conteúdo de comunicação para descrever suas características">A) Exame sistemático e objetivo do conteúdo de comunicação para descrever suas características</div>
+                        <div class="option" data-value="Aplicação de questionários em larga escala">B) Aplicação de questionários em larga escala</div>
+                        <div class="option" data-value="Observação de grupos em interação">C) Observação de grupos em interação</div>
+                        <div class="option" data-value="Entrevistas em profundidade">D) Entrevistas em profundidade</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('estudo5', 'Exame sistemático e objetivo do conteúdo de comunicação para descrever suas características')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Análise de conteúdo na sociologia é um método de pesquisa que envolve o exame sistemático, objetivo e quantificável do conteúdo de comunicação (textos, imagens, vídeos, etc.) para descrever suas características temáticas, ideológicas ou ideológicas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <div class="result-container" id="resultContainer">
+            <h2>Resultado Final</h2>
+            <div class="result-score">Você acertou <span id="finalScore">0</span> de <span id="finalTotal">0</span> exercícios</div>
+            <div class="result-message" id="resultMessage"></div>
+            <button class="btn btn-restart" onclick="restartQuiz()">Iniciar Novamente</button>
+        </div>
+    </div>
+    <div class="warning-container" id="warningContainer">
+            <div class="warning-box">
+                <h2 class="warning-title">⚠️ AVISO IMPORTANTE</h2>
+                <p class="warning-message">
+                    Você mudou de guia durante o teste. Esta ação foi registrada. 
+                    Mudar de guia durante a realização do teste é considerado uma violação das regras.
+                </p>
+                <p class="warning-message">
+                    Número de violações: <span class="warning-count" id="warningCount">1</span>
+                </p>
+                <p class="warning-message">
+                    Se você exceder o limite de <strong>3 violações</strong>, seu teste será anulado automaticamente.
+                </p>
+                <button class="btn btn-primary" onclick="closeWarning()">Entendido</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Variáveis globais
+        let score = 0;
+        let totalExercises = 20;
+        let answeredExercises = 0;
+        let tabSwitchCount = 0;
+        const MAX_TAB_SWITCHES = 3;
+        
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            // Contar total de exercícios
+            const exercises = document.querySelectorAll('.exercise');
+            totalExercises = exercises.length;
+            document.getElementById('total').textContent = totalExercises;
+            
+            // Configurar tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remover active de todas as tabs e conteúdo
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    // Adicionar active na tab clicada e conteúdo correspondente
+                    this.classList.add('active');
+                    document.getElementById(this.getAttribute('data-tab')).classList.add('active');
+                });
+            });
+            
+            // Configurar opções dos exercícios
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remover seleção de todas as opções no mesmo exercício
+                    const exerciseId = this.parentElement.parentElement.id;
+                    const exerciseOptions = document.querySelectorAll(`#${exerciseId} .option`);
+                    exerciseOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Selecionar a opção clicada
+                    this.classList.add('selected');
+                });
+            });
+            // Configurar monitoramento de mudança de guia
+            document.addEventListener('visibilitychange', handleVisibilityChange);
+            window.addEventListener('blur', handleWindowBlur);
+            
+            // Bloquear atalhos de teclado para abrir novas guias
+            document.addEventListener('keydown', handleKeyDown);
+            
+            // Exibir aviso inicial sobre mudança de guia
+            setTimeout(() => {
+                document.getElementById('tabWarning').classList.add('active');
+            }, 1000);
+        });
+        
+        // Função para lidar com mudança de visibilidade da página
+        function handleVisibilityChange() {
+            if (document.hidden) {
+                // A página ficou invisível (usuário mudou de guia)
+                incrementTabSwitchCount();
+            }
+        }
+        
+        // Função para lidar com perda de foco da janela
+        function handleWindowBlur() {
+            // A janela perdeu o foco (usuário pode ter mudado de guia)
+            incrementTabSwitchCount();
+        }
+        
+        // Função para incrementar o contador de mudança de guia
+        function incrementTabSwitchCount() {
+            tabSwitchCount++;
+            
+            // Exibir aviso
+            document.getElementById('warningCount').textContent = tabSwitchCount;
+            document.getElementById('warningContainer').style.display = 'flex';
+            
+            // Exibir aviso na aba
+            document.getElementById('tabWarning').classList.add('active');
+            
+            // Verificar se excedeu o limite
+            if (tabSwitchCount >= MAX_TAB_SWITCHES) {
+                // Anular o teste
+                invalidateTest();
+            }
+        }
+        
+        // Função para fechar o aviso de violação
+        function closeWarning() {
+            document.getElementById('warningContainer').style.display = 'none';
+        }
+       
+        function handleKeyDown(e) {
+            // Bloquear Ctrl+T (nova guia)
+            if (e.ctrlKey && e.keyCode === 84) {
+                e.preventDefault();
+                incrementTabSwitchCount();
+                return false;
+            }
+            
+            // Bloquear Ctrl+N (nova janela)
+            if (e.ctrlKey && e.keyCode === 78) {
+                e.preventDefault();
+                incrementTabSwitchCount();
+                return false;
+            }
+            
+            // Bloquear Ctrl+W (fechar guia)
+            if (e.ctrlKey && e.keyCode === 87) {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Bloquear Alt+Setas (navegação)
+            if (e.altKey && (e.keyCode === 37 || e.keyCode === 39)) {
+                e.preventDefault();
+                incrementTabSwitchCount();
+                return false;
+            }
+            
+            // Bloquear F12 (ferramentas de desenvolvedor)
+            if (e.keyCode === 123) {
+                e.preventDefault();
+                incrementTabSwitchCount();
+                return false;
+            }
+            
+            // Bloquear Ctrl+Shift+I (ferramentas de desenvolvedor)
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                e.preventDefault();
+                incrementTabSwitchCount();
+                return false;
+            }
+            
+            // Bloquear Ctrl+Shift+J (console)
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+                e.preventDefault();
+                incrementTabSwitchCount();
+                return false;
+            }
+            
+            // Bloquear Ctrl+U (visualizar código fonte)
+            if (e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+                incrementTabSwitchCount();
+                return false;
+            }
+        }
+        
+        function invalidateTest() {
+            // Esconder todos os exercícios
+            document.querySelectorAll('.exercise').forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            
+            // Esconder tabs e outros elementos
+            document.querySelector('.tabs').style.display = 'none';
+            document.querySelector('.score').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            document.getElementById('tabWarning').style.display = 'none';
+            
+            // Fechar aviso de violação
+            closeWarning();
+            
+            // Exibir mensagem de teste anulado
+            document.getElementById('resultContainer').style.display = 'block';
+            document.getElementById('finalScore').textContent = '0';
+            document.getElementById('finalTotal').textContent = totalExercises;
+            document.getElementById('resultMessage').textContent = 
+                `TESTE ANULADO! Você excedeu o limite de ${MAX_TAB_SWITCHES} mudanças de guia permitidas.`;
+            document.getElementById('resultMessage').style.color = 'var(--danger-color)';
+            document.getElementById('resultMessage').style.fontWeight = 'bold';
+            
+            // Desabilitar botão de reiniciar
+            document.querySelector('.btn-restart').disabled = true;
+            document.querySelector('.btn-restart').style.backgroundColor = '#cccccc';
+            document.querySelector('.btn-restart').style.cursor = 'not-allowed';
+        }
+        
+        // Função para verificar a resposta
+        function checkAnswer(exerciseId, correctAnswer) {
+            const exercise = document.getElementById(exerciseId);
+            const selectedOption = exercise.querySelector('.option.selected');
+            const feedback = exercise.querySelector('.feedback');
+            const explanation = exercise.querySelector('.explanation');
+            const options = exercise.querySelectorAll('.option');
+            
+            // Verificar se uma opção foi selecionada
+            if (!selectedOption) {
+                feedback.textContent = 'Por favor, selecione uma resposta.';
+                feedback.className = 'feedback incorrect';
+                feedback.style.display = 'block';
+                return;
+            }
+            
+            // Verificar se a resposta está correta
+            const selectedValue = selectedOption.getAttribute('data-value');
+            const isCorrect = selectedValue === correctAnswer;
+            
+            // Atualizar pontuação apenas se ainda não foi contabilizada
+            if (isCorrect && !selectedOption.classList.contains('correct')) {
+                score++;
+                document.getElementById('score').textContent = score;
+            }
+            
+            // Atualizar contador de exercícios respondidos
+            answeredExercises++;
+            updateProgress();
+            
+            // Marcar opções como corretas ou incorretas
+            options.forEach(option => {
+                const optionValue = option.getAttribute('data-value');
+                if (optionValue === correctAnswer) {
+                    option.classList.add('correct');
+                } else if (option === selectedOption && !isCorrect) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            // Mostrar feedback
+            if (isCorrect) {
+                feedback.textContent = 'Correto! Parabéns.';
+                feedback.className = 'feedback correct';
+            } else {
+                feedback.textContent = 'Incorreto. Tente novamente.';
+                feedback.className = 'feedback incorrect';
+            }
+            feedback.style.display = 'block';
+            
+            // Mostrar explicação
+            explanation.style.display = 'block';
+            
+            // Desabilitar botão de verificar
+            const checkButton = exercise.querySelector('.btn-check');
+            checkButton.disabled = true;
+            checkButton.textContent = 'Verificado';
+            
+            // Verificar se todos os exercícios foram respondidos
+            if (answeredExercises === totalExercises) {
+                setTimeout(showResults, 1000);
+            }
+        }
+        
+        // Função para atualizar a barra de progresso
+        function updateProgress() {
+            const percentage = (answeredExercises / totalExercises) * 100;
+            document.getElementById('progress').style.width = `${percentage}%`;
+        }
+        
+        // Função para mostrar os resultados finais
+        function showResults() {
+            document.querySelectorAll('.exercise').forEach(exercise => {
+                exercise.style.display = 'none';
+            });
+            
+            document.querySelector('.tabs').style.display = 'none';
+            document.querySelector('.score').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            
+            document.getElementById('resultContainer').style.display = 'block';
+            document.getElementById('finalScore').textContent = score;
+            document.getElementById('finalTotal').textContent = totalExercises;
+            
+            // Mensagem personalizada com base na pontuação
+            let message = '';
+            
+            if (score === totalExercises) {
+                message = 'Parabéns! Você acertou todas as questões. Você tem um excelente conhecimento de sociologia.';
+            } else if (score >= totalExercises * 0.8) {
+                message = 'Excelente! Você tem um bom domínio dos conceitos de sociologia. Continue estudando para aperfeiçoar seus conhecimentos.';
+            } else if (score >= totalExercises * 0.6) {
+                message = 'Bom trabalho! Você tem um conhecimento razoável de sociologia. Continue estudando para melhorar ainda mais.';
+            } else if (score >= totalExercises * 0.4) {
+                message = 'Você está no caminho certo. Continue estudando e praticando para melhorar seus conhecimentos de sociologia.';
+            } else {
+                message = 'Recomendamos que você estude mais sobre sociologia. Consulte livros e fontes confiáveis para melhorar seus conhecimentos.';
+            }
+            
+            document.getElementById('resultMessage').textContent = message;
+            
+            // Desativar o bloqueio de tela quando todos os exercícios forem respondidos
+            disableTabLock();
+        }
+        
+        // Função para reiniciar o quiz
+        function restartQuiz() {
+            // Resetar pontuação e contadores
+            score = 0;
+            answeredExercises = 0;
+            tabSwitchCount = 0;
+            document.getElementById('score').textContent = score;
+            document.getElementById('progress').style.width = '0%';
+            
+            // Exibir novamente os exercícios e componentes
+            document.querySelectorAll('.exercise').forEach(exercise => {
+                exercise.style.display = 'block';
+                exercise.querySelectorAll('.option').forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect');
+                });
+                exercise.querySelector('.feedback').style.display = 'none';
+                exercise.querySelector('.explanation').style.display = 'none';
+                
+                // Resetar botão de verificar
+                const checkButton = exercise.querySelector('.btn-check');
+                checkButton.disabled = false;
+                checkButton.textContent = 'Verificar';
+                
+                // Remover botão de próximo se existir
+                const nextButton = exercise.querySelector('.btn-next');
+                if (nextButton) {
+                    nextButton.remove();
+                }
+            });
+            
+            document.querySelector('.tabs').style.display = 'flex';
+            document.querySelector('.score').style.display = 'block';
+            document.querySelector('.progress-container').style.display = 'block';
+            document.getElementById('resultContainer').style.display = 'none';
+            
+            // Ativar a primeira tab
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelector('.tab').classList.add('active');
+            document.getElementById('conceitos').classList.add('active');
+            
+            // Reabilitar botão de reiniciar se foi desabilitado
+            const restartButton = document.querySelector('.btn-restart');
+            restartButton.disabled = false;
+            restartButton.style.backgroundColor = '';
+            restartButton.style.cursor = '';
+            
+            // Reativar o bloqueio de tela ao reiniciar o quiz
+            enableTabLock();
+        }
+        
+        // Função para desativar o bloqueio de tela
+        function disableTabLock() {
+            // Remover event listeners de mudança de aba
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            window.removeEventListener('blur', handleWindowBlur);
+            document.removeEventListener('keydown', handleKeyDown);
+            // Esconder aviso sobre mudança de aba
+            document.getElementById('tabWarning').classList.remove('active');
+        }
+        
+        // Função para reativar o bloqueio de tela (usada ao reiniciar o quiz)
+        function enableTabLock() {
+            // Adicionar novamente os event listeners
+            document.addEventListener('visibilitychange', handleVisibilityChange);
+            window.addEventListener('blur', handleWindowBlur);
+            document.addEventListener('keydown', handleKeyDown);
+            // Exibir aviso sobre mudança de aba
+            document.getElementById('tabWarning').classList.add('active');
+        }
+
+    </script>
+    
+</body>
+</html>

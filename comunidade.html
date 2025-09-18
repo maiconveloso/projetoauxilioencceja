@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auxílio Encceja - Comunidade de Estudos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #34495e;
+            --secondary-color: #6b8cbe;
+            --accent-color: #D3D3D3;
+            --text-color: #333;
+            --light-bg: #f5f7fa;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #D3D3D3;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .logo i {
+            color: var(--accent-color);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: var(--secondary-color);
+        }
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .btn-login, .btn-signup {
+            display: inline-block;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+        .btn-login {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+        }
+        .btn-signup {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+        .btn-login:hover {
+            background-color: #e09012;
+        }
+        .btn-signup:hover {
+            background-color: #5a7aa9;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 5px 10px;
+            width: 250px;
+        }
+        .search-bar input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            padding: 5px;
+        }
+        .search-bar button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+        main {
+            padding: 30px 0;
+        }
+        .welcome-section {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        .welcome-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .welcome-text {
+            flex: 1;
+        }
+        .welcome-text h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        .welcome-text p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .welcome-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .welcome-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        .resources-section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .resource-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        .resource-img {
+            height: 150px;
+            background-color: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 3rem;
+        }
+        .resource-content {
+            padding: 15px;
+        }
+        .resource-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .resource-content p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        .resource-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        .resource-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        .forum-section {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+        .forum-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .forum-list {
+            list-style: none;
+        }
+        .forum-item {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        .forum-item:last-child {
+            border-bottom: none;
+        }
+        .forum-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .forum-title a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .forum-title a:hover {
+            text-decoration: underline;
+        }
+        .forum-meta {
+            display: flex;
+            gap: 15px;
+            color: #888;
+            font-size: 0.85rem;
+        }
+        .forum-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .create-post-btn {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .create-post-btn:hover {
+            background-color: #e09012;
+        }
+        .timer-section {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .timer-display {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .timer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .timer-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .timer-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        .timer-btn.reset {
+            background-color: #e74c3c;
+        }
+        .timer-btn.reset:hover {
+            background-color: #c0392b;
+        }
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s, opacity 0.3s;
+            z-index: 1000;
+        }
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        footer {
+            background-color: #34495e;
+            padding: 20px 0;
+            text-align: center;
+            color: #D3D3D3;
+            font-size: 14px;
+            margin-top: 30px;
+            border-top: 1px solid var(--light-gray);
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .social-links a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            width: 90%;
+            max-width: 500px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.3s;
+        }
+        .close-modal:hover {
+            color: var(--text-color);
+        }
+        .modal-title {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            outline: none;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .search-bar {
+                width: 100%;
+                margin-top: 10px;
+            }
+            .welcome-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .user-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            .user-actions button {
+                width: 100%;
+            }
+            .forum-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            .create-post-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Comunidade de Estudos</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Início</a></li>
+                    <li><a href="#">Recursos</a></li>
+                    <li><a href="#">Simulados</a></li>
+                    <li><a href="#">Sobre</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Pesquisar...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="user-actions">
+                <a href="Login 3.0/login.html" class="btn-login">Login</a>
+                
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <section class="welcome-section">
+            <div class="welcome-content">
+                <div class="welcome-text">
+                    <h1>Bem-vindo à Comunidade ENCCEJA</h1>
+                    <p>Prepare-se para o exame com a ajuda de recursos, simulados e comunidade de apoio. Estude de forma eficiente e alcance seus objetivos.</p>
+                    <button class="welcome-btn" id="start-studying-btn">Começar a Estudar</button>
+                </div>
+            </div>
+        </section>
+        <section class="resources-section">
+            <h2 class="section-title">Recursos de Estudo</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Material Didático</h3>
+                        <p>Acesso a apostilas, resumos e materiais de estudo organizados por áreas de conhecimento.</p>
+                        <a href="apostila.html" class="resource-btn">Ver Material</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Vídeos Aulas</h3>
+                        <p>Aulas gravadas por professores especializados em cada área do conhecimento.</p>
+                        <a href="videoaula.html" class="resource-btn">Assistir Aulas</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Exercícios</h3>
+                        <p>Questões de fixação para testar seu conhecimento em cada área do exame.</p>
+                        <a href="exercicio.html" class="resource-btn">Fazer Exercícios</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Simulados</h3>
+                        <p>Simulações do exame com questões de provas anteriores e cronometro.</p>
+                        <a href="simulado.html" class="resource-btn">Iniciar Simulado</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="forum-section">
+            <div class="forum-header">
+                <h2 class="section-title">Fórum de Discussão</h2>
+                <button class="create-post-btn" id="create-post-btn">Criar Postagem</button>
+            </div>
+            <ul class="forum-list">
+                <li class="forum-item">
+                    <div class="forum-title">
+                        <a href="#">Dúvida sobre Matemática - Geometria Analítica</a>
+                        <span>Novo</span>
+                    </div>
+                    <p>Alguém pode me ajudar com essa questão de retas e planos? Estou comuldade em entender a solução.</p>
+                    <div class="forum-meta">
+                        <span><i class="fas fa-user"></i> Maria Silva</span>
+                        <span><i class="fas fa-comment"></i> 5 respostas</span>
+                        <span><i class="fas fa-clock"></i> 2 horas atrás</span>
+                    </div>
+                </li>
+                <li class="forum-item">
+                    <div class="forum-title">
+                        <a href="#">Conselhos para estudar Português</a>
+                        <span>Novo</span>
+                    </div>
+                    <p>Estou com dificuldade em gramática e interpretação de texto. Alguém pode me dar dicas de como estudar melhor?</p>
+                    <div class="forum-meta">
+                        <span><i class="fas fa-user"></i> João Pereira</span>
+                        <span><i class="fas fa-comment"></i> 8 respostas</span>
+                        <span><i class="fas fa-clock"></i> 5 horas atrás</span>
+                    </div>
+                </li>
+                <li class="forum-item">
+                    <div class="forum-title">
+                        <a href="#">Compartilhar estratégia de estudo</a>
+                    </div>
+                    <p>Estou usando o método Pomodoro e dividindo os estudos por áreas. Quem mais usa alguma técnica específica?</p>
+                    <div class="forum-meta">
+                        <span><i class="fas fa-user"></i> Ana Costa</span>
+                        <span><i class="fas fa-comment"></i> 12 respostas</span>
+                        <span><i class="fas fa-clock"></i> 1 dia atrás</span>
+                    </div>
+                </li>
+                <li class="forum-item">
+                    <div class="forum-title">
+                        <a href="#">Questões de Ciências da Natureza</a>
+                    </div>
+                    <p>Alguém pode me ajudar com essas questões de física sobre leis de Newton?</p>
+                    <div class="forum-meta">
+                        <span><i class="fas fa-user"></i> Carlos Oliveira</span>
+                        <span><i class="fas fa-comment"></i> 3 respostas</span>
+                        <span><i class="fas fa-clock"></i> 2 dias atrás</span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section class="timer-section">
+            <h2 class="section-title">Temporizador de Estudo</h2>
+            <p>Use o temporizador para manter o foco durante suas sessões de estudo.</p>
+            <div class="timer-display" id="timer-display">25:00</div>
+            <div class="timer-controls">
+                <button class="timer-btn" id="start-timer-btn">Iniciar</button>
+                <button class="timer-btn" id="pause-timer-btn">Pausar</button>
+                <button class="timer-btn reset" id="reset-timer-btn">Resetar</button>
+            </div>
+        </section>
+    </main>
+    <div class="notification" id="notification">Notificação</div>
+    <!-- Modal para criar postagem -->
+    <div class="modal" id="post-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-post-modal">&times;</span>
+            <h2 class="modal-title">Criar Nova Postagem</h2>
+            <form class="modal-form" id="post-form">
+                <div class="form-group">
+                    <label for="post-title">Título</label>
+                    <input type="text" id="post-title" required placeholder="Digite o título da sua postagem">
+                </div>
+                <div class="form-group">
+                    <label for="post-content">Conteúdo</label>
+                    <textarea id="post-content" required placeholder="Digite o conteúdo da sua postagem"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="post-category">Categoria</label>
+                    <select id="post-category" required>
+                        <option value="">Selecione uma categoria</option>
+                        <option value="duvida">Dúvida</option>
+                        <option value="dica">Dica de Estudo</option>
+                        <option value="conhecimento">Compartilhar Conhecimento</option>
+                        <option value="motivacional">Motivacional</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Publicar</button>
+            </form>
+        </div>
+    </div>
+     <footer>
+            <div class="container">
+                <p>&copy; 2025 Auxílio Encceja - Comunidade de Estudos. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+    <script>
+        // Timer functionality
+        const timerDisplay = document.getElementById('timer-display');
+        const startTimerBtn = document.getElementById('start-timer-btn');
+        const pauseTimerBtn = document.getElementById('pause-timer-btn');
+        const resetTimerBtn = document.getElementById('reset-timer-btn');
+        
+        let timer;
+        let timeLeft = 25 * 60; // 25 minutes in seconds
+        let isTimerRunning = false;
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        function startTimer() {
+            if (!isTimerRunning) {
+                isTimerRunning = true;
+                timer = setInterval(() => {
+                    timeLeft--;
+                    updateTimerDisplay();
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        isTimerRunning = false;
+                        showNotification('Tempo de estudo concluído! Faça uma pausa.');
+                    }
+                }, 1000);
+            }
+        }
+        function pauseTimer() {
+            clearInterval(timer);
+            isTimerRunning = false;
+        }
+        function resetTimer() {
+            clearInterval(timer);
+            isTimerRunning = false;
+            timeLeft = 25 * 60;
+            updateTimerDisplay();
+        }
+        startTimerBtn.addEventListener('click', startTimer);
+        pauseTimerBtn.addEventListener('click', pauseTimer);
+        resetTimerBtn.addEventListener('click', resetTimer);
+        // Modal functionality
+        const postModal = document.getElementById('post-modal');
+        const loginModal = document.getElementById('login-modal');
+        const signupModal = document.getElementById('signup-modal');
+        
+        const createPostBtn = document.getElementById('create-post-btn');
+        const loginBtn = document.getElementById('login-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        const startStudyingBtn = document.getElementById('start-studying-btn');
+        
+        const closePostModal = document.getElementById('close-post-modal');
+        const closeLoginModal = document.getElementById('close-login-modal');
+        const closeSignupModal = document.getElementById('close-signup-modal');
+        
+        const switchToSignup = document.getElementById('switch-to-signup');
+        const switchToLogin = document.getElementById('switch-to-login');
+        function openModal(modal) {
+            modal.style.display = 'flex';
+        }
+        function closeModal(modal) {
+            modal.style.display = 'none';
+        }
+        createPostBtn.addEventListener('click', () => openModal(postModal));
+        loginBtn.addEventListener('click', () => openModal(loginModal));
+        signupBtn.addEventListener('click', () => openModal(signupModal));
+        startStudyingBtn.addEventListener('click', () => {
+            showNotification('Bom estudo! Boa sorte no seu preparo para o ENCCEJA.');
+        });
+        closePostModal.addEventListener('click', () => closeModal(postModal));
+        closeLoginModal.addEventListener('click', () => closeModal(loginModal));
+        closeSignupModal.addEventListener('click', () => closeModal(signupModal));
+        switchToSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeModal(loginModal);
+            openModal(signupModal);
+        });
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeModal(signupModal);
+            openModal(loginModal);
+        });
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === postModal) closeModal(postModal);
+            if (e.target === loginModal) closeModal(loginModal);
+            if (e.target === signupModal) closeModal(signupModal);
+        });
+        // Form submissions
+        const postForm = document.getElementById('post-form');
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        postForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('post-title').value;
+            const content = document.getElementById('post-content').value;
+            const category = document.getElementById('post-category').value;
+            
+            // Here you would normally send this data to a server
+            console.log('Post submitted:', { title, content, category });
+            
+            closeModal(postModal);
+            showNotification('Postagem criada com sucesso!');
+            postForm.reset();
+        });
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            // Here you would normally authenticate with a server
+            console.log('Login attempt:', { email, password });
+            
+            closeModal(loginModal);
+            showNotification('Login realizado com sucesso!');
+            loginForm.reset();
+        });
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                showNotification('As senhas não coincidem!');
+                return;
+            }
+            
+            // Here you would normally register with a server
+            console.log('Signup attempt:', { name, email, password });
+            
+            closeModal(signupModal);
+            showNotification('Cadastro realizado com sucesso!');
+            signupForm.reset();
+        });
+        // Notification functionality
+        const notification = document.getElementById('notification');
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        // Initialize timer display
+        updateTimerDisplay();
+    </script>
+</body>
+</html>

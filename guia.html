@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Completo do Encceja | Auxílio Encceja</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6da7;
+            --secondary-color: #f8f9fa;
+            --accent-color: #e63946;
+            --text-color: #333;
+            --light-text: #6c757d;
+            --border-color: #dee2e6;
+            --success-color: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            background-color: #D3D3D3;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .logo i {
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #34495e;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #34495e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            border: 2px solid #34495e;
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #34495e;
+        }
+        
+        .tabs {
+            margin-bottom: 40px;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        
+        .tab-buttons::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .tab-btn {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--light-text);
+            position: relative;
+            white-space: nowrap;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-color);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .info-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .info-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .info-card p {
+            margin-bottom: 15px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .info-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .info-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-item i {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .info-item h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background-color: var(--border-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 2px solid white;
+        }
+        
+        .timeline-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-item p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .tips-list {
+            list-style-position: inside;
+            margin-bottom: 20px;
+        }
+        
+        .tips-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .tips-list li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .resource-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .resource-content {
+            padding: 15px;
+        }
+        
+        .resource-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .resource-content p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .resource-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .resource-link i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .resource-link:hover i {
+            transform: translateX(3px);
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-answer {
+            display: none;
+            padding: 10px 0;
+            color: var(--light-text);
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: white;
+            border-left: 4px solid var(--success-color);
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transform: translateX(120%);
+            transition: transform 0.3s;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification i {
+            font-size: 20px;
+            color: var(--success-color);
+        }
+        
+        .notification-content h4 {
+            margin-bottom: 5px;
+        }
+        
+        .notification-content p {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        footer {
+            background-color: #34495e;
+            padding: 20px 0;
+            text-align: center;
+            color: #D3D3D3;
+            font-size: 14px;
+            margin-top: 30px;
+            border-top: 1px solid var(--light-gray);
+            width: 100%; /* Ajuste a largura do rodapé */
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .info-grid, .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Auxílio Encceja</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#preparation">Preparação</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Guia Completo do Encceja</h1>
+            <p>Tudo que você precisa saber para se preparar e realizar com sucesso o Exame Nacional para Certificação de Competências de Jovens e Adultos</p>
+            <a href="#preparation" class="btn">Começar a Preparação</a>
+            <a href="#faq" class="btn btn-secondary">Ver Recursos</a>
+        </div>
+    </section>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="about">Sobre o Encceja</button>
+                <button class="tab-btn" data-tab="registration">Inscrição e Prazos</button>
+                <button class="tab-btn" data-tab="preparation">Preparação</button>
+                <button class="tab-btn" data-tab="exam">Dia do Exame</button>
+                <button class="tab-btn" data-tab="results">Resultados e Certificação</button>
+            </div>
+            <div class="tab-content active" id="about">
+                <div class="info-card">
+                    <h2>O que é o Encceja?</h2>
+                    <p>O Exame Nacional para Certificação de Competências de Jovens e Adultos (Encceja) é um exame nacional que avalia as competências e habilidades dos jovens e adultos com idade igual ou superior a 15 anos que não concluíram os estudos no tempo habitual ou que desejam certificar conhecimentos adquiridos de forma informal.</p>
+                    <p>O exame é organizado e aplicado pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep) e tem como objetivo principal certificar o ensino fundamental e médio.</p>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-award"></i>
+                        <h3>Objetivo</h3>
+                        <p>O Encceja permite que jovens e adultos obtenham o certificado de conclusão do ensino fundamental ou médio, equivalente ao diploma de conclusão da educação básica.</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-users"></i>
+                        <h3>Público Alvo</h3>
+                        <p>Jovens e adultos com idade igual ou superior a 15 anos que não concluíram os estudos no tempo habitual ou que desejam certificar conhecimentos adquiridos de forma informal.</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-globe"></i>
+                        <h3>Organização</h3>
+                        <p>O exame é organizado e aplicado pelo Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira (Inep), autarquia do Ministério da Educação.</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h2>Tipos de Encceja</h2>
+                    <br>
+                    <h4>O Encceja é aplicado em diferentes formatos para atender às necessidades específicas de diferentes públicos:</h4>
+                      <br>
+                      <li><strong>Encceja Nacional:</strong> Para candidatos que têm condições de locomoção e não necessitam de atendimento especializado.</li>
+                      <br>
+                      <li><strong>Encceja Nacional para Jovens e Adultos com Necessidades Educacionais Especiais (NEE):</strong> Para candidatos com deficiência, transtornos globais de desenvolvimento ou altas habilidades/superdotação.</li>
+                      <br>
+                      <li><strong>Encceja Nacional para Adultos Privados de Liberdade (APL):</strong> Para candidatos que se encontram em estabelecimentos prisionais.</li>
+                      <br>
+                      <li><strong>Encceja Nacional para Refugiados:</strong> Para candidatos que tenham reconhecimento de status de refugiado no Brasil.</li>
+                </div>
+            </div>
+            <div class="tab-content" id="registration">
+                <div class="info-card">
+                    <h2>Como Fazer a Inscrição</h2>
+                    <p>A inscrição para o Encceja é feita exclusivamente pela internet, no site do Inep. O processo é simples e pode ser concluído em poucos passos:</p>
+                    <ol class="tips-list">
+                        <li>acesse o site oficial do Encceja</li>
+                        <li>clique na opção "Fazer Inscrição"</li>
+                        <li>preencha o formulário com seus dados pessoais</li>
+                        <li>selecione o tipo de exame que deseja realizar</li>
+                        <li>confirme seus dados e finalize a inscrição</li>
+                    </ol>
+                </div>
+                <div class="info-card">
+                    <h2>Prazos e Data de Aplicação</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h3>Período de Inscrições</h3>
+                            <p>Normalmente, o período de inscrições ocorre entre os meses de março e abril. Consulte o edital do ano desejado para confirmar as datas exatas.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Publicação do Resultado</h3>
+                            <p>O resultado final é divulgado entre os meses de outubro e novembro, após a aplicação do exame.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Data de Aplicação</h3>
+                            <p>O Encceja é aplicado anualmente, geralmente no mês de setembro. A data exata é definida e divulgada pelo Inep.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h2>Documentos Necessários</h2>
+                    <p>Para fazer a inscrição e comparecer ao exame, você precisará dos seguintes documentos:</p>
+                    
+                        <li><strong>CPF:</strong> Necessário para a inscrição online</li>
+                        <li><strong>Documento de Identidade:</strong> Para comprovação de identidade no dia do exame</li>
+                        <li><strong>Comprovante de Endereço:</strong> Para a inscrição</li>
+                        <li><strong>Comprovante de Inscrição:</strong> Impresso após finalizar a inscrição online</li>
+                    
+                    <p>Além disso, se você tem alguma necessidade especial, será necessário apresentar laudo médico atualizado.</p>
+                </div>
+            </div>
+            <div class="tab-content" id="preparation">
+                <div class="info-card">
+                    <h2>Como Se Preparar para o Encceja</h2>
+                    <p>A preparação para o Encceja exige dedicação e organização. Aqui estão algumas dicas para ajudar em seu estudo:</p>
+                    
+                        <li>Conheça o formato e o conteúdo da prova</li>
+                        <li>Crie um cronograma de estudos realista</li>
+                        <li>Use materiais didáticos adequados</li>
+                        <li>Realize simulados para avaliar seu desempenho</li>
+                        <li>Estude em grupos para trocar conhecimentos</li>
+                    
+                </div>
+                <div class="info-card">
+                    <h2>Estrutura da Prova</h2>
+                    <p>A prova do Encceja é composta por diversas áreas do conhecimento:</p>
+                    
+                        <li><strong>Língua Portuguesa, Literatura e Redação:</strong> Avalia a capacidade de leitura, interpretação e produção textual</li>
+                        <li><strong>Língua Estrangeira (Inglês ou Espanhol):</strong> Avalia a capacidade de compreensão de textos</li>
+                        <li><strong>Matemática:</strong> Avalia conhecimentos em diversas áreas matemáticas</li>
+                        <li><strong>Ciências da Natureza:</strong> Avalia conhecimentos em Biologia, Física e Química</li>
+                        <li><strong>Ciências Humanas:</strong> Avalia conhecimentos em História, Geografia e Filosofia</li>
+                    
+                    <p>A prova dura aproximadamente 5 horas e é composta por questões objetivas e uma redação.</p>
+                </div>
+                <div class="info-card">
+                    <h2>Dicas de Estudo</h2>
+                    <p>Aqui estão algumas estratégias que podem ajudar na sua preparação:</p>
+                    
+                        <li><strong>Estude diariamente:</strong> Dedique pelo menos 1-2 horas por dia aos estudos</li>
+                        <li><strong>Organize seu espaço:</strong> Crie um ambiente tranquilo e organizado para estudar</li>
+                        <li><strong>Use diferentes métodos:</strong> Combine leitura, anotações, mapas mentais e resumos</li>
+                        <li><strong>Revisão constante:</strong> Revise o conteúdo estudado periodicamente</li>
+                        <li><strong>Descanso:</strong> Não subestime a importância do descanso e do sono</li>
+                    
+                </div>
+            </div>
+            <div class="tab-content" id="exam">
+                <div class="info-card">
+                    <h2>O Dia do Exame</h2>
+                    <p>No dia do exame, é importante estar preparado para garantir que tudo corra bem. Aqui estão algumas dicas importantes:</p>
+                    
+                        <li>Compareça ao local designado com pelo menos 30 minutos de antecedência</li>
+                        <li>Leve todos os documentos necessários (identidade, comprovante de inscrição)</li>
+                        <li>Evite levar materiais proibidos (celular, relógio, materiais de estudo)</li>
+                        <li>Evite conversas com outros candidatos antes ou durante a prova</li>
+                        <li>Leia atentamente as instruções antes de começar a prova</li>
+                    
+                </div>
+                <div class="info-card">
+                    <h2>Estratégias Durante a Prova</h2>
+                    <p>Aqui estão algumas dicas para ajudar durante a realização da prova:</p>
+                    
+                        <li><strong>Gestão do Tempo:</strong> Distribua seu tempo de forma equilibrada entre as questões</li>
+                        <li><strong>Leia Atentamente:</strong> Preste atenção em cada palavra das questões</li>
+                        <li><strong>Questões Fáceis Primeiro:</strong> Responda às questões que você conhece bem primeiro</li>
+                        <li><strong>Marque e Volte:</strong> Marque as questões difíceis e volte para elas depois</li>
+                        <li><strong>Confira as Respostas:</strong> Reserve alguns minutos no final para revisar suas respostas</li>
+                    
+                </div>
+                <div class="info-card">
+                    <h2>Considerações Finais</h2>
+                    <p>É importante lembrar que o Encceja avalia não apenas o conhecimento, mas também as competências e habilidades desenvolvidas ao longo dos estudos. Portanto, além de memorizar conteúdos, é fundamental compreender os conceitos e saber aplicá-los em diferentes situações.</p>
+                    <p>Confie em seu preparo, mantenha a calma durante a prova e lembre-se de que você está prestes a dar um passo importante em sua vida acadêmica e profissional.</p>
+                </div>
+            </div>
+            <div class="tab-content" id="results">
+                <div class="info-card">
+                    <h2>Divulgação dos Resultados</h2>
+                    <p>Após a aplicação do exame, o Inep realiza a correção e a análise das provas. O resultado final é divulgado no site oficial do Encceja, geralmente entre os meses de outubro e novembro.</p>
+                    <p>Para consultar o resultado, você precisará informar seu número de inscrição e a data de nascimento.</p>
+                </div>
+                <div class="info-card">
+                    <h2>Interpretação da Nota</h2>
+                    <p>A pontuação do Encceja é composta por diferentes áreas do conhecimento. Para ser aprovado e receber o certificado, você precisa atingir a nota mínima em todas as áreas e na redação:</p>
+                    
+                        <li><strong>Língua Portuguesa, Literatura e Redação:</strong> Nota mínima de 200 pontos</li>
+                        <li><strong>Língua Estrangeira (Inglês ou Espanhol):</strong> Nota mínima de 200 pontos</li>
+                        <li><strong>Matemática:</strong> Nota mínima de 200 pontos</li>
+                        <li><strong>Ciências da Natureza:</strong> Nota mínima de 200 pontos</li>
+                        <li><strong>Ciências Humanas:</strong> Nota mínima de 200 pontos</li>
+                    
+                </div>
+                <div class="info-card">
+                    <h2>Certificação</h2>
+                    <p>Após a aprovação, o certificado de conclusão do ensino fundamental ou médio é enviado para o endereço informado durante a inscrição. O prazo para entrega do certificado é de aproximadamente 60 dias após a divulgação do resultado.</p>
+                    <p>O certificado do Encceja tem validade nacional e é equivalente ao diploma de conclusão da educação básica, abrindo portas para o ensino superior e novas oportunidades profissionais.</p>
+                </div>
+                <div class="info-card">
+                    <h2>Recurso e Nova Prova</h2>
+                    <p>Caso você não alcance a nota mínima em alguma área, não desanime! Você tem a oportunidade de se inscrever para a prova de recuperação, que é aplicada no mesmo ano, geralmente em novembro.</p>
+                    <p>Para se inscrever na prova de recuperação, você precisará informar quais áreas você deseja refazer e seguir o processo de inscrição como se fosse um novo candidato.</p>
+                </div>
+            </div>
+            <div class="tab-content" id="faq">
+                <div class="info-card">
+                    <h2>Perguntas Frequentes</h2>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Quem pode fazer o Encceja?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <br>
+                        <div class="faq-answer">
+                            <p>O Encceja é destinado a jovens e adultos com idade igual ou superior a 15 anos que não concluíram os estudos no tempo habitual ou que desejam certificar conhecimentos adquiridos de forma informal. Também é aberto a pessoas que não frequentaram a escola ou que desejam obter o certificado de conclusão do ensino fundamental ou médio.</p>
+                       div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Qual é a diferença entre o Encceja e o Enem?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>O Encceja é destinado especificamente a jovens e adultos que desejam certificar o ensino fundamental ou médio, enquanto o Enem (Exame Nacional do Ensino Médio) é um exame aberto a todos os estudantes do ensino médio, seja concluinte ou não, e pode ser utilizado para acesso ao ensino superior através do Sistema de Seleção Unificada (Sisu) e do Fundo de Financiamento Estudantil (Fies).</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Posso fazer o Encceja se já tenho o diploma do ensino médio?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sim, você pode fazer o Encceja mesmo tendo o diploma do ensino médio. O exame pode ser útil para aqueles que desejam avaliar seus conhecimentos ou para aqueles que precisam de um certificado adicional para fins específicos.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Quantas vezes por ano o Encceja é aplicado?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>O Encceja é aplicado anualmente, geralmente no mês de setembro. Além disso, o Inep pode organizar aplicação suplementar em alguns casos específicos, como para candidatos que não puderam realizar a prova por motivo de doença ou outros impedimentos.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Qual é a validade do certificado do Encceja?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>O certificado do Encceja não possui validade. Ele é equivalente ao diploma de conclusão da educação básica e tem validade nacional, abrindo portas para o ensino superior e novas oportunidades profissionais.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Posso fazer o Encceja se tiver alguma deficiência?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sim, o Encceja possui uma versão adaptada para candidatos com deficiência, transtornos globais de desenvolvimento ou altas habilidades/superdotação. Para participar, você precisará informar sua situação durante o processo de inscrição e apresentar laudo médico atualizado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-card" id="contact">
+                <h2>Entre em Contato</h2>
+                <h4>Se você tiver alguma dúvida ou precisar de mais informações sobre o Encceja, por favor, preencha o formulário abaixo e entraremos em contato com você em breve.</h4>
+                <br>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Assunto</label>
+                        <select id="subject" class="form-control" required>
+                            <option value="">Selecione um assunto</option>
+                            <option value="inscricao">Inscrição</option>
+                            <option value="preparacao">Preparação</option>
+                            <option value="prova">Dia da Prova</option>
+                            <option value="resultados">Resultados</option>
+                            <option value="recursos">Recursos de Estudo</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+            <div class="container">
+                <p>&copy; 2025 Auxílio Encceja - Provas Anteriores. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+    </footer>
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <div class="notification-content">
+            <h4>Mensagem enviada com sucesso!</h4>
+            <p>Nós entraremos em contato em breve.</p>
+        </div>
+    </div>
+    <script>
+        // Tab Navigation
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('', () => {
+                // Toggle active class
+                item.classList.toggle('active');
+            });
+        });
+        // Contact Form
+        const contactForm = document.getElementById('contact-form');
+        const notification = document.getElementById('notification');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Simulate form submission
+            setTimeout(() => {
+                // Show notification
+                notification.classList.add('show');
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Hide notification after 5 seconds
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 5000);
+            }, 1000);
+        });
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

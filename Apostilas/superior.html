@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostilas de Ensino Superior</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #3a5a78;
+            --secondary-color: #D3D3D3;
+            --accent-color: #e63946;
+            --text-color: #333;
+            --light-text: #6c757d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: #D3D3D3;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: #f8f9fa !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #2c3e50);
+            color: #f8f9fa;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .apostila-card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .apostila-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+            border-bottom: none;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #2c4760;
+            border-color: #2c4760;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .topic-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .topic-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .topic-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .topic-list i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+        
+        @media (max-width: 768px) {
+            .apostila-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        /* Estilos para a modal de visualização */
+        .modal-content {
+            border-radius: 8px;
+            border: none;
+        }
+        
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .apostila-preview {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .preview-content p {
+            margin-bottom: 0.75rem;
+        }
+        
+        .preview-content ul {
+            padding-left: 1.5rem;
+        }
+        
+        .preview-content li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-book me-2"></i>
+                Apostilas ENCCEJA
+            </a>
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#apostilas">Apostilas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Apostilas de Ensino Superior</h1>
+            <p class="lead mb-4">Conheça nossas apostilas para cursos de cálculo superior, física avançada, química orgânica, biologia molecular, estatística e álgebra linear.</p>
+            <a href="#apostilas" class="btn btn-light btn-lg me-2">Ver Apostilas</a>
+            <a href="#contato" class="btn btn-outline-light btn-lg">Fale Conosco</a>
+        </div>
+    </section>
+    
+    <!-- Apostilas Section -->
+    <section id="apostilas" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Apostilas para Ensino Superior</h2>
+            <div class="row g-4">
+                <!-- Apostila 1 - Cálculo Superior -->
+                <div class="col-md-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-calculator me-2"></i>
+                            Cálculo Superior
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Apostila completa de cálculo multivariável, séries de Taylor, integrais duplas e triplas e aplicações práticas.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Cálculo de funções de várias variáveis</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Derivadas parciais e gradientes</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Integrais duplas e triplas</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Cálculo vetorial e campos</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Série de Taylor e MacLaurin</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Cálculo Superior')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Cálculo Superior')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 2 - Física Avançada -->
+                <div class="col-md-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-lightning-charge me-2"></i>
+                            Física Avançada
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Apostila abrangente de física avançada, cobrindo mecânica quântica, eletromagnetismo e termodinâmica.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Mecânica quântica e equação de Schrödinger</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Eletromagnetismo e equações de Maxwell</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Termodinâmica e estatística molecular</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Óptica e fenômenos ondulatórios</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Física de partículas e relatividade</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Física Avançada')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Física Avançada')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 3 - Química Orgânica -->
+                <div class="col-md-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-flask me-2"></i>
+                            Química Orgânica
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Apostila completa de química orgânica, cobrindo estruturas, reações e mecanismos de reação orgânica.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Estrutura e propriedades de compostos orgânicos</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Reações de substituição e eliminação</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Reações de adição e rearranjo</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Esterificação e hidrólise</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Síntese orgânica e mecanismos de reação</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Química Orgânica')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Química Orgânica')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 4 - Biologia Molecular -->
+                <div class="col-md-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-dna me-2"></i>
+                            Biologia Molecular
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Apostila abrangente sobre biologia molecular, genética, expressão gênica e técnicas de biotecnologia.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Estrutura e função do DNA e RNA</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Replicação, transcrição e tradução</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Expressão gênica e controle</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Técnicas de clonagem e engenharia genética</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Genética molecular e mutações</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Biologia Molecular')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Biologia Molecular')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 5 - Estatística -->
+                <div class="col-md-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-bar-chart me-2"></i>
+                            Estatística
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Apostila completa de estatística para cursos de ciências, cobrindo probabilidade, distribuições e inferência estatística.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Probabilidade e variáveis aleatórias</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Distribuições de probabilidade (Normal, Binomial, Poisson)</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Inferência estatística e testes de hipótese</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Regressão linear e análise de variância</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Testes de correlação e regressão múltipla</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Estatística')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Estatística')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 6 - Álgebra Linear (Nova apostila) -->
+                <div class="col-md-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-grid-3x3 me-2"></i>
+                            Álgebra Linear
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Apostila completa de álgebra linear, essencial para cursos de engenharia, física, matemática e ciência da computação.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Sistemas de equações lineares e matrizes</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Determinantes e propriedades</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Espaços vetoriais e subespaços</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Transformações lineares e núcleo e imagem</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Autovalores, autovetores e diagonalização</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Álgebra Linear')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Álgebra Linear')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sobre Section -->
+    <section id="sobre" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Sobre Nossas Apostilas</h2>
+                    <p>As apostilas para ensino superior foram desenvolvidas por especialistas em suas respectivas áreas, com foco nos conteúdos programáticos dos principais cursos universitários.</p>
+                    <p>Cada apostila foi cuidadosamente estruturada para proporcionar uma aprendizagem eficaz e direta, com:</p>
+                    <ul>
+                        <li>Explicações claras e concisas dos conceitos</li>
+                        <li>Exemplos práticos e resolvidos</li>
+                        <li>Exercícios para fixação do conteúdo</li>
+                        <li>Aplicação de conceitos em problemas reais</li>
+                        <li>Referências bibliográficas atualizadas</li>
+                    </ul>
+                    <p>Nossa metodologia é baseada na experiência de professores universitários que atuam na área há muitos anos, garantindo que o conteúdo esteja alinhado com o que realmente é ensinado nas universidades.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h3 class="mb-4">Por que escolher nossas apostilas?</h3>
+                            <div class="d-flex mb-3">
+                                <div class="feature-icon">  
+                                </div>
+                                <div>
+                                    <h5>Conteúdo Atualizado</h5>
+                                    <p class="mb-0">Nossas apostilas são atualizadas regularmente para acompanhar as mudanças nos currículos universitários.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <div class="feature-icon">
+                            </div>
+                                <div>
+                                    <h5>Metodologia Eficaz</h5>
+                                    <p class="mb-0">Organização do conteúdo que facilita a absorção dos conceitos complexos de cada disciplina.</p>
+                                </div>
+                            </div>
+                               <div class="d-flex mb-3">
+                                <div class="feature-icon">
+                            </div>
+                                <div>
+                                    <h5>Material Completo</h5>
+                                    <p class="mb-0">Cobertura de todos os tópicos essenciais de cada disciplina para cursos superiores.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                               <div class="feature-icon">
+                                  </div>
+                                <div>
+                                    <h5>Resultados Comprovados</h5>
+                                    <p class="mb-0">Estudantes que utilizam nossas apostilas apresentam melhor desempenho em suas disciplinas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contato Section -->
+    <section id="contato" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="text-center mb-4">Fale Conosco</h2>
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-4">
+                            <form id="contactForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Nome</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">E-mail</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="subject" class="form-label">Assunto</label>
+                                        <input type="text" class="form-control" id="subject" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label">Mensagem</label>
+                                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="btn btn-primary px-4 py-2">Enviar Mensagem</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+    
+    <!-- Modal para visualização da apostila -->
+    <div class="modal fade" id="apostilaModal" tabindex="-1" aria-labelledby="apostilaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="apostilaModalLabel">Visualização da Apostila</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="apostila-preview">
+                        <h4 class="preview-title" id="previewTitle">Título da Apostila</h4>
+                        <div class="preview-content" id="previewContent">
+                            <!-- Conteúdo da apostila será inserido aqui -->
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-muted">Esta é uma visualização parcial da apostila. Baixe a versão completa para acessar todo o conteúdo.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="downloadFromModal">Baixar Apostila</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função para mostrar preview da apostila
+        function showPreview(apostila) {
+            const apostilaModal = new bootstrap.Modal(document.getElementById('apostilaModal'));
+            document.getElementById('previewTitle').textContent = apostila;
+            
+            // Conteúdo específico para cada apostila
+            let content = '';
+            switch(apostila) {
+                case 'Cálculo Superior':
+                    content = `
+                        <p>Esta apostila aborda os conceitos fundamentais de cálculo superior, essenciais para cursos de engenharia, física e matemática.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Funções de várias variáveis e suas derivadas</li>
+                            <li>Derivadas parciais e gradientes</li>
+                            <li>Integrais duplas e triplas</li>
+                            <li>Cálculo vetorial e campos</li>
+                            <li>Séries de Taylor e MacLaurin</li>
+                            <li>Transformadas de Laplace e Fourier</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Física Avançada':
+                    content = `
+                        <p>Esta apostila aborda os conceitos avançados de física, essenciais para cursos de engenharia, física e áreas afins.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Mecânica quântica e equação de Schrödinger</li>
+                            <li>Eletromagnetismo e equações de Maxwell</li>
+                            <li>Termodinâmica e estatística molecular</li>
+                            <li>Óptica e fenômenos ondulatórios</li>
+                            <li>Física de partículas e relatividade</li>
+                            <li>Física de materiais e semicondutores</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Química Orgânica':
+                    content = `
+                        <p>Esta apostila aborda os conceitos fundamentais de química orgânica, essenciais para cursos de química, biologia, farmácia e áreas afins.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Estrutura e propriedades de compostos orgânicos</li>
+                            <li>Reações de substituição e eliminação</li>
+                            <li>Reações de adição e rearranjo</li>
+                            <li>Esterificação e hidrólise</li>
+                            <li>Síntese orgânica e mecanismos de reação</li>
+                            <li>Química de biomoléculas e biopolímeros</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Biologia Molecular':
+                    content = `
+                        <p>Esta apostila aborda os conceitos fundamentais de biologia molecular, essenciais para cursos de biologia, medicina, farmácia e áreas afins.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Estrutura e função do DNA e RNA</li>
+                            <li>Replicação, transcrição e tradução</li>
+                            <li>Expressão gênica e controle</li>
+                            <li>Técnicas de clonagem e engenharia genética</li>
+                            <li>Genética molecular e mutações</li>
+                            <li>Bioinformática e genômica</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Estatística':
+                    content = `
+                        <p>Esta apostila aborda os conceitos fundamentais de estatística, essenciais para cursos de ciências, engenharia, medicina e áreas afins.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Probabilidade e variáveis aleatórias</li>
+                            <li>Distribuições de probabilidade (Normal, Binomial, Poisson)</li>
+                            <li>Inferência estatística e testes de hipótese</li>
+                            <li>Regressão linear e análise de variância</li>
+                            <li>Testes de correlação e regressão múltipla</li>
+                            <li>Design de experimentos e análise de dados</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Álgebra Linear': // Novo conteúdo para a apostila de Álgebra Linear
+                    content = `
+                        <p>Esta apostila aborda os conceitos fundamentais de álgebra linear, essenciais para cursos de engenharia, física, matemática e ciência da computação.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Sistemas de equações lineares e matrizes</li>
+                            <li>Determinantes e propriedades</li>
+                            <li>Espaços vetoriais e subespaços</li>
+                            <li>Transformações lineares e núcleo e imagem</li>
+                            <li>Autovalores, autovetores e diagonalização</li>
+                            <li>Aplicações da álgebra linear em diversas áreas</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                default:
+                    content = '<p>Conteúdo da apostila não disponível.</p>';
+            }
+            
+            document.getElementById('previewContent').innerHTML = content;
+            
+            // Configurar o botão de download na modal
+            document.getElementById('downloadFromModal').onclick = function() {
+                apostilaModal.hide();
+                downloadApostila(apostila);
+            };
+            
+            apostilaModal.show();
+        }
+        
+        // Função para baixar apostila
+        function downloadApostila(apostila) {
+            showToast('Download Iniciado', `A apostila de ${apostila} está sendo baixada. Por favor, aguarde.`, 'success');
+            // Simulação de download
+            setTimeout(() => {
+                showToast('Download Concluído', `A apostila de ${apostila} foi baixada com sucesso!`, 'success');
+            }, 3000);
+        }
+        
+        // Função para mostrar toast
+        function showToast(title, message, type) {
+            const toastContainer = document.querySelector('.toast-container');
+            const toastId = 'toast-' + Date.now();
+            const iconClass = type === 'success' ? 'bi-check-circle-fill' : 
+                             type === 'info' ? 'bi-info-circle-fill' : 
+                             type === 'warning' ? 'bi-exclamation-triangle-fill' : 'bi-x-circle-fill';
+            
+            const toastHtml = `
+                <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <i class="bi ${iconClass} me-2 text-${type === 'info' ? 'primary' : type}"></i>
+                        <strong class="me-auto">${title}</strong>
+                        <small>Agora</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                </div>
+            `;
+            
+            toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement, { autohide: true, delay: 5000 });
+            toast.show();
+            
+            // Remove o toast do DOM após fechar
+            toastElement.addEventListener('hidden.bs.toast', function () {
+                toastElement.remove();
+            });
+        }
+        
+        // Formulário de contato
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            showToast('Mensagem Enviada', `Obrigado, ${name}! Sua mensagem foi enviada com sucesso. responderemos em breve.`, 'success');
+            this.reset();
+        });
+        
+        // Animação suave para links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

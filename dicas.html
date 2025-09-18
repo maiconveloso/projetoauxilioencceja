@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auxílio Encceja - Dicas de Estudo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6da7;
+            --secondary-color: #6e9cd2;
+            --accent-color: #34495e;
+            --light-color: #f9f9f9;
+            --dark-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .tip-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        
+        .category-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .category-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .category-btn.active {
+            background-color: var(--accent-color);
+        }
+        
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tip-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tip-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--accent-color);
+        }
+        
+        .tip-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tip-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .tip-card .icon {
+            background-color: var(--light-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+        
+        .resource-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .resource-link:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
+        .search-bar {
+            display: flex;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: 30px 0 0 30px;
+            outline: none;
+            font-size: 1rem;
+        }
+        
+        .search-bar button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .search-bar button:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            display: none;
+        }
+        
+        .timer-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .timer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .timer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .timer-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .timer-btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--dark-color);
+            margin: 1rem 0;
+        }
+        
+        footer {
+                background-color: #34495e;
+                padding: 20px 0;
+                text-align: center;
+                color: #D3D3D3;
+                font-size: 14px;
+                margin-top: 30px;
+                border-top: 1px solid var(--light-gray);
+            }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            .tips-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .tip-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .category-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-book"></i> Dicas de Estudo para o ENCCEJA</h1>
+        <p>Prepare-se para o Exame Nacional para Certificação de Competências de Jovens e Adultos</p>
+    </header>
+    
+    <div class="container">
+        <div class="intro">
+            <h2>Bem-vindo ao Guia de Estudos para ENCCEJA</h2>
+            <p>Confira dicas práticas e recursos que podem te ajudar a se preparar melhor para o exame e alcançar seus objetivos.</p>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Pesquise por dicas ou tópicos...">
+            <button id="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="tip-categories">
+            <button class="category-btn active" data-category="all">Todas</button>
+            <button class="category-btn" data-category="planning">Planejamento</button>
+            <button class="category-btn" data-category="methods">Métodos de Estudo</button>
+            <button class="category-btn" data-category="resources">Recursos</button>
+            <button class="category-btn" data-category="exam">Dicas para a Prova</button>
+            <button class="category-btn" data-category="mental">Saúde Mental</button>
+        </div>
+        
+        <div class="timer-section">
+            <h3>Controle seu Tempo de Estudo</h3>
+            <div class="timer-display" id="timer">25:00</div>
+            <div class="timer-controls">
+                <button class="timer-btn" id="start-timer"><i class="fas fa-play"></i> Iniciar</button>
+                <button class="timer-btn" id="reset-timer"><i class="fas fa-redo"></i> Reiniciar</button>
+            </div>
+        </div>
+        
+        <div class="tips-container" id="tips-container">
+            <!-- Típicos de Planejamento -->
+            <div class="tip-card" data-category="planning">
+                <h3><div class="icon"><i class="fas fa-calendar-alt"></i></div> Crie um Cronograma Realista</h3>
+                <p>Organize seu tempo criando um cronograma de estudos que inclua todas as matérias do ENCCEJA. Distribua os estudos de forma equilibrada e deixe espaço para revisões.</p>
+                <a href="#" class="resource-link">Baixar modelo de cronograma <i class="fas fa-download"></i></a>
+            </div>
+            
+            <div class="tip-card" data-category="planning">
+                <h3><div class="icon"><i class="fas fa-tasks"></i></div> Defina Metas Diárias</h3>
+                <p>Estabeleça metas pequenas e alcançáveis para cada dia. Isso te ajudará a manter o foco e a dar pequenos passos diários em direção ao seu objetivo.</p>
+                <a href="#" class="resource-link">Leia mais sobre metas SMART <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            
+            <!-- Típicos de Métodos de Estudo -->
+            <div class="tip-card" data-category="methods">
+                <h3><div class="icon"><i class="fas fa-brain"></i></div> Técnica Pomodoro</h3>
+                <p>Estude em intervalos de 25 minutos com 5 minutos de descanso. Após 4 sessões, tome um descanso mais longo de 15-30 minutos. Isso mantém sua mente ativa e produtiva.</p>
+                <a href="#" class="resource-link">Saiba mais sobre a técnica <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            
+            <div class="tip-card" data-category="methods">
+                <h3><div class="icon"><i class="fas fa-exchange-alt"></i></div> Aprendizado Ativo</h3>
+                <p>Em vez de apenas ler os materiais, faça anotações, crie mapas mentais, explique os conceitos para alguém ou faça perguntas sobre o que você está estudando.</p>
+                <a href="#" class="resource-link">Veja exemplos de aprendizado ativo <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            
+            <div class="tip-card" data-category="methods">
+                <h3><div class="icon"><i class="fas fa-random"></i></div> Método Leituras Múltiplas</h3>
+                <p>Estude o mesmo material várias vezes em dias diferentes. A primeira leitura deve ser geral, a segunda mais detalhada e as seguintes focadas na memorização e compreensão.</p>
+                <a href="#" class="resource-link">Guia completo do método <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            
+            <!-- Típicos de Recursos -->
+            <div class="tip-card" data-category="resources">
+                <h3><div class="icon"><i class="fas fa-file-pdf"></i></div> Banco de Questões ENCCEJA</h3>
+                <p>Use o banco de questões anteriores do ENCCEJA para praticar e se familiarizar com o formato das perguntas e o estilo do exame.</p>
+                <a href="#" class="resource-link">Acesse o banco de questões <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            
+            <div class="tip-card" data-category="resources">
+                <h3><div class="icon"><i class="fas fa-video"></i></div> Vídeos Expositivos</h3>
+                <p>Assista a vídeos explicativos sobre os temas do ENCCEJA. Plataformas como YouTube têm muitos canais dedicados ao ensino e revisão para o exame.</p>
+                <a href="#" class="resource-link">Lista de canais recomendados <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            
+            <div class="tip-card" data-category="resources">
+                <h3><div class="icon"><i class="fas fa-users"></i></div> Estude em Grupo</h3>
+                <p>Formar um grupo de estudos com outros candidatos pode ajudar a esclarecer dúvidas, compartilhar conhecimentos e manter o motivação.</p>
+                <a href="#" class="resource-link">Dicas para formar um grupo de estudos <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            
+            <!-- Típicos para a Prova -->
+            <div class="tip-card" data-category="exam">
+                <h3><div class="icon"><i class="fas fa-clock"></i></div> Gerencie seu Tempo</h3>
+                <p>Na prova, reserve um tempo estimado para cada seção. Comece pelas questões que você sabe responder e volte para as difíceis no final. Não perca muito tempo em uma única questão.</p>
+                <a href="#" class="resource-link">Estratégias de gerenciamento de tempo <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            
+            <div class="tip-card" data-category="exam">
+                <h3><div class="icon"><i class="fas fa-pen"></i></div> Anote o Que Lembre</h3>
+                <p>Use folhas em branco para anotar fórmulas, dados importantes ou qualquer coisa que você tem dificuldade de lembrar durante a prova.</p>
+                <a href="#" class="resource-link">Veja exemplos de anotações úteis <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            
+            <div class="tip-card" data-category="exam">
+                <h3><div class="icon"><i class="fas fa-search"></i></div> Entenda o Enunciado</h3>
+                <p>Leia atentamente cada enunciado antes de responder. Sublinhe palavras-chave e certifique-se de que você compreende exatamente o que é solicitado.</p>
+                <a href="#" class="resource-link">Dicas para entender melhor os enunciados <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            
+            <!-- Típicos de Saúde Mental -->
+            <div class="tip-card" data-category="mental">
+                <h3><div class="icon"><i class="fas fa-heart"></i></div> Faça Pausas Regulares</h3>
+                <p>Estudar o tempo todo não é produtivo. Faça pausas para se distrair, fazer uma caminhada curta ou praticar respiração profunda para recarregar suas energias.</p>
+                <a href="#" class="resource-link">Exercícios de respiração para foco <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            
+            <div class="tip-card" data-category="mental">
+                <h3><div class="icon"><i class="fas fa-bed"></i></div> Priorize o Sono</h3>
+                <p>Descanse bem, especialmente nos dias que antecedem a prova. O sono é crucial para a memória e a capacidade de concentração.</p>
+                <a href="#" class="resource-link">Dicas para melhorar a qualidade do sono <i class="fas fa-external-link-alt"></i></a>
+            </div>
+            
+            <div class="tip-card" data-category="mental">
+                <h3><div class="icon"><i class="fas fa-apple-alt"></i></div> Cuidado com a Alimentação</h3>
+                <p>Coma alimentos nutritivos que fornecem energia e nutrientes essenciais para o funcionamento do cérebro. Evite alimentos excessivamente processados ou açucarados.</p>
+                <a href="#" class="resource-link">Receitas saudáveis para estudantes <i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </div>
+        
+        <div class="no-results" id="no-results">
+            <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 1rem;"></i>
+            <h3>Nenhum resultado encontrado</h3>
+            <p>Tente usar termos diferentes ou mais genéricos em sua pesquisa.</p>
+        </div>
+    </div>
+    
+   <footer>
+            <div class="container">
+                <p>&copy; 2025 Auxílio Encceja - Provas Anteriores. Todos os direitos reservados.</p>
+                <p>Este guia foi criado para auxiliar candidatos ao ENCCEJA. Use as dicas como ponto de partida para criar sua própria estratégia de estudo.</p>
+            </div>
+        </footer>
+    </footer>
+    
+    <script>
+        // Função para filtrar dicas por categoria
+        function filterTips(category) {
+            const tipCards = document.querySelectorAll('.tip-card');
+            
+            tipCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // Adiciona evento aos botões de categoria
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove a classe active de todos os botões
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Adiciona a classe active ao botão clicado
+                button.classList.add('active');
+                
+                // Filtra as dicas
+                const category = button.dataset.category;
+                filterTips(category);
+            });
+        });
+        
+        // Função de pesquisa
+        function searchTips() {
+            const searchInput = document.getElementById('search-input');
+            const searchTerm = searchInput.value.toLowerCase();
+            const tipCards = document.querySelectorAll('.tip-card');
+            const noResults = document.getElementById('no-results');
+            
+            let resultsFound = false;
+            
+            tipCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const content = card.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    resultsFound = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Mostra ou oculta a mensagem de "nenhum resultado"
+            if (resultsFound) {
+                noResults.style.display = 'none';
+            } else {
+                noResults.style.display = 'block';
+            }
+        }
+        
+        // Adiciona evento ao botão de pesquisa
+        document.getElementById('search-btn').addEventListener('click', searchTips);
+        
+        // Adiciona evento ao pressionar Enter na barra de pesquisa
+        document.getElementById('search-input').addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                searchTips();
+            }
+        });
+        
+        // Timer Pomodoro
+        let timerInterval;
+        let minutes = 25;
+        let seconds = 0;
+        let isRunning = false;
+        
+        const timerDisplay = document.getElementById('timer');
+        const startBtn = document.getElementById('start-timer');
+        const resetBtn = document.getElementById('reset-timer');
+        
+        function updateTimerDisplay() {
+            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        function startTimer() {
+            if (!isRunning) {
+                isRunning = true;
+                startBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar';
+                
+                timerInterval = setInterval(() => {
+                    if (seconds === 0) {
+                        if (minutes === 0) {
+                            clearInterval(timerInterval);
+                            isRunning = false;
+                            startBtn.innerHTML = '<i class="fas fa-play"></i> Iniciar';
+                            
+                            // Alerta de tempo terminado
+                            const notification = document.createElement('div');
+                            notification.style.position = 'fixed';
+                            notification.style.bottom = '20px';
+                            notification.style.right = '20px';
+                            notification.style.backgroundColor = 'var(--primary-color)';
+                            notification.style.color = 'white';
+                            notification.style.padding = '15px 20px';
+                            notification.style.borderRadius = '5px';
+                            notification.style.boxShadow = 'var(--shadow)';
+                            notification.style.zIndex = '1000';
+                            notification.innerHTML = '<i class="fas fa-bell"></i> Seu tempo de estudo terminou! Faça uma pausa.';
+                            
+                            document.body.appendChild(notification);
+                            
+                            setTimeout(() => {
+                                notification.style.opacity = '0';
+                                notification.style.transition = 'opacity 0.5s ease';
+                                setTimeout(() => {
+                                    document.body.removeChild(notification);
+                                }, 500);
+                            }, 5000);
+                            
+                            // Reinicia o timer para a próxima sessão
+                            minutes = 25;
+                            seconds = 0;
+                            updateTimerDisplay();
+                            return;
+                        }
+                        minutes--;
+                        seconds = 59;
+                    } else {
+                        seconds--;
+                    }
+                    updateTimerDisplay();
+                }, 1000);
+            } else {
+                clearInterval(timerInterval);
+                isRunning = false;
+                startBtn.innerHTML = '<i class="fas fa-play"></i> Continuar';
+            }
+        }
+        
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            minutes = 25;
+            seconds = 0;
+            updateTimerDisplay();
+            startBtn.innerHTML = '<i class="fas fa-play"></i> Iniciar';
+        }
+        
+        startBtn.addEventListener('click', startTimer);
+        resetBtn.addEventListener('click', resetTimer);
+        
+        // Inicializa o display do timer
+        updateTimerDisplay();
+    </script>
+</body>
+</html>

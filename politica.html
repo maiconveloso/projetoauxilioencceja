@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade | Auxílio Encceja</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6da7;
+            --secondary-color: #8338ec;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --border-color: #e0e0e0;
+            --success-color: #06d6a0;
+            --warning-color: #ffbe0b;
+            --danger-color: #ef476f;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .logo i {
+            font-size: 28px;
+        }
+        
+        .back-button {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .back-button:hover {
+            background-color: rgba(58, 134, 255, 0.1);
+        }
+        
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .privacy-header h1 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .privacy-header p {
+            color: #0056b3;
+            font-size: 18px;
+        }
+        
+        .privacy-content {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .privacy-content p, .privacy-content ul {
+            margin-bottom: 20px;
+        }
+        
+        .privacy-content ul {
+            padding-left: 20px;
+        }
+        
+        .privacy-content li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            background-color: rgba(58, 134, 255, 0.1);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #0056b3;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: #2a75e8;
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(58, 134, 255, 0.05);
+        }
+        
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--success-color);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .toast i {
+            font-size: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .privacy-content {
+                padding: 20px;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="form">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Auxílio Encceja</span>
+            </div>
+            <button class="back-button" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+        </header>
+        
+        <div class="privacy-header">
+            <h1>Política de Privacidade</h1>
+            <p>Conheça como lidamos com seus dados pessoais</p>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="general">Geral</div>
+            <div class="tab" data-tab="data">Dados Pessoais</div>
+            <div class="tab" data-tab="cookies">Cookies</div>
+            <div class="tab" data-tab="security">Segurança</div>
+        </div>
+        
+        <div class="privacy-content">
+            <div class="tab-content active" id="general-tab">
+                <h2 class="section-title">Política de Privacidade do Auxílio Encceja</h2>
+                <p>Última atualização: 15 de maio de 2023</p>
+                
+                <p>Bem-vindo à Política de Privacidade do Auxílio Encceja. Nosso compromisso é proteger sua privacidade e segurança enquanto você utiliza nossos serviços. Esta política descreve como coletamos, usamos, armazenamos e protegemos suas informações pessoais.</p>
+                
+                <h3>1. Quem somos</h3>
+                <p>Auxílio Encceja é uma plataforma digital criada para auxiliar estudantes que preparam-se para o Exame Nacional para Certificação de Competências de Jovens e Adultos (Encceja). Nosso objetivo é fornecer ferramentas e recursos que ajudem no estudo e preparação para a prova.</p>
+                
+                <h3>2. Quais dados coletamos</h3>
+                <p>Coletamos informações que você nos fornece diretamente, como:</p>
+                <ul>
+                    <li><span class="highlight">Dados de cadastro</span>: nome, e-mail, telefone, data de nascimento, etc.</li>
+                    <li><span class="highlight">Informações de desempenho</span>: resultados de simulações e atividades de estudo.</li>
+                    <li><span class="highlight">Preferências de estudo</span>: configurações de notificações, preferências de conteúdo, etc.</li>
+                </ul>
+                
+                <h3>3. Como usamos seus dados</h3>
+                <p>Utilizamos suas informações para:</p>
+                <ul>
+                    <li>Fornecer e melhorar nossos serviços de preparação para o Encceja.</li>
+                    <li>Personalizar sua experiência na plataforma.</li>
+                    <li>Comunicar-se com você sobre atualizações, novos recursos e informações relevantes.</li>
+                    <li>Proteger a segurança da plataforma e de nossos usuários.</li>
+                </ul>
+                
+                <h3>4. Compartilhamento de dados</h3>
+                <p>Nós não vendemos, alugamos ou compartilhamos suas informações pessoais com terceiros para fins de marketing sem seu consentimento. Podemos compartilhar suas informações em casos como:</p>
+                <ul>
+                    <li>Com provedores de serviços que nos ajudam a operar nossa plataforma.</li>
+                    <li>Quando exigido por lei ou por ordem judicial.</li>
+                    <li>Para proteger os direitos, propriedade ou segurança do Auxílio Encceja, nossos usuários ou o público.</li>
+                </ul>
+            </div>
+            
+            <div class="tab-content" id="data-tab">
+                <h2 class="section-title">Dados Pessoais e Seus Direitos</h2>
+                
+                <h3>1. Tipos de dados pessoais coletados</h3>
+                <p>Coletamos diferentes tipos de dados pessoais dependendo do serviço utilizado:</p>
+                <ul>
+                    <li><strong>Identificadores</strong>: nome de usuário, endereço de e-mail, número de telefone.</li>
+                    <li><strong>Informações demográficas</strong>: idade, localização aproximada, informações educacionais.</li>
+                    <li><strong>Informações de uso</strong>: páginas visitadas, tempo de permanência, recursos utilizados.</li>
+                    <li><strong>Informações de dispositivo</strong>: tipo de navegador, sistema operacional, endereço IP.</li>
+                </ul>
+                
+                <h3>2. Base legal para o tratamento de dados</h3>
+                <p>Nosso tratamento de dados pessoais baseia-se nos seguintes fundamentos legais:</p>
+                <ul>
+                    <li>Consentimento explícito do usuário para o uso de determinados dados.</li>
+                    <li>Necessidade de cumprimento de obrigações contratuais (fornecer os serviços solicitados).</li>
+                    <li>Interesse legítimo na melhoria e operação da plataforma.</li>
+                </ul>
+                
+                <h3>3. Seus direitos</h3>
+                <p>De acordo com a Lei Geral de Proteção de Dados (LGPD), você tem os seguintes direitos:</p>
+                <ul>
+                    <li><strong>Direito de acesso</strong>: solicitar acesso aos seus dados pessoais que estão em nosso poder.</li>
+                    <li><strong>Direito de correção</strong>: solicitar a correção de dados incompletos, inexatos ou desatualizados.</li>
+                    <li><strong>Direito de exclusão</strong>: solicitar a exclusão de seus dados em determinadas circunstâncias.</li>
+                    <li><strong>Direito de portabilidade</strong>: receber seus dados ou solicitá-los a serem transferidos a outro controlador.</li>
+                    <li><strong>Direito de limitação ou bloqueio</strong>: solicitar a limitação ou bloqueio do tratamento de seus dados.</li>
+                    <li><strong>Direito de oposição</strong>: se opor ao tratamento de seus dados em determinadas circunstâncias.</li>
+                    <li><strong>Direito de revogação</strong>: revogar seu consentimento a qualquer momento.</li>
+                </ul>
+                
+                <h3>4. Como exercer seus direitos</h3>
+                <p>Para exercer qualquer um dos direitos acima, entre em contato com nossa equipe de privacidade através do e-mail <a href="mailto:privacidade@auxilioencceja.com.br">privacidade@auxilioencceja.com.br</a> ou utilize a seção de "Configurações de Privacidade" em sua conta.</p>
+            </div>
+            
+            <div class="tab-content" id="cookies-tab">
+                <h2 class="section-title">Política de Cookies e Tecnologias Similares</h2>
+                
+                <h3>1. O que são cookies</h3>
+                <p>Cookies são pequenos arquivos de texto que são armazenados no seu dispositivo quando você visita um site. Eles são amplamente utilizados para melhorar a experiência do usuário, lembrar preferências e coletar informações sobre o uso do site.</p>
+                
+                <h3>2. Tipos de cookies que utilizamos</h3>
+                <p>Utilizamos diferentes tipos de cookies e tecnologias semelhantes para diferentes finalidades:</p>
+                <ul>
+                    <li><strong>Cookies essenciais</strong>: Necessários para o funcionamento do site, como autenticação e segurança. Não podem ser desativados.</li>
+                    <li><strong>Cookies de preferência</strong>: Lembram suas preferências e configurações para melhorar sua experiência.</li>
+                    <li><strong>Cookies de desempenho</strong>: Coletam informações sobre como você utiliza o site, como páginas visitadas e erros encontrados.</li>
+                    <li><strong>Cookies de funcionalidade</strong>: Permitem que o site forneça funcionalidades avançadas, como compartilhamento em redes sociais.</li>
+                    <li><strong>Cookies de publicidade</strong>: Utilizados para entregar anúncios mais relevantes com base em seus interesses.</li>
+                </ul>
+                
+                <h3>3. Como controlar cookies</h3>
+                <p>Você pode controlar e/ou excluir cookies conforme desejar. Você pode configurar seu navegador para bloquear todos os cookies ou alertá-lo quando um cookie estiver sendo enviado. No entanto, se você desativar os cookies, pode não conseguir utilizar todas as funcionalidades do site.</p>
+                
+                <h3>4. Cookies de terceiros</h3>
+                <p>Alguns cookies são definidos por serviços de terceiros que aparecem em nossas páginas, como anúncios e ferramentas de análise. Estes cookies podem ser rastreados quando você visita sites diferentes, permitindo a criação de um perfil de seus interesses.</p>
+                
+                <h3>5. Alterações nesta política de cookies</h3>
+                <p>Poderemos atualizar esta política de cookies periodicamente para refletir, por exemplo, alterações nos cookies que utilizamos ou por causa de alterações que sejam impostas por legislação ou regulamento relevante.</p>
+            </div>
+            
+            <div class="tab-content" id="security-tab">
+                <h2 class="section-title">Segurança de Dados</h2>
+                
+                <h3>1. Medidas de segurança</h3>
+                <p>Implementamos uma variedade de medidas de segurança para proteger sua informação pessoal:</p>
+                <ul>
+                    <li><strong>Proteção de acesso</strong>: Restringimos o acesso aos seus dados pessoais apenas a empregados, contratados e agentes que necessitem conhecer essa informação para operar nossos serviços.</li>
+                    <li><strong>Segurança de dados em trânsito</strong>: Utilizamos protocolos de segurança como HTTPS para proteger seus dados quando estão sendo transmitidos entre seu dispositivo e nossos servidores.</li>
+                    <li><strong>Segurança de dados em repouso</strong>: Utilizamos técnicas de criptografia para proteger seus dados quando estão armazenados em nossos servidores.</li>
+                    <li><strong>Backups regulares</strong>: Mantemos cópias de segurança de seus dados para proteger contra perda acidental.</li>
+                </ul>
+                
+                <h3>2. Proteção contra ameaças</h3>
+                <p>Implementamos medidas técnicas e organizacionais para proteger contra ameaças à segurança e contra perda, uso indevido ou alteração de informações pessoais que estão sob nosso controle.</p>
+                
+                <h3>3. O que fazer em caso de violação de dados</h3>
+                <p>Em caso de uma violação de dados que possa afetar seus direitos, notificaremos você e a autoridade de proteção de dados competente sem qualquer demora indevida e, no máximo, dentro de 72 horas após teremos tomado conhecimento da violação, desde que tal notificação seja possível.</p>
+                
+                <h3>4. Boas práticas de segurança</h3>
+                <p>Recomendamos que você:</p>
+                <ul>
+                    <li>Use uma senha forte e única para sua conta.</li>
+                    <li>Mude sua senha regularmente.</li>
+                    <li>Não compartilhe suas credenciais de login com outras pessoas.</li>
+                    <li>Mantenha seu software e sistema operacional atualizados.</li>
+                    <li>Desconfie de e-mails, mensagens ou ligações suspeitas.</li>
+ </ul>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <button class="btn btn-secondary" onclick="showToast('Aguarde a implementação desta funcionalidade em breve.')">Baixar PDF</button>
+            <button class="btn" onclick="showToast('Política de privacidade aceita com sucesso!')">Eu Entendo e Concordo</button>
+        </div>
+    </div>
+    
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message"></span>
+    </div>
+    
+    <script>
+        // Função para ir para a página anterior
+        function goBack() {
+            window.history.back();
+        }
+        
+        // Função para mostrar toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Função para alternar entre abas
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove a classe active de todas as abas e conteúdos
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    // Adiciona a classe active na aba clicada
+                    tab.classList.add('active');
+                    
+                    // Mostra o conteúdo correspondente
+                    const tabId = tab.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

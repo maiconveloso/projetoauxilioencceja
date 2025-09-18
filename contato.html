@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Auxílio Encceja</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6da7;
+            --secondary-color: #f8f9fa;
+            --accent-color: #e63946;
+            --text-color: #333;
+            --light-text: #292929;
+            --border-color: #dee2e6;
+            --success-color: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #D3D3D3;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+       header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .logo i {
+            font-size: 28px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--light-text);
+            font-size: 14px;
+        }
+        
+        .contact-item i {
+            color: var(--primary-color);
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .sidebar {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .sidebar-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .sidebar-content {
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-text {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .help-options {
+            list-style: none;
+        }
+        
+        .help-option {
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .help-option:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .help-option i {
+            margin-right: 10px;
+        }
+        
+        .contact-form {
+            padding: 40px 30px;
+        }
+        
+        .form-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .form-subtitle {
+            color: var(--light-text);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 109, 167, 0.1);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            margin-bottom: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #3a5a8f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+        
+        .privacy-note {
+            font-size: 14px;
+            color: var(--light-text);
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--success-color);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .toast i {
+            font-size: 20px;
+        }
+        
+         footer {
+            background-color: #34495e;
+            color: #fff;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+            color: #999;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                padding: 30px 20px;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Auxílio Encceja</span>
+                </div>
+                <div class="nav-links">
+                    <a href="sobre.html">Home</a>
+                    <a href="contato.html">Contato</a>
+                    <a href="suporte.html">Suporte</a>
+                </div>
+
+          </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="main-content">
+            <div class="sidebar">
+                <div>
+                    <h2 class="sidebar-title">Contato</h2>
+                    <div class="sidebar-content">
+                        <p class="sidebar-text">
+                            Fique à vontade para entrar em contato conosco para qualquer dúvida, 
+                            sugestão ou problema relacionado ao Encceja. Nossa equipe está 
+                            pronta para ajudar!
+                        </p>
+                        <ul class="help-options">
+                            <li class="help-option">
+                                <i class="fas fa-book"></i>
+                                <span>Dúvidas sobre o conteúdo</span>
+                            </li>
+                            <li class="help-option">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Informações sobre datas</span>
+                            </li>
+                            <li class="help-option">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Localização de provas</span>
+                            </li>
+                            <li class="help-option">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Documentação e certificados</span>
+                            </li>
+                            <li class="help-option">
+                                <i class="fas fa-question-circle"></i>
+                                <span>Outros assuntos</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="contact-details">
+                    <p>Horário de Atendimento</p><br>
+                    <p><i class="far fa-clock"></i> Segunda a Sexta: 9h às 18h</p><br>
+                    <p><i class="fas fa-phone"></i> Atendimento telefônico: 11:00 às 16:00</p>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2 class="form-title">Envie sua mensagem</h2>
+                <p class="form-subtitle">Preencha o formulário abaixo e nossa equipe entrará em contato com você.</p>
+                
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Assunto</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Selecione um assunto</option>
+                                <option value="duvida">Dúvida sobre o conteúdo</option>
+                                <option value="data">Informações sobre datas</option>
+                                <option value="local">Localização de provas</option>
+                                <option value="documentacao">Documentação e certificados</option>
+                                <option value="outro">Outros assuntos</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <div class="form-footer">
+                        <p class="privacy-note">Seus dados serão usados apenas para responder sua solicitação.</p>
+                        <button type="submit" class="btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Mensagem
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <br>   <br>   <br>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Auxílio ENCCEJA</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Cursos</a></li>
+                        <li><a href="#">Material</a></li>
+                        <li><a href="#">Simulados</a></li>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#">Dúvidas Frequentes</a></li>
+                        <li><a href="#">Calendário ENCCEJA</a></li>
+                        <li><a href="#">Bibliografia</a></li>
+                        <li><a href="#">Vídeos Aulas</a></li>
+                        <li><a href="#">Aplicativo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Políticas</h3>
+                    <ul>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Acessibilidade</a></li>
+                        <li><a href="#">Certificação</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Redes Sociais</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        <li><a href="#"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Auxílio ENCCEJA. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span>Mensagem enviada com sucesso! Entraremos em contato em breve.</span>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const toast = document.getElementById('toast');
+            const helpOptions = document.querySelectorAll('.help-option');
+            const subjectSelect = document.getElementById('subject');
+            
+            // Adicionar evento de clique aos itens de ajuda
+            helpOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const optionText = this.querySelector('span').textContent;
+                    
+                    // Mapear opções para valores do select
+                    let value;
+                    switch(optionText) {
+                        case 'Dúvidas sobre o conteúdo':
+                            value = 'duvida';
+                            break;
+                        case 'Informações sobre datas':
+                            value = 'data';
+                            break;
+                        case 'Localização de provas':
+                            value = 'local';
+                            break;
+                        case 'Documentação e certificados':
+                            value = 'documentacao';
+                            break;
+                        default:
+                            value = 'outro';
+                    }
+                    
+                    subjectSelect.value = value;
+                    
+                    // Rolagem suave para o formulário
+                    document.querySelector('.contact-form').scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                });
+            });
+            
+            // Evento de envio do formulário
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simulação de envio (em um app real, você faria uma requisição AJAX)
+                setTimeout(() => {
+                    // Mostrar toast de sucesso
+                    toast.classList.add('show');
+                    
+                    // Resetar formulário
+                    contactForm.reset();
+                    
+                    // Remover toast após 5 segundos
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 5000);
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>

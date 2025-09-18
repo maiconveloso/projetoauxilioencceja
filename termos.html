@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso - Auxílio Encceja</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6da7;
+            --secondary-color: #f8f9fa;
+            --text-color: #333;
+            --border-color: #dee2e6;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+         .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .breadcrumb {
+            background-color: white;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .breadcrumb-item {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        .breadcrumb-item:not(:last-child)::after {
+            content: ">";
+            margin-left: 10px;
+            color: #999;
+        }
+        
+        .breadcrumb-link {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumb-link:hover {
+            text-decoration: underline;
+        }
+        
+        .terms-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .terms-header {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+        
+        .terms-header h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        
+        .terms-content {
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .terms-content h2 {
+            margin: 15px 0 10px;
+            font-size: 1.3rem;
+        }
+        
+        .terms-content h3 {
+            margin: 10px 0 5px;
+            font-size: 1.1rem;
+        }
+        
+        .terms-content p {
+            margin-bottom: 10px;
+        }
+        
+        .terms-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .terms-content li {
+            margin-bottom: 5px;
+        }
+        
+        .terms-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: #0056b3;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 5px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+        
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .notification-success {
+            background-color: var(--success-color);
+        }
+        
+        .notification-error {
+            background-color: var(--danger-color);
+        }
+        
+        .search-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 10px 15px;
+            padding-left: 40px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        
+        .highlight {
+            background-color: #ffff00;
+            padding: 2px 0;
+        }
+        
+        footer {
+            background-color: #34495e;
+            color: #fff;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 14px;
+            color: #999;
+        }
+        
+        @media (max-width: 768px) {
+            .terms-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Auxílio Encceja</span>
+                </div>
+                <div class="nav-links">
+                    <a href="sobre.html">Home</a>
+                    <a href="contato.html">Contato</a>
+                    <a href="suporte.html">Suporte</a>
+                </div>
+          </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav class="breadcrumb">
+            <div class="breadcrumb-item">
+                <a href="#" class="breadcrumb-link">Home</a>
+            </div>
+            <div class="breadcrumb-item">Termos de Uso</div>
+        </nav>
+        
+        <div class="terms-container">
+            <div class="terms-header">
+                <h1>Termos de Uso do Auxílio Encceja</h1>
+                <p>Por favor, leia atentamente os seguintes termos e condições antes de utilizar o Auxílio Encceja.</p>
+            </div>
+            
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Pesquisar nos termos..." id="searchInput">
+            </div>
+            
+            <div class="terms-content" id="termsContent">
+                <h2>1. Introdução</h2>
+                <p>Bem-vindo ao Auxílio Encceja, uma plataforma desenvolvida para auxiliar estudantes na preparação para o Exame Nacional para Certificação de Competências de Jovens e Adultos (Encceja).</p>
+                <p>Estes termos de uso ("Termos") regem o uso do Auxílio Encceja, incluindo o website, aplicativos e quaisquer serviços relacionados oferecidos pela equipe do projeto ("Nós", "Nosso", "Nos").</p>
+                
+                <h2>2. Aceitação dos Termos</h2>
+                <p> Ao acessar ou utilizar o Auxílio Encceja, você concorda em cumprir estes Termos e todas as leis e regulamentos aplicáveis. Se você não concordar com qualquer parte destes Termos, não poderá usar o serviço.</p>
+                
+                <h2>3. Conta do Usuário</h2>
+                <p>Para acessar certas funcionalidades do Auxílio Encceja, você pode precisar criar uma conta. Você é responsável por manter a confidencialidade de sua senha e por todas as atividades que ocorrem sob sua conta.</p>
+                
+                <h2>4. Direitos de Propriedade Intelectual</h2>
+                <p>Todos os conteúdos no Auxílio Encceja, incluindo mas não se limitando a texto, imagens, gráficos, software e design, são propriedade da equipe do projeto ou de seus fornecedores de conteúdo e são protegidos por leis de direitos autorais, marcas comerciais e outros direitos de propriedade intelectual.</p>
+                <p>É permitido usar a informação contida no Auxílio Encceja apenas para fins pessoais e de estudo. É estritamente proibido copiar, distribuir, modificar ou criar trabalhos derivados de qualquer conteúdo do Auxílio Encceja sem a permissão explícita.</p>
+                
+                <h2>5. Uso do Serviço</h2>
+                <p>Você concorda em usar o Auxílio Encceja apenas para fins legais e éticos. Você não deve:</p>
+                <ul>
+                    <li>Usar o serviço de uma maneira que cause ou possa causar danos ou interferência com o serviço ou à rede em que o serviço está operando;</li>
+                    <li>Usar o serviço para qualquer atividade ilegal ou não autorizada;</li>
+                    <li>Interromper, desativar, inutilizar ou prejudicar o serviço;</li>
+                    <li>Criar, distribuir ou transmitir qualquer conteúdo que seja abusivo, ameaçador, difamatório, calunioso, obsceno, pornográfico, ilegal, ou de outra forma prejudicial ou ofensivo;</li>
+                    <li>Tentar obter acesso não autorizado ao serviço, a qualquer sistema ou rede conectada ao serviço, ou a qualquer outro servidor ou banco de dados;</li>
+                    <li>Desenvolver, distribuir ou disponibilizar qualquer software ou outro material que interfira no funcionamento do serviço;</li>
+                    <li>Remover ou alterar qualquer direito de propriedade intelectual ou outro aviso de propriedade aplicável a qualquer conteúdo no serviço.</li>
+                </ul>
+                
+                <h2>6. Conteúdo do Usuário</h2>
+                <p>Você é o único responsável pelo seu conteúdo e por quaisquer consequências resultantes da publicação ou distribuição do seu conteúdo.</p>
+                <p>Você concede à equipe do projeto uma licença não exclusiva, transferível, sublicenciável, gratuita e perpétua para usar, reproduzir, modificar, criar trabalhos derivados, distribuir, publicar e exibir publicamente seu conteúdo para os fins de operação e promoção do Auxílio Encceja.</p>
+                
+                <h2>7. Limitações de Responsabilidade</h2>
+                <p>O Auxílio Encceja é fornecido "como está" e "conforme disponível", sem garantias de qualquer tipo, seja expressa ou implícita. A equipe do projeto não garante que o serviço atenderá às suas necessidades ou expectativas.</p>
+                <p>A equipe do projeto não será responsável por qualquer dano direto, indireto, incidental, especial, consequencial ou exemplar de qualquer natureza, incluindo, sem limitação, lucros cessantes, interrupção de negócios, perda de informações comerciais ou qualquer outra perda pecuniária, resultante do uso ou da incapacidade de usar o serviço, mesmo que a equipe do projeto tenha sido informada sobre a possibilidade de tais danos.</p>
+                
+                <h2>8. Modificações ao Serviço</h2>
+                <p>A equipe do projeto se reserva o direito de, a seu exclusivo critério, modificar ou descontinuar, temporariamente ou permanentemente, o serviço (ou qualquer parte ou conteúdo do mesmo), com ou sem aviso.</p>
+                
+                <h2>9. Encerramento da Conta</h2>
+                <p>A equipe do projeto pode encerrar ou suspender sua conta a qualquer momento e por qualquer motivo, incluindo por violação destes Termos.</p>
+                
+                <h2>10. Alterações aos Termos</h2>
+                <p>A equipe do projeto pode revisar estes Termos de Uso periodicamente. Ao continuar a acessar ou usar o serviço após a publicação de quaisquer alterações nos Termos, você concorda com os termos revisados.</p>
+                
+                <h2>11. Lei Aplicável</h2>
+                <p>Estes Termos serão regidos e interpretados de acordo com as leis da República Federativa do Brasil, sem dar efeito a qualquer disposição de conflito de lei.</p>
+                
+                <h2>12. Contato</h2>
+                <p>Se você tiver alguma dúvida sobre estes Termos, por favor, entre em contato conosco através do email: contato@auxilioencceja.com.br</p>
+            </div>
+            
+            <div class="terms-actions">
+                <button class="btn btn-secondary" id="declineBtn">Não Aceito</button>
+                <button class="btn btn-primary" id="acceptBtn">Aceito os Termos</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle" id="notificationIcon"></i>
+        <span id="notificationMessage"></span>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Auxílio ENCCEJA</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Cursos</a></li>
+                        <li><a href="#">Material</a></li>
+                        <li><a href="#">Simulados</a></li>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#">Dúvidas Frequentes</a></li>
+                        <li><a href="#">Calendário ENCCEJA</a></li>
+                        <li><a href="#">Bibliografia</a></li>
+                        <li><a href="#">Vídeos Aulas</a></li>
+                        <li><a href="#">Aplicativo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Políticas</h3>
+                    <ul>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Acessibilidade</a></li>
+                        <li><a href="#">Certificação</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Redes Sociais</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        <li><a href="#"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Auxílio ENCCEJA. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const acceptBtn = document.getElementById('acceptBtn');
+            const declineBtn = document.getElementById('declineBtn');
+            const notification = document.getElementById('notification');
+            const notificationIcon = document.getElementById('notificationIcon');
+            const notificationMessage = document.getElementById('notificationMessage');
+            const searchInput = document.getElementById('searchInput');
+            const termsContent = document.getElementById('termsContent');
+            
+            // Função para mostrar notificação
+            function showNotification(message, type) {
+                notification.className = 'notification show';
+                
+                if (type === 'success') {
+                    notification.classList.add('notification-success');
+                    notificationIcon.className = 'fas fa-check-circle';
+                } else {
+                    notification.classList.add('notification-error');
+                    notificationIcon.className = 'fas fa-exclamation-circle';
+                }
+                
+                notificationMessage.textContent = message;
+                
+                setTimeout(() => {
+                    notification.className = 'notification';
+                }, 3000);
+            }
+            
+            // Aceitar os termos
+            acceptBtn.addEventListener('click', function() {
+                localStorage.setItem('termsAccepted', 'true');
+                showNotification('Termos aceitos com sucesso! Redirecionando para a página principal...', 'success');
+                
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 3000);
+            });
+            
+            // Recusar os termos
+            declineBtn.addEventListener('click', function() {
+                showNotification('Você precisa aceitar os termos para usar o Auxílio Encceja.', 'error');
+            });
+            
+            // Pesquisar nos termos
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.trim().toLowerCase();
+                
+                if (searchTerm === '') {
+                    // Remover todos os highlights
+                    const highlights = termsContent.querySelectorAll('.highlight');
+                    highlights.forEach(highlight => {
+                        const parent = highlight.parentNode;
+                        parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+                        parent.normalize();
+                    });
+                    return;
+                }
+                
+                // Remover highlights anteriores
+                const highlights = termsContent.querySelectorAll('.highlight');
+                highlights.forEach(highlight => {
+                    const parent = highlight.parentNode;
+                    parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+                    parent.normalize();
+                });
+                
+                // Adicionar novos highlights
+                const textNodes = getTextNodes(termsContent);
+                textNodes.forEach(node => {
+                    const text = node.nodeValue;
+                    const lowerText = text.toLowerCase();
+                    let startIndex = 0;
+                    let index;
+                    
+                    while ((index = lowerText.indexOf(searchTerm, startIndex)) > -1) {
+                        const before = text.substring(startIndex, index);
+                        const match = text.substring(index, index + searchTerm.length);
+                        const after = text.substring(index + searchTerm.length);
+                        
+                        const span = document.createElement('span');
+                        span.className = 'highlight';
+                        span.textContent = match;
+                        
+                        const beforeNode = document.createTextNode(before);
+                        const afterNode = document.createTextNode(after);
+                        
+                        const parent = node.parentNode;
+                        parent.insertBefore(beforeNode, node);
+                        parent.insertBefore(span, node);
+                        parent.insertBefore(afterNode, node);
+                        
+                        parent.removeChild(node);
+                        
+                        startIndex = index + match.length;
+                        node = afterNode;
+                    }
+                });
+            });
+            
+            // Função para obter todos os nós de texto dentro de um elemento
+            function getTextNodes(element) {
+                const textNodes = [];
+                const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+                
+                let node;
+                while (node = walker.nextNode()) {
+                    if (node.nodeValue.trim() !== '') {
+                        textNodes.push(node);
+                    }
+                }
+                
+                return textNodes;
+            }
+        });
+    </script>
+</body>
+</html>

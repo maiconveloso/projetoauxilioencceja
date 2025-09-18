@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links Úteis - Auxílio Encceja</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #D3D3D3;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: linear-gradient(90deg, #34495e 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 1.5rem auto;
+            position: relative;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .search-bar:focus {
+            outline: none;
+            box-shadow: 0 4px 20px rgba(26, 115, 232, 0.3);
+            background: white;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4285f4;
+            font-size: 1.2rem;
+        }
+
+        main {
+            flex: 1;
+            padding: 3rem 0;
+        }
+
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(90deg, #34495e 100%);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .card-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-body p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #1a73e8;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(26, 115, 232, 0.3);
+        }
+
+        .btn:hover {
+            background: #0d62d0;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(26, 115, 232, 0.4);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #95a5a6;
+        }
+
+        @media (max-width: 768px) {
+            .resources {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-section {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Links Úteis do Auxílio Encceja</h1>
+            <p>Recursos educacionais para apoiar seu preparo para o Encceja</p>
+            
+            <div class="search-container">
+                <input type="text" class="search-bar" placeholder="Busque por recursos educacionais..." id="searchBar">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="resources">
+                <div class="resource-card">
+                    <div class="card-header">
+                        <h3>Enciclopédia Britannica</h3>
+                        <p>Website</p>
+                    </div>
+                    <div class="card-body">
+                        <p>A Enciclopédia Britannica oferece conteúdo confiável e abrangente sobre diversos temas, ideal para pesquisa e estudo.</p>
+                        <a href="https://www.britannica.com" class="btn">Acessar Recurso</a>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="card-header">
+                        <h3>National Geographic</h3>
+                        <p>Website</p>
+                    </div>
+                    <div class="card-body">
+                        <p>Explore o mundo através de conteúdo educativo sobre ciências, história, geografia e natureza.</p>
+                        <a href="https://www.nationalgeographic.com" class="btn">Acessar Recurso</a>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="card-header">
+                        <h3>Khan Academy</h3>
+                        <p>Website</p>
+                    </div>
+                    <div class="card-body">
+                        <p>Plataforma gratuita com aulas em vídeo e exercícios práticos em matemática, ciências e mais.</p>
+                        <a href="https://pt.khanacademy.org" class="btn">Acessar Recurso</a>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="card-header">
+                        <h3>Museu Nacional</h3>
+                        <p>Website</p>
+                    </div>
+                    <div class="card-body">
+                        <p>Recursos digitais do Museu Nacional com informações sobre história natural, antropologia e arqueologia.</p>
+                        <a href="https://mn.ufrj.br" class="btn">Acessar Recurso</a>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="card-header">
+                        <h3>Planeta Educação</h3>
+                        <p>Website</p>
+                    </div>
+                    <div class="card-body">
+                        <p>Portal com materiais didáticos, simulados e conteúdos para preparação para o Encceja.</p>
+                        <a href="https://plannetaeducacao.com.br" class="btn">Acessar Recurso</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+   <footer>
+        <div class="footer-content">
+            <div class="logo">
+                
+                <h2>Auxílio Encceja - Links Úteis</h2>
+            </div>
+            <div class="footer-links">
+                <a href="#">Início</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+                <a href="suporte.html">Suporte</a>
+                <a href="termos.html">Termos de Uso</a>
+            </div>
+            <p class="copyright">©  2025 Portal de Recursos Encceja | Desenvolvido para Apoiar sua Jornada Educacional</p>
+        </div>
+    </footer>
+
+    <script>
+        // Efeito de digitação na barra de busca
+        const searchBar = document.getElementById('searchBar');
+        const placeholderTexts = [
+            "Busque por recursos educacionais...",
+            "Encontre links úteis para o Encceja...",
+            "Pesquise por ajuda para o Encceja...",
+            "Digite para buscar simulados e videoaulas..."
+        ];
+        
+        let currentTextIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function typeEffect() {
+            const currentText = placeholderTexts[currentTextIndex];
+            
+            if (isDeleting) {
+                searchBar.placeholder = currentText.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+                typingSpeed = 50;
+            } else {
+                searchBar.placeholder = currentText.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+                typingSpeed = 100;
+            }
+            
+            if (!isDeleting && currentCharIndex === currentText.length) {
+                isDeleting = true;
+                typingSpeed = 1500; // Pausa antes de apagar
+            } else if (isDeleting && currentCharIndex === 0) {
+                isDeleting = false;
+                currentTextIndex = (currentTextIndex + 1) % placeholderTexts.length;
+                typingSpeed = 500; // Pausa antes de começar a escrever o próximo texto
+            }
+            
+            setTimeout(typeEffect, typingSpeed);
+        }
+
+        // Iniciar o efeito de digitação quando a página carregar
+        window.onload = function() {
+            typeEffect();
+        };
+
+        // Funcionalidade da barra de busca
+        searchBar.addEventListener('focus', function() {
+            this.placeholder = "";
+        });
+
+        searchBar.addEventListener('blur', function() {
+            if (this.value === "") {
+                this.placeholder = placeholderTexts[currentTextIndex].substring(0, currentCharIndex);
+            }
+        });
+    </script>
+</body>
+</html>

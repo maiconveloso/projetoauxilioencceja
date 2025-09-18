@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auxílio Encceja - Login e Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+    <style>
+        :root {
+            --primary-color: #34495e;
+            --primary-dark: #34495e;
+            --secondary-color: #f8f9fa;
+            --text-color: #343a40;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #075fe2;
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .auth-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+        
+        .auth-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .auth-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .auth-header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .auth-tabs {
+            display: flex;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: #6c757d;
+            transition: all 0.3s ease;
+        }
+        
+        .auth-tab.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            background-color: rgba(7, 95, 228, 0.05);
+        }
+        
+        .auth-content {
+            padding: 2rem;
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .form-floating {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(7, 95, 228, 0.25);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 0.6rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: #6c757d;
+        }
+        
+        .auth-divider::before, .auth-divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .auth-divider::before {
+            margin-right: 1rem;
+        }
+        
+        .auth-divider::after {
+            margin-left: 1rem;
+        }
+        
+        .auth-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .auth-social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            border: 1px solid #dee2e6;
+            color: #6c757d;
+            transition: all 0.3s ease;
+        }
+        
+        .auth-social-btn:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        .auth-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #6c757d;
+        }
+        
+        .auth-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .auth-footer a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+        
+        .auth-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--secondary-color);
+            padding: 2rem;
+        }
+        
+        .auth-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-check {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .password-toggle {
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            z-index: 10;
+        }
+        
+        .password-field {
+            position: relative;
+        }
+        
+        .auth-alert {
+            display: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .auth-alert.show {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .auth-info {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .auth-info strong {
+            color: var(--text-color);
+        }
+        
+        .auth-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .auth-step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        
+        .auth-step-text {
+            font-weight: 600;
+        }
+        
+        .auth-terms {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .auth-terms h5 {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .auth-terms p {
+            margin-bottom: 1rem;
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        .auth-terms a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .auth-terms a:hover {
+            text-decoration: underline;
+        }
+        
+        .auth-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .auth-success i {
+            font-size: 4rem;
+            color: var(--success-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .auth-success h3 {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .auth-success p {
+            margin-bottom: 1.5rem;
+            color: #6c757d;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 767.98px) {
+            .auth-card {
+                flex-direction: column;
+            }
+            
+            .auth-image {
+                flex: none;
+                width: 100%;
+                order: -1;
+                margin-bottom: 1.5rem;
+            }
+            
+            .auth-image img {
+                max-height: 200px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .auth-card {
+                flex-direction: row;
+            }
+            
+            .auth-image {
+                flex: 1;
+            }
+            
+            .auth-content {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>Auxílio Encceja</h2>
+                <br>
+                <p class="mb-0">Plataforma de Estudos para o Encceja</p>
+            </div>
+            
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="login-tab">Login</div>
+                <div class="auth-tab" id="register-tab">Cadastro</div>
+            </div>
+            
+            <div class="auth-content">
+                <!-- Login Form -->
+                <div class="auth-form active" id="login-form">
+                    <div class="auth-alert alert alert-danger" id="login-alert" role="alert"></div>
+                    
+                    <form id="loginForm">
+                        <div class="form-floating">
+                            <input type="email" class="form-control" id="loginEmail" placeholder="Email" required>
+                            <label for="loginEmail">Email</label>
+                        </div>
+                        
+                        <div class="form-floating password-field">
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Senha" required>
+                            <label for="loginPassword">Senha</label>
+                            <span class="password-toggle" id="loginPasswordToggle">
+                                <i class="bi bi-eye"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="form-check mb-0">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">
+                                    Lembrar-me
+                                </label>
+                            </div>
+                            <a href="#" id="forgotPassword">Esqueceu sua senha?</a>
+                        </div>
+                        
+                        
+                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                    </form>
+                    
+                    <div class="auth-divider">ou entre com</div>
+                    
+                    <div class="auth-social">
+                        <a href="#" class="auth-social-btn" title="Entrar com Google">
+                            <i class="bi bi-google"></i>
+                        </a>
+                        <a href="#" class="auth-social-btn" title="Entrar com Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="auth-social-btn" title="Entrar com Email">
+                            <i class="bi bi-envelope"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        <p>Não tem uma conta? <a href="#" id="switchToRegister">Cadastre-se</a></p>
+                    </div>
+                </div>
+                
+                <!-- Register Form -->
+                <div class="auth-form" id="register-form">
+                    <div class="auth-alert alert alert-danger" id="register-alert" role="alert"></div>
+                    
+                    <div class="auth-step">
+                        <div class="auth-step-number">1</div>
+                        <div class="auth-step-text">Informações Pessoais</div>
+                    </div>
+                    
+                    <form id="registerForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="firstName" placeholder="Nome" required>
+                                    <label for="firstName">Nome</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="lastName" placeholder="Sobrenome" required>
+                                    <label for="lastName">Sobrenome</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-floating">
+                            <input type="email" class="form-control" id="registerEmail" placeholder="Email" required>
+                            <label for="registerEmail">Email</label>
+                        </div>
+                        
+                        <div class="form-floating">
+                            <input type="tel" class="form-control" id="phone" placeholder="Telefone" required>
+                            <label for="phone">Telefone</label>
+                        </div>
+                        
+                        <div class="form-floating">
+                            <input type="date" class="form-control" id="birthDate" required>
+                            <label for="birthDate">Data de Nascimento</label>
+                        </div>
+                        
+                        <div class="form-floating">
+                            <select class="form-select" id="educationLevel" required>
+                                <option value="" selected disabled>Selecione</option>
+                                <option value="1">Fundamental Incompleto</option>
+                                <option value="2">Fundamental Completo</option>
+                                <option value="3">Médio Incompleto</option>
+                                <option value="4">Médio Completo</option>
+                                <option value="5">Superior Incompleto</option>
+                                <option value="6">Superior Completo</option>
+                            </select>
+                            <label for="educationLevel">Nível de Escolaridade</label>
+                        </div>
+                        
+                        <div class="auth-step">
+                            <div class="auth-step-number">2</div>
+                            <div class="auth-step-text">Criação de Senha</div>
+                        </div>
+                        
+                        <div class="form-floating password-field">
+                            <input type="password" class="form-control" id="registerPassword" placeholder="Senha" required>
+                            <label for="registerPassword">Senha</label>
+                            <span class="password-toggle" id="registerPasswordToggle">
+                                <i class="bi bi-eye"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="form-floating password-field">
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmar Senha" required>
+                            <label for="confirmPassword">Confirmar Senha</label>
+                            <span class="password-toggle" id="confirmPasswordToggle">
+                                <i class="bi bi-eye"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                            <label class="form-check-label" for="termsCheck">
+                                Eu concordo com os <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Termos de Serviço</a> e <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Política de Privacidade</a>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p>Já tem uma conta? <a href="#" id="switchToLogin">Entrar</a></p>
+                    </div>
+                </div>
+                
+                <!-- Success Message (hidden by default) -->
+                <div class="auth-success" id="register-success">
+                    <i class="bi bi-check-circle"></i>
+                    <h3>Cadastro Concluído com Sucesso!</h3>
+                    <p>Parabéns! Sua conta foi criada com sucesso na plataforma Auxílio Encceja.</p>
+                    <button class="btn btn-primary" id="goToLogin">Fazer Login</button>
+                </div>
+            </div>
+            
+            <!-- Auth Image -->
+            <div class="auth-image">
+                <img src="https://mkt-pages.s3-sa-east-1.amazonaws.com/encceja/assets/tudo-o-que-voce-precisa-saber-sobre-o-encceja.png" alt="Auxílio Encceja">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Terms of Service Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Termos de Serviço</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Os termos de serviço da plataforma Auxílio Encceja descrevem os termos e condições para o uso de nossos serviços. Ao utilizar nossos serviços, você concorda com estes termos.</p>
+                    
+                    <h6>1. Conta de Usuário</h6>
+                    <p>Para acessar certos recursos do nosso serviço, você deve criar uma conta. Você é responsável por manter a confidencialidade da sua senha e por todas as atividades que ocorrem sob sua conta.</p>
+                    
+                    <h6>2. Uso do Serviço</h6>
+                    <p>Vocêorda que usará o serviço apenas para fins legítimos e não utilizará o serviço de nenhuma forma que possa prejudicar ou interromper a funcionalidade do serviço.</p>
+                    
+                    <h6>3. Conteúdo do Usuário</h6>
+                    <p>Você é o responsável por todo o conteúdo que você postar ou compartilhar no serviço. Você garante que possui todos os direitos necessários para usar, reproduzir, modificar e distribuir tal conteúdo.</p>
+                    
+                    <h6>4. Limitação de Responsabilidade</h6>
+                    <p>A plataforma Auxílio Encceja fornece os serviços "como está" e "conforme disponível", sem garantias de qualquer tipo.</p>
+                    
+                    <h6>5. Modificações aos Termos de Serviço</h6>
+                    <p>Nós nos reservamos o direito de modificar estes termos de serviço a qualquer momento. Qualquer mudança será effective imediatamente após ser publicada.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Privacy Policy Modal -->
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacyModalLabel">Política de Privacidade</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>A política de privacidade da plataforma Auxílio Encceja descreve como coletamos, usamos e protegemos suas informações pessoais. Ao utilizar nossos serviços, você concorda com esta política.</p>
+                    
+                    <h6>1. Informações que coletamos</h6>
+                    <p>Coletamos informações que você nos fornece diretamente, como seu nome, endereço de email, telefone e informações demográficas. Também coletamos informações sobre suas atividades no serviço, como histórico de uso e preferências.</p>
+                    
+                    <h6>2. Como usamos suas informações</h6>
+                    <p>Usamos suas informações para fornecer, operar e melhorar nossos serviços, desenvolver novos produtos e serviços, e para outros propósitos descritos em nossa política de privacidade.</p>
+                    
+                    <h6>3. Compartilhamento de informações</h6>
+                    <p>Não vendemos suas informações pessoais a terceiros. Podemos compartilhar suas informações com provedores de serviços que executam serviços em nosso nome, com suas permissões, ou quando exigido por lei.</p>
+                    
+                    <h6>4. Segurança das informações</h6>
+                    <p>Implementamos medidas de segurança técnicas e organizacionais para proteger suas informações contra acesso não autorizado, uso indevido ou divulgação.</p>
+                    
+                    <h6>5. Seus direitos</h6>
+                    <p>Você tem o direito de acessar, corrigir, atualizar ou excluir suas informações pessoais. Você também tem o direito de retirar seu consentimento para o processamento de suas informações pessoais.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Password Reset Modal -->
+    <div class="modal fade" id="resetPasswordModal" tabindex="-1" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resetPasswordModalLabel">Redefinir Senha</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Por favor, insira seu email para receber um link de redefinição de senha.</p>
+                    <form id="resetPasswordForm">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="resetEmail" placeholder="Email" required>
+                            <label for="resetEmail">Email</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            const loginTab = document.getElementById('login-tab');
+            const registerTab = document.getElementById('register-tab');
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            const switchToRegister = document.getElementById('switchToRegister');
+            const switchToLogin = document.getElementById('switchToLogin');
+            const registerSuccess = document.getElementById('register-success');
+            
+            function showLoginForm() {
+                loginTab.classList.add('active');
+                registerTab.classList.remove('active');
+                loginForm.classList.add('active');
+                registerForm.classList.remove('active');
+                registerSuccess.style.display = 'none';
+            }
+            
+            function showRegisterForm() {
+                loginTab.classList.remove('active');
+                registerTab.classList.add('active');
+                loginForm.classList.remove('active');
+                registerForm.classList.add('active');
+                registerSuccess.style.display = 'none';
+            }
+            
+            loginTab.addEventListener('click', showLoginForm);
+            registerTab.addEventListener('click', showRegisterForm);
+            switchToRegister.addEventListener('click', showRegisterForm);
+            switchToLogin.addEventListener('click', showLoginForm);
+            
+            // Password toggle
+            const loginPasswordToggle = document.getElementById('loginPasswordToggle');
+            const loginPassword = document.getElementById('loginPassword');
+            const registerPasswordToggle = document.getElementById('registerPasswordToggle');
+            const registerPassword = document.getElementById('registerPassword');
+            const confirmPasswordToggle = document.getElementById('confirmPasswordToggle');
+            const confirmPassword = document.getElementById('confirmPassword');
+            
+            function togglePasswordVisibility(input, toggleIcon) {
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    toggleIcon.classList.remove('bi-eye');
+                    toggleIcon.classList.add('bi-eye-slash');
+                } else {
+                    input.type = 'password';
+                    toggleIcon.classList.remove('bi-eye-slash');
+                    toggleIcon.classList.add('bi-eye');
+                }
+            }
+            
+            loginPasswordToggle.addEventListener('click', function() {
+                togglePasswordVisibility(loginPassword, this.querySelector('i'));
+            });
+            
+            registerPasswordToggle.addEventListener('click', function() {
+                togglePasswordVisibility(registerPassword, this.querySelector('i'));
+            });
+            
+            confirmPasswordToggle.addEventListener('click', function() {
+                togglePasswordVisibility(confirmPassword, this.querySelector('i'));
+            });
+            
+            // Form submission
+            const loginFormElement = document.getElementById('loginForm');
+            const registerFormElement = document.getElementById('registerForm');
+            const loginAlert = document.getElementById('login-alert');
+            const registerAlert = document.getElementById('register-alert');
+            
+            loginFormElement.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                
+                // Simulação de login (substituir por lógica real)
+                if (email && password) {
+                    // Login bem-sucedido
+                    console.log('Login bem-sucedido');
+                    
+                    // Aqui você pode redirecionar para a página principal
+                    // window.location.href = '/dashboard.html';
+                    
+                    // Mostrar toast de sucesso
+                    const toastContainer = document.createElement('div');
+                    toastContainer.className = 'position-fixed bottom-0 end-0 p-3';
+                    toastContainer.style.zIndex = '11';
+                    
+                    toastContainer.innerHTML = `
+                        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header bg-success text-white">
+                                <i class="bi bi-check-circle me-2"></i>
+                                <strong class="me-auto">Sucesso</strong>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                Login realizado com sucesso!
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(toastContainer);
+                    
+                    setTimeout(() => {
+                        toastContainer.remove();
+                    }, 3000);
+                } else {
+                    // Login falhou
+                    loginAlert.textContent = 'Por favor, preencha todos os campos.';
+                    loginAlert.classList.add('show');
+                    
+                    setTimeout(() => {
+                        loginAlert.classList.remove('show');
+                    }, 3000);
+                }
+            });
+            
+            registerFormElement.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                const email = document.getElementById('registerEmail').value;
+                const phone = document.getElementById('phone').value;
+                const birthDate = document.getElementById('birthDate').value;
+                const educationLevel = document.getElementById('educationLevel').value;
+                const password = document.getElementById('registerPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const termsCheck = document.getElementById('termsCheck').checked;
+                
+                // Validações
+                if (!firstName || !lastName || !email || !phone || !birthDate || !educationLevel || !password || !confirmPassword) {
+                    registerAlert.textContent = 'Por favor, preencha todos os campos.';
+                    registerAlert.classList.add('show');
+                    
+                    setTimeout(() => {
+                        registerAlert.classList.remove('show');
+                    }, 3000);
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    registerAlert.textContent = 'As senhas não coincidem.';
+                    registerAlert.classList.add('show');
+                    
+                    setTimeout(() => {
+                        registerAlert.classList.remove('show');
+                    }, 3000);
+                    return;
+                }
+                
+                if (!termsCheck) {
+                    registerAlert.textContent = 'Você deve concordar com os termos de serviço.';
+                    registerAlert.classList.add('show');
+                    
+                    setTimeout(() => {
+                        registerAlert.classList.remove('show');
+                    }, 3000);
+                    return;
+                }
+                
+                // Simulação de cadastro (substituir por lógica real)
+                console.log('Cadastro bem-sucedido');
+                
+                // Mostrar mensagem de sucesso
+                registerForm.classList.remove('active');
+                registerSuccess.style.display = 'block';
+            });
+            
+            // Esqueci minha senha
+            const forgotPassword = document.getElementById('forgotPassword');
+            const resetPasswordModal = new bootstrap.Modal(document.getElementById('resetPasswordModal'));
+            
+            forgotPassword.addEventListener('click', function(e) {
+                e.preventDefault();
+                resetPasswordModal.show();
+            });
+            
+            // Form submission for password reset
+            const resetPasswordForm = document.getElementById('resetPasswordForm');
+            
+            resetPasswordForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('resetEmail').value;
+                
+                if (email) {
+                    // Simulação de envio de email de redefinição (substituir por lógica real)
+                    console.log('Email de redefinição enviado para:', email);
+                    
+                    // Fechar modal
+                    resetPasswordModal.hide();
+                    
+                    // Mostrar toast de sucesso
+                    const toastContainer = document.createElement('div');
+                    toastContainer.className = 'position-fixed bottom-0 end-0 p-3';
+                    toastContainer.style.zIndex = '11';
+                    
+                    toastContainer.innerHTML = `
+                        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header bg-success text-white">
+                                <i class="bi bi-check-circle me-2"></i>
+                                <strong class="me-auto">Sucesso</strong>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                Email de redefinição enviado com sucesso! Verifique sua caixa de entrada.
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(toastContainer);
+                    
+                    setTimeout(() => {
+                        toastContainer.remove();
+                    }, 3000);
+                }
+            });
+            
+            // Go to login from success page
+            const goToLoginBtn = document.getElementById('goToLogin');
+            
+            goToLoginBtn.addEventListener('click', function() {
+                showLoginForm();
+                // Limpar formulário de registro
+                document.getElementById('registerForm').reset();
+            });
+        });
+    </script>
+</body>
+</html>

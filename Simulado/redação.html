@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado Redação ENCCEJA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #34495e;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .main-content {
+            margin-top: 40px;
+        }
+        
+        .welcome-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .welcome-section h1 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 32px;
+        }
+        
+        .welcome-section p {
+            color: #7f8c8d;
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .redacao-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .redacao-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .redacao-section h2 i {
+            font-size: 22px;
+        }
+        
+        .redacao-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: var(--light-color);
+            border-radius: 6px;
+        }
+        
+        .timer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .timer i {
+            color: var(--warning-color);
+        }
+        
+        .word-counter {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .start-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto 0;
+            padding: 12px 0;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .start-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .redacao-container {
+            display: none;
+        }
+        
+        .theme-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        
+        .theme-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .theme-box p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .supporting-texts {
+            margin-top: 20px;
+        }
+        
+        .supporting-texts h4 {
+            color: var(--dark-color);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .supporting-texts ul {
+            padding-left: 20px;
+        }
+        
+        .supporting-texts li {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .writing-area {
+            margin-bottom: 30px;
+        }
+        
+        .writing-area h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .draft-area, .final-area {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+        
+        .draft-area {
+            background-color: #f9f9f9;
+        }
+        
+        .final-area {
+            background-color: white;
+            min-height: 400px;
+        }
+        
+        .instructions {
+            background-color: rgba(243, 156, 18, 0.1);
+            border-left: 4px solid var(--warning-color);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .instructions h4 {
+            color: var(--warning-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .instructions ul {
+            padding-left: 20px;
+            color: var(--dark-color);
+        }
+        
+        .instructions li {
+            margin-bottom: 5px;
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .nav-btn:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .result-container {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .result-container h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .result-message {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #7f8c8d;
+        }
+        
+        .retry-btn {
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .retry-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .warning-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .warning-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .warning-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .warning-content p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .warning-content button {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .warning-content button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .word-count-warning {
+            color: var(--warning-color);
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .redacao-info {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <main class="main-content">
+            <section class="welcome-section">
+                <h1>Bem-vindo à Prova de Redação do ENCCEJA</h1>
+                <p>Prepare-se para a prova de redação do ENCCEJA com nosso simulado. Você terá 60 minutos para produzir uma redação dissertativa-argumentativa sobre o tema proposto. Boa sorte!</p>
+            </section>
+            
+            <section class="redacao-section">
+                <h2><i class="fas fa-pen-fancy"></i> Prova de Redação do ENCCEJA</h2>
+                
+                <div class="instructions">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Instruções para a Redação</h4>
+                    <ul>
+                        <li>Não é permitido abrir outras abas ou janelas do navegador durante a prova</li>
+                        <li>A prova será encerrada automaticamente se você tentar sair desta página</li>
+                        <li>Você terá 60 minutos para concluir a redação</li>
+                        <li>A redação deve ter no mínimo 7 linhas e no máximo 30 linhas</li>
+                        <li>Utilize o campo de rascunho para organizar suas ideias antes de passar para a versão final</li>
+                        <li>A redação final deve ser produzida no campo específico para esse fim</li>
+                    </ul>
+                </div>
+                
+                <div class="redacao-info">
+                    <div class="timer">
+                        <i class="fas fa-clock"></i>
+                        <span id="timer">00:00</span>
+                    </div>
+                    <div class="word-counter">
+                        Linhas: <span id="line-count">0</span>/30
+                    </div>
+                </div>
+                
+                <div id="start-screen">
+                    <p>Esta prova de redação segue o modelo do ENCCEJA. Você deverá produzir um texto dissertativo-argumentativo sobre o tema proposto, com base nos textos de apoio. Você terá 60 minutos para concluir sua redação.</p>
+                    <button class="start-btn" id="start-btn">
+                        <i class="fas fa-play"></i> Iniciar Prova
+                    </button>
+                </div>
+                
+                <div id="redacao-container" class="redacao-container">
+                    <div class="theme-box">
+                        <h3><i class="fas fa-lightbulb"></i> Tema da Redação</h3>
+                        <p><strong>O impacto das redes sociais na sociedade contemporânea</strong></p>
+                        <p>As redes sociais transformaram a forma como nos comunicamos, nos relacionamos e acessamos informações. Essas plataformas digitais trouxeram tanto benefícios quanto desafios para a sociedade moderna.</p>
+                        
+                        <div class="supporting-texts">
+                            <h4>Textos de apoio:</h4>
+                            <ul>
+                                <li>"As redes sociais democratizaram o acesso à informação, permitindo que qualquer pessoa possa compartilhar conteúdo e opiniões com um público global." (Pesquisa sobre Comunicação Digital, 2022)</li>
+                                <li>"Estudos indicam que o uso excessivo de redes sociais pode estar associado a problemas de saúde mental, como ansiedade e depressão, especialmente entre jovens." (Revista de Saúde Pública, 2023)</li>
+                                <li>"As redes sociais se tornaram ferramentas importantes para movimentos sociais e políticos, permitindo a organização de protestos e a conscientização sobre diversas causas." (Anuário de Sociologia, 2021)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="writing-area">
+                        <h3><i class="fas fa-pencil-alt"></i> Rascunho</h3>
+                        <textarea id="draft-area" class="draft-area" placeholder="Use este espaço para organizar suas ideias e fazer anotações antes de escrever a versão final da sua redação."></textarea>
+                        
+                        <h3><i class="fas fa-file-alt"></i> Redação Final</h3>
+                        <textarea id="final-area" class="final-area" placeholder="Escreva sua redação dissertativa-argumentativa neste espaço. Lembre-se de que sua redação deve ter no mínimo 7 linhas e no máximo 30 linhas."></textarea>
+                        <div id="word-count-warning" class="word-count-warning">Atenção: sua redação está fora do limite de linhas permitido.</div>
+                    </div>
+                    
+                    <div class="navigation-buttons">
+                        <button id="finish-btn" class="nav-btn">
+                            Finalizar Redação <i class="fas fa-check"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="result-container" class="result-container">
+                    <h2>Redação Concluída</h2>
+                    <p>Parabéns! Você concluiu sua redação dentro do tempo estipulado.</p>
+                    <p class="result-message">Sua redação foi salva com sucesso. Você escreveu <span id="final-line-count">0</span> linhas.</p>
+                    <button class="retry-btn" id="retry-btn">
+                        <i class="fas fa-redo"></i> Tentar Novamente
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <div id="warning-modal" class="warning-modal">
+        <div class="warning-content">
+            <h3><i class="fas fa-exclamation-triangle"></i> Aviso Importante</h3>
+            <p id="warning-message">Você tentou sair da página da redação. Esta ação não é permitida e a prova será encerrada automaticamente.</p>
+            <button id="close-warning">OK</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos do DOM
+            const startBtn = document.getElementById('start-btn');
+            const startScreen = document.getElementById('start-screen');
+            const redacaoContainer = document.getElementById('redacao-container');
+            const resultContainer = document.getElementById('result-container');
+            const finishBtn = document.getElementById('finish-btn');
+            const retryBtn = document.getElementById('retry-btn');
+            const timerEl = document.getElementById('timer');
+            const lineCountEl = document.getElementById('line-count');
+            const finalLineCountEl = document.getElementById('final-line-count');
+            const finalArea = document.getElementById('final-area');
+            const wordCountWarning = document.getElementById('word-count-warning');
+            const warningModal = document.getElementById('warning-modal');
+            const warningMessage = document.getElementById('warning-message');
+            const closeWarning = document.getElementById('close-warning');
+            
+            // Configurações da prova
+            let timer;
+            let seconds = 0;
+            let minutes = 0;
+            let examStarted = false;
+            let warningCount = 0;
+            const maxWarnings = 1; // Número de avisos antes de encerrar a prova
+            
+            // Iniciar a prova
+            startBtn.addEventListener('click', function() {
+                startScreen.style.display = 'none';
+                redacaoContainer.style.display = 'block';
+                examStarted = true;
+                startTimer();
+                setupTabProtection();
+                setupWordCount();
+            });
+            
+            // Finalizar a prova
+            finishBtn.addEventListener('click', function() {
+                finishRedacao();
+            });
+            
+            // Tentar novamente
+            retryBtn.addEventListener('click', function() {
+                resetRedacao();
+            });
+            
+            // Fechar aviso
+            closeWarning.addEventListener('click', function() {
+                warningModal.style.display = 'none';
+                
+                // Se excedeu o número máximo de avisos, encerrar a prova
+                if (warningCount >= maxWarnings) {
+                    finishRedacao();
+                }
+            });
+            
+            // Configurar proteção contra mudança de aba
+            function setupTabProtection() {
+                // Evento para detectar quando a aba perde o foco
+                document.addEventListener('visibilitychange', function() {
+                    if (document.hidden && examStarted) {
+                        handleTabSwitch();
+                    }
+                });
+                
+                // Evento para detectar quando a janela perde o foco
+                window.addEventListener('blur', function() {
+                    if (examStarted) {
+                        handleTabSwitch();
+                    }
+                });
+                
+                // Bloquear menu de contexto (botão direito)
+                document.addEventListener('contextmenu', function(e) {
+                    if (examStarted) {
+                        e.preventDefault();
+                        showWarning('O uso do botão direito não é permitido durante a prova.');
+                    }
+                });
+                
+                // Bloquear atalhos de teclado comuns
+                document.addEventListener('keydown', function(e) {
+                    if (!examStarted) return;
+                    
+                    // Ctrl+N (nova janela), Ctrl+T (nova aba), Ctrl+W (fechar aba)
+                    if ((e.ctrlKey || e.metaKey) && (e.key === 'n' || e.key === 't' || e.key === 'w')) {
+                        e.preventDefault();
+                        showWarning('Não é permitido abrir novas abas ou janelas durante a prova.');
+                    }
+                    
+                    // F12 (ferramentas de desenvolvedor)
+                    if (e.key === 'F12') {
+                        e.preventDefault();
+                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante a prova.');
+                    }
+                    
+                    // Ctrl+Shift+I (ferramentas de desenvolvedor)
+                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
+                        e.preventDefault();
+                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante a prova.');
+                    }
+                    
+                    // Ctrl+Shift+J (console)
+                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'J') {
+                        e.preventDefault();
+                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante a prova.');
+                    }
+                    
+                    // Ctrl+U (exibir código fonte)
+                    if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
+                        e.preventDefault();
+                        showWarning('Não é permitido exibir o código fonte durante a prova.');
+                    }
+                    
+                    // Alt+Setas (navegação)
+                    if (e.altKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+                        e.preventDefault();
+                        showWarning('Não é permitido usar navegação por atalhos durante a prova.');
+                    }
+                });
+            }
+            
+            // Configurar contador de linhas
+            function setupWordCount() {
+                finalArea.addEventListener('input', function() {
+                    const text = this.value;
+                    const lines = text.split('\n').length;
+                    lineCountEl.textContent = lines;
+                    
+                    // Verificar se está dentro do limite
+                    if (lines < 7 || lines > 30) {
+                        wordCountWarning.style.display = 'block';
+                    } else {
+                        wordCountWarning.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Lidar com a tentativa de mudar de aba
+            function handleTabSwitch() {
+                warningCount++;
+                
+                if (warningCount <= maxWarnings) {
+                    showWarning('Você tentou sair da página da redação. Esta ação não é permitida.');
+                    
+                    if (warningCount >= maxWarnings) {
+                        warningMessage.textContent = 'Você tentou sair da página da redação. Esta ação não é permitida e a prova será encerrada automaticamente.';
+                    }
+                }
+            }
+            
+            // Mostrar aviso
+            function showWarning(message) {
+                warningMessage.textContent = message;
+                warningModal.style.display = 'flex';
+            }
+            
+            // Funções auxiliares
+            function startTimer() {
+                timer = setInterval(function() {
+                    seconds++;
+                    if (seconds === 60) {
+                        minutes++;
+                        seconds = 0;
+                    }
+                    
+                    // Verificar se o tempo excedeu 60 minutos
+                    if (minutes >= 60) {
+                        clearInterval(timer);
+                        finishRedacao();
+                    }
+                    
+                    timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }, 1000);
+            }
+            
+            function finishRedacao() {
+                clearInterval(timer);
+                examStarted = false;
+                
+                // Verificar se a redação foi escrita
+                const text = finalArea.value;
+                const lines = text.split('\n').length;
+                
+                if (lines < 7 && warningCount < maxWarnings) {
+                    if (!confirm('Sua redação tem menos de 7 linhas. Deseja finalizar mesmo assim?')) {
+                        examStarted = true;
+                        return;
+                    }
+                }
+                
+                // Atualizar o contador de linhas no resultado
+                finalLineCountEl.textContent = lines;
+                
+                // Mostrar o container de resultados
+                redacaoContainer.style.display = 'none';
+                resultContainer.style.display = 'block';
+            }
+            
+            function resetRedacao() {
+                // Resetar variáveis
+                seconds = 0;
+                minutes = 0;
+                examStarted = false;
+                warningCount = 0;
+                
+                // Resetar o timer
+                clearInterval(timer);
+                timerEl.textContent = '00:00';
+                
+                // Resetar as áreas de texto
+                document.getElementById('draft-area').value = '';
+                finalArea.value = '';
+                
+                // Resetar o contador de linhas
+                lineCountEl.textContent = '0';
+                wordCountWarning.style.display = 'none';
+                
+                // Mostrar o container de início e esconder o de resultados
+                startScreen.style.display = 'block';
+                redacaoContainer.style.display = 'none';
+                resultContainer.style.display = 'none';
+            }
+        });
+
+    </script>
+
+</body>
+</html>
