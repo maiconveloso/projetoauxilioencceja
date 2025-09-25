@@ -36,6 +36,33 @@
             padding: 20px;
         }
         
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .main-content {
+            margin-top: 40px;
+        }
+        
         .welcome-section {
             background-color: white;
             border-radius: 8px;
@@ -241,6 +268,22 @@
             background-color: var(--secondary-color);
         }
         
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0;
+            transition: width 0.3s ease;
+        }
+        
         .feedback {
             margin-top: 15px;
             padding: 15px;
@@ -276,80 +319,6 @@
             margin-right: 10px;
         }
         
-        .warning-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .warning-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .warning-content h3 {
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
-        
-        .warning-content p {
-            margin-bottom: 20px;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-        
-        .warning-content button {
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .warning-content button:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        .rules-notice {
-            background-color: rgba(243, 156, 18, 0.1);
-            border-left: 4px solid var(--warning-color);
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-        
-        .rules-notice h4 {
-            color: var(--warning-color);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .rules-notice ul {
-            padding-left: 20px;
-            color: var(--dark-color);
-        }
-        
-        .rules-notice li {
-            margin-bottom: 5px;
-        }
-        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -380,7 +349,7 @@
     </style>
 </head>
 <body>
-   
+    
     <div class="container">
         <main class="main-content">
             <section class="welcome-section">
@@ -390,15 +359,6 @@
             
             <section class="simulado-section">
                 <h2><i class="fas fa-clipboard-list"></i> Simulado de Português e Literatura</h2>
-                <div class="rules-notice">
-                    <h4><i class="fas fa-exclamation-triangle"></i> Regras do Simulado</h4>
-                    <ul>
-                        <li>Não é permitido abrir outras abas ou janelas do navegador durante o simulado</li>
-                        <li>O simulado será encerrado automaticamente se você tentar sair desta página</li>
-                        <li>Você terá 60 minutos para concluir o teste</li>
-                        <li>As respostas são salvas automaticamente ao navegar entre as questões</li>
-                    </ul>
-                </div>
                 
                 <div class="simulado-info">
                     <div class="timer">
@@ -408,6 +368,10 @@
                     <div class="question-counter">
                         Questão <span id="current-question">0</span> de <span id="total-questions">10</span>
                     </div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
                 </div>
                 
                 <div id="start-screen">
@@ -457,7 +421,7 @@
                     </div>
                     
                     <div id="question-3" class="question">
-                        <h3><span class="question-number">3</span> Em qual palavra a letra "c" tem som de "ss"?</h3>
+                        <h3><span class="question-number">3</span> Qual das seguintes palavras tem a pronúncia correta de "c"?</h3>
                         <div class="options">
                             <label class="option">
                                 <input type="radio" name="q3" value="A"> A) Cadeira
@@ -498,16 +462,16 @@
                         <h3><span class="question-number">5</span> Qual das seguintes frases utiliza corretamente a crase?</h3>
                         <div class="options">
                             <label class="option">
-                                <input type="radio" name="q5" value="A"> A) Fui à escola de manhã.
+                                <input type="radio" name="q5" value="A"> A) Fui ao aeroporto.
                             </label>
                             <label class="option">
-                                <input type="radio" name="q5" value="B"> B) Vamos a praia amanhã.
+                                <input type="radio" name="q5" value="B"> B) Vamos ao aouro.
                             </label>
                             <label class="option">
-                                <input type="radio" name="q5" value="C"> C) Ele foi ao shopping.
+                                <input type="radio" name="q5" value="C"> C) Ele foi ao aeroporto.
                             </label>
                             <label class="option">
-                                <input type="radio" name="q5" value="D"> D) Ela foi a farmácia.
+                                <input type="radio" name="q5" value="D"> D) Ela foi ao aeroporto.
                             </label>
                         </div>
                         <div class="feedback" id="feedback-5"></div>
@@ -533,7 +497,7 @@
                     </div>
                     
                     <div id="question-7" class="question">
-                        <h3><span class="question-number">7</span> Qual das seguintes palavras tem a consoante "s" com som de "z"?</h3>
+                        <h3><span class="question-number">7</span> Qual das seguintes palavras tem a consoante "s" com som surdo?</h3>
                         <div class="options">
                             <label class="option">
                                 <input type="radio" name="q7" value="A"> A) Sapo
@@ -542,7 +506,7 @@
                                 <input type="radio" name="q7" value="B"> B) Sino
                             </label>
                             <label class="option">
-                                <input type="radio" name="q7" value="C"> C) Mesa
+                                <input type="radio" name="q7" value="C"> C) Seda
                             </label>
                             <label class="option">
                                 <input type="radio" name="q7" value="D"> D) Sombra
@@ -580,7 +544,7 @@
                                 <input type="radio" name="q9" value="B"> B) Peixe
                             </label>
                             <label class="option">
-                                <input type="radio" name="q9" value="C"> C) Crianças
+                                <input type="radio" name="q9" value="C"> C) Pássaro
                             </label>
                             <label class="option">
                                 <input type="radio" name="q9" value="D"> D) Paisagem
@@ -630,13 +594,6 @@
             </section>
         </main>
     </div>
-    <div id="warning-modal" class="warning-modal">
-        <div class="warning-content">
-            <h3><i class="fas fa-exclamation-triangle"></i> Aviso Importante</h3>
-            <p id="warning-message">Você tentou sair da página do simulado. Esta ação não é permitida e o simulado será encerrado automaticamente.</p>
-            <button id="close-warning">OK</button>
-        </div>
-    </div>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -650,11 +607,9 @@
             const retryBtn = document.getElementById('retry-btn');
             const currentQuestionEl = document.getElementById('current-question');
             const timerEl = document.getElementById('timer');
+            const progressBar = document.getElementById('progress-bar');
             const scoreEl = document.querySelector('.score');
             const resultMessage = document.querySelector('.result-message');
-            const warningModal = document.getElementById('warning-modal');
-            const warningMessage = document.getElementById('warning-message');
-            const closeWarning = document.getElementById('close-warning');
             
             // Configurações do simulado
             const totalQuestions = 10;
@@ -670,23 +625,18 @@
                 q4: 'C',
                 q5: 'A',
                 q6: 'A',
-                q7: 'C',
+                q7: 'A',
                 q8: 'A',
                 q9: 'C',
                 q10: 'C'
             };
-            let examStarted = false;
-            let warningCount = 0;
-            const maxWarnings = 1;
             
             // Iniciar o simulado
             startBtn.addEventListener('click', function() {
                 startScreen.style.display = 'none';
                 questionContainer.style.display = 'block';
-                examStarted = true;
                 startTimer();
                 showQuestion(currentQuestion);
-                setupTabProtection();
             });
             
             // Navegação entre questões
@@ -695,6 +645,7 @@
                     saveAnswer();
                     currentQuestion--;
                     showQuestion(currentQuestion);
+                    updateProgressBar();
                 }
             });
             
@@ -704,6 +655,7 @@
                 if (currentQuestion < totalQuestions) {
                     currentQuestion++;
                     showQuestion(currentQuestion);
+                    updateProgressBar();
                 } else {
                     finishSimulado();
                 }
@@ -713,101 +665,6 @@
             retryBtn.addEventListener('click', function() {
                 resetSimulado();
             });
-            
-            // Fechar aviso
-            closeWarning.addEventListener('click', function() {
-                warningModal.style.display = 'none';
-                
-                // Se excedeu o número máximo de avisos, encerrar o simulado
-                if (warningCount >= maxWarnings) {
-                    finishSimulado();
-                }
-            });
-            
-            // Configurar proteção contra mudança de aba
-            function setupTabProtection() {
-                // Evento para detectar quando a aba perde o foco
-                document.addEventListener('visibilitychange', function() {
-                    if (document.hidden && examStarted) {
-                        handleTabSwitch();
-                    }
-                });
-                
-                // Evento para detectar quando a janela perde o foco
-                window.addEventListener('blur', function() {
-                    if (examStarted) {
-                        handleTabSwitch();
-                    }
-                });
-                
-                // Bloquear menu de contexto (botão direito)
-                document.addEventListener('contextmenu', function(e) {
-                    if (examStarted) {
-                        e.preventDefault();
-                        showWarning('O uso do botão direito não é permitido durante o simulado.');
-                    }
-                });
-                
-                // Bloquear atalhos de teclado comuns
-                document.addEventListener('keydown', function(e) {
-                    if (!examStarted) return;
-                    
-                    // Ctrl+N (nova janela), Ctrl+T (nova aba), Ctrl+W (fechar aba)
-                    if ((e.ctrlKey || e.metaKey) && (e.key === 'n' || e.key === 't' || e.key === 'w')) {
-                        e.preventDefault();
-                        showWarning('Não é permitido abrir novas abas ou janelas durante o simulado.');
-                    }
-                    
-                    // F12 (ferramentas de desenvolvedor)
-                    if (e.key === 'F12') {
-                        e.preventDefault();
-                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante o simulado.');
-                    }
-                    
-                    // Ctrl+Shift+I (ferramentas de desenvolvedor)
-                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
-                        e.preventDefault();
-                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante o simulado.');
-                    }
-                    
-                    // Ctrl+Shift+J (console)
-                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'J') {
-                        e.preventDefault();
-                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante o simulado.');
-                    }
-                    
-                    // Ctrl+U (exibir código fonte)
-                    if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
-                        e.preventDefault();
-                        showWarning('Não é permitido exibir o código fonte durante o simulado.');
-                    }
-                    
-                    // Alt+Setas (navegação)
-                    if (e.altKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
-                        e.preventDefault();
-                        showWarning('Não é permitido usar navegação por atalhos durante o simulado.');
-                    }
-                });
-            }
-            
-            // Lidar com a tentativa de mudar de aba
-            function handleTabSwitch() {
-                warningCount++;
-                
-                if (warningCount <= maxWarnings) {
-                    showWarning('Você tentou sair da página do simulado. Esta ação não é permitida.');
-                    
-                    if (warningCount >= maxWarnings) {
-                        warningMessage.textContent = 'Você tentou sair da página do simulado. Esta ação não é permitida e o simulado será encerrado automaticamente.';
-                    }
-                }
-            }
-            
-            // Mostrar aviso
-            function showWarning(message) {
-                warningMessage.textContent = message;
-                warningModal.style.display = 'flex';
-            }
             
             // Funções auxiliares
             function startTimer() {
@@ -858,25 +715,13 @@
                 }
             }
             
+            function updateProgressBar() {
+                const progress = ((currentQuestion - 1) / totalQuestions) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+            
             function finishSimulado() {
                 clearInterval(timer);
-                examStarted = false;
-
-                // Verificar se todas as questões foram respondidas
-                let allAnswered = true;
-                for (let i = 1; i <= totalQuestions; i++) {
-                    if (!userAnswers[`q${i}`]) {
-                        allAnswered = false;
-                        break;
-                    }
-                }
-                
-                if (!allAnswered && warningCount < maxWarnings) {
-                    if (!confirm('Você não respondeu a todas as questões. Deseja finalizar mesmo assim?')) {
-                        examStarted = true;
-                        return;
-                    }
-                }
                 
                 // Calcular a pontuação
                 let score = 0;
@@ -901,6 +746,27 @@
                     resultMessage.textContent = 'Você precisa estudar mais. Dedique mais tempo aos tópicos que você teve mais dificuldade.';
                 }
                 
+                // Mostrar as respostas corretas
+                for (let i = 1; i <= totalQuestions; i++) {
+                    const questionId = `q${i}`;
+                    const feedbackEl = document.getElementById(`feedback-${i}`);
+                    
+                    if (userAnswers[questionId]) {
+                        if (userAnswers[questionId] === correctAnswers[questionId]) {
+                            feedbackEl.innerHTML = '<i class="fas fa-check-circle"></i> Resposta correta!';
+                            feedbackEl.className = 'feedback correct';
+                        } else {
+                            feedbackEl.innerHTML = `<i class="fas fa-times-circle"></i> Resposta incorreta. A resposta correta é ${correctAnswers[questionId]}.`;
+                            feedbackEl.className = 'feedback incorrect';
+                        }
+                        feedbackEl.style.display = 'block';
+                    } else {
+                        feedbackEl.innerHTML = `<i class="fas fa-info-circle"></i> Você não respondeu esta questão. A resposta correta é ${correctAnswers[questionId]}.`;
+                        feedbackEl.className = 'feedback incorrect';
+                        feedbackEl.style.display = 'block';
+                    }
+                }
+                
                 // Mostrar o container de resultados
                 questionContainer.style.display = 'none';
                 resultContainer.style.display = 'block';
@@ -912,33 +778,36 @@
                 seconds = 0;
                 minutes = 0;
                 userAnswers = {};
-                warningCount = 0;
                 
                 // Resetar o timer
                 clearInterval(timer);
                 timerEl.textContent = '00:00';
                 
-                // Limpar todas as respostas
-                document.querySelectorAll('input[type="radio"]').forEach(input => {
-                    input.checked = false;
+                // Resetar o progresso
+                progressBar.style.width = '0%';
+                
+                // Mostrar todas as questões
+                document.querySelectorAll('.question').forEach(q => {
+                    q.style.display = 'block';
+                    document.querySelectorAll('input[type="radio"]').forEach(input => {
+                        input.checked = false;
+                    });
+                    document.querySelectorAll('.feedback').forEach(feedback => {
+                        feedback.style.display = 'none';
+                    });
                 });
                 
-                // Esconder todos os feedbacks
-                document.querySelectorAll('.feedback').forEach(feedback => {
-                    feedback.style.display = 'none';
-                });
+                // Mostrar a primeira questão
+                showQuestion(currentQuestion);
                 
-                // Mostrar a tela inicial
-                startScreen.style.display = 'block';
-                questionContainer.style.display = 'none';
+                // Mostrar o container de perguntas e esconder o de resultados
+                questionContainer.style.display = 'block';
                 resultContainer.style.display = 'none';
                 
-                // Resetar estado do exame
-                examStarted = false;
+                // Mostrar o botão de iniciar
+                startScreen.style.display = 'block';
             }
         });
-
     </script>
-
 </body>
 </html>

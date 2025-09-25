@@ -36,16 +36,13 @@
             padding: 20px;
         }
         
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         nav a {
@@ -271,6 +268,22 @@
             background-color: var(--secondary-color);
         }
         
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0;
+            transition: width 0.3s ease;
+        }
+        
         .feedback {
             margin-top: 15px;
             padding: 15px;
@@ -304,80 +317,6 @@
             color: white;
             border-radius: 50%;
             margin-right: 10px;
-        }
-        
-        .warning-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .warning-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .warning-content h3 {
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
-        
-        .warning-content p {
-            margin-bottom: 20px;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-        
-        .warning-content button {
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .warning-content button:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        .rules-notice {
-            background-color: rgba(243, 156, 18, 0.1);
-            border-left: 4px solid var(--warning-color);
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-        
-        .rules-notice h4 {
-            color: var(--warning-color);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .rules-notice ul {
-            padding-left: 20px;
-            color: var(--dark-color);
-        }
-        
-        .rules-notice li {
-            margin-bottom: 5px;
         }
         
         @media (max-width: 768px) {
@@ -421,16 +360,6 @@
             <section class="simulado-section">
                 <h2><i class="fas fa-flask"></i> Simulado de Ciências</h2>
                 
-                <div class="rules-notice">
-                    <h4><i class="fas fa-exclamation-triangle"></i> Regras do Simulado</h4>
-                    <ul>
-                        <li>Não é permitido abrir outras abas ou janelas do navegador durante o simulado</li>
-                        <li>O simulado será encerrado automaticamente se você tentar sair desta página</li>
-                        <li>Você terá 60 minutos para concluir o teste</li>
-                        <li>As respostas são salvas automaticamente ao navegar entre as questões</li>
-                    </ul>
-                </div>
-                
                 <div class="simulado-info">
                     <div class="timer">
                         <i class="fas fa-clock"></i>
@@ -439,6 +368,10 @@
                     <div class="question-counter">
                         Questão <span id="current-question">0</span> de <span id="total-questions">10</span>
                     </div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
                 </div>
                 
                 <div id="start-screen">
@@ -582,7 +515,7 @@
                         <div class="feedback" id="feedback-7"></div>
                     </div>
                     
-                    <div id="question-8" class="question">
+                    <div id="question-8" classquestion">
                         <h3><span class="question-number">8</span> Qual é o processo pelo qual as plantas absorvem água das raízes?</h3>
                         <div class="options">
                             <label class="option">
@@ -646,9 +579,6 @@
                         <button id="next-btn" class="nav-btn">
                             Próxima Questão <i class="fas fa-arrow-right"></i>
                         </button>
-                        <button id="finish-btn" class="nav-btn">
-                            Finalizar <i class="fas fa-check"></i>
-                        </button>
                     </div>
                 </div>
                 
@@ -665,14 +595,6 @@
         </main>
     </div>
     
-    <div id="warning-modal" class="warning-modal">
-        <div class="warning-content">
-            <h3><i class="fas fa-exclamation-triangle"></i> Aviso Importante</h3>
-            <p id="warning-message">Você tentou sair da página do simulado. Esta ação não é permitida e o simulado será encerrado automaticamente.</p>
-            <button id="close-warning">OK</button>
-        </div>
-    </div>
-    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Elementos do DOM
@@ -682,15 +604,12 @@
             const resultContainer = document.getElementById('result-container');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
-            const finishBtn = document.getElementById('finish-btn');
             const retryBtn = document.getElementById('retry-btn');
             const currentQuestionEl = document.getElementById('current-question');
             const timerEl = document.getElementById('timer');
+            const progressBar = document.getElementById('progress-bar');
             const scoreEl = document.querySelector('.score');
             const resultMessage = document.querySelector('.result-message');
-            const warningModal = document.getElementById('warning-modal');
-            const warningMessage = document.getElementById('warning-message');
-            const closeWarning = document.getElementById('close-warning');
             
             // Configurações do simulado
             const totalQuestions = 10;
@@ -711,31 +630,13 @@
                 q9: 'B',
                 q10: 'B'
             };
-
-            let examStarted = false;
-            let warningCount = 0;
-            const maxWarnings = 1;
-            
-            // Adicionar evento de clique para cada opção
-            document.querySelectorAll('.option').forEach(option => {
-                option.addEventListener('click', function() {
-                    const radioInput = this.querySelector('input[type="radio"]');
-                    radioInput.checked = true;
-                    
-                    // Salvar resposta automaticamente
-                    const questionId = radioInput.name;
-                    userAnswers[questionId] = radioInput.value;
-                });
-            });
             
             // Iniciar o simulado
             startBtn.addEventListener('click', function() {
                 startScreen.style.display = 'none';
                 questionContainer.style.display = 'block';
-                examStarted = true;
                 startTimer();
                 showQuestion(currentQuestion);
-                setupTabProtection();
             });
             
             // Navegação entre questões
@@ -744,6 +645,7 @@
                     saveAnswer();
                     currentQuestion--;
                     showQuestion(currentQuestion);
+                    updateProgressBar();
                 }
             });
             
@@ -753,118 +655,16 @@
                 if (currentQuestion < totalQuestions) {
                     currentQuestion++;
                     showQuestion(currentQuestion);
+                    updateProgressBar();
                 } else {
-                    // Se estiver na última questão, mostrar botão de finalizar
-                    nextBtn.style.display = 'none';
-                    finishBtn.style.display = 'flex';
+                    finishSimulado();
                 }
-            });
-            
-            // Finalizar o simulado
-            finishBtn.addEventListener('click', function() {
-                saveAnswer();
-                finishSimulado();
             });
             
             // Tentar novamente
             retryBtn.addEventListener('click', function() {
                 resetSimulado();
             });
-            
-            // Fechar aviso
-            closeWarning.addEventListener('click', function() {
-                warningModal.style.display = 'none';
-                
-                // Se excedeu o número máximo de avisos, encerrar o simulado
-                if (warningCount >= maxWarnings) {
-                    finishSimulado();
-                }
-            });
-            
-            // Configurar proteção contra mudança de aba
-            function setupTabProtection() {
-                // Evento para detectar quando a aba perde o foco
-                document.addEventListener('visibilitychange', function() {
-                    if (document.hidden && examStarted) {
-                        handleTabSwitch();
-                    }
-                });
-                
-                // Evento para detectar quando a janela perde o foco
-                window.addEventListener('blur', function() {
-                    if (examStarted) {
-                        handleTabSwitch();
-                    }
-                });
-                
-                // Bloquear menu de contexto (botão direito)
-                document.addEventListener('contextmenu', function(e) {
-                    if (examStarted) {
-                        e.preventDefault();
-                        showWarning('O uso do botão direito não é permitido durante o simulado.');
-                    }
-                });
-                
-                // Bloquear atalhos de teclado comuns
-                document.addEventListener('keydown', function(e) {
-                    if (!examStarted) return;
-                    
-                    // Ctrl+N (nova janela), Ctrl+T (nova aba), Ctrl+W (fechar aba)
-                    if ((e.ctrlKey || e.metaKey) && (e.key === 'n' || e.key === 't' || e.key === 'w')) {
-                        e.preventDefault();
-                        showWarning('Não é permitido abrir novas abas ou janelas durante o simulado.');
-                    }
-                    
-                    // F12 (ferramentas de desenvolvedor)
-                    if (e.key === 'F12') {
-                        e.preventDefault();
-                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante o simulado.');
-                    }
-                    
-                    // Ctrl+Shift+I (ferramentas de desenvolvedor)
-                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
-                        e.preventDefault();
-                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante o simulado.');
-                    }
-                    
-                    // Ctrl+Shift+J (console)
-                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'J') {
-                        e.preventDefault();
-                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante o simulado.');
-                    }
-                    
-                    // Ctrl+U (exibir código fonte)
-                    if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
-                        e.preventDefault();
-                        showWarning('Não é permitido exibir o código fonte durante o simulado.');
-                    }
-                    
-                    // Alt+Setas (navegação)
-                    if (e.altKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
-                        e.preventDefault();
-                        showWarning('Não é permitido usar navegação por atalhos durante o simulado.');
-                    }
-                });
-            }
-            
-            // Lidar com a tentativa de mudar de aba
-            function handleTabSwitch() {
-                warningCount++;
-                
-                if (warningCount <= maxWarnings) {
-                    showWarning('Você tentou sair da página do simulado. Esta ação não é permitida.');
-                    
-                    if (warningCount >= maxWarnings) {
-                        warningMessage.textContent = 'Você tentou sair da página do simulado. Esta ação não é permitida e o simulado será encerrado automaticamente.';
-                    }
-                }
-            }
-            
-            // Mostrar aviso
-            function showWarning(message) {
-                warningMessage.textContent = message;
-                warningModal.style.display = 'flex';
-            }
             
             // Funções auxiliares
             function startTimer() {
@@ -873,12 +673,6 @@
                     if (seconds === 60) {
                         minutes++;
                         seconds = 0;
-                    }
-                    
-                    // Verificar se o tempo excedeu 60 minutos
-                    if (minutes >= 60) {
-                        clearInterval(timer);
-                        finishSimulado();
                     }
                     
                     timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
@@ -899,15 +693,8 @@
                 
                 // Atualizar os botões de navegação
                 prevBtn.disabled = (number === 1);
-                
-                // Controlar visibilidade dos botões
-                if (number === totalQuestions) {
-                    nextBtn.style.display = 'none';
-                    finishBtn.style.display = 'flex';
-                } else {
-                    nextBtn.style.display = 'flex';
-                    finishBtn.style.display = 'none';
-                }
+                nextBtn.textContent = (number === totalQuestions) ? 'Finalizar' : 'Próxima Questão';
+                nextBtn.innerHTML = (number === totalQuestions) ? 'Finalizar <i class="fas fa-check"></i>' : 'Próxima Questão <i class="fas fa-arrow-right"></i>';
                 
                 // Selecionar a opção salva, se houver
                 const savedAnswer = userAnswers[`q${number}`];
@@ -928,25 +715,13 @@
                 }
             }
             
+            function updateProgressBar() {
+                const progress = ((currentQuestion - 1) / totalQuestions) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+            
             function finishSimulado() {
                 clearInterval(timer);
-                examStarted = false;
-                
-                // Verificar se todas as questões foram respondidas
-                let allAnswered = true;
-                for (let i = 1; i <= totalQuestions; i++) {
-                    if (!userAnswers[`q${i}`]) {
-                        allAnswered = false;
-                        break;
-                    }
-                }
-                
-                if (!allAnswered && warningCount < maxWarnings) {
-                    if (!confirm('Você não respondeu a todas as questões. Deseja finalizar mesmo assim?')) {
-                        examStarted = true;
-                        return;
-                    }
-                }
                 
                 // Calcular a pontuação
                 let score = 0;
@@ -961,9 +736,7 @@
                 scoreEl.textContent = `${score}/${totalQuestions}`;
                 
                 // Mostrar mensagem personalizada
-                if (warningCount >= maxWarnings) {
-                    resultMessage.textContent = 'O simulado foi encerrado automaticamente porque você tentou sair da página.';
-                } else if (score === totalQuestions) {
+                if (score === totalQuestions) {
                     resultMessage.textContent = 'Parabéns! Você acertou todas as questões. Você está pronto para o exame!';
                 } else if (score >= totalQuestions * 0.7) {
                     resultMessage.textContent = 'Ótimo desempenho! Você está bem preparado para o exame.';
@@ -1005,26 +778,24 @@
                 seconds = 0;
                 minutes = 0;
                 userAnswers = {};
-                examStarted = false;
-                warningCount = 0;
                 
                 // Resetar o timer
                 clearInterval(timer);
                 timerEl.textContent = '00:00';
                 
-                // Resetar todas as opções
-                document.querySelectorAll('input[type="radio"]').forEach(input => {
-                    input.checked = false;
-                });
+                // Resetar o progresso
+                progressBar.style.width = '0%';
                 
-                // Esconder todos os feedbacks
-                document.querySelectorAll('.feedback').forEach(feedback => {
-                    feedback.style.display = 'none';
+                // Mostrar todas as questões
+                document.querySelectorAll('.question').forEach(q => {
+                    q.style.display = 'block';
+                    document.querySelectorAll('input[type="radio"]').forEach(input => {
+                        input.checked = false;
+                    });
+                    document.querySelectorAll('.feedback').forEach(feedback => {
+                        feedback.style.display = 'none';
+                    });
                 });
-                
-                // Resetar botões de navegação
-                nextBtn.style.display = 'flex';
-                finishBtn.style.display = 'none';
                 
                 // Mostrar a primeira questão
                 showQuestion(currentQuestion);
@@ -1035,11 +806,8 @@
                 
                 // Mostrar o botão de iniciar
                 startScreen.style.display = 'block';
-                questionContainer.style.display = 'none';
             }
         });
-
     </script>
-
 </body>
 </html>
