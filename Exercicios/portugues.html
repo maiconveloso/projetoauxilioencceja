@@ -57,6 +57,14 @@
             margin-bottom: 15px;
         }
         
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
         .tabs {
             display: flex;
             margin-bottom: 20px;
@@ -220,6 +228,16 @@
             color: #666;
         }
         
+        .btn-next {
+            background-color: var(--accent-color);
+            color: white;
+            margin-top: 15px;
+        }
+        
+        .btn-next:hover {
+            background-color: #e09030;
+        }
+        
         .result-container {
             text-align: center;
             padding: 20px;
@@ -249,63 +267,6 @@
             padding: 12px 25px;
             font-size: 1.1rem;
         }
-        .tab-warning {
-            background-color: var(--warning-color);
-            color: var(--dark-color);
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 500;
-            display: none;
-        }
-        
-        .tab-warning.active {
-            display: block;
-        }
-        
-        .warning-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        
-        .warning-box {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .warning-title {
-            color: var(--danger-color);
-            margin-bottom: 15px;
-        }
-        
-        .warning-message {
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-        
-        .warning-count {
-            font-weight: bold;
-            color: var(--danger-color);
-        }
-        
-        .warning-close {
-            margin-top: 15px;
-            background-color: var(--primary-color);
-            color: white;
-        }
         
         @media (max-width: 768px) {
             .options {
@@ -324,15 +285,11 @@
     </style>
 </head>
 <body>
-    
     <div class="container">
         <header>
             <h1>Exercícios de Português para ENCCEJA</h1>
             <p class="subtitle">Prepare-se para o exame com exercícios práticos e feedback imediato</p>
         </header>
-        <div class="tab-warning" id="tabWarning">
-            ⚠️ ATENÇÃO: Mudar de guia durante o teste é monitorado e pode resultar na anulação do teste.
-        </div>
         
         <div class="score">
             Pontuação: <span id="score">0</span> / <span id="total">0</span>
@@ -343,7 +300,8 @@
                 <div class="progress" id="progress"></div>
             </div>
         </div>
-    
+        
+        <div class="card">
             <div class="tabs">
                 <button class="tab active" data-tab="ortografia">Ortografia</button>
                 <button class="tab" data-tab="gramatica">Gramática</button>
@@ -357,14 +315,14 @@
                     <p>Qual das seguintes palavras está grafada incorretamente?</p>
                     <div class="options">
                         <div class="option" data-value="paralelepípedo">A) Paralelepípedo</div>
-                        <div class="option" data-value="cônjugue">B) Cônjugue</div>
+                        <div class="option" data-value="cônjuge">B) Cônjuge</div>
                         <div class="option" data-value="fôlego">C) Fôlego</div>
                         <div class="option" data-value="esquema">D) Esquema</div>
                     </div>
-                    <button class="btn btn-check" onclick="checkAnswer('ortografia1', 'cônjugue')">Verificar</button>
+                    <button class="btn btn-check" onclick="checkAnswer('ortografia1', 'cônjuge')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>A palavra "cônjugue" está grafada incorretamente. A forma correta é "cônjuge" com 'j' e não 'g'.</p>
+                        <p>A palavra "cônjuge" está grafada incorretamente. A forma correta é "conjuge" sem a crase.</p>
                     </div>
                 </div>
                 
@@ -380,7 +338,7 @@
                     <button class="btn btn-check" onclick="checkAnswer('ortografia2', '1')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>Na frase "O pão está quente no forno", apenas a palavra "pão" está acentuada. A palavra "está" também está acentuada, então a resposta correta seria 2.</p>
+                        <p>Na frase "O pão está quente no forno", apenas a palavra "pão" está acentuada. As palavras "está" e "forno" não têm acento.</p>
                     </div>
                 </div>
                 
@@ -388,15 +346,15 @@
                     <h3>Exercício 3: Hífen</h3>
                     <p>Qual das seguintes palavras NÃO deve ser escrita com hífen?</p>
                     <div class="options">
-                        <div class="option" data-value="guarda-chuva">A) Guarda-chuva</div>
-                        <div class="option" data-value="bem-vindo">B) Bem-vindo</div>
-                        <div class="option" data-value="corre-corre">C) Corre-corre</div>
-                        <div class="option" data-value="guarda roupa">D) Guarda roupa</div>
+                        <div class="option" data-value="irmãozinho">A) Irmãozinho</div>
+                        <div class="option" data-value="irmãzinha">B) Irmãzinha</div>
+                        <div class="option" data-value="irmão">C) Irmão</div>
+                        <div class="option" data-value="irmã">D) Irmã</div>
                     </div>
-                    <button class="btn btn-check" onclick="checkAnswer('ortografia3', 'guarda roupa')">Verificar</button>
+                    <button class="btn btn-check" onclick="checkAnswer('ortografia3', 'irmão')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>A expressão "guarda roupa" não deve ser escrita com hífen. A forma correta é "guarda-roupa" com hífen. As outras palavras já estão escritas corretamente com hífen.</p>
+                        <p>A palavra "irmão" não deve ser escrita com hífen. As palavras "irmãozinho", "irmãzinha", "irmã" e "irmão" são formas flexionadas da mesma palavra e não exigem hífen.</p>
                     </div>
                 </div>
                 
@@ -405,14 +363,14 @@
                     <p>Qual das seguintes palavras usa o "S" duplo (SS) corretamente?</p>
                     <div class="options">
                         <div class="option" data-value="pressão">A) Pressão</div>
-                        <div class="option" data-value="posse">B) Posse</div>
-                        <div class="option" data-value="acesso">C) Acesso</div>
-                        <div class="option" data-value="cassação">D) Cassação</div>
+                        <div class="option" data-value="possível">B) Possível</div>
+                        <div class="option" data-value="ressaca">C) Ressaca</div>
+                        <div class="option" data-value="possuir">D) Possuir</div>
                     </div>
-                    <button class="btn btn-check" onclick="checkAnswer('ortografia4', 'cassação')">Verificar</button>
+                    <button class="btn btn-check" onclick="checkAnswer('ortografia4', 'pressão')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>A palavra "cassação" usa o "S" duplo corretamente. Todas as palavras listadas usam "SS" corretamente, mas a pergunta pede para identificar uma que usa corretamente.</p>
+                        <p>A palavra "pressão" usa o "S" duplo corretamente. As outras palavras não contêm "SS".</p>
                     </div>
                 </div>
                 
@@ -422,13 +380,13 @@
                     <div class="options">
                         <div class="option" data-value="belo">A) Belo</div>
                         <div class="option" data-value="velho">B) Velho</div>
-                        <div class="option" data-value="vazio">C) Vazio</div>
-                        <div class="option" data-value="verdade">D) Verdade</div>
+                        <div class="option" data-value="verdade">C) Verdade</div>
+                        <div class="option" data-value="vazio">D) Vazio</div>
                     </div>
                     <button class="btn btn-check" onclick="checkAnswer('ortografia5', 'belo')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>A palavra "belo" usa o "B" corretamente. As palavras "velho", "vazio" e "verdade" usam o "V" corretamente.</p>
+                        <p>A palavra "belo" usa o "B" corretamente. As palavras "velho", "verdade" e "vazio" usam o "V" corretamente.</p>
                     </div>
                 </div>
                 
@@ -439,12 +397,12 @@
                         <div class="option" data-value="lençol">A) Lençol</div>
                         <div class="option" data-value="pêssego">B) Pêssego</div>
                         <div class="option" data-value="peixe">C) Peixe</div>
-                        <div class="option" data-value="caçar">D) Caçar</div>
+                        <div class="option" data-value="pêssego">D) Pêssego</div>
                     </div>
                     <button class="btn btn-check" onclick="checkAnswer('ortografia6', 'lençol')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>A palavra "lençol" usa o "Ç" corretamente. O "Ç" é usado antes das vogais A, O e as consoantes h, l, r, s, x, z. Todas as palavras listadas usam "Ç" corretamente.</p>
+                        <p>A palavra "lençol" usa o "Ç" corretamente. O "Ç" é usado antes das vogais A, O e as consoantes h, l, r, s, x, z.</p>
                     </div>
                 </div>
                 
@@ -469,14 +427,14 @@
                     <p>Qual das seguintes palavras usa o "L" duplo (LL) corretamente?</p>
                     <div class="options">
                         <div class="option" data-value="colher">A) Colher</div>
-                        <div class="option" data-value="cavalo">B) Cavalo</div>
-                        <div class="option" data-value="carro">C) Carro</div>
-                        <div class="option" data-value="cabelo">D) Cabelo</div>
+                        <div class="option" data-value="solenoide">B) Solenoide</div>
+                        <div class="option" data-value="solene">C) Solene</div>
+                        <div class="option" data-value="coluna">D) Coluna</div>
                     </div>
-                    <button class="btn btn-check" onclick="checkAnswer('ortografia8', 'cavalo')">Verificar</button>
+                    <button class="btn btn-check" onclick="checkAnswer('ortografia8', 'solenoide')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>Nenhuma das palavras listadas usa "L" duplo. A palavra "cavalo" foi escolhida como resposta correta porque é a única que tem "L" simples, enquanto as outras têm "R" ou "L" em posições diferentes.</p>
+                        <p>A palavra "solenoide" usa o "L" duplo corretamente. O "LL" é usado em palavras de origem estrangeira ou em palavras científicas.</p>
                     </div>
                 </div>
             </div>
@@ -487,14 +445,14 @@
                     <p>Qual das seguintes palavras é um substantivo?</p>
                     <div class="options">
                         <div class="option" data-value="correr">A) Correr</div>
-                        <div class="option" data-value="amor">B) Amor</div>
+                        <div class="option" data-value="">B) Amor</div>
                         <div class="option" data-value="feliz">C) Feliz</div>
-                        <div class="option" data-value="rapidamente">D) Rapidamente</div>
+                        <div class="option" data-value="correr">D) Correr</div>
                     </div>
                     <button class="btn btn-check" onclick="checkAnswer('gramatica1', 'amor')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>A palavra "amor" é um substantivo. As outras palavras são: "correr" (verbo), "feliz" (adjetivo) e "rapidamente" (advérbio).</p>
+                        <p>A palavra "amor" é um substantivo. As outras palavras são: "correr" (verbo), "feliz" (adjetivo) e "correr" (verbo).</p>
                     </div>
                 </div>
                 
@@ -504,13 +462,13 @@
                     <div class="options">
                         <div class="option" data-value="cor">A) Cor</div>
                         <div class="option" data-value="correr">B) Correr</div>
-                        <div class="option" data-value="feliz">C) Feliz</div>
-                        <div class="option" data-value="casa">D) Casa</div>
+                        <div class="option" data-value="correr">C) Correr</div>
+                        <div class="option" data-value="correr">D) Correr</div>
                     </div>
                     <button class="btn btn-check" onclick="checkAnswer('gramatica2', 'correr')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>A palavra "correr" é um verbo. As outras palavras são: "cor" (substantivo), "feliz" (adjetivo) e "casa" (substantivo).</p>
+                        <p>A palavra "correr" é um verbo. As outras palavras são: "cor" (substantivo), "correr" (verbo) e "correr" (verbo).</p>
                     </div>
                 </div>
                 
@@ -519,14 +477,14 @@
                     <p>Qual das seguintes palavras é um adjetivo?</p>
                     <div class="options">
                         <div class="option" data-value="feliz">A) Feliz</div>
-                        <div class="option" data-value="casa">B) Casa</div>
-                        <div class="option" data-value="correr">C) Correr</div>
-                        <div class="option" data-value="livro">D) Livro</div>
+                        <div class="option" data-value="feliz">B) Feliz</div>
+                        <div class="option" data-value="feliz">C) Feliz</div>
+                        <div class="option" data-value="feliz">D) Feliz</div>
                     </div>
                     <button class="btn btn-check" onclick="checkAnswer('gramatica3', 'feliz')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>A palavra "feliz" é um adjetivo. As outras palavras são: "casa" (substantivo), "correr" (verbo) e "livro" (substantivo).</p>
+                        <p>A palavra "feliz" é um adjetivo. As outras palavras são: "feliz" (adjetivo), "feliz" (adjetivo) e "feliz" (adjetivo).</p>
                     </div>
                 </div>
                 
@@ -536,13 +494,13 @@
                     <div class="options">
                         <div class="option" data-value="rapidamente">A) Rapidamente</div>
                         <div class="option" data-value="rapido">B) Rapido</div>
-                        <div class="option" data-value="feliz">C) Feliz</div>
-                        <div class="option" data-value="casa">D) Casa</div>
+                        <div class="option" data-value="rapido">C) Rapido</div>
+                        <div class="option" data-value="rapido">D) Rapido</div>
                     </div>
                     <button class="btn btn-check" onclick="checkAnswer('gramatica4', 'rapidamente')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>A palavra "rapidamente" é um advérbio. As outras palavras são: "rapido" (adjetivo), "feliz" (adjetivo) e "casa" (substantivo).</p>
+                        <p>A palavra "rapidamente" é um advérbio. As outras palavras são: "rapido" (adjetivo), "rapido" (adjetivo) e "rapido" (adjetivo).</p>
                     </div>
                 </div>
                 
@@ -551,14 +509,14 @@
                     <p>Qual das seguintes palavras é um pronome?</p>
                     <div class="options">
                         <div class="option" data-value="eu">A) Eu</div>
-                        <div class="option" data-value="casa">B) Casa</div>
-                        <div class="option" data-value="feliz">C) Feliz</div>
-                        <div class="option" data-value="correr">D) Correr</div>
+                        <div class="option" data-value="eu">B) Eu</div>
+                        <div class="option" data-value="eu">C) Eu</div>
+                        <div class="option" data-value="eu">D) Eu</div>
                     </div>
                     <button class="btn btn-check" onclick="checkAnswer('gramatica5', 'eu')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>A palavra "eu" é um pronome pessoal. As outras palavras são: "casa" (substantivo), "feliz" (adjetivo) e "correr" (verbo).</p>
+                        <p>A palavra "eu" é um pronome pessoal. As outras palavras são: "eu" (pronome), "eu" (pronome) e "eu" (pronome).</p>
                     </div>
                 </div>
                 
@@ -567,14 +525,14 @@
                     <p>Qual das seguintes palavras é uma preposição?</p>
                     <div class="options">
                         <div class="option" data-value="em">A) Em</div>
-                        <div class="option" data-value="casa">B) Casa</div>
-                        <div class="option" data-value="feliz">C) Feliz</div>
-                        <div class="option" data-value="correr">D) Correr</div>
+                        <div class="option" data-value="em">B) Em</div>
+                        <div class="option" data-value="em">C) Em</div>
+                        <div class="option" data-value="em">D) Em</div>
                     </div>
                     <button class="btn btn-check" onclick="checkAnswer('gramatica6', 'em')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>A palavra "em" é uma preposição. As outras palavras são: "casa" (substantivo), "feliz" (adjetivo) e "correr" (verbo).</p>
+                        <p>A palavra "em" é uma preposição. As outras palavras são: "em" (preposição), "em" (preposição) e "em" (preposição).</p>
                     </div>
                 </div>
                 
@@ -583,14 +541,14 @@
                     <p>Qual das seguintes palavras é uma conjunção?</p>
                     <div class="options">
                         <div class="option" data-value="e">A) E</div>
-                        <div class="option" data-value="casa">B) Casa</div>
-                        <div class="option" data-value="feliz">C) Feliz</div>
-                        <div class="option" data-value="correr">D) Correr</div>
+                        <div class="option" data-value="e">B) E</div>
+                        <div class="option" data-value="e">C) E</div>
+                        <div class="option" data-value="e">D) E</div>
                     </div>
                     <button class="btn btn-check" onclick="checkAnswer('gramatica7', 'e')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>A palavra "e" é uma conjunção coordenativa. As outras palavras são: "casa" (substantivo), "feliz" (adjetivo) e "correr" (verbo).</p>
+                        <p>A palavra "e" é uma conjunção coordenativa. As outras palavras são: "e" (conjunção), "e" (conjunção) e "e" (conjunção).</p>
                     </div>
                 </div>
                 
@@ -599,14 +557,14 @@
                     <p>Qual das seguintes palavras é uma interjeição?</p>
                     <div class="options">
                         <div class="option" data-value="olá">A) Olá</div>
-                        <div class="option" data-value="casa">B) Casa</div>
-                        <div class="option" data-value="feliz">C) Feliz</div>
-                        <div class="option" data-value="correr">D) Correr</div>
+                        <div class="option" data-value="olá">B) Olá</div>
+                        <div class="option" data-value="olá">C) Olá</div>
+                        <div class="option" data-value="olá">D) Olá</div>
                     </div>
                     <button class="btn btn-check" onclick="checkAnswer('gramatica8', 'olá')">Verificar</button>
                     <div class="feedback"></div>
                     <div class="explanation" style="display: none;">
-                        <p>A palavra "olá" é uma interjeição. As outras palavras são: "casa" (substantivo), "feliz" (adjetivo) e "correr" (verbo).</p>
+                        <p>A palavra "olá" é uma interjeição. As outras palavras são: "olá" (interjeição), "olá" (interjeição) e "olá" (interjeição).</p>
                     </div>
                 </div>
             </div>
@@ -683,7 +641,7 @@
                         <div class="option" data-value="ruim">A) Ruim</div>
                         <div class="option" data-value="excelente">B) Excelente</div>
                         <div class="option" data-value="ótimo">C) Ótimo</div>
-                        <div class="option" data-value="maravilhoso">D) Maravilhoso</div>
+                        <div class="option" data-value="excelente">D) Excelente</div>
                     </div>
                     <button class="btn btn-check" onclick="checkAnswer('vocabulario5', 'ruim')">Verificar</button>
                     <div class="feedback"></div>
@@ -748,9 +706,9 @@
                     <p>Qual das seguintes afirmações NÃO está presente no texto?</p>
                     <div class="options">
                         <div class="option" data-value="A tecnologia tem transformado nossas vidas.">A) A tecnologia tem transformado nossas vidas.</div>
-                        <div class="option" data-value="A tecnologia traz desafios.">B) A tecnologia traz desafios.</div>
-                        <div class="option" data-value="A tecnologia não tem impacto ambiental.">C) A tecnologia não tem impacto ambiental.</div>
-                        <div class="option" data-value="É importante encontrar um equilíbrio.">D) É importante encontrar um equilíbrio.</div>
+                        <div class="option" data-value="A traz desafios.">B) A tecnologia traz desafios.</div>
+                        <option class="option" data-value="A tecnologia não tem impacto ambiental.">C) A tecnologia não tem impacto ambiental.</option>
+                        <option class="option" data-value="É importante encontrar um equilíbrio.">D) É importante encontrar um equilíbrio.</option>
                     </div>
                     <button class="btn btn-check" onclick="checkAnswer('interpretacao1', 'A tecnologia não tem impacto ambiental.')">Verificar</button>
                     <div class="feedback"></div>
@@ -795,7 +753,7 @@
                 
                 <div class="exercise" id="interpretacao4">
                     <h3>Exercício 28: Interpretação de Texto</h3>
-                    <p>Leia o texto a seguir e responda: "A saúde mental é um estado de bem-estar psicológico que permite às pessoas lidarem com as pressões da vida, trabalhem produtivamente, contribuam para sua comunidade e realizem suas próprias capacidades. Ela é fundamental para a qualidade de vida e o bem-estar geral. Cuidar da saúde mental é essencial em todas as fases da vida, desde a infância até a velhice."</p>
+                    <p>Leia o texto a seguir e responda: "A saúde mental é um estado de bem-estar psicológico que permite às pessoas lidarem com as pressões da vida, trabalham produtivamente, contribuem para sua comunidade e realizam suas próprias capacidades. Ela é fundamental para a qualidade de vida e o bem-estar geral. Cuidar da saúde mental é essencial em todas as fases da vida, desde a infância até a velhice."</p>
                     <p>De acordo com o texto, qual das seguintes afirmações está correta?</p>
                     <div class="options">
                         <div class="option" data-value="A saúde mental não é fundamental.">A) A saúde mental não é fundamental.</div>
@@ -854,30 +812,11 @@
         </div>
     </div>
     
-    <div class="warning-container" id="warningContainer">
-        <div class="warning-box">
-            <h2 class="warning-title">⚠️ AVISO IMPORTANTE</h2>
-            <p class="warning-message">
-                Você mudou de guia durante o teste. Esta ação foi registrada. 
-                Mudar de guia durante a realização do teste é considerado uma violação das regras.
-            </p>
-            <p class="warning-message">
-                Número de violações: <span class="warning-count" id="warningCount">1</span>
-            </p>
-            <p class="warning-message">
-                Se você exceder o limite de <strong>3 violações</strong>, seu teste será anulado automaticamente.
-            </p>
-            <button class="btn btn-primary" onclick="closeWarning()">Entendido</button>
-        </div>
-    </div>
-    
     <script>
         // Variáveis globais
         let score = 0;
-        let totalExercises = 30;
+        let totalExercises = 0;
         let answeredExercises = 0;
-        let tabSwitchCount = 0;
-        const MAX_TAB_SWITCHES = 3;
         
         // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
@@ -913,143 +852,7 @@
                     this.classList.add('selected');
                 });
             });
-            
-            // Configurar monitoramento de mudança de guia
-            document.addEventListener('visibilitychange', handleVisibilityChange);
-            window.addEventListener('blur', handleWindowBlur);
-            
-            // Bloquear atalhos de teclado para abrir novas guias
-            document.addEventListener('keydown', handleKeyDown);
-            
-            // Exibir aviso inicial sobre mudança de guia
-            setTimeout(() => {
-                document.getElementById('tabWarning').classList.add('active');
-            }, 1000);
         });
-        
-        // Função para lidar com mudança de visibilidade da página
-        function handleVisibilityChange() {
-            if (document.hidden) {
-                // A página ficou invisível (usuário mudou de guia)
-                incrementTabSwitchCount();
-            }
-        }
-        
-        // Função para lidar com perda de foco da janela
-        function handleWindowBlur() {
-            // A janela perdeu o foco (usuário pode ter mudado de guia)
-            incrementTabSwitchCount();
-        }
-        
-        // Função para incrementar o contador de mudança de guia
-        function incrementTabSwitchCount() {
-            tabSwitchCount++;
-            
-            // Exibir aviso
-            document.getElementById('warningCount').textContent = tabSwitchCount;
-            document.getElementById('warningContainer').style.display = 'flex';
-            
-            // Exibir aviso na aba
-            document.getElementById('tabWarning').classList.add('active');
-            
-            // Verificar se excedeu o limite
-            if (tabSwitchCount >= MAX_TAB_SWITCHES) {
-                // Anular o teste
-                invalidateTest();
-            }
-        }
-        
-        // Função para fechar o aviso de violação
-        function closeWarning() {
-            document.getElementById('warningContainer').style.display = 'none';
-        }
-       
-        function handleKeyDown(e) {
-            // Bloquear Ctrl+T (nova guia)
-            if (e.ctrlKey && e.keyCode === 84) {
-                e.preventDefault();
-                incrementTabSwitchCount();
-                return false;
-            }
-            
-            // Bloquear Ctrl+N (nova janela)
-            if (e.ctrlKey && e.keyCode === 78) {
-                e.preventDefault();
-                incrementTabSwitchCount();
-                return false;
-            }
-            
-            // Bloquear Ctrl+W (fechar guia)
-            if (e.ctrlKey && e.keyCode === 87) {
-                e.preventDefault();
-                return false;
-            }
-            
-            // Bloquear Alt+Setas (navegação)
-            if (e.altKey && (e.keyCode === 37 || e.keyCode === 39)) {
-                e.preventDefault();
-                incrementTabSwitchCount();
-                return false;
-            }
-            
-            // Bloquear F12 (ferramentas de desenvolvedor)
-            if (e.keyCode === 123) {
-                e.preventDefault();
-                incrementTabSwitchCount();
-                return false;
-            }
-            
-            // Bloquear Ctrl+Shift+I (ferramentas de desenvolvedor)
-            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
-                e.preventDefault();
-                incrementTabSwitchCount();
-                return false;
-            }
-            
-            // Bloquear Ctrl+Shift+J (console)
-            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
-                e.preventDefault();
-                incrementTabSwitchCount();
-                return false;
-            }
-            
-            // Bloquear Ctrl+U (visualizar código fonte)
-            if (e.ctrlKey && e.keyCode === 85) {
-                e.preventDefault();
-                incrementTabSwitchCount();
-                return false;
-            }
-        }
-        
-        function invalidateTest() {
-            // Esconder todos os exercícios
-            document.querySelectorAll('.exercise').forEach(exercise => {
-                exercise.style.display = 'none';
-            });
-            
-            // Esconder tabs e outros elementos
-            document.querySelector('.tabs').style.display = 'none';
-            document.querySelector('.score').style.display = 'none';
-            document.querySelector('.progress-container').style.display = 'none';
-            document.getElementById('tabWarning').style.display = 'none';
-            
-            // Fechar aviso de violação
-            closeWarning();
-            
-            // Exibir mensagem de teste anulado
-            document.getElementById('resultContainer').style.display = 'block';
-            document.getElementById('finalScore').textContent = '0';
-            document.getElementById('finalTotal').textContent = totalExercises;
-            document.getElementById('resultMessage').textContent = 
-                `TESTE ANULADO! Você excedeu o limite de ${MAX_TAB_SWITCHES} mudanças de guia permitidas.`;
-            document.getElementById('resultMessage').style.color = 'var(--danger-color)';
-            document.getElementById('resultMessage').style.fontWeight = 'bold';
-            
-            // Desabilitar botão de reiniciar
-            document.querySelector('.btn-restart').disabled = true;
-            document.querySelector('.btn-restart').style.backgroundColor = '#cccccc';
-            document.querySelector('.btn-restart').style.cursor = 'not-allowed';
-        }
         
         // Função para verificar a resposta
         function checkAnswer(exerciseId, correctAnswer) {
@@ -1071,7 +874,7 @@
             const selectedValue = selectedOption.getAttribute('data-value');
             const isCorrect = selectedValue === correctAnswer;
             
-            // Atualizar pontuação apenas se ainda não foi contabilizada
+            // Atualizar pontuação
             if (isCorrect && !selectedOption.classList.contains('correct')) {
                 score++;
                 document.getElementById('score').textContent = score;
@@ -1108,37 +911,12 @@
             const checkButton = exercise.querySelector('.btn-check');
             checkButton.disabled = true;
             checkButton.textContent = 'Verificado';
-            
-            // Verificar se todos os exercícios foram respondidos
-            if (answeredExercises === totalExercises) {
-                setTimeout(showResults, 1000);
-            }
         }
         
         // Função para atualizar a barra de progresso
         function updateProgress() {
             const percentage = (answeredExercises / totalExercises) * 100;
             document.getElementById('progress').style.width = `${percentage}%`;
-        }
-        
-        // Função para desativar o bloqueio de tela
-        function disableTabLock() {
-            // Remover event listeners de mudança de aba
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
-            window.removeEventListener('blur', handleWindowBlur);
-            document.removeEventListener('keydown', handleKeyDown);
-            // Esconder aviso sobre mudança de aba
-            document.getElementById('tabWarning').classList.remove('active');
-        }
-        
-        // Função para reativar o bloqueio de tela (usada ao reiniciar o quiz)
-        function enableTabLock() {
-            // Adicionar novamente os event listeners
-            document.addEventListener('visibilitychange', handleVisibilityChange);
-            window.addEventListener('blur', handleWindowBlur);
-            document.addEventListener('keydown', handleKeyDown);
-            // Exibir aviso sobre mudança de aba
-            document.getElementById('tabWarning').classList.add('active');
         }
         
         // Função para mostrar os resultados finais
@@ -1150,6 +928,7 @@
             document.querySelector('.tabs').style.display = 'none';
             document.querySelector('.score').style.display = 'none';
             document.querySelector('.progress-container').style.display = 'none';
+            
             document.getElementById('resultContainer').style.display = 'block';
             document.getElementById('finalScore').textContent = score;
             document.getElementById('finalTotal').textContent = totalExercises;
@@ -1158,29 +937,25 @@
             let message = '';
             
             if (score === totalExercises) {
-                message = 'Parabéns! Você acertou todas as questões. Você tem um excelente conhecimento de português.';
+                message = 'Parabéns! Você acertou todas as questões. Você tem um excelente conhecimento da língua portuguesa.';
             } else if (score >= totalExercises * 0.8) {
-                message = 'Excelente! Você tem um bom domínio dos conceitos de português. Continue estudando para aperfeiçoar seus conhecimentos.';
+                message = 'Excelente! Você tem um bom domínio da língua portuguesa. Continue praticando para perfeccionar seus conhecimentos.';
             } else if (score >= totalExercises * 0.6) {
-                message = 'Bom trabalho! Você tem um conhecimento razoável de português. Continue estudando para melhorar ainda mais.';
+                message = 'Bom trabalho! Você tem um conhecimento razoável da língua portuguesa. Continue estudando e praticando para melhorar ainda mais.';
             } else if (score >= totalExercises * 0.4) {
-                message = 'Você está no caminho certo. Continue estudando e praticando para melhorar seus conhecimentos de português.';
+                message = 'Você está no caminho certo. Continue estudando e praticando para melhorar seu conhecimento da língua portuguesa.';
             } else {
-                message = 'Recomendamos que você estude mais sobre português. Consulte livros e fontes confiáveis para melhorar seus conhecimentos.';
+                message = 'Recomendamos que você revise os conceitos básicos da língua portuguesa e pratique mais exercícios.';
             }
             
             document.getElementById('resultMessage').textContent = message;
-            
-            // Desativar o bloqueio de tela quando todos os exercícios forem respondidos
-            disableTabLock();
         }
         
         // Função para reiniciar o quiz
         function restartQuiz() {
-            // Reiniciar pontuação e contadores
+            // Resetar pontuação e contadores
             score = 0;
             answeredExercises = 0;
-            tabSwitchCount = 0;
             document.getElementById('score').textContent = score;
             document.getElementById('progress').style.width = '0%';
             
@@ -1206,18 +981,7 @@
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
             document.querySelector('.tab').classList.add('active');
             document.getElementById('ortografia').classList.add('active');
-            
-            // Reabilitar botão de reiniciar se foi desabilitado
-            const restartButton = document.querySelector('.btn-restart');
-            restartButton.disabled = false;
-            restartButton.style.backgroundColor = '';
-            restartButton.style.cursor = '';
-            
-            // Reativar o bloqueio de tela ao reiniciar o quiz
-            enableTabLock();
         }
-        
     </script>
-    
 </body>
 </html>
