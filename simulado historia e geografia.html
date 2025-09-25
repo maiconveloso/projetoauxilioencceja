@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado História e Geografia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/simulado historia e geografia.css">
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRNKXZCX54"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SRNKXZCX54');
+</script>
+
+</head>
+<body>
+    
+    <div class="container">
+        <main class="main-content">
+            <section class="welcome-section">
+                <h1>Bem-vindo ao Simulado de História e Geografia</h1>
+                <p>Prepare-se para o exame com nosso simulado de História e Geografia. Este teste contém 20 questões que cobrem os principais tópicos de história e geografia. Boa sorte!</p>
+            </section>
+            
+            <section class="simulado-section">
+                <h2><i class="fas fa-clipboard-list"></i> Simulado de História e Geografia</h2>
+                <div class="rules-notice">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Regras do Simulado</h4>
+                    <ul>
+                        <li>Não é permitido abrir outras abas ou janelas do navegador durante o simulado</li>
+                        <li>O simulado será encerrado automaticamente se você tentar sair desta página</li>
+                        <li>Você terá 60 minutos para concluir o teste</li>
+                        <li>As respostas são salvas automaticamente ao navegar entre as questões</li>
+                    </ul>
+                </div>
+                
+                <div class="simulado-info">
+                    <div class="timer">
+                        <i class="fas fa-clock"></i>
+                        <span id="timer">00:00</span>
+                    </div>
+                    <div class="question-counter">
+                        Questão <span id="current-question">0</span> de <span id="total-questions">20</span>
+                    </div>
+                </div>
+                
+                <div id="start-screen">
+                    <p>Este simulado contém 20 questões de História e Geografia que são comuns nos exames. Você terá 90 minutos para concluir o teste. Ao final, receberá sua nota e um feedback detalhado.</p>
+                    <button class="start-btn" id="start-btn">
+                        <i class="fas fa-play"></i> Iniciar Simulado
+                    </button>
+                </div>
+                
+                <div id="question-container" class="question-container">
+                    <div id="question-1" class="question">
+                        <h3><span class="question-number">1</span> Qual foi a principal causa do movimento das Reformas Liberais no Brasil no século XIX?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q1" value="A"> A) A necessidade de modernização do Estado e adaptação às mudanças sociais e econômicas.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="B"> B) A pressão dos escravizados pela abolição imediata da escravidão.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="C"> C) A revolta dos militares contra o governo imperial.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="D"> D) A crise econômica causada pela seca no Nordeste.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-1"></div>
+                    </div>
+                    
+                    <div id="question-2" class="question">
+                        <h3><span class="question-number">2</span> Qual das seguintes características NÃO é típica da Revolução Industrial na Inglaterra?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q2" value="A"> A) A invenção da máquina a vapor.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="B"> B) O desenvolvimento de novas técnicas de agricultura.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="C"> C) A forte dependência de energia hidráulica.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="D"> D) A urbanização massiva e o crescimento das cidades.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-2"></div>
+                    </div>
+                    
+                    <div id="question-3" class="question">
+                        <h3><span class="question-number">3</span> Qual foi o principal resultado da Guerra do Paraguai para o Brasil?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q3" value="A"> A) A consolidação da República e a queda da monarquia.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="B"> B) O fortalecimento do poder militar e a expansão da influência brasileira na região.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="C"> C) A abolição da escravidão no Brasil.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="D"> D) A perda de territórios para o Paraguai.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-3"></div>
+                    </div>
+                    
+                    <div id="question-4" class="question">
+                        <h3><span class="question-number">4</span> Qual das seguintes capitais brasileiras está localizada na Região Norte?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q4" value="A"> A) Belo Horizonte
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="B"> B) Manaus
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="C"> C) Salvador
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="D"> D) Curitiba
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-4"></div>
+                    </div>
+                    
+                    <div id="question-5" class="question">
+                        <h3><span class="question-number">5</span> Qual das seguintes características NÃO pertence à cultura dos povos indígenas da Amazônia?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q5" value="A"> A) A prática da agricultura itinerante.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="B"> B) A crença em espíritos da natureza.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="C"> C) A construção de cidades com grandes monumentos de pedra.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="D"> D) A utilização de plantas medicinais para tratamento de doenças.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-5"></div>
+                    </div>
+                    
+                    <div id="question-6" class="question">
+                        <h3><span class="question-number">6</span> Qual foi a principal causa da Primeira Guerra Mundial?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q6" value="A"> A) A crise financeira global de 1929.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6" value="B"> B) A rivalidade entre as potências europeias e a corrida armamentista.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6" value="C"> C) A ascensão do fascismo na Itália.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6" value="D"> D) A revolução bolchevique na Rússia.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-6"></div>
+                    </div>
+                    
+                    <div id="question-7" class="question">
+                        <h3><span class="question-number">7</span> Qual é a capital da Argentina?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q7" value="A"> A) Santiago
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q7" value="B"> B) Buenos Aires
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q7" value="C"> C) Montevideo
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q7" value="D"> D) Asunción
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-7"></div>
+                    </div>
+                    
+                    <div id="question-8" class="question">
+                        <h3><span class="question-number">8</span> Qual foi o principal objetivo da Campanha Abolicionista no Brasil?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q8" value="A"> A) Promover a integração dos escravizados no mercado de trabalho livre.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q8" value="B"> B) Forçar a libertação imediata de todos os escravizados.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q8" value="C"> C) Definir um valor econômico para a abolição da escravidão.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q8" value="D"> D) Reintegrar os escravizados nas fazendas como trabalhadores assalariados.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-8"></div>
+                    </div>
+                    
+                    <div id="question-9" class="question">
+                        <h3><span class="question-number">9</span> Qual das seguintes características NÃO pertence à cultura dos povos indígenas do Sertão Nordestino?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q9" value="A"> A) A prática da agricultura de sequeiro.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="B"> B) A criação de gado e a produção de queijo coalho.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="C"> C) A construção de grandes pirâmides e templos.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="D"> D) A utilização de cactos e outras plantas para fins medicinais e rituais.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-9"></div>
+                    </div>
+                    
+                    <div id="question-10" class="question">
+                        <h3><span class="question-number">10</span> Qual foi a principal causa da Revolução Russa de 1917?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q10" value="A"> A) A ascensão do nazismo na Alemanha.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="B"> B) A participação da Rússia na Primeira Guerra Mundial e a crise econômica subsequente.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="C"> C) A descoberta de petróleo no Mar Cáspio.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="D"> D) A invasão da Rússia pelos EUA durante a Guerra Fria.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-10"></div>
+                    </div>
+                    
+                    <div id="question-11" class="question">
+                        <h3><span class="question-number">11</span> Qual é a capital do Paraguai?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q11" value="A"> A) Assunção
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q11" value="B"> B) La Paz
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q11" value="C"> C) Lima
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q11" value="D"> D) Bogotá
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-11"></div>
+                    </div>
+                    
+                    <div id="question-12" class="question">
+                        <h3><span class="question-number">12</span> Qual foi o principal resultado da Guerra do Fim do Mundo para o Brasil?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q12" value="A"> A) A anexação da República Riograndense ao Brasil.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q12" value="B"> B) A perda de territórios para a Argentina.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q12" value="C"> C) A independência do Uruguai.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q12" value="D"> D) A abolição da escravidão no Brasil.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-12"></div>
+                    </div>
+                    
+                    <div id="question-13" class="question">
+                        <h3><span class="question-number">13</span> Qual é a capital do Peru?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q13" value="A"> A) Bogotá
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q13" value="B"> B) Quito
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q13" value="C"> C) Lima
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q13" value="D"> D) Caracas
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-13"></div>
+                    </div>
+                    
+                    <div id="question-14" class="question">
+                        <h3><span class="question-number">14</span> Qual foi a principal causa da Revolução Cubana de 1959?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q14" value="A"> A) A pressão dos EUA para a implementação de políticas capitalistas.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q14" value="B"> B) A corrupção do regime de Fulgencio Batista e a desigualdade social.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q14" value="C"> C) A invasão da Baía dos Porcos pelos exilados cubanos.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q14" value="D"> D) A descoberta de petróleo na costa cubana.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-14"></div>
+                    </div>
+                    
+                    <div id="question-15" class="question">
+                        <h3><span class="question-number">15</span> Qual é a capital do Uruguai?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q15" value="A"> A) Buenos Aires
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q15" value="B"> B) Montevideo
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q15" value="C"> C) Santiago
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q15" value="D"> D) Asunción
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-15"></div>
+                    </div>
+                    
+                    <div id="question-16" class="question">
+                        <h3><span class="question-number">16</span> Qual é a capital do Chile?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q16" value="A"> A) Bogotá
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q16" value="B"> B) Quito
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q16" value="C"> C) Santiago
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q16" value="D"> D) Lima
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-16"></div>
+                    </div>
+                    
+                    <div id="question-17" class="question">
+                        <h3><span class="question-number">17</span> Qual foi a principal causa da Revolução Francesa de 1789?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q17" value="A"> A) A invasão da França pelos exércitos revolucionários americanos.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q17" value="B"> B) A crise financeira do Estado e a desigualdade social.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q17" value="C"> C) A descoberta da América e a corrida colonial.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q17" value="D"> D) A ascensão do fascismo na Europa.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-17"></div>
+                    </div>
+                    
+                    <div id="question-18" class="question">
+                        <h3><span class="question-number">18</span> Qual é a capital do Equador?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q18" value="A"> A) Quito
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q18" value="B"> B) Bogotá
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q18" value="C"> C) Lima
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q18" value="D"> D) Caracas
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-18"></div>
+                    </div>
+                    
+                    <div id="question-19" class="question">
+                        <h3><span class="question-number">19</span> Qual foi a principal causa da Guerra do Paraguai?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q19" value="A"> A) A disputa pela posse de territórios entre Brasil, Argentina e Uruguai.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q19" value="B"> B) A revolta dos escravizados contra o governo paraguaio.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q19" value="C"> C) A descoberta de petróleo no território paraguaio.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q19" value="D"> D) A independência do Brasil.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-19"></div>
+                    </div>
+                    
+                    <div id="question-20" class="question">
+                        <h3><span class="question-number">20</span> Qual é a capital da Colômbia?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q20" value="A"> A) Bogotá
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q20" value="B"> B) Quito
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q20" value="C"> C) Lima
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q20" value="D"> D) Caracas
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-20"></div>
+                    </div>
+                    
+                    <div class="navigation-buttons">
+                        <button id="prev-btn" class="nav-btn" disabled>
+                            <i class="fas fa-arrow-left"></i> Questão Anterior
+                        </button>
+                        <button id="next-btn" class="nav-btn">
+                            Próxima Questão <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="result-container" class="result-container">
+                    <h2>Resultado do Simulado</h2>
+                    <p>Parabéns! Você completou o simulado de História e Geografia.</p>
+                    <div class="score">0/20</div>
+                    <p class="result-message">Veja como você se saiu e onde pode melhorar.</p>
+                    <button class="retry-btn" id="retry-btn">
+                        <i class="fas fa-redo"></i> Tentar Novamente
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <div id="warning-modal" class="warning-modal">
+        <div class="warning-content">
+            <h3><i class="fas fa-exclamation-triangle"></i> Aviso Importante</h3>
+            <p id="warning-message">Você tentou sair da página do simulado. Esta ação não é permitida e o simulado será encerrado automaticamente.</p>
+            <button id="close-warning">OK</button>
+        </div>
+    </div>
+    
+    <script src="JS/simulado historia e geografia.js"></script>
+
+</body>
+</html>
