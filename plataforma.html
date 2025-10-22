@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Plataforma de Estudos</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-        <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
-        <link rel="stylesheet" href="CSS/plataforma.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Estudos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="CSS/plataforma.css">
 
-        <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRNKXZCX54"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -241,6 +242,7 @@
                     </div>
                 </div>
             </div>
+
         <div class="accessibility-modal-footer">
             <button class="accessibility-reset-btn" id="resetAccessibilitySettings">
                 <i class="bi bi-arrow-counterclockwise"></i> Restaurar Padrões
@@ -262,16 +264,6 @@
                 Configurações de acessibilidade salvas com sucesso!
         </div>
     </div>
-        
-        <!-- Botão de toggle para mobile -->
-        <button class="mobile-toggle" id="mobileToggle">
-            <i class="bi bi-list"></i>
-        </button>
-        
-        <!-- Botão de Entrar (aparece quando não está logado) -->
-        <button class="btn-enter" id="loginBtn">
-            <i class="bi bi-box-arrow-in-right"></i> Entrar
-        </button>
         
         <!-- Perfil do Usuário (aparece quando está logado) -->
         <div class="user-profile hidden" id="userProfile">
@@ -342,65 +334,70 @@
             </div>
         </div>
         
-        <!-- Sidebar -->
-        <div class="sidebar" id="sidebar">
-            <div class="logo">
-                <img src="Logo 3.0.png" alt="Logo do Auxílio Encceja" class="logo-img">
-                <h4 class="logo-text">Auxílio Encceja</h4>
-                <button class="toggle-btn" id="toggleSidebar">
-                </button>
-            </div>
-            <ul class="nav flex-column">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="Logo 3.0.png" alt="Logo do Auxílio Encceja">
+                Auxílio Encceja
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="btn btn-primary w-100 mb-2" href="index.html">
+                    <a class="nav-link" href="index.html">
                         <i class="bi bi-house-door"></i>
                         <span>Página Inicial</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2 active" href="plataforma.html">
-                    <i class="bi bi-laptop"></i>
-                    <span>Plataforma</span>
-                </a>
-            </li>
-                <li class="nav-item">
-                    <a class="btn btn-primary w-100 mb-2" href="videoaula.html">
-                        <i class="bi bi-camera-video me-2"></i>
-                        <span>Video aulas</span>
+                    <a class="nav-link active" href="plataforma.html">
+                        <i class="bi bi-laptop"></i>
+                        <span>Plataforma</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary w-100 mb-2" href="apostila.html">
+                    <a class="nav-link" href="videoaula.html">
+                        <i class="bi bi-camera-video"></i>
+                        <span>Videoaulas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="apostila.html">
                         <i class="bi bi-file-earmark-text"></i>
                         <span>Apostilas</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary w-100 mb-2" href="exercicio.html">
+                    <a class="nav-link" href="exercicio.html">
                         <i class="bi bi-pencil-square"></i>
                         <span>Exercícios</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary w-100 mb-2" href="simulado.html">
+                    <a class="nav-link" href="simulado.html">
                         <i class="bi bi-controller"></i>
                         <span>Simulados</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary w-100 mb-2" href="acompanhamento.html">
+                    <a class="nav-link" href="acompanhamento.html">
                         <i class="bi bi-trophy"></i>
                         <span>Acompanhamento</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary w-100 mb-2" href="config.html">
+                    <a class="nav-link" href="config.html">
                         <i class="bi bi-gear"></i>
                         <span>Configurações</span>
                     </a>
                 </li>
             </ul>
         </div>
+    </div>
+</nav>
         
         <!-- Main Content -->
         <div class="content" id="content">
@@ -410,6 +407,13 @@
                         <div class="welcome-banner animate-in">
                             <h2>Bem-vindo à Plataforma de Estudos</h2>
                             <p class="mb-4">Transforme seu Futuro com uma Educação de qualidade!</p>
+
+                    <!-- Container do QR Code -->
+                        <div class="qr-code-container" id="qrContainer">
+                            <div class="qr-title">Acesse nossa página</div>
+                                <div id="qrcode"></div>
+                                <div class="qr-instruction">Escaneie o QR Code</div>
+                            </div>
                             
                     <!-- Relógio em tempo real -->
                         <div class="countdown-container">
@@ -602,51 +606,55 @@
             </div>
                 
             <!-- Recursos Recomendados -->
-                <div class="row mt-4">
-                    <div class="col-12">
-                        <h4 class="session-title">Recursos Recomendados</h4>
-                    </div>
-                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-1">
-                    <div class="card">
-                        <img src="https://vestibulares.estrategia.com/portal/wp-content/uploads/2024/07/guia-do-encceja-1-960x540.jpg" class="card-img-top" alt="Recurso recomendado">
-                <div class="card-body">
-                    <h5 class="card-title">Guia Completo da Encceja</h5>
-                        <p class="card-text">Tudo o que você precisa saber para se preparar para a prova.</p>
-                        <a href="guia.html" class="btn btn-primary">Acessar</a>
-                    </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h4 class="session-title">Recursos Recomendados</h4>
                 </div>
-            </div>
-                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-2">
-                    <div class="card">
-                        <img src="https://classifilagos.com.br/wp-content/uploads/2025/05/como-estudar-para-o-Encceja-1024x683.jpg" class="card-img-top" alt="Recurso recomendado">
-                <div class="card-body">
-                    <h5 class="card-title">Dicas de Estudo</h5>
-                        <p class="card-text">Métodos eficazes para otimizar seu tempo de estudo.</p>
-                        <a href="dicas.html" class="btn btn-primary">Acessar</a>
-                    </div>
-                </div>
-            </div>
-                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-3">
-                    <div class="card">
-                        <img src="https://termine.com.br/wp-content/uploads/2020/03/20-05-07_provas_anteriores_te.jpg" class="card-img-top" alt="Recurso recomendado">
-                <div class="card-body">
-                    <h5 class="card-title">Provas Anteriores</h5>
-                        <p class="card-text">Analise as provas de anos anteriores para entender o formato.</p>
-                        <a href="provas.html" class="btn btn-primary">Acessar</a>
-                    </div>
-                </div>
-            </div>
-                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-4">
-                    <div class="card">
-                        <img src="https://wordpress-cms-revista-prod-assets.quero.space/legacy_posts/post_images/50647/0c9cdcab97e9fbc5ab6bc9e67a9fa7b562fe9232.png?1719261181" class="card-img-top" alt="Recurso recomendado">
-                <div class="card-body">
-                    <h5 class="card-title">Comunidade de Estudos</h5>
-                        <p class="card-text">Conecte-se com outros estudantes para trocar dicas e experiências.</p>
-                        <a href="comunidade.html" class="btn btn-primary">Acessar</a>
-                    </div>
-                </div>
+    
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card resource-card" role="article" aria-labelledby="guia-titulo">
+                    <img src="Imagens/Img1.jpg" class="card-img-top" alt="Guia Completo do Encceja" loading="lazy" width="300" height="180">
+            <div class="card-body">
+                <h5 class="card-title" id="guia-titulo">Guia Completo do Encceja</h5>
+                <p class="card-text">Tudo o que você precisa saber para se preparar para a prova.</p>
+                <a href="guia.html" class="btn btn-primary" aria-label="Capa do Guia Completo do Encceja com informações sobre a prova">Acessar</a>
             </div>
         </div>
+    </div>
+    
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card resource-card" role="article" aria-labelledby="dicas-titulo">
+                    <img src="Imagens/Img2.jpeg" class="card-img-top" alt="Material de estudo com dicas para otimizar o aprendizado"loading="lazy" width="300" height="180">
+            <div class="card-body">
+                <h5 class="card-title" id="dicas-titulo">Dicas de Estudo</h5>
+                <p class="card-text">Métodos eficazes para otimizar seu tempo de estudo.</p>
+                <a href="dicas.html" class="btn btn-primary" aria-label="Acessar dicas de estudo para o Encceja">Acessar</a>
+            </div>
+        </div>
+    </div>
+    
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card resource-card" role="article" aria-labelledby="provas-titulo">
+                    <img src="Imagens/Img5.jpeg" class="card-img-top" alt="Acessar provas anteriores do Encceja" loading="lazy" width="300" height="180">
+            <div class="card-body">
+                <h5 class="card-title" id="provas-titulo">Provas Anteriores</h5>
+                <p class="card-text">Analise as provas de anos anteriores para entender o formato.</p>
+                <a href="provas.html" class="btn btn-primary" aria-label="Acessar videoaulas do Encceja">Acessar</a>
+            </div>
+        </div>
+    </div>
+    
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card resource-card" role="article" aria-labelledby="comunidade-titulo">
+                    <img src="Imagens/Img6.jpeg" class="card-img-top" alt="Comunidade de estudos das matérias do Encceja" loading="lazy" width="300" height="180">
+            <div class="card-body">
+                <h5 class="card-title" id="comunidade-titulo">Comunidade de Estudos</h5>
+                <p class="card-text">Conecte-se com outros estudantes para trocar dicas e experiências.</p>
+                <a href="comunidade.html" class="btn btn-primary" aria-label="Acessar a comunidade de estudos do Encceja">Acessar</a>
+            </div>
+        </div>
+    </div>
+</div>
                 
             <!-- Desafios Section -->
                 <div class="row mt-4">
@@ -667,7 +675,7 @@
                     </div>
                 </div>
             <div class="card-footer bg-white text-center">
-                    <a href="desafiomatematica.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
+                    <a href="Desafios/matematica.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
                 </div>
             </div>
         </div>
@@ -685,7 +693,7 @@
                     </div>
                 </div>
             <div class="card-footer bg-white text-center">
-                    <a href="desafioportugues.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
+                    <a href="Desafios/portugues.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
                 </div>
             </div>
         </div>
@@ -703,7 +711,7 @@
                     </div>
                 </div>
             <div class="card-footer bg-white text-center">
-                    <a href="desafiogeografia.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
+                    <a href="Desafios/geografia.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
                 </div>
             </div>
         </div>
@@ -721,7 +729,7 @@
                     </div>
                 </div>
             <div class="card-footer bg-white text-center">
-                    <a href="desafiociencias.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
+                    <a href="Desafios/ciencias.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
                         </div>
                     </div>
                 </div>
@@ -756,8 +764,21 @@
             </div>
         </footer>
         
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="JS/plataforma.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JS/plataforma.js"></script>
 
-    </body>
+    <!-- Início do VLibras -->
+    <div vw="true" class="enabled">
+        <div vw-access-button="true" class="active"></div>
+        <div vw-plugin-wrapper="true">
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <!-- Fim do VLibras -->
+
+</body>
 </html>

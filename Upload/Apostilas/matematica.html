@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostilas de Matemática para ENCCEJA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #3a5a78;
+            --secondary-color: #D3D3D3;
+            --accent-color: #e63946;
+            --text-color: #333;
+            --light-text: #6c757d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: #D3D3D3;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: #f8f9fa !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #2c3e50);
+            color: #f8f9fa;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .apostila-card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .apostila-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+            border-bottom: none;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #2c4760;
+            border-color: #2c4760;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .topic-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .topic-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .topic-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .topic-list i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+        
+        @media (max-width: 768px) {
+            .apostila-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        /* Estilos para a modal de visualização */
+        .modal-content {
+            border-radius: 8px;
+            border: none;
+        }
+        
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .apostila-preview {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .preview-content p {
+            margin-bottom: 0.75rem;
+        }
+        
+        .preview-content ul {
+            padding-left: 1.5rem;
+        }
+        
+        .preview-content li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Preparação para o ENCCEJA</h1>
+            <p class="lead mb-4">Conheça nossas apostilas de matemática para te ajudar a alcançar a pontuação máxima no exame.</p>
+            <a href="#apostilas" class="btn btn-light btn-lg me-2">Ver Apostilas</a>
+            <a href="#contato" class="btn btn-outline-light btn-lg">Fale Conosco</a>
+        </div>
+    </section>
+    <!-- Apostilas Section -->
+    <section id="apostilas" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Apostilas de Matemática</h2>
+            <div class="row g-4">
+                <!-- Apostila 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-calculator me-2"></i>
+                            Álgebra Básica
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Conceitos fundamentais de álgebra para o ENCCEJA, incluindo equações, inequações e sistemas.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Operações algébricas</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Equações e inequações</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Sistemas de equações</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Polinômios</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Álgebra Básica')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Álgebra Básica')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-triangle me-2"></i>
+                            Geometria
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Principais conceitos de geometria para o ENCCEJA, com foco em figuras planas e espaciais.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Figuras planas</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Geometria espacial</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Trigonometria</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Geometria analítica</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Geometria')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Geometria')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-graph-up me-2"></i>
+                            Funções e Derivadas
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Estudo de funções e conceitos básicos de derivadas para o ENCCEJA.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Tipos de funções</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Gráficos de funções</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Limites</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Derivadas e suas aplicações</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Funções e Derivadas')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Funções e Derivadas')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-dice-5 me-2"></i>
+                            Probabilidades
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Conceitos de probabilidade e estatística para o ENCCEJA, com exemplos práticos.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Espaço amostral</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Probabilidade condicional</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Variáveis aleatórias</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Distribuições de probabilidade</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Probabilidades')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Probabilidades')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-bar-chart me-2"></i>
+                            Estatística
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Fundamentos de estatística para o ENCCEJA, incluindo análise de dados e medidas estatísticas.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Representação de dados</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Medidas de tendência central</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Medidas de dispersão</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Análise de dados</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Estatística')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Estatística')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostila 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="apostila-card card">
+                        <div class="card-header d-flex align-items-center">
+                            <i class="bi bi-calculator me-2"></i>
+                            Cálculo Integral
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Introdução ao cálculo integral para o ENCCEJA, com foco em integrais definidas e indefinidas.</p>
+                            <ul class="topic-list">
+                                <li><i class="bi bi-check-circle-fill"></i> Integrais indefinidas</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Integrais definidas</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Aplicações do cálculo integral</li>
+                                <li><i class="bi bi-check-circle-fill"></i> Métodos de integração</li>
+                            </ul>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button class="btn btn-outline-primary" onclick="showPreview('Cálculo Integral')">Visualizar</button>
+                                <button class="btn btn-primary" onclick="downloadApostila('Cálculo Integral')">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    
+<section id="sobre" class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="mb-4">Sobre Nossas Apostilas</h2>
+                <p>As apostilas de matemática para o ENCCEJA foram desenvolvidas por especialistas em educação com foco no conteúdo programático do exame. Cada apostila foi cuidadosamente estruturada para proporcionar uma aprendizagem eficaz e direta.</p>
+                <p>As apostilas contêm:</p>
+                <ul>
+                    <li>Explicações claras e concisas dos conceitos matemáticos</li>
+                    <li>Exemplos práticos e resolvidos</li>
+                    <li>Exercícios para fixação do conteúdo</li>
+                    <li>Dicas e estratégias para resolver as questões do ENCCEJA</li>
+                </ul>
+                <p>Nossa metodologia é baseada na experiência de professores que já atuaram como corretores e elaboradores de questões para o ENCCEJA, garantindo que o conteúdo esteja alinhado com o que realmente cai na prova.</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="mb-4">Por que escolher nossas apostilas?</h3>
+                        <div class="d-flex mb-3">
+                            <div class="feature-icon">
+                             </div>
+                              <div>
+                                <h5>Conteúdo Atualizado</h5>
+                                <p class="mb-0">Nossas apostilas são atualizadas regularmente para acompanhar as mudanças no formato do ENCCEJA.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <div class="feature-icon"> 
+                             </div>
+                              <div>
+                                <h5>Metodologia Eficaz</h5>
+                                <p class="mb-0">Organização do conteúdo que facilita a absorção dos conceitos matemáticos.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <div class="feature-icon">
+                             </div>
+                              <div>
+                                <h5>Material Completo</h5>
+                                <p class="mb-0">Cobertura de todos os tópicos de matemática que podem ser cobrados no ENCCEJA.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="feature-icon">
+                             </div>
+                              <div>
+                                <h5>Resultados Comprovados</h5>
+                                <p class="mb-0">Estudantes que utilizam nossas apostilas apresentam melhor desempenho no exame.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>  
+    <!-- Contato Section -->
+    <section id="contato" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="text-center mb-4">Fale Conosco</h2>
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-4">
+                            <form id="contactForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Nome</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">E-mail</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="subject" class="form-label">Assunto</label>
+                                        <input type="text" class="form-control" id="subject" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label">Mensagem</label>
+                                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="btn btn-primary px-4 py-2">Enviar Mensagem</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+    
+    <!-- Modal para visualização da apostila -->
+    <div class="modal fade" id="apostilaModal" tabindex="-1" aria-labelledby="apostilaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="apostilaModalLabel">Visualização da Apostila</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="apostila-preview">
+                        <h4 class="preview-title" id="previewTitle">Título da Apostila</h4>
+                        <div class="preview-content" id="previewContent">
+                            <!-- Conteúdo da apostila será inserido aqui -->
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-muted">Esta é uma visualização parcial da apostila. Baixe a versão completa para acessar todo o conteúdo.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="downloadFromModal">Baixar Apostila</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função para mostrar preview da apostila
+        function showPreview(apostila) {
+            const apostilaModal = new bootstrap.Modal(document.getElementById('apostilaModal'));
+            document.getElementById('previewTitle').textContent = apostila;
+            
+            // Conteúdo específico para cada apostila
+            let content = '';
+            switch(apostila) {
+                case 'Álgebra Básica':
+                    content = `
+                        <p>Esta apostila aborda os conceitos fundamentais de álgebra necessários para o ENCCEJA.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Operações algébricas básicas e avançadas</li>
+                            <li>Equações lineares e quadráticas</li>
+                            <li>Inequações e sistemas de inequações</li>
+                            <li>Polinômios e suas operações</li>
+                            <li>Fatores e produtos notáveis</li>
+                            <li>Funções e suas representações</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Geometria':
+                    content = `
+                        <p>Esta apostila aborda os conceitos de geometria necessários para o ENCCEJA.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Geometria plana: triângulos, quadriláteros, círculos e suas propriedades</li>
+                            <li>Geometria espacial: sólidos geométricos, suas características e cálculos</li>
+                            <li>Trigonometria: funções trigonométricas, identidades e aplicações</li>
+                            <li>Geometria analítica: retas, circunferências e parábolas no plano cartesiano</li>
+                            <li>Áreas e volumes de figuras geométricas</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Funções e Derivadas':
+                    content = `
+                        <p>Esta apostila aborda os conceitos de funções e derivadas necessários para o ENCCEJA.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Tipos de funções: polinomiais, racionais, exponenciais e logarítmicas</li>
+                            <li>Gráficos de funções e suas transformações</li>
+                            <li>Limites e continuidade de funções</li>
+                            <li>Derivadas e suas propriedades</li>
+                            <li>Aplicações das derivadas: máximos e mínimos, taxas de variação</li>
+                            <li>Estudo da concavidade e pontos de inflexão</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Probabilidades':
+                    content = `
+                        <p>Esta apostila aborda os conceitos de probabilidade e estatística necessários para o ENCCEJA.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Conceitos básicos de probabilidade</li>
+                            <li>Eventos e suas probabilidades</li>
+                            <li>Probabilidade condicional</li>
+                            <li>Combinatória e permutação</li>
+                            <li>Variáveis aleatórias e suas distribuições</li>
+                            <li>Distribuições de probabilidade: binomial, normal e poisson</li>
+                            <li>Testes de hipóteses e intervalos de confiança</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Estatística':
+                    content = `
+                        <p>Esta apostila aborda os conceitos de estatística necessários para o ENCCEJA.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Coleta e organização de dados</li>
+                            <li>Representação gráfica de dados</li>
+                            <li>Medidas de tendência central: média, mediana e moda</li>
+                            <li>Medidas de dispersão: variância, desvio padrão e amplitude</li>
+                            <li>Medidas de posição: quartis, decis e percentis</li>
+                            <li>Análise de séries temporais</li>
+                            <li>Correlação e regressão linear</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Cálculo Integral':
+                    content = `
+                        <p>Esta apostila aborda os conceitos de cálculo integral necessários para o ENCCEJA.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Integração indefinida: antiderivadas e suas propriedades</li>
+                            <li>Integração definida: interpretação geométrica e aplicações</li>
+                            <li>Métodos de integração: substituição, partes e frações parciais</li>
+                            <li>Aplicações do cálculo integral: área entre curvas, volume de sólidos de revolução</li>
+                            <li>Integração por partes e integração trigonométrica</li>
+                            <li>Integrais improprias</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                default:
+                    content = '<p>Conteúdo da apostila não disponível.</p>';
+            }
+            
+            document.getElementById('previewContent').innerHTML = content;
+            
+            // Configurar o botão de download na modal
+            document.getElementById('downloadFromModal').onclick = function() {
+                apostilaModal.hide();
+                downloadApostila(apostila);
+            };
+            
+            apostilaModal.show();
+        }
+        
+        // Função para baixar apostila
+        function downloadApostila(apostila) {
+            showToast('Download Iniciado', `A apostila de ${apostila} está sendo baixada. Por favor, aguarde.`, 'success');
+            // Simulação de download
+            setTimeout(() => {
+                showToast('Download Concluído', `A apostila de ${apostila} foi baixada com sucesso!`, 'success');
+            }, 3000);
+        }
+        
+        // Função para mostrar toast
+        function showToast(title, message, type) {
+            const toastContainer = document.querySelector('.toast-container');
+            const toastId = 'toast-' + Date.now();
+            const iconClass = type === 'success' ? 'bi-check-circle-fill' : 
+                             type === 'info' ? 'bi-info-circle-fill' : 
+                             type === 'warning' ? 'bi-exclamation-triangle-fill' : 'bi-x-circle-fill';
+            
+            const toastHtml = `
+                <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <i class="bi ${iconClass} me-2 text-${type === 'info' ? 'primary' : type}"></i>
+                        <strong class="me-auto">${title}</strong>
+                        <small>Agora</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                </div>
+            `;
+            
+            toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement, { autohide: true, delay: 5000 });
+            toast.show();
+            
+            // Remove o toast do DOM após fechar
+            toastElement.addEventListener('hidden.bs.toast', function () {
+                toastElement.remove();
+            });
+        }
+        
+        // Formulário de contato
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            showToast('Mensagem Enviada', `Obrigado, ${name}! Sua mensagem foi enviada com sucesso. responderemos em breve.`, 'success');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

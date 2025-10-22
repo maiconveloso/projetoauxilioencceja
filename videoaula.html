@@ -263,70 +263,72 @@
         </div>
     </div>
 
-    <!-- Botão de toggle para mobile -->
-    <button class="mobile-toggle" id="mobileToggle">
-        <i class="bi bi-list"></i>
-    </button>
-     <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-            <div class="logo">
-                <img src="Logo 3.0.png" alt="Logo do Auxílio Encceja" class="logo-img">
-                <h4 class="logo-text">Auxílio Encceja</h4>
-                <button class="toggle-btn" id="toggleSidebar">
-                </button>
-            </div>
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2" href="index.html">
-                    <i class="bi bi-house-door"></i>
-                    <span>Página Inicial</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2" href="plataforma.html">
-                    <i class="bi bi-laptop"></i>
-                    <span>Plataforma</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2 active" href="videoaula.html">
-                    <i class="bi bi-camera-video me-2"></i>
-                    <span>Video aulas</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2" href="apostila.html">
-                    <i class="bi bi-file-earmark-text"></i>
-                    <span>Apostilas</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2" href="exercicio.html">
-                    <i class="bi bi-pencil-square"></i>
-                    <span>Exercícios</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2" href="simulado.html">
-                    <i class="bi bi-controller"></i>
-                    <span>Simulados</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2" href="acompanhamento.html">
-                    <i class="bi bi-trophy"></i>
-                    <span>Acompanhamento</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2" href="config.html">
-                    <i class="bi bi-gear"></i>
-                    <span>Configurações</span>
-                </a>
-            </li>
-        </ul>
+     <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="Logo 3.0.png" alt="Logo do Auxílio Encceja">
+                Auxílio Encceja
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <i class="bi bi-house-door"></i>
+                        <span>Página Inicial</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="plataforma.html">
+                        <i class="bi bi-laptop"></i>
+                        <span>Plataforma</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="videoaula.html">
+                        <i class="bi bi-camera-video"></i>
+                        <span>Videoaulas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="apostila.html">
+                        <i class="bi bi-file-earmark-text"></i>
+                        <span>Apostilas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="exercicio.html">
+                        <i class="bi bi-pencil-square"></i>
+                        <span>Exercícios</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="simulado.html">
+                        <i class="bi bi-controller"></i>
+                        <span>Simulados</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="acompanhamento.html">
+                        <i class="bi bi-trophy"></i>
+                        <span>Acompanhamento</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="config.html">
+                        <i class="bi bi-gear"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <!-- Main Content -->
+</nav>
+     
+   <!-- Main Content -->
     <div class="content" id="content">
         <div class="container-fluid">
             <div class="row mb-4">
@@ -404,17 +406,28 @@
                 <div class="col-12">
                     <h3 class="section-title animate-in">Últimas Videoaulas</h3>
                 </div>
+
+            <div class="alert alert-info alert-dismissible fade show animate-in" role="alert">
+                <i class="bi bi-info-circle-fill me-2"></i>
+                <strong>Importante:</strong> As Videoaulas são de Caráter <strong>Ilustrativo</strong> e Servem como
+                Material de Apoio para Seus estudos. Elas não Representam necessariamente o Conteúdo exato das
+                Provas do Encceja.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+            </div>
                 
             <div class="col-md-6 col-lg-4 animate-in delay-1">
                 <div class="video-aula-card">
                     <div class="video-thumbnail">
-                        <img src="https://i.ytimg.com/vi/afps1EWO05A/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB0K8bUHzGQnly1QX1i9sgJpGW8RQ" alt="Videoaula de Matemática">
+                         <video class="video-player" poster="Thumbs/Img1.png" muted>
+                            <source src="Videos/video_preview_h264 3.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
                         <button class="play-button"><i class="bi bi-play-fill"></i></button>
                     <div class="video-duration">15:30</div>
                         </div>
                     <div class="video-info">
-                        <h5 class="video-title">Funções Trigonométricas</h5>
-                    <div class="video-subtitle">Matemática - Nível Intermediário</div>
+                        <h5 class="video-title">Fórmulas Matemáticas com Símbolos, Números e Letras.</h5>
+                        <div class="video-subtitle">Matemática - Nível Intermediário</div>
                         <div class="mb-2">
                             <span class="category-badge category-matematica">Matemática</span>
                             <span class="category-badge category-secondary">Intermediário</span>
@@ -430,13 +443,16 @@
             <div class="col-md-6 col-lg-4 animate-in delay-2">
                 <div class="video-aula-card">
                     <div class="video-thumbnail">
-                        <img src="https://i.ytimg.com/vi/j-tBN48bITU/hqdefault.jpg" alt="Videoaula de Português">
+                        <video class="video-player" poster="Thumbs/Img2.png" muted>
+                            <source src="Videos/video_preview_h264 6.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
                         <button class="play-button"><i class="bi bi-play-fill"></i></button>
                     <div class="video-duration">22:45</div>
                         </div>
                     <div class="video-info">
-                        <h5 class="video-title">Gramática: Verbos Irregulares</h5>
-                    <div class="video-subtitle">Português - Nível Básico</div>
+                        <h5 class="video-title">Conjugação</h5>
+                        <div class="video-subtitle">Português - Nível Básico</div>
                         <div class="mb-2">
                             <span class="category-badge category-portugues">Português</span>
                             <span class="category-badge category-secondary">Básico</span>
@@ -452,13 +468,16 @@
             <div class="col-md-6 col-lg-4 animate-in delay-3">
                 <div class="video-aula-card">
                     <div class="video-thumbnail">
-                        <img src="https://i.ytimg.com/vi/9FuMCplPhH0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDElcJSo6sj8r8sFgpdv6aELKffzg" alt="Videoaula de História">
+                        <video class="video-player" poster="Thumbs/Img3.png" muted>
+                            <source src="Videos/video_preview_h264 7.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
                         <button class="play-button"><i class="bi bi-play-fill"></i></button>
                     <div class="video-duration">18:20</div>
                         </div>
                     <div class="video-info">
-                        <h5 class="video-title">Revolução Francesa</h5>
-                    <div class="video-subtitle">História - Nível Intermediário</div>
+                        <h5 class="video-title">História</h5>
+                        <div class="video-subtitle">História - Nível Intermediário</div>
                         <div class="mb-2">
                             <span class="category-badge category-historia">História</span>
                             <span class="category-badge category-secondary">Intermediário</span>
@@ -474,35 +493,41 @@
             <div class="col-md-6 col-lg-4 animate-in delay-4">
                 <div class="video-aula-card">
                     <div class="video-thumbnail">
-                        <img src="https://i.ytimg.com/vi/Q_1e23EcGE4/maxresdefault.jpg" alt="Videoaula de Geografia">
+                        <video class="video-player" poster="Thumbs/Img4.png" muted>
+                            <source src="Videos/video_preview_h264 8.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
                         <button class="play-button"><i class="bi bi-play-fill"></i></button>
                     <div class="video-duration">25:10</div>
                         </div>
                     <div class="video-info">
-                        <h5 class="video-title">Globalização</h5>
-                    <div class="video-subtitle">Geografia - Nível Básico</div>
+                        <h5 class="video-title">Geografia Física - Rotação da Terra</h5>
+                        <div class="video-subtitle">Geografia - Nível Básico</div>
                         <div class="mb-2">
                             <span class="category-badge category-geografia">Geografia</span>
                             <span class="category-badge category-secondary">Básico</span>
                         </div>
                     <div class="video-stats">
-                        <span><i class="bi bi-eye"></i> 2.8k visualizações</span>
-                        <span><i class="bi bi-calendar3"></i> 5 dias atrás</span>
+                            <span><i class="bi bi-eye"></i> 2.8k visualizações</span>
+                            <span><i class="bi bi-calendar3"></i> 5 dias atrás</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
                 
             <div class="col-md-6 col-lg-4 animate-in delay-1">
                 <div class="video-aula-card">
                     <div class="video-thumbnail">
-                        <img src="https://i.ytimg.com/vi/OfrVwoubQ1c/maxresdefault.jpg" alt="Videoaula de Ciências">
+                        <video class="video-player" poster="Thumbs/Img5.png" muted>
+                            <source src="Videos/video_preview_h264 5.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
                         <button class="play-button"><i class="bi bi-play-fill"></i></button>
                     <div class="video-duration">20:15</div>
                         </div>
                     <div class="video-info">
-                        <h5 class="video-title">Ciências da Natureza</h5>
-                    <div class="video-subtitle">Ciências - Nível Intermediário</div>
+                        <h5 class="video-title">Tabela Periódica.</h5>
+                        <div class="video-subtitle">Ciências - Nível Intermediário</div>
                         <div class="mb-2">
                             <span class="category-badge category-ciencias">Ciências</span>
                             <span class="category-badge category-secondary">Intermediário</span>
@@ -518,13 +543,16 @@
             <div class="col-md-6 col-lg-4 animate-in delay-2">
                 <div class="video-aula-card">
                     <div class="video-thumbnail">
-                        <img src="https://i.ytimg.com/vi/SVjMqR9diXk/sddefault.jpg" alt="Videoaula de Educação Física">
+                        <video class="video-player" poster="Thumbs/Img6.png" muted>
+                            <source src="Videos/video_preview_h264 9.mp4" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
                         <button class="play-button"><i class="bi bi-play-fill"></i></button>
                     <div class="video-duration">15:40</div>
                         </div>
                     <div class="video-info">
-                        <h5 class="video-title">Atletismo</h5>
-                    <div class="video-subtitle">Educação Física - Nível Básico</div>
+                        <h5 class="video-title">Exercícios Físicos</h5>
+                        <div class="video-subtitle">Educação Física - Nível Básico</div>
                         <div class="mb-2">
                             <span class="category-badge category-educacao-fisica">Educação Física</span>
                             <span class="category-badge category-secondary">Básico</span>
@@ -539,53 +567,51 @@
         </div>
             
         <!-- Recursos Recomendados -->
-            <div class="row mt-5">
+            <div class="row mt-4">
                 <div class="col-12">
-                    <h3 class="section-title animate-in">Recomendados para Você</h3>
+                    <h4 class="session-title">Recursos Recomendados</h4>
                 </div>
-                
-            <div class="col-md-6 col-lg-3 animate-in delay-1">
-                <div class="card">
-                    <img src="data:image/jpeg;base64,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" class="card-img-top" alt="Recurso recomendado">
-                <div class="card-body">
-                    <h5 class="card-title">Guia Completo do Encceja</h5>
-                    <p class="card-text">Tudo o que você precisa saber para se preparar para a prova.</p>
-                    <a href="guia.html" class="btn btn-primary">Acessar</a>
-                </div>
+    
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card resource-card" role="article" aria-labelledby="guia-titulo">
+                    <img src="Imagens/Img1.jpg" class="card-img-top" alt="Guia Completo do Encceja" loading="lazy" width="300" height="180">
+            <div class="card-body">
+                <h5 class="card-title" id="provas-titulo">Guia Completo do Encceja</h5>
+                <p class="card-text">Tudo o que você precisa saber para se preparar para a prova.</p>
+                <a href="guia.html" class="btn btn-primary" aria-label="Acessar o guia completo do Encceja">Acessar</a>
             </div>
         </div>
-                
-            <div class="col-md-6 col-lg-3 animate-in delay-2">
-                <div class="card">
-                    <img src="https://classifilagos.com.br/wp-content/uploads/2025/05/como-estudar-para-o-Encceja-1024x683.jpg" class="card-img-top" alt="Recurso recomendado">
-                <div class="card-body">
-                    <h5 class="card-title">Dicas de Estudo</h5>
-                    <p class="card-text">Métodos eficazes para otimizar seu tempo de estudo.</p>
-                    <a href="dicas.html" class="btn btn-primary">Acessar</a>
-                </div>
+    </div>
+    
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card resource-card" role="article" aria-labelledby="dicas-titulo">
+                    <img src="Imagens/Img2.jpeg" class="card-img-top" alt="Material de estudo com dicas para otimizar o aprendizado"loading="lazy" width="300" height="180">
+            <div class="card-body">
+                <h5 class="card-title" id="dicas-titulo">Dicas de Estudo</h5>
+                <p class="card-text">Métodos eficazes para otimizar seu tempo de estudo.</p>
+                <a href="dicas.html" class="btn btn-primary" aria-label="Acessar dicas de estudo para o Encceja">Acessar</a>
             </div>
         </div>
-                
-            <div class="col-md-6 col-lg-3 animate-in delay-3">
-                <div class="card">
-                    <img src="https://termine.com.br/wp-content/uploads/2020/03/20-05-07_provas_anteriores_te.jpg" class="card-img-top" alt="Recurso recomendado">
-                <div class="card-body">
-                    <h5 class="card-title">Provas Anteriores</h5>
-                    <p class="card-text">Analise as provas de anos anteriores para entender o formato.</p>
-                    <a href="provas.html" class="btn btn-primary">Acessar</a>
-                </div>
+    </div>
+    
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card resource-card" role="article" aria-labelledby="provas-titulo">
+                    <img src="Imagens/Img5.jpeg" class="card-img-top" alt="Acessar provas anteriores do Encceja" loading="lazy" width="300" height="180">
+            <div class="card-body">
+                <h5 class="card-title" id="videoaulas-titulo">Provas Anteriores</h5>
+                <p class="card-text">Analise as provas de anos anteriores para entender o formato.</p>
+                <a href="provas.html" class="btn btn-primary" aria-label="Acessar videoaulas do Encceja">Acessar</a>
             </div>
         </div>
-                
-            <div class="col-md-6 col-lg-3 animate-in delay-4">
-                <div class="card">
-                    <img src="https://wordpress-cms-revista-prod-assets.quero.space/legacy_posts/post_images/50647/0c9cdcab97e9fbc5ab6bc9e67a9fa7b562fe9232.png?1719261181" class="card-img-top" alt="Recurso recomendado">
-                <div class="card-body">
-                    <h5 class="card-title">Comunidade de Estudos</h5>
-                    <p class="card-text">Conecte-se com outros estudantes para trocar dicas e experiências.</p>
-                    <a href="comunidade.html" class="btn btn-primary">Acessar</a>
-                    </div>
-                </div>
+    </div>
+    
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card resource-card" role="article" aria-labelledby="comunidade-titulo">
+                    <img src="Imagens/Img6.jpeg" class="card-img-top" alt="Comunidade de estudos das matérias do Encceja" loading="lazy" width="300" height="180">
+            <div class="card-body">
+                <h5 class="card-title" id="apostilas-titulo">Comunidade de Estudos</h5>
+                <p class="card-text">Conecte-se com outros estudantes para trocar dicas e experiências.</p>
+                <a href="comunidade.html" class="btn btn-primary" aria-label="Acessar a comunidade de estudos do Encceja">Acessar</a>
             </div>
         </div>
     </div>
@@ -600,29 +626,32 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
             <div class="modal-body">
-                <div class="ratio ratio-16x9">
-                    <iframe id="videoFrame" src="" allowfullscreen></iframe>
-            </div>
-                <div class="mt-3">
-                    <h5 id="videoTitle"></h5>
-                    <p id="videoDescription" class="text-muted"></p>
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <button class="btn btn-sm btn-outline-primary me-2">
+                <div class="modal-video-container">
+                    <video id="modalVideo" controls>
+                        <source src="" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+            <div class="mt-3">
+                <h5 id="videoTitle"></h5>
+                <p id="videoDescription" class="text-muted"></p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                <button class="btn btn-sm btn-outline-primary me-2">
                     <i class="bi bi-hand-thumbs-up"></i> Curtir
                 </button>
-                    <button class="btn btn-sm btn-outline-primary me-2">
+                <button class="btn btn-sm btn-outline-primary me-2">
                     <i class="bi bi-share"></i> Compartilhar
                 </button>
             </div>
         <div>
-            <span class="badge bg-secondary me-2"><i class="bi bi-eye"></i> <span id="viewCount">0</span> visualizações</span>
-            <span class="badge bg-secondary"><i class="bi bi-calendar3"></i> <span id="videoDate">Data</span></span>
-                        </div>
-                    </div>
-                </div>
+                <span class="badge bg-secondary me-2"><i class="bi bi-eye"></i> <span id="viewCount">0</span> visualizações</span>
+                <span class="badge bg-secondary"><i class="bi bi-calendar3"></i> <span id="videoDate">Data</span></span>
             </div>
-        <div class="modal-footer">
+        </div>
+    </div>
+</div>
+            <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 <button type="button" class="btn btn-primary">Baixar Aulas</button>
             </div>
@@ -658,6 +687,20 @@
         </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="JS/videoaula.js"></script>
+    <script src="JS/videoaula.js"> </script>
+
+    <!-- Início do VLibras -->
+    <div vw="true" class="enabled">
+        <div vw-access-button="true" class="active"></div>
+        <div vw-plugin-wrapper="true">
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <!-- Fim do VLibras -->
+
 </body>
 </html>

@@ -263,70 +263,70 @@
         </div>
     </div>
     
-    <!-- Botão de toggle para mobile -->
-    <button class="mobile-toggle" id="mobileToggle">
-        <i class="bi bi-list"></i>
-    </button>
-    
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-            <div class="logo">
-                <img src="Logo 3.0.png" alt="Logo do Auxílio Encceja" class="logo-img">
-                <h4 class="logo-text">Auxílio Encceja</h4>
-                <button class="toggle-btn" id="toggleSidebar">
-                </button>
-            </div>
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2" href="index.html">
-                    <i class="bi bi-house-door"></i>
-                    <span>Página Inicial</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2" href="plataforma.html">
-                    <i class="bi bi-laptop"></i>
-                    <span>Plataforma</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2" href="videoaula.html">
-                    <i class="bi bi-camera-video me-2"></i>
-                    <span>Video aulas</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2" href="apostila.html">
-                    <i class="bi bi-file-earmark-text"></i>
-                    <span>Apostilas</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2" href="exercicio.html">
-                    <i class="bi bi-pencil-square"></i>
-                    <span>Exercícios</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2" href="simulado.html">
-                    <i class="bi bi-controller"></i>
-                    <span>Simulados</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2 active" href="acompanhamento.html">
-                    <i class="bi bi-trophy"></i>
-                    <span>Acompanhamento</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-primary w-100 mb-2" href="config.html">
-                    <i class="bi bi-gear"></i>
-                    <span>Configurações</span>
-                </a>
-            </li>
-        </ul>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="Logo 3.0.png" alt="Logo do Auxílio Encceja">
+                Auxílio Encceja
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <i class="bi bi-house-door"></i>
+                        <span>Página Inicial</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="plataforma.html">
+                        <i class="bi bi-laptop"></i>
+                        <span>Plataforma</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="videoaula.html">
+                        <i class="bi bi-camera-video"></i>
+                        <span>Videoaulas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="apostila.html">
+                        <i class="bi bi-file-earmark-text"></i>
+                        <span>Apostilas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="exercicio.html">
+                        <i class="bi bi-pencil-square"></i>
+                        <span>Exercícios</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="simulado.html">
+                        <i class="bi bi-controller"></i>
+                        <span>Simulados</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="acompanhamento.html">
+                        <i class="bi bi-trophy"></i>
+                        <span>Acompanhamento</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="config.html">
+                        <i class="bi bi-gear"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
+</nav>
     
     <!-- Main Content -->
     <div class="content" id="content">
@@ -376,7 +376,7 @@
     </div>
             
         <!-- Progress Chart -->
-           <div class="row mb-4">
+            <div class="row mb-4">
                 <div class="col-md-6 animate-in delay-1">
                     <div class="card">
                         <div class="card-header">
@@ -389,7 +389,6 @@
                                 </button>
                             </div>
                         </div>
-
                     <div class="card-body">
                         <div class="progress-chart">
                             <div class="progress-bar-custom">
@@ -431,7 +430,6 @@
                             </button>
                         </div>
                     </div>
-
                     <div class="card-body p-0">
                          <div class="study-plan-item">
                             <div class="study-plan-checkbox">
@@ -485,24 +483,18 @@
                 <div class="col-12">
                     <div class="card animate-in delay-3">
                         <div class="card-header">
-                            <div class="header-title">
-                                <i class="bi bi-journal-check"></i> Atividades Recentes
-                            </div>
-
-                    <div class="header-buttons">
-                            <div class="dropdown d-inline-block">
-                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="activityFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Filtrar
-                                </button>
-                            <ul class="dropdown-menu" aria-labelledby="activityFilterDropdown">
-                                <li><a class="dropdown-item" href="#">Todas as atividades</a></li>
-                                <li><a class="dropdown-item" href="#">Concluídas</a></li>
-                                <li><a class="dropdown-item" href="#">Pendentes</a></li>
-                            </ul>
-                        </div>
+                            <i class="bi bi-journal-check"></i> Atividades Recentes
+                        <div class="dropdown d-inline-block ms-auto">
+                            <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="activityFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Filtrar
+                            </button>
+                        <ul class="dropdown-menu" aria-labelledby="activityFilterDropdown">
+                            <li><a class="dropdown-item" href="#">Todas as atividades</a></li>
+                            <li><a class="dropdown-item" href="#">Concluídas</a></li>
+                            <li><a class="dropdown-item" href="#">Pendentes</a></li>
+                        </ul>
                     </div>
                 </div>
-
             <div class="card-body p-0">
                 <div class="table-responsive">
                     <table class="table table-hover activity-table mb-0">
@@ -750,111 +742,124 @@
             </div>
         </footer>
     
-    <!-- Modal de Detalhes da Atividade -->
-    <div class="modal fade" id="activityDetailsModal" tabindex="-1" aria-labelledby="activityDetailsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="activityDetailsModalLabel">Detalhes da Atividade</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+   <!-- Modal de Detalhes da Atividade -->
+<div class="modal fade" id="activityDetailsModal" tabindex="-1" aria-labelledby="activityDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="activityDetailsModalLabel">Detalhes da Atividade</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
         <div class="modal-body">
             <div class="row">
                 <div class="col-md-6">
-            <div class="detail-item">
-                <div class="detail-label">Tipo de Atividade</div>
-                    <div class="detail-value" id="activityType">Simulado</div>
-                </div>
-            <div class="detail-item">
-                    <div class="detail-label">Data</div>
-                    <div class="detail-value" id="activityDate">Hoje, 10:30</div>
-                </div>
-            <div class="detail-item">
-                    <div class="detail-label">Duração</div>
-                    <div class="detail-value" id="activityDuration">45 minutos</div>
-                </div>
-            <div class="detail-item">
-                    <div class="detail-label">Status</div>
-                    <div class="detail-value" id="activityStatus"><span class="badge bg-success">Concluída</span></div>
-                </div>
-            </div>
-        <div class="col-md-6">
-            <div class="detail-item">
-                    <div class="detail-label">Notas</div>
-                    <div class="detail-value">
-                <div class="progress mb-2">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                    <span>78% - Bem acima da média esperada!</span>
-                </div>
-            </div>
                     <div class="detail-item">
+                        <div class="detail-label">Tipo de Atividade</div>
+                        <div class="detail-value" id="activityType">Simulado</div>
+                    </div>
+
+                <div class="detail-item">
+                        <div class="detail-label">Data</div>
+                        <div class="detail-value" id="activityDate">Hoje, 10:30</div>
+                    </div>
+                <div class="detail-item">
+                        <div class="detail-label">Duração</div>
+                        <div class="detail-value" id="activityDuration">45 minutos</div>
+                    </div>
+                <div class="detail-item">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value" id="activityStatus"><span class="badge bg-success">Concluída</span></div>
+                    </div>
+                <div class="detail-item">
+                        <div class="detail-label">Descrição</div>
+                        <div class="detail-value" id="activityDescription">Descrição da atividade</div>
+                    </div>
+                </div>
+
+            <div class="col-md-6">
+                <div class="detail-item">
+                    <div class="detail-label">Notas</div>
+                        <div class="detail-value" id="activityScore">
+                            <div class="progress mb-2">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <span>78% - Bem acima da média esperada!</span>
+                        </div>
+                    </div>
+                    
+                <div class="detail-item">
                     <div class="detail-label">Áreas Fortes</div>
-                    <div class="detail-value">
+                    <div class="detail-value" id="strongAreas">
                         <span class="badge bg-primary me-1">Funções</span>
                         <span class="badge bg-primary me-1">Geometria</span>
                         <span class="badge bg-primary">Estatística</span>
                     </div>
                 </div>
-                    <div class="detail-item">
+
+                <div class="detail-item">
                     <div class="detail-label">Áreas a Melhorar</div>
-                    <div class="detail-value">
+                    <div class="detail-value" id="weakAreas">
                         <span class="badge bg-warning me-1">Álgebra</span>
                         <span class="badge bg-warning">Trigonometria</span>
                     </div>
                 </div>
             </div>
         </div>
-                <div class="row mt-4">
-                    <div class="col-12">
-                        <h5>Questões Resolvidas</h5>
+                
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h5>Conteúdos Abordados</h5>
+                    <div id="activityContents">
+                        <ul class="list-group">
+                        <!-- Conteúdos serão inseridos aqui via JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h5>Recursos Utilizados</h5>
+                    <div id="activityResources">
+                        <ul class="list-group">
+                        <!-- Recursos serão inseridos aqui via JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h5>Questões Resolvidas</h5>
                     <div class="table-responsive">
-                            <table class="table table-bordered">
+                        <table class="table table-bordered">
                             <thead>
-                        <tr>
-                            <th>Número</th>
-                            <th>Questão</th>
-                            <th>Resposta</th>
-                            <th>Correto</th>
-                        </tr>
-                    </thead>
-                <tbody>
-                         <tr>
-                            <td>1</td>
-                            <td>Qual é o valor de x na equação 2x + 5 = 15?</td>
-                            <td>A) 5</td>
-                            <td><i class="bi bi-check-circle text-success"></i></td>
-                        </tr>
-                         <tr>
-                            <td>2</td>
-                            <td>Qual é a área de um triângulo com base 6cm e altura 4cm?</td>
-                            <td>B) 12cm²</td>
-                            <td><i class="bi bi-check-circle text-success"></i></td>
-                        </tr>
-                         <tr>
-                            <td>3</td>
-                            <td>Qual é o valor de sen(30°)?</td>
-                            <td>C) 0.5</td>
-                            <td><i class="bi bi-check-circle text-success"></i></td>
-                        </tr>
-                         <tr>
-                            <td>4</td>
-                            <td>Qual é o valor de cos(45°)?</td>
-                            <td>A) 0.707</td>
-                            <td><i class="bi bi-x-circle text-danger"></i></td>
-                        </tr>
-                         <tr>
-                            <td>5</td>
-                            <td>Qual é a equação da reta que passa pelos pontos (1,2) e (3,4)?</td>
-                            <td>B) y = x + 1</td>
-                            <td><i class="bi bi-x-circle text-danger"></i></td>
-                        </tr>
-                    </tbody>
-                </table>
+                                <tr>
+                                    <th>Número</th>
+                                    <th>Questão</th>
+                                    <th>Resposta</th>
+                                    <th>Correto</th>
+                                </tr>
+                            </thead>
+                            <tbody id="questionsTableBody">
+                            <!-- Questões serão inseridas aqui via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h5>Recomendações de Estudo</h5>
+                    <div id="studyRecommendations">
+                        <!-- Recomendações serão inseridas aqui via JavaScript -->
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 <button type="button" class="btn btn-primary">Ver Exercícios Relacionados</button>
@@ -913,6 +918,19 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="JS/acompanhamento.js"></script>
+
+    <!-- Início do VLibras -->
+    <div vw="true" class="enabled">
+        <div vw-access-button="true" class="active"></div>
+        <div vw-plugin-wrapper="true">
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <!-- Fim do VLibras -->
 
 </body>
 </html>

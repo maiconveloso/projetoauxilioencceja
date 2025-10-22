@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auxílio Encceja - Biblioteca Digital </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #D3D3D3;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #34495e);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .search-bar {
+            display: flex;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-bar button {
+            background: #3a7bd5;
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-bar button:hover {
+            background: #2a5db0;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .category {
+            background: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-weight: 500;
+        }
+
+        .category:hover, .category.active {
+            background: #3a7bd5;
+            color: white;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .book-cover {
+            height: 180px;
+            background: linear-gradient(135deg, #34495e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .book-info {
+            padding: 1.5rem;
+        }
+
+        .book-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .book-description {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .book-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #95a5a6;
+        }
+
+        .book-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.7rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #3a7bd5;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2a5db0;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #3a7bd5;
+            border: 1px solid #3a7bd5;
+        }
+
+        .btn-outline:hover {
+            background: #f0f7ff;
+        }
+
+        .pdf-badge {
+            background: #e74c3c;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #95a5a6;
+        }
+
+        @media (max-width: 768px) {
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .categories {
+                gap: 0.5rem;
+            }
+            
+            .category {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+                border-radius: 10px;
+            }
+            
+            .search-bar input {
+                border-radius: 10px 10px 0 0;
+            }
+            
+            .search-bar button {
+                border-radius: 0 0 10px 10px;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-book-open"></i>
+        </div>
+        <h1>Biblioteca Digital Encceja </h1>
+        <p class="subtitle">Recursos para o seu preparo</p>
+    </header>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar por livros, matérias ou tópicos...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="categories">
+            <div class="category active">Todos</div>
+            <div class="category">Matemática</div>
+            <div class="category">Português</div>
+            <div class="category">Ciências</div>
+            <div class="category">Geografia</div>
+            <div class="category">História</div>
+        </div>
+
+        <div class="books-grid">
+            <!-- Guia Completo de Matemática -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-square-root-alt"></i>
+                </div>
+                <div class="book-info">
+                    <h3 class="book-title">Guia Completo de Matemática</h3>
+                    <div class="book-meta">
+                        <span><i class="fas fa-star"></i> 4.8</span>
+                        <span><i class="fas fa-download"></i> 2.3k</span>
+                    </div>
+                    <p class="book-description">Conteúdo completo para dominar todas as áreas da matemática cobradas no ENCEJA.</p>
+                    <div class="book-actions">
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Baixar PDF
+                        </a>
+                        <span class="pdf-badge"><i class="fas fa-file-pdf"></i> PDF</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manual de Português -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-language"></i>
+                </div>
+                <div class="book-info">
+                    <h3 class="book-title">Manual de Português</h3>
+                    <div class="book-meta">
+                        <span><i class="fas fa-star"></i> 4.7</span>
+                        <span><i class="fas fa-download"></i> 1.9k</span>
+                    </div>
+                    <p class="book-description">Gramática, interpretação de texto e redação para você se destacar na prova.</p>
+                    <div class="book-actions">
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Baixar PDF
+                        </a>
+                        <span class="pdf-badge"><i class="fas fa-file-pdf"></i> PDF</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enciclopédia de Ciências -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <div class="book-info">
+                    <h3 class="book-title">Enciclopédia de Ciências</h3>
+                    <div class="book-meta">
+                        <span><i class="fas fa-star"></i> 4.9</span>
+                        <span><i class="fas fa-download"></i> 3.1k</span>
+                    </div>
+                    <p class="book-description">Todo o conteúdo de Física, Química e Biologia em um único material.</p>
+                    <div class="book-actions">
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Baixar PDF
+                        </a>
+                        <span class="pdf-badge"><i class="fas fa-file-pdf"></i> PDF</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Atlas Geográfico Digital -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <div class="book-info">
+                    <h3 class="book-title">Atlas Geográfico Digital</h3>
+                    <div class="book-meta">
+                        <span><i class="fas fa-star"></i> 4.6</span>
+                        <span><i class="fas fa-download"></i> 1.7k</span>
+                    </div>
+                    <p class="book-description">Mapas detalhados e conceitos geográficos para entender o Brasil e o mundo.</p>
+                    <div class="book-actions">
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Baixar PDF
+                        </a>
+                        <span class="pdf-badge"><i class="fas fa-file-pdf"></i> PDF</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- História do Brasil Completa -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <div class="book-info">
+                    <h3 class="book-title">História do Brasil Completa</h3>
+                    <div class="book-meta">
+                        <span><i class="fas fa-star"></i> 4.8</span>
+                        <span><i class="fas fa-download"></i> 2.5k</span>
+                    </div>
+                    <p class="book-description">Do período colonial aos dias atuais, tudo o que você precisa saber.</p>
+                    <div class="book-actions">
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Baixar PDF
+                        </a>
+                        <span class="pdf-badge"><i class="fas fa-file-pdf"></i> PDF</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <h2>Biblioteca Digital Encceja</h2>
+            </div>
+            <div class="footer-links">
+                <a href="#">Início</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+                <a href="suporte.html">Suporte</a>
+                <a href="termos.html">Termos de Uso</a>
+            </div>
+            <p class="copyright">© 2025 Auxílio Encceja - Biblioteca Digital. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Efeito de hover nas categorias
+        const categories = document.querySelectorAll('.category');
+        
+        categories.forEach(category => {
+            category.addEventListener('click', () => {
+                // Remove a classe active de todas as categorias
+                categories.forEach(c => c.classList.remove('active'));
+                // Adiciona a classe active na categoria clicada
+                category.classList.add('active');
+            });
+        });
+
+        // Simulação de download dos PDFs
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const bookTitle = this.closest('.book-card').querySelector('.book-title').textContent;
+                
+                // Criar uma notificação
+                const notification = document.createElement('div');
+                notification.style.position = 'fixed';
+                notification.style.bottom = '20px';
+                notification.style.right = '20px';
+                notification.style.background = '#3a7bd5';
+                notification.style.color = 'white';
+                notification.style.padding = '1rem';
+                notification.style.borderRadius = '5px';
+                notification.style.boxShadow = '0 3px 10px rgba(0,0,0,0.2)';
+                notification.style.zIndex = '1000';
+                notification.style.transition = 'all 0.3s ease';
+                notification.innerHTML = `<i class="fas fa-check-circle"></i> Download do "${bookTitle}" iniciado!`;
+                
+                document.body.appendChild(notification);
+                
+                // Remover a notificação após 3 segundos
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
+            });
+        });
+
+        // Efeito de digitação no placeholder da busca
+        const searchInput = document.querySelector('.search-bar input');
+        const placeholderText = "Buscar por livros, matérias ou tópicos...";
+        let index = 0;
+        
+        function typePlaceholder() {
+            if (index < placeholderText.length) {
+                searchInput.setAttribute('placeholder', placeholderText.substring(0, index + 1) + '|');
+                index++;
+                setTimeout(typePlaceholder, 100);
+            } else {
+                setTimeout(() => {
+                    searchInput.setAttribute('placeholder', placeholderText);
+                    setTimeout(() => {
+                        index = 0;
+                        typePlaceholder();
+                    }, 2000);
+                }, 500);
+            }
+        }
+        
+        // Iniciar o efeito de digitação
+        setTimeout(typePlaceholder, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafios Encceja - Geografia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #D3D3D3 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(90deg, #34495e);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        .timer-container {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            height: 40px;
+            margin: 15px auto;
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .progress-container {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            height: 8px;
+            margin: 15px auto;
+            width: 80%;
+        }
+        .progress-bar {
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            height: 100%;
+            width: 30%;
+            transition: width 0.5s ease;
+        }
+        .challenge-container {
+            padding: 30px;
+        }
+        .question {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .option {
+            background-color: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            color: #495057;
+        }
+        .option:hover {
+            border-color: #3498db;
+            background-color: #e3f2fd;
+        }
+        .option.selected {
+            border-color: #3498db;
+            background-color: #e3f2fd;
+            font-weight: 500;
+        }
+        .option.correct {
+            border-color: #2ecc71;
+            background-color: #d5f5e3;
+        }
+        .option.incorrect {
+            border-color: #e74c3c;
+            background-color: #fadbd8;
+        }
+        .feedback {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+            display: none;
+        }
+        .feedback.correct {
+            background-color: #d5f5e3;
+            border-left: 5px solid #2ecc71;
+            color: #27ae60;
+        }
+        .feedback.incorrect {
+            background-color: #fadbd8;
+            border-left: 5px solid #e74c3c;
+            color: #c0392b;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .btn {
+            background: linear-gradient(90deg, #0a53be);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        .btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .btn-secondary {
+            background: linear-gradient(90deg, #95a5a6, #7f8c8d);
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+           background-color: white;
+           padding: 60px;
+           border-radius: 15px;
+           max-width: 500px;
+           text-align: center;
+           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .modal p {
+            color: #34495e;
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+        .modal .btn {
+            margin: 45px;
+        }
+        .timer-warning {
+            color: #e74c3c;
+            font-weight: bold;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .question {
+                font-size: 18px;
+            }
+            
+            .option {
+                padding: 12px;
+                font-size: 15px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Desafios Encceja - Geografia</h1>
+            <p>Teste seus conhecimentos sobre os biomas brasileiros</p>
+            <div class="timer-container" id="timer">30:00</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+        
+        <div class="challenge-container">
+            <div class="question" id="question">
+                Qual bioma brasileiro é conhecido como o "pulmão do mundo"?
+            </div>
+            
+            <div class="options" id="options">
+                <div class="option" data-value="a">a) Amazônia</div>
+                <div class="option" data-value="b">b) Cerrado</div>
+                <div class="option" data-value="c">c) Mata Atlântica</div>
+                <div class="option" data-value="d">d) Pantanal</div>
+            </div>
+            
+            <div class="feedback" id="feedback"></div>
+            
+            <div class="navigation">
+                <button class="btn btn-secondary" id="prevBtn" disabled>
+                    <i class="fas fa-arrow-left"></i> Anterior
+                </button>
+                <button class="btn" id="checkBtn">
+                    <i class="fas fa-check"></i> Verificar Resposta
+                </button>
+                <button class="btn" id="nextBtn" disabled>
+                    Próximo <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            
+            <div class="stats">
+                <span id="currentQuestion">Questão 1 de 10</span>
+                <span id="score">Acertos: 0/0</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="completionModal">
+        <div class="modal-content">
+            <h2>Parabéns!</h2>
+            <p>Você completou todos os desafios!</p>
+            <p>Sua pontuação final: <span id="finalScore">0/10</span></p>
+            <button class="btn" id="restartBtn">
+                <i class="fas fa-redo"></i> Refazer Desafios
+            </button>
+        </div>
+    </div>
+    
+    <div class="modal" id="timeUpModal">
+        <div class="modal-content">
+            <h2>Tempo Esgotado!</h2>
+            <p>O tempo de 30 minutos terminou.</p>
+            <p>Sua pontuação final: <span id="timeUpScore">0/10</span></p>
+            <button class="btn" id="restartBtnTimeUp">
+                <i class="fas fa-redo"></i> Refazer Desafios
+            </button>
+        </div>
+    </div>
+    <script>
+        // Dados dos desafios - Perguntas sobre Biomas Brasileiros
+        const challenges = [
+            {
+                question: "Qual bioma brasileiro é conhecido como o 'pulmão do mundo'?",
+                options: [
+                    "Amazônia",
+                    "Cerrado",
+                    "Mata Atlântica",
+                    "Pantanal"
+                ],
+                correctAnswer: "a",
+                feedback: "A Amazônia é conhecida como o 'pulmão do mundo' devido à sua vasta extensão florestal que produz oxigênio e absorve dióxido de carbono."
+            },
+            {
+                question: "Qual bioma possui a maior biodiversidade do planeta?",
+                options: [
+                    "Caatinga",
+                    "Pampa",
+                    "Amazônia",
+                    "Cerrado"
+                ],
+                correctAnswer: "c",
+                feedback: "A Amazônia abriga a maior biodiversidade do planeta, com mais de 10% das espécies conhecidas do mundo."
+            },
+            {
+                question: "O bioma Pampa está predominantemente localizado em qual região do Brasil?",
+                options: [
+                    "Norte",
+                    "Nordeste",
+                    "Centro-Oeste",
+                    "Sul"
+                ],
+                correctAnswer: "d",
+                feedback: "O Pampa está localizado principalmente no Rio Grande do Sul, com pequenas extensões em Santa Catarina e Paraná."
+            },
+            {
+                question: "Qual bioma é caracterizado por vegetação de cerrado, com árvores de tronco retorcido e casca grossa?",
+                options: [
+                    "Amazônia",
+                    "Cerrado",
+                    "Mata Atlântica",
+                    "Caatinga"
+                ],
+                correctAnswer: "b",
+                feedback: "O Cerrado possui vegetação típica com árvores retorcidas, casca grossa e troncos tortuosos."
+            },
+            {
+                question: "O Pantanal é o maior complexo de 湿地 (wetlands) do mundo e está localizado principalmente em qual região?",
+                options: [
+                    "Norte",
+                    "Nordeste",
+                    "Centro-Oeste",
+                    "Sul"
+                ],
+                correctAnswer: "c",
+                feedback: "O Pantanal está localizado principalmente no Mato Grosso do Sul, com partes no Mato Grosso, Paraná e Bolívia."
+            },
+            {
+                question: "Qual bioma é conhecido por suas formações de dunas e restingas?",
+                options: [
+                    "Caatinga",
+                    "Cerrado",
+                    "Mata Atlântica",
+                    "Pampa"
+                ],
+                correctAnswer: "c",
+                feedback: "A Mata Atlântica possui formações costeiras como dunas, restingas e manguezais."
+            },
+            {
+                question: "O bioma Mata Atlântica é considerado um dos mais ameaçados do mundo e está concentrado principalmente em qual região?",
+                options: [
+                    "Norte",
+                    "Nordeste",
+                    "Sudeste e Sul",
+                    "Centro-Oeste"
+                ],
+                correctAnswer: "c",
+                feedback: "A Mata Atlântica original está concentrada principalmente no Sudeste e Sul do Brasil, com apenas 7% de sua cobertura original remanescente."
+            },
+            {
+                question: "Qual bioma é caracterizado por um clima semiárido, com vegetação de caatinga e cactos?",
+                options: [
+                    "Amazônia",
+                    "Cerrado",
+                    "Caatinga",
+                    "Pampa"
+                ],
+                correctAnswer: "c",
+                feedback: "A Caatinga é o único bioma exclusivamente brasileiro, com vegetação adaptada ao clima semiárido, incluindo cactos e plantas espinhosas."
+            },
+            {
+                question: "O bioma Amazônia está distribuído principalmente em quais estados brasileiros?",
+                options: [
+                    "São Paulo, Rio de Janeiro, Minas Gerais",
+                    "Amazonas, Pará, Acre, Rondônia",
+                    "Rio Grande do Sul, Santa Catarina, Paraná",
+                    "Mato Grosso, Mato Grosso do Sul, Goiás"
+                ],
+                correctAnswer: "b",
+                feedback: "A Amazônia está distribuída principalmente nos estados do Amazonas, Pará, Acre, Rondônia, Roraima, Amapá e parte do Tocantins."
+            },
+            {
+                question: "Qual bioma brasileiro é conhecido por suas formações de campos e coxilhas?",
+                options: [
+                    "Caatinga",
+                    "Cerrado",
+                    "Pampa",
+                    "Pantanal"
+                ],
+                correctAnswer: "c",
+                feedback: "O Pampa é caracterizado por extensas formações de campos, coxilhas e campos de altitude."
+            }
+        ];
+        
+        // Variáveis de estado
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+        let selectedOption = null;
+        let timerInterval;
+        let timeLeft = 30 * 60; // 30 minutos em segundos
+        
+        // Elementos DOM
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const feedbackEl = document.getElementById('feedback');
+        const progressBarEl = document.getElementById('progressBar');
+        const currentQuestionEl = document.getElementById('currentQuestion');
+        const scoreEl = document.getElementById('score');
+        const prevBtn = document.getElementById('prevBtn');
+        const checkBtn = document.getElementById('checkBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const completionModal = document.getElementById('completionModal');
+        const timeUpModal = document.getElementById('timeUpModal');
+        const finalScoreEl = document.getElementById('finalScore');
+        const timeUpScoreEl = document.getElementById('timeUpScore');
+        const timerEl = document.getElementById('timer');
+        
+        // Inicialização
+        loadQuestion();
+        startTimer();
+        
+        // Carregar pergunta atual
+        function loadQuestion() {
+            const challenge = challenges[currentQuestion];
+            questionEl.textContent = challenge.question;
+            
+            // Limpar opções anteriores
+            optionsEl.innerHTML = '';
+            
+            // Adicionar opções
+            challenge.options.forEach((option, index) => {
+                const optionEl = document.createElement('div');
+                optionEl.classList.add('option');
+                optionEl.setAttribute('data-value', String.fromCharCode(97 + index)); // a, b, c, d
+                optionEl.textContent = `${String.fromCharCode(97 + index)}) ${option}`;
+                optionEl.addEventListener('click', selectOption);
+                optionsEl.appendChild(optionEl);
+            });
+            
+            // Resetar estado
+            answered = false;
+            selectedOption = null;
+            feedbackEl.style.display = 'none';
+            checkBtn.disabled = false;
+            nextBtn.disabled = true;
+            
+            // Atualizar UI
+            updateUI();
+        }
+        
+        // Selecionar opção
+        function selectOption(e) {
+            if (answered) return;
+            
+            // Remover seleção anterior
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Selecionar nova opção
+            e.target.classList.add('selected');
+            selectedOption = e.target.getAttribute('data-value');
+        }
+        
+        // Verificar resposta
+        function checkAnswer() {
+            if (!selectedOption) return;
+            
+            answered = true;
+            checkBtn.disabled = true;
+            nextBtn.disabled = false;
+            
+            const challenge = challenges[currentQuestion];
+            const options = document.querySelectorAll('.option');
+            
+            options.forEach(option => {
+                const value = option.getAttribute('data-value');
+                
+                if (value === challenge.correctAnswer) {
+                    option.classList.add('correct');
+                }
+                
+                if (value === selectedOption && selectedOption !== challenge.correctAnswer) {
+                    option.classList.add('incorrect');
+                }
+            });
+            
+            // Exibir feedback
+            if (selectedOption === challenge.correctAnswer) {
+                feedbackEl.classList.add('correct');
+                feedbackEl.classList.remove('incorrect');
+                feedbackEl.innerHTML = `<strong>Correto!</strong> ${challenge.feedback}`;
+                score++;
+            } else {
+                feedbackEl.classList.add('incorrect');
+                feedbackEl.classList.remove('correct');
+                feedbackEl.innerHTML = `<strong>Incorreto!</strong> ${challenge.feedback}`;
+            }
+            
+            feedbackEl.style.display = 'block';
+            updateUI();
+        }
+        
+        // Próxima pergunta
+        function nextQuestion() {
+            if (currentQuestion < challenges.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                showCompletionModal();
+            }
+        }
+        
+        // Pergunta anterior
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        }
+        
+        // Atualizar UI
+        function updateUI() {
+            // Atualizar progresso
+            const progress = ((currentQuestion + 1) / challenges.length) * 100;
+            progressBarEl.style.width = `${progress}%`;
+            
+            // Atualizar informações
+            currentQuestionEl.textContent = `Questão ${currentQuestion + 1} de ${challenges.length}`;
+            scoreEl.textContent = `Acertos: ${score}/${currentQuestion + (answered ? 1 : 0)}`;
+            
+            // Botões de navegação
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.disabled = !answered;
+        }
+        
+        // Mostrar modal de conclusão
+        function showCompletionModal() {
+            finalScoreEl.textContent = `${score}/${challenges.length}`;
+            completionModal.style.display = 'flex';
+            clearInterval(timerInterval);
+        }
+        
+        // Mostrar modal de tempo esgotado
+        function showTimeUpModal() {
+            timeUpScoreEl.textContent = `${score}/${challenges.length}`;
+            timeUpModal.style.display = 'flex';
+            clearInterval(timerInterval);
+        }
+        
+        // Reiniciar desafios
+        function restartChallenges() {
+            currentQuestion = 0;
+            score = 0;
+            timeLeft = 30 * 60;
+            loadQuestion();
+            completionModal.style.display = 'none';
+            timeUpModal.style.display = 'none';
+            startTimer();
+        }
+        
+        // Cronômetro
+        function startTimer() {
+            updateTimerDisplay();
+            
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    showTimeUpModal();
+                    return;
+                }
+                
+                updateTimerDisplay();
+            }, 1000);
+        }
+        
+        // Atualizar display do cronômetro
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            
+            timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Adicionar classe de alerta quando faltar 2 minutos
+            if (timeLeft <= 120) {
+                timerEl.classList.add('timer-warning');
+            } else {
+                timerEl.classList.remove('timer-warning');
+            }
+        }
+        
+        // Event listeners
+        checkBtn.addEventListener('click', checkAnswer);
+        nextBtn.addEventListener('click', nextQuestion);
+        prevBtn.addEventListener('click', prevQuestion);
+        restartBtn.addEventListener('click', restartChallenges);
+        restartBtnTimeUp.addEventListener('click', restartChallenges);
+    </script>
+</body>
+</html>
