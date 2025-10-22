@@ -1,14 +1,11 @@
-* {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
+ body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
             background: #f5f5f5;
-            padding-bottom: 80px; /* Espaço para o rodapé fixo */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s, color 0.3s; /* Adiciona transição suave para mudanças de cor */
         }
 
          /* Modo de alto contraste */
@@ -137,84 +134,67 @@
             color: #ffffff;
         }
 
-        /* Menu Moderno */
-        .sidebar {
+        /* Estilos da navbar */
+        .navbar {
             background-color: #34495e;
-            color: white;
-            height: 100vh;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
             position: fixed;
-            padding-top: 20px;
-            transition: all 0.3s;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
         }
         
-        .sidebar.collapsed {
-            margin-left: -250px;
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            color: white !important;
+            font-weight: 600;
         }
         
-        .sidebar .nav-link {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 5px;
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            margin: 0 5px;
             border-radius: 5px;
-            padding: 12px 15px;
+            padding: 8px 15px !important;
             transition: all 0.3s;
             display: flex;
             align-items: center;
         }
         
-        .sidebar .nav-link:hover {
+        .navbar-nav .nav-link:hover {
             background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            transform: translateX(5px);
+            color: white !important;
         }
         
-        .sidebar .nav-link.active {
-            background-color: #34495e;
-            color: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        .navbar-nav .nav-link.active {
+            background-color: #0a58ca;
+            color: white !important;
         }
         
-        .sidebar .nav-link i {
-            margin-right: 15px;
-            font-size: 1.2rem;
-            width: 20px;
-            text-align: center;
-        }
-
-        .sidebar .btn {
-            text-align: left;
-            justify-content: flex-start !important;
+        .navbar-nav .nav-link i {
+            margin-right: 8px;
+            font-size: 1.1rem;
         }
         
-        .logo {
-            text-align: center;
-            padding: 20px 0;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-        }
-
-        .logo .logo-img {
-            height: 60px;
-            margin-bottom: 10px;
-        }
-
-        .logo .logo-text {
-            margin: 0;
-            color: white;
-            font-weight: 600;
-            display: block;
-        }
-
-        .logo .toggle-btn {
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            background: transparent;
+        .navbar-toggler {
             border: none;
             color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .content {
+            padding: 20px;
+            transition: all 0.3s;
         }
 
         .btn-primary {
@@ -253,13 +233,11 @@
         
         /* Estilos do rodapé */
         .footer {
-            position: fixed;
-            bottom: 0;
             width: 100%;
             background-color: #34495e;
             color: white;
             padding: 15px 0;
-            z-index: 1000;
+            margin-top: auto; /* Importante para empurrar o rodapé para o final */
         }
         
         .social-icons a {
@@ -374,15 +352,15 @@
 
         /* Container principal */
         .main-container {
-            min-height: 100vh;
+            flex: 1; /* Faz o container principal ocupar todo o espaço disponível */
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            padding: 100px 20px 30px; /* Espaço para navbar e rodapé */
             position: relative;
             z-index: 1;
-            margin-left: 250px; 
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto; /* Centraliza o conteúdo */
         }
 
         /* Hero Section */
@@ -390,8 +368,44 @@
             text-align: center;
             color: #0a2a4a; 
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 0 auto 40px;
             animation: fadeInUp 1s ease-out;
+        }
+
+        /* Estilos do botão de Entrar */
+        .btn-enter {
+            position: fixed;
+            top: 10px;
+            right: 15px;
+            z-index: 1001;
+            background-color: darkblue; 
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+            
+        .btn-enter:hover {
+            background-color: darkblue; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+            
+        .btn-enter i {
+            margin-right: 8px;
+        }
+            
+        /* Classe para ocultar o botão */
+        .btn-enter.hidden {
+            opacity: 0;
+            transform: translateY(-10px);
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
         }
 
         @keyframes fadeInUp {
@@ -459,7 +473,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin: 60px 0;
+            margin: 20px 0 60px;
             width: 100%;
         }
 
@@ -477,6 +491,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
+            height: 100%; /* Garante que todos os cards tenham a mesma altura */
         }
 
         .info-card:nth-child(1) { animation-delay: 0.2s; }
@@ -533,6 +548,9 @@
             padding: 20px 30px 40px;
             flex: 1;
             background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card-text {
@@ -548,9 +566,8 @@
             backdrop-filter: blur(5px);
             border-radius: 30px;
             padding: 60px 40px;
-            margin: 40px 0;
+            margin: 20px 0;
             width: 100%;
-            max-width: 1000px;
             border: 1px solid rgba(0, 120, 255, 0.2);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
         }
@@ -701,19 +718,7 @@
             }
             
             .main-container {
-                margin-left: 0;
-            }
-            
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-            
-            .sidebar.collapsed {
-                margin-left: 0;
-                height: 60px;
-                overflow: hidden;
+                padding: 100px 15px 30px;
             }
         }
 
@@ -1301,5 +1306,583 @@
             to {
                 transform: scale(4);
                 opacity: 0;
+            }
+        }
+        
+        /* Media Queries para Responsividade - Versão Otimizada */
+
+        /* Desktops Grandes (1200px e acima) */
+        @media (min-width: 1200px) {
+            .main-container {
+                max-width: 1400px;
+                padding: 100px 30px 30px;
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.7rem;
+            }
+
+            .info-cards {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .benefits-section {
+                padding: 70px 50px;
+            }
+        }
+
+        /* Desktops Médios (992px a 1199px) */
+        @media (max-width: 1199px) {
+            .main-container {
+                max-width: 960px;
+            }
+
+            .hero-title {
+                font-size: 3.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .info-cards {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+
+            .benefits-section {
+                padding: 60px 40px;
+            }
+
+            .navbar-brand img {
+                height: 35px;
+            }
+
+            .navbar-nav .nav-link {
+                padding: 8px 12px !important;
+            }
+        }
+
+        /* Tablets (768px a 991px) */
+        @media (max-width: 991px) {
+            .main-container {
+                padding: 90px 20px 30px;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .info-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .benefits-section {
+                padding: 50px 30px;
+            }
+
+            .benefits-title {
+                font-size: 2.2rem;
+            }
+
+            .navbar-brand img {
+                height: 30px;
+            }
+
+            .navbar-nav .nav-link {
+                padding: 6px 10px !important;
+                font-size: 0.9rem;
+            }
+
+            .navbar-nav .nav-link i {
+                margin-right: 5px;
+                font-size: 1rem;
+            }
+
+            .card-header {
+                padding: 25px 25px 15px;
+            }
+
+            .card-body {
+                padding: 15px 25px 30px;
+            }
+
+            .footer-links a {
+                margin: 0 10px;
+                font-size: 0.9rem;
+            }
+
+            .social-icons a {
+                font-size: 1.3rem;
+                margin: 0 8px;
+            }
+        }
+
+        /* Smartphones Grandes (576px a 767px) */
+        @media (max-width: 767px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .main-container {
+                padding: 80px 15px 30px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .benefits-section {
+                padding: 40px 20px;
+            }
+
+            .benefits-title {
+                font-size: 2rem;
+            }
+
+            .benefits-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .navbar {
+                padding: 0.3rem 0.5rem;
+            }
+
+            .navbar-brand img {
+                height: 25px;
+            }
+
+            .navbar-collapse {
+                background-color: #34495e;
+                padding: 10px;
+                border-radius: 0 0 10px 10px;
+            }
+
+            .navbar-nav .nav-link {
+                padding: 8px 10px !important;
+                margin: 2px 0;
+                border-radius: 5px;
+            }
+
+            .card-header {
+                padding: 20px 20px 15px;
+            }
+
+            .card-body {
+                padding: 15px 20px 25px;
+            }
+
+            .card-icon {
+                font-size: 2.5rem;
+            }
+
+            .card-title {
+                font-size: 1.3rem;
+            }
+
+            .card-text {
+                font-size: 0.95rem;
+            }
+
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 1.1rem;
+            }
+
+            .footer {
+                padding: 15px 0;
+            }
+
+            .footer-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+
+            .footer-links a {
+                margin: 0 8px;
+                font-size: 0.85rem;
+            }
+
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+
+            .social-icons a {
+                font-size: 1.2rem;
+                margin: 0 5px;
+            }
+
+            .copyright {
+                font-size: 0.8rem;
+            }
+
+            .btn-accessibility {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .accessibility-modal-content {
+                width: 95%;
+                max-height: 90vh;
+            }
+
+            .accessibility-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smartphones Pequenos (480px a 575px) */
+        @media (max-width: 575px) {
+            body {
+                padding-top: 60px;
+            }
+
+            .main-container {
+                padding: 70px 10px 20px;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .benefits-section {
+                padding: 30px 15px;
+            }
+
+            .benefits-title {
+                font-size: 1.8rem;
+            }
+
+            .benefits-subtitle {
+                font-size: 1rem;
+            }
+
+            .navbar {
+                padding: 0.2rem 0.3rem;
+            }
+
+            .navbar-brand img {
+                height: 22px;
+            }
+
+            .navbar-brand {
+                font-size: 0.9rem;
+            }
+
+            .card-header {
+                padding: 15px 15px 10px;
+            }
+
+            .card-body {
+                padding: 12px 15px 20px;
+            }
+
+            .card-icon {
+                font-size: 2.2rem;
+            }
+
+            .card-title {
+                font-size: 1.2rem;
+            }
+
+            .card-text {
+                font-size: 0.9rem;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            .benefit-item {
+                padding: 12px 0;
+                font-size: 0.95rem;
+            }
+
+            .footer-links a {
+                margin: 0 5px;
+                font-size: 0.8rem;
+            }
+
+            .social-icons a {
+                font-size: 1.1rem;
+                margin: 0 3px;
+            }
+
+            .copyright {
+                font-size: 0.75rem;
+            }
+
+            .btn-accessibility {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        /* Smartphones Muito Pequenos (até 479px) */
+        @media (max-width: 479px) {
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .benefits-section {
+                padding: 25px 10px;
+            }
+
+            .benefits-title {
+                font-size: 1.6rem;
+            }
+
+            .benefits-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .navbar-brand img {
+                height: 20px;
+            }
+
+            .card-header {
+                padding: 12px 12px 8px;
+            }
+
+            .card-body {
+                padding: 10px 12px 15px;
+            }
+
+            .card-icon {
+                font-size: 2rem;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+            }
+
+            .card-text {
+                font-size: 0.85rem;
+            }
+
+            .cta-button {
+                padding: 10px 25px;
+                font-size: 0.95rem;
+            }
+
+            .benefit-item {
+                padding: 10px 0;
+                font-size: 0.9rem;
+            }
+
+            .benefit-icon {
+                font-size: 1rem;
+                margin-right: 10px;
+            }
+
+            .footer-links a {
+                margin: 0 3px;
+                font-size: 0.75rem;
+            }
+
+            .social-icons a {
+                font-size: 1rem;
+                margin: 0 2px;
+            }
+
+            .copyright {
+                font-size: 0.7rem;
+            }
+
+            .btn-accessibility {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .accessibility-modal-header {
+                padding: 12px 15px;
+            }
+
+            .accessibility-modal-title {
+                font-size: 1.2rem;
+            }
+
+            .accessibility-modal-body {
+                padding: 15px;
+            }
+
+            .accessibility-option {
+                padding: 10px;
+            }
+
+            .accessibility-option-title {
+                font-size: 0.9rem;
+            }
+
+            .accessibility-option-description {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Orientação Paisagem para Dispositivos Móveis */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .main-container {
+                padding-top: 60px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+                margin-bottom: 10px;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+
+            .info-cards {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+                margin-bottom: 30px;
+            }
+
+            .card-header {
+                padding: 10px;
+            }
+
+            .card-body {
+                padding: 10px;
+            }
+
+            .card-icon {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+            }
+
+            .card-title {
+                font-size: 1rem;
+            }
+
+            .card-text {
+                font-size: 0.8rem;
+            }
+
+            .benefits-section {
+                padding: 20px 15px;
+            }
+
+            .benefits-title {
+                font-size: 1.5rem;
+                margin-bottom: 5px;
+            }
+
+            .benefits-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+
+            .benefit-item {
+                padding: 8px 0;
+                font-size: 0.85rem;
+            }
+
+            .cta-button {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+                margin-top: 20px;
+            }
+
+            .footer {
+                padding: 8px 0;
+            }
+
+            .btn-accessibility {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+                bottom: 5px;
+                right: 5px;
+            }
+        }
+
+        /* Impressão */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 12pt;
+            }
+
+            .navbar,
+            .footer,
+            .btn-accessibility,
+            .animated-bg,
+            .white-animated-bg,
+            #particles-canvas {
+                display: none !important;
+            }
+
+            .main-container {
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+
+            .info-cards {
+                break-inside: avoid;
+            }
+
+            .benefits-section {
+                break-inside: avoid;
+            }
+
+            .card {
+                border: 1px solid #ddd !important;
+                break-inside: avoid;
+                margin-bottom: 15px;
+            }
+
+            .card-header {
+                background: #f5f5f5 !important;
+                color: black !important;
+            }
+
+            .cta-button {
+                display: none;
             }
         }
