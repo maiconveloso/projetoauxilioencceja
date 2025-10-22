@@ -1,44 +1,16 @@
-// Função para toggle do sidebar
-            document.getElementById('toggleSidebar').addEventListener('click', function() {
-                const sidebar = document.getElementById('sidebar');
-                const content = document.getElementById('content');
-                const toggleIcon = this.querySelector('i');
+ // Gerar QR Code quando a página carregar
+            document.addEventListener('DOMContentLoaded', function() {
+                // Obtém a URL atual da página
+                const currentUrl = window.location.href;
                 
-                sidebar.classList.toggle('collapsed');
-                content.classList.toggle('expanded');
-                
-                if (sidebar.classList.contains('collapsed')) {
-                    toggleIcon.classList.remove('bi-chevron-left');
-                    toggleIcon.classList.add('bi-chevron-right');
-                } else {
-                    toggleIcon.classList.remove('bi-chevron-right');
-                    toggleIcon.classList.add('bi-chevron-left');
-                }
-            });
-            
-            // Função para toggle do sidebar em mobile
-            document.getElementById('mobileToggle').addEventListener('click', function() {
-                const sidebar = document.getElementById('sidebar');
-                const content = document.getElementById('content');
-                
-                sidebar.classList.toggle('expanded');
-                content.classList.toggle('shifted');
-            });
-            
-            // Adiciona funcionalidade de clique nos itens do menu
-            document.querySelectorAll('.sidebar .nav-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.querySelectorAll('.sidebar .nav-link').forEach(item => {
-                        item.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                    
-                    // No mobile, fecha o sidebar após selecionar um item
-                    if (window.innerWidth < 992) {
-                        document.getElementById('sidebar').classList.remove('expanded');
-                        document.getElementById('content').classList.remove('shifted');
-                    }
+                // Cria o QR Code
+                new QRCode(document.getElementById("qrcode"), {
+                    text: currentUrl,
+                    width: 100,
+                    height: 100,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
                 });
             });
             
@@ -87,41 +59,6 @@
                     // Aqui você pode adicionar o redirecionamento para as redes sociais
                     // Exemplo: window.open('https://facebook.com', '_blank');
                 });
-            });
-            
-            // Responsividade
-            function handleResize() {
-                const sidebar = document.getElementById('sidebar');
-                const content = document.getElementById('content');
-                
-                if (window.innerWidth < 992) {
-                    sidebar.classList.remove('collapsed');
-                    content.classList.remove('expanded');
-                    document.getElementById('toggleSidebar').style.display = 'none';
-                } else {
-                    document.getElementById('toggleSidebar').style.display = 'block';
-                }
-            }
-            
-            window.addEventListener('resize', handleResize);
-            handleResize(); // Chama na inicialização
-            
-            // Adiciona funcionalidade ao botão de Entrar
-            document.getElementById('loginBtn').addEventListener('click', function() {
-                window.location.href = 'escolha.html';
-            });
-            
-            // Função para detectar o scroll e ocultar/mostrar o botão de login
-            window.addEventListener('scroll', function() {
-                const loginBtn = document.getElementById('loginBtn');
-                const scrollPosition = window.scrollY;
-                
-                // Se o usuário rolar mais de 100px para baixo, oculta o botão
-                if (scrollPosition > 100) {
-                    loginBtn.classList.add('hidden');
-                } else {
-                    loginBtn.classList.remove('hidden');
-                }
             });
             
             // Função para detectar o scroll e mostrar o perfil
@@ -248,6 +185,22 @@
             const fontSizeValue = document.getElementById('fontSizeValue');
             const lineHeightValue = document.getElementById('lineHeightValue');
             
+            // Variável para armazenar o tipo de daltonismo selecionado
+            let selectedColorBlindType = 'normal';
+            
+            // Adiciona evento de clique às opções de daltonismo
+            document.querySelectorAll('.accessibility-option[id$="Option"]').forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove a classe active de todas as opções
+                    document.querySelectorAll('.accessibility-option[id$="Option"]').forEach(opt => {
+                        opt.classList.remove('active');
+                    });
+                    
+                    // Adiciona a classe active à opção clicada
+                    this.classList.add('active');     
+                });
+            });
+            
             // Atualizar valores dos ranges
             fontSizeRange.addEventListener('input', function() {
                 const values = ['Pequeno', 'Médio', 'Grande', 'Muito Grande'];
@@ -330,9 +283,19 @@
                     document.body.classList.add('line-height-large');
                 }
                 
+                // Aplicar filtro de daltonismo
+                document.body.classList.remove('protanopia', 'deuteranopia', 'tritanopia', 'achromatopsia');
+                if (selectedColorBlindType !== 'normal') {
+                    document.body.classList.add(selectedColorBlindType);
+                }
+                
                 // Mostrar toast de confirmação
                 const toastMessage = document.getElementById('accessibilityToastMessage');
-                toastMessage.textContent = 'Configurações de acessibilidade salvas com sucesso!';
+                if (selectedColorBlindType !== 'normal') {
+                    toastMessage.textContent = `Configurações de acessibilidade salvas com sucesso! Modo de daltonismo: ${selectedColorBlindType}`;
+                } else {
+                    toastMessage.textContent = 'Configurações de acessibilidade salvas com sucesso!';
+                }
                 
                 const accessibilityToast = new bootstrap.Toast(document.getElementById('accessibilityToast'));
                 accessibilityToast.show();
@@ -354,6 +317,13 @@
                 fontSizeRange.value = 2;
                 lineHeightRange.value = 2;
                 
+                // Resetar tipo de daltonismo
+                selectedColorBlindType = 'normal';
+                document.querySelectorAll('.accessibility-option[id$="Option"]').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                document.getElementById('normalVisionOption').classList.add('active');
+                
                 // Atualizar valores dos ranges
                 fontSizeValue.textContent = 'Médio';
                 lineHeightValue.textContent = 'Médio';
@@ -371,7 +341,7 @@
                     'font-size-xlarge',
                     'line-height-normal', 
                     'line-height-medium', 
-                    'line-height-large'
+                    'line-height-large',
                 );
                 
                 // Resetar transições

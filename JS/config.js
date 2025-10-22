@@ -1,31 +1,4 @@
-// Função para toggle do sidebar
-        document.getElementById('toggleSidebar').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            const content = document.getElementById('content');
-            const toggleIcon = this.querySelector('i');
-            
-            sidebar.classList.toggle('collapsed');
-            content.classList.toggle('expanded');
-            
-            if (sidebar.classList.contains('collapsed')) {
-                toggleIcon.classList.remove('bi-chevron-left');
-                toggleIcon.classList.add('bi-chevron-right');
-            } else {
-                toggleIcon.classList.remove('bi-chevron-right');
-                toggleIcon.classList.add('bi-chevron-left');
-            }
-        });
-        
-        // Função para toggle do sidebar em mobile
-        document.getElementById('mobileToggle').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            const content = document.getElementById('content');
-            
-            sidebar.classList.toggle('expanded');
-            content.classList.toggle('shifted');
-        });
-        
-        // Função para exibir toast de notificação
+// Função para exibir toast de notificação
         function showToast(message, type = 'success') {
             const toastContainer = document.querySelector('.toast-container');
             
@@ -122,22 +95,3 @@
                 targetPane.classList.add(delayClass);
             });
         });
-        
-        // Responsividade
-        function handleResize() {
-            const sidebar = document.getElementById('sidebar');
-            const content = document.getElementById('content');
-            
-            if (window.innerWidth < 992) {
-                sidebar.classList.remove('collapsed');
-                content.classList.remove('expanded');
-                sidebar.classList.remove('expanded');
-                content.classList.remove('shifted');
-                document.getElementById('mobileToggle').style.display = 'none';
-            } else {
-                document.getElementById('mobileToggle').style.display = 'block';
-            }
-        }
-        
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Chama na inicialização

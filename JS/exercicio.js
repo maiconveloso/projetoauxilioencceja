@@ -1,31 +1,4 @@
-// Função para o sidebar
-            document.getElementById('toggleSidebar').addEventListener('click', function() {
-                const sidebar = document.getElementById('sidebar');
-                const content = document.getElementById('content');
-                const icon = this.querySelector('i');
-                
-                sidebar.classList.toggle('collapsed');
-                content.classList.toggle('expanded');
-                
-                if (sidebar.classList.contains('collapsed')) {
-                    icon.classList.remove('bi-chevron-left');
-                    icon.classList.add('bi-chevron-right');
-                } else {
-                    icon.classList.remove('bi-chevron-right');
-                    icon.classList.add('bi-chevron-left');
-                }
-            });
-            
-            // Função para o botão mobile
-            document.getElementById('mobileToggle').addEventListener('click', function() {
-                const sidebar = document.getElementById('sidebar');
-                const content = document.getElementById('content');
-                
-                sidebar.classList.toggle('expanded');
-                content.classList.toggle('shifted');
-            });
-            
-            // Adiciona funcionalidade de filtro às caixas de matérias
+// Adiciona funcionalidade de filtro às caixas de matérias
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     // Remove active de todos os botões no mesmo grupo

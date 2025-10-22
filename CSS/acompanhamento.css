@@ -1,7 +1,9 @@
-        body {
+    body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #D3D3D3;
             margin-bottom: 80px; /* Espaço para o rodapé */
+            padding-top: 80px; /* Espaço para a navbar */
+            transition: background-color 0.3s, color 0.3s; /* Adiciona transição suave para mudanças de cor */
         }
         
          /* Modo de alto contraste */
@@ -130,94 +132,67 @@
             color: #ffffff;
         }
 
-        /* Menu Moderno */
-        .sidebar {
+        /* Estilos da navbar */
+        .navbar {
             background-color: #34495e;
-            color: white;
-            height: 100vh;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 1rem;
             position: fixed;
-            padding-top: 20px;
-            transition: all 0.3s;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
         }
-        
-        .sidebar.collapsed {
-            margin-left: -250px;
+            
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            color: white !important;
+            font-weight: 600;
         }
-        
-        .sidebar .nav-link {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 5px;
+            
+        .navbar-brand img {
+            height: 40px;
+            margin-right: 10px;
+        }
+            
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            margin: 0 5px;
             border-radius: 5px;
-            padding: 12px 15px;
+            padding: 8px 15px !important;
             transition: all 0.3s;
             display: flex;
             align-items: center;
         }
-        
-        .sidebar .nav-link:hover {
+            
+        .navbar-nav .nav-link:hover {
             background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            transform: translateX(5px);
+            color: white !important;
         }
-        
-        .sidebar .nav-link.active {
-            background-color: #34495e;
-            color: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            
+        .navbar-nav .nav-link.active {
+            background-color: #0a58ca;
+            color: white !important;
         }
-        
-        .sidebar .nav-link i {
-            margin-right: 15px;
-            font-size: 1.2rem;
-            width: 20px;
-            text-align: center;
+            
+        .navbar-nav .nav-link i {
+            margin-right: 8px;
+            font-size: 1.1rem;
         }
-
-        .sidebar .btn {
-            text-align: left;
-            justify-content: flex-start !important;
-        }
-        
-        .logo {
-            text-align: center;
-            padding: 20px 0;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-        }
-
-        .logo .logo-img {
-            height: 60px;
-            margin-bottom: 10px;
-        }
-
-        .logo .logo-text {
-            margin: 0;
-            color: white;
-            font-weight: 600;
-            display: block;
-        }
-
-        .logo .toggle-btn {
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            background: transparent;
+            
+        .navbar-toggler {
             border: none;
             color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
         }
-        
+            
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+            
         .content {
-            margin-left: 250px;
             padding: 20px;
             transition: all 0.3s;
-        }
-        
-        .content.expanded {
-            margin-left: 0;
         }
         
         .card {
@@ -392,36 +367,6 @@
             color: rgba(255, 255, 255, 0.7);
         }
         
-        /* Responsividade */
-        @media (max-width: 992px) {
-            .sidebar {
-                width: 250px;
-                margin-left: -250px;
-            }
-            
-            .sidebar.expanded {
-                margin-left: 0;
-            }
-            
-            .content {
-                margin-left: 0;
-            }
-            
-            .content.shifted {
-                margin-left: 250px;
-            }
-            
-            .mobile-toggle {
-                display: block !important;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .content.shifted {
-                margin-left: 0;
-            }
-        }
-        
         .mobile-toggle {
             display: none;
             position: fixed;
@@ -588,7 +533,6 @@
         .calendar-day.has-activity.has-pending::after {
             background-color: #f39c12;
         }
-
         
         /* Estilos para o modal de detalhes */
         .modal-header {
@@ -1226,3 +1170,677 @@
                 outline: 3px solid #28a745 !important;
                 outline-offset: 2px !important;
             }
+
+        /* Media Queries para Responsividade */
+        @media (max-width: 1200px) {
+            .performance-summary {
+                flex-wrap: wrap;
+            }
+            
+            .performance-item {
+                flex: 0 0 48%;
+                margin-bottom: 10px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .navbar-brand img {
+                height: 30px;
+            }
+            
+            .navbar-nav .nav-link {
+                padding: 6px 10px !important;
+                font-size: 0.9rem;
+            }
+            
+            .navbar-nav .nav-link i {
+                margin-right: 5px;
+                font-size: 1rem;
+            }
+            
+            .user-profile {
+                padding: 6px 10px;
+            }
+            
+            .user-avatar {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .user-name {
+                font-size: 0.8rem;
+            }
+            
+            .user-role {
+                font-size: 0.7rem;
+            }
+            
+            .countdown-item {
+                min-width: 60px;
+                padding: 8px;
+            }
+            
+            .countdown-value {
+                font-size: 1.5rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.7rem;
+            }
+            
+            .footer {
+                padding: 10px 0;
+            }
+            
+            .footer-links a {
+                margin: 0 8px;
+                font-size: 0.8rem;
+            }
+            
+            .social-icons a {
+                font-size: 1.2rem;
+                margin: 0 5px;
+            }
+            
+            .copyright {
+                font-size: 0.8rem;
+            }
+            
+            .calendar-grid {
+                font-size: 0.9rem;
+            }
+            
+            .calendar-day {
+                min-height: 50px;
+                padding: 8px 5px;
+            }
+            
+            .activity-table {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+                margin-bottom: 70px;
+            }
+            
+            .navbar {
+                padding: 0.3rem 0.5rem;
+            }
+            
+            .navbar-brand img {
+                height: 25px;
+            }
+            
+            .navbar-collapse {
+                background-color: #34495e;
+                padding: 10px;
+                border-radius: 0 0 10px 10px;
+            }
+            
+            .navbar-nav .nav-link {
+                padding: 8px 10px !important;
+                margin: 2px 0;
+                border-radius: 5px;
+            }
+            
+            .navbar-nav .nav-link span {
+                display: inline;
+            }
+            
+            .user-profile {
+                top: 15px;
+                right: 10px;
+                padding: 5px 10px;
+            }
+            
+            .user-avatar {
+                width: 25px;
+                height: 25px;
+            }
+            
+            .user-info {
+                display: none;
+            }
+            
+            .user-menu {
+                top: 40px;
+                width: 180px;
+            }
+            
+            .popover {
+                width: 200px;
+                top: 40px;
+                right: 10px;
+            }
+            
+            .welcome-banner {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .welcome-banner h2 {
+                font-size: 1.5rem;
+            }
+            
+            .welcome-banner p {
+                font-size: 0.9rem;
+            }
+            
+            .countdown-container {
+                gap: 10px;
+                margin: 15px 0;
+            }
+            
+            .countdown-item {
+                min-width: 50px;
+                padding: 5px;
+            }
+            
+            .countdown-value {
+                font-size: 1.2rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.6rem;
+            }
+            
+            .btn-primary, .btn-outline-primary {
+                padding: 6px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .search-input {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .card {
+                margin-bottom: 15px;
+            }
+            
+            .card-header {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .card-header i {
+                font-size: 1rem;
+                margin-right: 5px;
+            }
+            
+            .resource-item {
+                padding: 10px 8px;
+            }
+            
+            .resource-item i {
+                font-size: 1rem;
+                margin-right: 8px;
+            }
+            
+            .resource-item .title {
+                font-size: 0.85rem;
+            }
+            
+            .resource-item .badge {
+                font-size: 0.7rem;
+            }
+            
+            .card-footer {
+                padding: 8px;
+            }
+            
+            .btn-sm {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .session-title {
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+            }
+            
+            .btn-accessibility {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                bottom: 80px;
+            }
+            
+            .footer {
+                padding: 8px 0;
+            }
+            
+            .footer-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-bottom: 5px;
+            }
+            
+            .footer-links a {
+                margin: 0 5px;
+                font-size: 0.75rem;
+            }
+            
+            .social-icons {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 5px;
+            }
+            
+            .social-icons a {
+                font-size: 1rem;
+                margin: 0 3px;
+            }
+            
+            .copyright {
+                font-size: 0.7rem;
+            }
+            
+            .accessibility-modal-content {
+                width: 95%;
+                max-height: 95vh;
+            }
+            
+            .accessibility-modal-header {
+                padding: 15px;
+            }
+            
+            .accessibility-modal-title {
+                font-size: 1.2rem;
+            }
+            
+            .accessibility-modal-body {
+                padding: 15px;
+            }
+            
+            .accessibility-section-title {
+                font-size: 1rem;
+            }
+            
+            .accessibility-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .accessibility-option {
+                padding: 12px;
+            }
+            
+            .accessibility-option-header {
+                margin-bottom: 5px;
+            }
+            
+            .accessibility-option-icon {
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+                font-size: 1rem;
+            }
+            
+            .accessibility-option-title {
+                font-size: 0.9rem;
+            }
+            
+            .accessibility-option-description {
+                font-size: 0.8rem;
+                margin-left: 40px;
+            }
+            
+            .accessibility-toggle {
+                margin-left: 40px;
+            }
+            
+            .accessibility-range-control {
+                margin-left: 40px;
+            }
+            
+            .accessibility-range-label {
+                font-size: 0.8rem;
+            }
+            
+            .accessibility-modal-footer {
+                padding: 12px 15px;
+            }
+            
+            .accessibility-reset-btn, .accessibility-save-btn {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+            
+            /* Melhorias para o resumo de desempenho */
+            .performance-summary {
+                flex-direction: column;
+            }
+            
+            .performance-item {
+                flex: 0 0 100%;
+                margin-bottom: 10px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            .performance-item p:first-child {
+                flex: 1;
+                text-align: left;
+                margin-bottom: 0;
+            }
+            
+            .performance-item h3 {
+                flex: 1;
+                text-align: center;
+                margin: 0;
+            }
+            
+            .performance-item p:last-child {
+                flex: 1;
+                text-align: right;
+                margin-bottom: 0;
+            }
+            
+            /* Melhorias para o calendário */
+            .calendar-grid {
+                font-size: 0.8rem;
+            }
+            
+            .calendar-day {
+                min-height: 40px;
+                padding: 5px 2px;
+            }
+            
+            /* Melhorias para a tabela de atividades */
+            .activity-table {
+                font-size: 0.8rem;
+            }
+            
+            .activity-table th, .activity-table td {
+                padding: 5px;
+            }
+            
+            /* Melhorias para o gráfico de progresso */
+            .progress-chart {
+                height: 200px;
+            }
+            
+            .progress-label {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            body {
+                padding-top: 60px;
+                margin-bottom: 60px;
+            }
+            
+            .navbar {
+                padding: 0.2rem 0.3rem;
+            }
+            
+            .navbar-brand img {
+                height: 20px;
+            }
+            
+            .navbar-brand {
+                font-size: 0.9rem;
+            }
+            
+            .navbar-toggler {
+                padding: 2px 5px;
+                font-size: 0.8rem;
+            }
+            
+            .user-profile {
+                top: 12px;
+                right: 5px;
+                padding: 3px 5px;
+            }
+            
+            .user-avatar {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .welcome-banner {
+                padding: 10px;
+                margin-bottom: 15px;
+            }
+            
+            .welcome-banner h2 {
+                font-size: 1.2rem;
+            }
+            
+            .welcome-banner p {
+                font-size: 0.8rem;
+            }
+            
+            .countdown-container {
+                gap: 5px;
+                margin: 10px 0;
+            }
+            
+            .countdown-item {
+                min-width: 40px;
+                padding: 3px;
+            }
+            
+            .countdown-value {
+                font-size: 1rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.5rem;
+            }
+            
+            .btn-primary, .btn-outline-primary {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .search-input {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+            
+            .card {
+                margin-bottom: 10px;
+            }
+            
+            .card-header {
+                padding: 8px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .card-header i {
+                font-size: 0.9rem;
+                margin-right: 3px;
+            }
+            
+            .resource-item {
+                padding: 8px 5px;
+            }
+            
+            .resource-item i {
+                font-size: 0.9rem;
+                margin-right: 5px;
+            }
+            
+            .resource-item .title {
+                font-size: 0.8rem;
+            }
+            
+            .resource-item .badge {
+                font-size: 0.6rem;
+            }
+            
+            .card-footer {
+                padding: 5px;
+            }
+            
+            .btn-sm {
+                padding: 4px 8px;
+                font-size: 0.7rem;
+            }
+            
+            .session-title {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+            
+            .btn-accessibility {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+                bottom: 45px;
+            }
+            
+            .footer {
+                padding: 5px 0;
+            }
+            
+            .footer-links a {
+                margin: 0 3px;
+                font-size: 0.7rem;
+            }
+            
+            .social-icons a {
+                font-size: 0.9rem;
+                margin: 0 2px;
+            }
+            
+            .copyright {
+                font-size: 0.6rem;
+            }
+            
+            .challenge-card {
+                margin-bottom: 10px;
+            }
+            
+            .challenge-card-header {
+                padding: 8px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .challenge-difficulty {
+                padding: 2px 5px;
+                font-size: 0.6rem;
+            }
+            
+            .challenge-stats {
+                font-size: 0.7rem;
+            }
+            
+            .toast {
+                left: 10px;
+                right: 10px;
+                bottom: 70px;
+            }
+            
+            /* Melhorias para o resumo de desempenho */
+            .performance-item {
+                padding: 10px;
+            }
+            
+            .performance-item h3 {
+                font-size: 1.5rem;
+            }
+            
+            /* Melhorias para o calendário */
+            .calendar-grid {
+                font-size: 0.7rem;
+            }
+            
+            .calendar-day {
+                min-height: 30px;
+                padding: 3px 1px;
+            }
+            
+            /* Melhorias para a tabela de atividades */
+            .activity-table {
+                font-size: 0.7rem;
+            }
+            
+            .activity-table th, .activity-table td {
+                padding: 3px;
+            }
+            
+            /* Melhorias para o gráfico de progresso */
+            .progress-chart {
+                height: 150px;
+            }
+            
+            .progress-label {
+                font-size: 1rem;
+            }
+            
+            /* Melhorias para o modal de acessibilidade */
+            .accessibility-modal-content {
+                width: 98%;
+                max-height: 98vh;
+            }
+            
+            .accessibility-modal-header {
+                padding: 10px;
+            }
+            
+            .accessibility-modal-title {
+                font-size: 1rem;
+            }
+            
+            .accessibility-modal-body {
+                padding: 10px;
+            }
+            
+            .accessibility-section-title {
+                font-size: 0.9rem;
+            }
+            
+            .accessibility-option {
+                padding: 8px;
+            }
+            
+            .accessibility-option-header {
+                margin-bottom: 3px;
+            }
+            
+            .accessibility-option-icon {
+                width: 25px;
+                height: 25px;
+                margin-right: 8px;
+                font-size: 0.9rem;
+            }
+            
+            .accessibility-option-title {
+                font-size: 0.8rem;
+            }
+            
+            .accessibility-option-description {
+                font-size: 0.7rem;
+                margin-left: 33px;
+            }
+            
+            .accessibility-toggle {
+                margin-left: 33px;
+            }
+            
+            .accessibility-range-control {
+                margin-left: 33px;
+            }
+            
+            .accessibility-range-label {
+                font-size: 0.7rem;
+            }
+            
+            .accessibility-modal-footer {
+                padding: 8px 10px;
+            }
+            
+            .accessibility-reset-btn, .accessibility-save-btn {
+                padding: 6px 10px;
+                font-size: 0.7rem;
+            }
+        }

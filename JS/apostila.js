@@ -1,50 +1,4 @@
-// Função para toggle do menu lateral
-        document.getElementById('toggleSidebar').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            const content = document.getElementById('content');
-            const toggleIcon = this.querySelector('i');
-            
-            sidebar.classList.toggle('collapsed');
-            content.classList.toggle('expanded');
-            
-            if (sidebar.classList.contains('collapsed')) {
-                toggleIcon.classList.remove('bi-chevron-left');
-                toggleIcon.classList.add('bi-chevron-right');
-            } else {
-                toggleIcon.classList.remove('bi-chevron-right');
-                toggleIcon.classList.add('bi-chevron-left');
-            }
-        });
-        
-        // Função para toggle do menu em dispositivos móveis
-        document.getElementById('mobileToggle').addEventListener('click', function() {
-            const sidebar = document.getElementById('sidebar');
-            const content = document.getElementById('content');
-            
-            sidebar.classList.toggle('expanded');
-            content.classList.toggle('shifted');
-        });
-        
-        // Função para responsividade
-        function handleResize() {
-            const sidebar = document.getElementById('sidebar');
-            const content = document.getElementById('content');
-            
-            if (window.innerWidth < 992) {
-                sidebar.classList.remove('collapsed');
-                content.classList.remove('expanded');
-                sidebar.classList.remove('expanded');
-                content.classList.remove('shifted');
-                document.getElementById('toggleSidebar').style.display = 'none';
-            } else {
-                document.getElementById('toggleSidebar').style.display = 'block';
-            }
-        }
-        
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Chama na inicialização
-        
-        // Adiciona funcionalidade aos itens de apostilas
+// Adiciona funcionalidade aos itens de apostilas
         document.querySelectorAll('.resource-item').forEach(item => {
             item.addEventListener('click', function() {
                 const title = this.querySelector('.title').textContent;
@@ -54,6 +8,19 @@
                 const toastContainer = document.createElement('div');
                 toastContainer.className = 'position-fixed bottom-0 end-0 p-3';
                 toastContainer.style.zIndex = '11';
+                
+                toastContainer.innerHTML = `
+                    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                            <i class="bi bi-file-earmark-pdf text-danger me-2"></i>
+                            <strong class="me-auto">Apostila</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            Você está acessando a apostila "${title}" (${level})
+                        </div>
+                    </div>
+                `;
                 
                 document.body.appendChild(toastContainer);
                 
@@ -79,25 +46,6 @@
                 // Exemplo: window.open('https://www.linkedin.com', '_blank');
             });
         });
-        
-        // Responsividade
-        function handleResize() {
-            const sidebar = document.getElementById('sidebar');
-            const content = document.getElementById('content');
-            
-            if (window.innerWidth < 992) {
-                sidebar.classList.remove('collapsed');
-                content.classList.remove('expanded');
-                sidebar.classList.remove('expanded');
-                content.classList.remove('shifted');
-                document.getElementById('toggleSidebar').style.display = 'none';
-            } else {
-                document.getElementById('toggleSidebar').style.display = 'block';
-            }
-        }
-        
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Chama na inicialização
         
         // Adiciona funcionalidade aos links de detalhes das apostilas
         document.querySelectorAll('[data-bs-target="#apostilaDetailsModal"]').forEach(link => {

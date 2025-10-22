@@ -1,67 +1,4 @@
-// Função para toggle do sidebar
-        document.getElementById('toggleSidebar').addEventListener('click', function() {
-        const sidebar = document.getElementById('sidebar');
-        const content = document.getElementById('content');
-        const toggleIcon = this.querySelector('i');
-    
-        sidebar.classList.toggle('collapsed');
-        content.classList.toggle('expanded');
-    
-        if (sidebar.classList.contains('collapsed')) {
-            toggleIcon.classList.remove('bi-chevron-right');
-            toggleIcon.classList.add('bi-chevron-left');
-            
-        } else {
-            toggleIcon.classList.remove('bi-chevron-left');
-            toggleIcon.classList.add('bi-chevron-right');
-        }
-    });
-
-        // Função para toggle do sidebar em mobile
-        document.getElementById('mobileToggle').addEventListener('click', function() {
-        const sidebar = document.getElementById('sidebar');
-        const content = document.getElementById('content');
-    
-        sidebar.classList.toggle('expanded');
-        content.classList.toggle('shifted');
-    });
-
-        // Adiciona funcionalidade de clique nos itens do menu
-        document.querySelectorAll('.sidebar .nav-link').forEach(item => {
-        item.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelectorAll('.sidebar .nav-link').forEach(item => {
-        item.classList.remove('active');
-    });
-        this.classList.add('active');
-        
-        // No desktop, fechar o sidebar ao selecionar um item
-        if (window.innerWidth < 992) {
-            document.getElementById('sidebar').classList.remove('expanded');
-            document.getElementById('content').classList.remove('shifted');
-        }
-    });
-});
-
-        // Atualização
-        function handleResize() {
-        const sidebar = document.getElementById('sidebar');
-        const content = document.getElementById('content');
-    
-        if (window.innerWidth < 992) {
-            sidebar.classList.remove('expanded');
-            content.classList.remove('expanded');
-            content.classList.remove('shifted');
-            document.getElementById('toggleSidebar').style.display = 'block';
-        } else {
-            document.getElementById('toggleSidebar').style.display = 'block';
-        }
-    }
-
-            window.addEventListener('resize', handleResize);
-            handleResize(); // Chama inicialização
-
-        // Adiciona funcionalidade aos botões de iniciar simulado
+// Adiciona funcionalidade aos botões de iniciar simulado
         document.querySelectorAll('[id^="startSimuladoBtn"]').forEach(btn => {
         btn.addEventListener('click', function() {
         const modal = new bootstrap.Modal(document.getElementById('simuladoModal'));
@@ -165,6 +102,7 @@
             
             // Salvar configurações de acessibilidade
             document.getElementById('saveAccessibilitySettings').addEventListener('click', function() {
+                
                 // Aplicar modo de alto contraste
                 if (highContrastToggle.checked) {
                     document.body.classList.add('high-contrast');

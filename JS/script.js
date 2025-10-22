@@ -118,13 +118,13 @@
             }, 600);
         });
         
-        // Adicionar efeito de paralaxe ao scroll (otimizado)
+        // Adicionar efeito de paralaxe ao scroll 
         if (!prefersReducedMotion) {
             window.addEventListener('scroll', () => {
                 const scrolled = window.pageYOffset;
                 const parallax = document.querySelector('.animated-bg');
                 if (parallax) {
-                    parallax.style.transform = `translateY(${scrolled * 0.3}px)`; // Reduzido para melhor performance
+                    parallax.style.transform = `translateY(${scrolled * 0.3}px)`; 
                 }
             });
         }
@@ -146,31 +146,14 @@
         
         document.querySelectorAll('.info-card, .benefit-item').forEach(el => {
             observer.observe(el);
+        }); 
+
+        // Adiciona funcionalidade ao botão de Entrar
+            document.getElementById('loginBtn').addEventListener('click', function() {
+                window.location.href = 'escolha.html';
         });
 
-        // Funcionalidade da sidebar
-        const sidebar = document.getElementById('sidebar');
-        const toggleBtn = document.getElementById('toggleSidebar');
-        
-        toggleBtn.addEventListener('click', function() {
-            sidebar.classList.toggle('collapsed');
-
-            // Atualizar o estado do aria-expanded
-            const isExpanded = !sidebar.classList.contains('collapsed');
-            this.setAttribute('aria-expanded', isExpanded);
-            
-            // Ajustar o margin-left do main-container quando a sidebar for recolhida
-            const mainContainer = document.querySelector('.main-container');
-            if (window.innerWidth > 768) {
-                if (sidebar.classList.contains('collapsed')) {
-                    mainContainer.style.marginLeft = '0';
-                } else {
-                    mainContainer.style.marginLeft = '250px';
-                }
-            }
-        });
-
-         // Modal de configurações de acessibilidade
+        // Modal de configurações de acessibilidade
             const accessibilityModal = document.getElementById('accessibilityModal');
             const accessibilityModalClose = document.getElementById('accessibilityModalClose');
             const accessibilityBtn = document.getElementById('accessibilityBtn');
@@ -424,7 +407,6 @@
                     
                     const lineValues = ['Normal', 'Médio', 'Alto'];
                     lineHeightValue.textContent = lineValues[lineHeightRange.value - 1];
-                    
                     
                 }
             });
