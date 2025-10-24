@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de Matemática para ENCCEJA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/exerciciomatematica.css">
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRNKXZCX54"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SRNKXZCX54');
+</script>
+
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <h1>Exercícios de Matemática para ENCCEJA</h1>
+            <p class="subtitle">Prepare-se para o exame com exercícios práticos e feedback imediato</p>
+        </header>
+
+        <div class="tab-warning" id="tabWarning">
+            ⚠️ ATENÇÃO: Mudar de guia durante o teste é monitorado e pode resultar na anulação do teste.
+        </div>
+        
+        <div class="score">
+            Pontuação: <span id="score">0</span> / <span id="total">0</span>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" data-tab="algebra">Álgebra</button>
+            <button class="tab" data-tab="geometria">Geometria</button>
+            <button class="tab" data-tab="estatistica">Estatística</button>
+        </div>
+        
+        <div id="algebra" class="tab-content active">
+            <div class="exercise" id="algebra1">
+                <h3>Exercício 1: Equações Lineares</h3>
+                <p>Resolva a equação: 3x + 7 = 22</p>
+                <div class="options">
+                    <div class="option" data-value="x=5">A) x = 5</div>
+                    <div class="option" data-value="x=3">B) x = 3</div>
+                    <div class="option" data-value="x=7">C) x = 7</div>
+                    <div class="option" data-value="x=9">D) x = 9</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('algebra1', 'x=5')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: 3x + 7 = 22</p>
+                    <p>3x = 22 - 7</p>
+                    <p>3x = 15</p>
+                    <p>x = 15/3</p>
+                    <p>x = 5</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="algebra2">
+                <h3>Exercício 2: Equações do Segundo Grau</h3>
+                <p>Resolva a equação: x² - 5x + 6 = 0</p>
+                <div class="options">
+                    <div class="option" data-value="x=2,x=3">A) x = 2, x = 3</div>
+                    <div class="option" data-value="x=1,x=6">B) x = 1, x = 6</div>
+                    <div class="option" data-value="x=4,x=5">C) x = 4, x = 5</div>
+                    <div class="option" data-value="x=2,x=6">D) x = 2, x = 6</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('algebra2', 'x=2,x=3')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: x² - 5x + 6 = 0</p>
+                    <p>Fatorando: (x - 2)(x - 3) = 0</p>
+                    <p>x - 2 = 0 → x = 2</p>
+                    <p>x - 3 = 0 → x = 3</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="algebra3">
+                <h3>Exercício 3: Sistemas Lineares</h3>
+                <p>Resolva o sistema: 
+                   <br>2x + y = 8
+                   <br>x - y = 1</p>
+                <div class="options">
+                    <div class="option" data-value="x=3,y=2">A) x = 3, y = 2</div>
+                    <div class="option" data-value="x=2,y=4">B) x = 2, y = 4</div>
+                    <div class="option" data-value="x=4,y=0">C) x = 4, y = 0</div>
+                    <div class="option" data-value="x=5,y=-3">D) x = 5, y = -3</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('algebra3', 'x=3,y=2')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: 
+                        <br>2x + y = 8 (1)
+                        <br>x - y = 1 (2)
+                        <br>
+                        <br>Adicionando (1) e (2): 3x = 9 → x = 3
+                        <br>Substituindo x em (2): 3 - y = 1 → y = 2
+                    </p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="algebra4">
+                <h3>Exercício 4: Funções Lineares</h3>
+                <p>Se f(x) = 2x - 3, calcule f(4).</p>
+                <div class="options">
+                    <div class="option" data-value="f(4)=5">A) f(4) = 5</div>
+                    <div class="option" data-value="f(4)=3">B) f(4) = 3</div>
+                    <div class="option" data-value="f(4)=7">C) f(4) = 7</div>
+                    <div class="option" data-value="f(4)=9">D) f(4) = 9</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('algebra4', 'f(4)=5')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: f(x) = 2x - 3</p>
+                    <p>f(4) = 2(4) - 3</p>
+                    <p>f(4) = 8 - 3</p>
+                    <p>f(4) = 5</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="algebra5">
+                <h3>Exercício 5: Polinômios</h3>
+                <p>Simplifique: (3x² - 2x + 1) + (2x² + 5x - 3)</p>
+                <div class="options">
+                    <div class="option" data-value="5x²+3x-2">A) 5x² + 3x - 2</div>
+                    <div class="option" data-value="5x²-7x+4">B) 5x² - 7x + 4</div>
+                    <div class="option" data-value="x²+3x-2">C) x² + 3x - 2</div>
+                    <div class="option" data-value="5x²+7x-4">D) 5x² + 7x - 4</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('algebra5', '5x²+3x-2')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: 
+                        <br>(3x² - 2x + 1) + (2x² + 5x - 3)
+                        <br>= 3x² + 2x² - 2x + 5x + 1 - 3
+                        <br>= 5x² + 3x - 2
+                    </p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="algebra6">
+                <h3>Exercício 6: Razões e Proporções</h3>
+                <p>Se 3/5 = x/15, qual é o valor de x?</p>
+                <div class="options">
+                    <div class="option" data-value="x=9">A) x = 9</div>
+                    <div class="option" data-value="x=5">B) x = 5</div>
+                    <div class="option" data-value="x=10">C) x = 10</div>
+                    <div class="option" data-value="x=7">D) x = 7</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('algebra6', 'x=9')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: 3/5 = x/15</p>
+                    <p>3 * 15 = 5 * x</p>
+                    <p>45 = 5x</p>
+                    <p>x = 45/5</p>
+                    <p>x = 9</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="algebra7">
+                <h3>Exercício 7: Potências</h3>
+                <p>Calcule: (2³ × 2²) ÷ 2⁴</p>
+                <div class="options">
+                    <div class="option" data-value="2">A) 2</div>
+                    <div class="option" data-value="1">B) 1</div>
+                    <div class="option" data-value="3">C) 3</div>
+                    <div class="option" data-value="4">D) 4</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('algebra7', '2')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: (2³ × 2²) ÷ 2⁴</p>
+                    <p>= 2^(3+2) ÷ 2⁴</p>
+                    <p>= 2⁵ ÷ 2⁴</p>
+                    <p>= 2^(5-4)</p>
+                    <p>= 2¹</p>
+                    <p>= 2</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="algebra8">
+                <h3>Exercício 8: Radiciais</h3>
+                <p>Calcule: √(49x²)</p>
+                <div class="options">
+                    <div class="option" data-value="7x">A) 7x</div>
+                    <div class="option" data-value="7+x">B) 7 + x</div>
+                    <div class="option" data-value="49x">C) 49x</div>
+                    <div class="option" data-value="7-x">D) 7 - x</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('algebra8', '7x')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: √(49x²)</p>
+                    <p>= √49 × √x²</p>
+                    <p>= 7 × x</p>
+                    <p>= 7x</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="geometria" class="tab-content">
+            <div class="exercise" id="geometria1">
+                <h3>Exercício 9: Área do Triângulo</h3>
+                <p>Calcule a área de um triângulo com base 8 cm e altura 5 cm.</p>
+                <div class="options">
+                    <div class="option" data-value="20cm²">A) 20 cm²</div>
+                    <div class="option" data-value="40cm²">B) 40 cm²</div>
+                    <div class="option" data-value="30cm²">C) 30 cm²</div>
+                    <div class="option" data-value="25cm²">D) 25 cm²</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('geometria1', '20cm²')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A área de um triângulo é dada por A = (base × altura) / 2</p>
+                    <p>A = (8 cm × 5 cm) / 2</p>
+                    <p>A = 40 cm² / 2</p>
+                    <p>A = 20 cm²</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="geometria2">
+                <h3>Exercício 10: Área do Círculo</h3>
+                <p>Calcule a área de um círculo com raio 7 cm (use π = 3,14).</p>
+                <div class="options">
+                    <div class="option" data-value="153.86cm²">A) 153,86 cm²</div>
+                    <div class="option" data-value="43.96cm²">B) 43,96 cm²</div>
+                    <div class="option" data-value="38.48cm²">C) 38,48 cm²</div>
+                    <div class="option" data-value="98cm²">D) 98 cm²</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('geometria2', '153.86cm²')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A área de um círculo é dada por A = πr²</p>
+                    <p>A = 3,14 × (7 cm)²</p>
+                    <p>A = 3,14 × 49 cm²</p>
+                    <p>A = 153,86 cm²</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="geometria3">
+                <h3>Exercício 11: Perímetro do Retângulo</h3>
+                <p>Calcule o perímetro de um retângulo com comprimento 10 cm e largura 4 cm.</p>
+                <div class="options">
+                    <div class="option" data-value="28cm">A) 28 cm</div>
+                    <div class="option" data-value="40cm">B) 40 cm</div>
+                    <div class="option" data-value="14cm">C) 14 cm</div>
+                    <div class="option" data-value="24cm">D) 24 cm</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('geometria3', '28cm')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: O perímetro de um retângulo é dado por P = 2 × (comprimento + largura)</p>
+                    <p>P = 2 × (10 cm + 4 cm)</p>
+                    <p>P = 2 × 14 cm</p>
+                    <p>P = 28 cm</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="geometria4">
+                <h3>Exercício 12: Teorema de Pitágoras</h3>
+                <p>Em um triângulo retângulo, um cateto mede 6 cm e o outro mede 8 cm. Qual é a medida da hipotenusa?</p>
+                <div class="options">
+                    <div class="option" data-value="10cm">A) 10 cm</div>
+                    <div class="option" data-value="14cm">B) 14 cm</div>
+                    <div class="option" data-value="12cm">C) 12 cm</div>
+                    <div class="option" data-value="16cm">D) 16 cm</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('geometria4', '10cm')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: Pela teoria de Pitágoras, c² = a² + b²</p>
+                    <p>onde c é a hipotenusa e a, b são os catetos.</p>
+                    <p>c² = 6² + 8²</p>
+                    <p>c² = 36 + 64</p>
+                    <p>c² = 100</p>
+                    <p>c = √100</p>
+                    <p>c = 10 cm</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="geometria5">
+                <h3>Exercício 13: Volume da Cilindro</h3>
+                <p>Calcule o volume de um cilindro com raio 3 cm e altura 10 cm (use π = 3,14).</p>
+                <div class="options">
+                    <div class="option" data-value="282.6cm³">A) 282,6 cm³</div>
+                    <div class="option" data-value="188.4cm³">B) 188,4 cm³</div>
+                    <div class="option" data-value="942cm³">C) 942 cm³</div>
+                    <div class="option" data-value="28.26cm³">D) 28,26 cm³</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('geometria5', '282.6cm³')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: O volume de um cilindro é dado por V = πr²h</p>
+                    <p>V = 3,14 × (3 cm)² × 10 cm</p>
+                    <p>V = 3,14 × 9 cm² × 10 cm</p>
+                    <p>V = 3,14 × 90 cm³</p>
+                    <p>V = 282,6 cm³</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="geometria6">
+                <h3>Exercício 14: Ângulos do Triângulo</h3>
+                <p>Em um triângulo, um dos ângulos mede 45° e o outro mede 75°. Qual é a medida do terceiro ângulo?</p>
+                <div class="options">
+                    <div class="option" data-value="60°">A) 60°</div>
+                    <div class="option" data-value="75°">B) 75°</div>
+                    <div class="option" data-value="50°">C) 50°</div>
+                    <div class="option" data-value="45°">D) 45°</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('geometria6', '60°')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A soma dos ângulos internos de um triângulo é sempre 180°.</p>
+                    <p>Ângulo 3 = 180° - 45° - 75°</p>
+                    <p>Ângulo 3 = 180° - 120°</p>
+                    <p>Ângulo 3 = 60°</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="geometria7">
+                <h3>Exercício 15: Área do Trapézio</h3>
+                <p>Calcule a área de um trapézio com bases 10 cm e 6 cm, e altura 5 cm.</p>
+                <div class="options">
+                    <div class="option" data-value="40cm²">A) 40 cm²</div>
+                    <div class="option" data-value="50cm²">B) 50 cm²</div>
+                    <div class="option" data-value="45cm²">C) 45 cm²</div>
+                    <div class="option" data-value="60cm²">D) 60 cm²</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('geometria7', '40cm²')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A área de um trapézio é dada por A = (base maior + base menor) × altura / 2</p>
+                    <p>A = (10 cm + 6 cm) × 5 cm / 2</p>
+                    <p>A = 16 cm × 5 cm / 2</p>
+                    <p>A = 80 cm² / 2</p>
+                    <p>A = 40 cm²</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="geometria8">
+                <h3>Exercício 16: Diagonal do Quadrado</h3>
+                <p>Calcule a diagonal de um quadrado com lado 5 cm.</p>
+                <div class="options">
+                    <div class="option" data-value="7.07cm">A) 7,07 cm</div>
+                    <div class="option" data-value="10cm">B) 10 cm</div>
+                    <div class="option" data-value="5cm">C) 5 cm</div>
+                    <div class="option" data-value="12.07cm">D) 12,07 cm</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('geometria8', '7.07cm')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: Em um quadrado, a diagonal divide-o em dois triângulos retângulos iguais.</p>
+                    <p>Pela teoria de Pitágoras, d² = l² + l²</p>
+                    <p>d² = 5² + 5²</p>
+                    <p>d² = 25 + 25</p>
+                    <p>d² = 50</p>
+                    <p>d = √50</p>
+                    <p>d = 5√2</p>
+                    <p>d ≈ 7,07 cm</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="estatistica" class="tab-content">
+            <div class="exercise" id="estatistica1">
+                <h3>Exercício 17: Média Aritmética</h3>
+                <p>Calcule a média aritmética dos números 4, 7, 10, 13 e 16.</p>
+                <div class="options">
+                    <div class="option" data-value="10">A) 10</div>
+                    <div class="option" data-value="9">B) 9</div>
+                    <div class="option" data-value="11">C) 11</div>
+                    <div class="option" data-value="12">D) 12</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('estatistica1', '10')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A média aritmética é dada pela soma dos valores dividida pela quantidade de valores.</p>
+                    <p>Média = (4 + 7 + 10 + 13 + 16) / 5</p>
+                    <p>Média = 50 / 5</p>
+                    <p>Média = 10</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="estatistica2">
+                <h3>Exercício 18: Mediana</h3>
+                <p>Calcule a mediana dos números 3, 8, 5, 2, 7, 4 e 6.</p>
+                <div class="options">
+                    <div class="option" data-value="5">A) 5</div>
+                    <div class="option" data-value="6">B) 6</div>
+                    <div class="option" data-value="4">C) 4</div>
+                    <div class="option" data-value="7">D) 7</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('estatistica2', '5')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A mediana é o valor central de um conjunto de dados ordenado.</p>
+                    <p>Primeiro, ordenamos os números: 2, 3, 4, 5, 6, 7, 8</p>
+                    <p>A mediana é o valor central: 5</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="estatistica3">
+                <h3>Exercício 19: Moda</h3>
+                <p>Calcule a moda dos números 2, 3, 4, 4, 5, 5, 5, 6, 7.</p>
+                <div class="options">
+                    <div class="option" data-value="5">A) 5</div>
+                    <div class="option" data-value="4">B) 4</div>
+                    <div class="option" data-value="6">C) 6</div>
+                    <div class="option" data-value="7">D) 7</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('estatistica3', '5')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A moda é o valor que aparece com maior frequência.</p>
+                    <p>2 (1 vez), 3 (1 vez), 4 (2 vezes), 5 (3 vezes), 6 (1 vez), 7 (1 vez)</p>
+                    <p>A moda é 5, pois aparece 3 vezes.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="estatistica4">
+                <h3>Exercício 20: Desvio Padrão</h3>
+                <p>Qual das seguintes opções descreve o desvio padrão?</p>
+                <div class="options">
+                    <div class="option" data-value="Medida da dispersão dos dados">A) Medida da dispersão dos dados</div>
+                    <div class="option" data-value="Medida da centralidade dos dados">B) Medida da centralidade dos dados</div>
+                    <div class="option" data-value="Medida da moda dos dados">C) Medida da moda dos dados</div>
+                    <div class="option" data-value="Medida da mediana dos dados">D) Medida da mediana dos dados</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('estatistica4', 'Medida da dispersão dos dados')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: O desvio padrão é uma medida de dispersão que indica o grau de variabilidade dos dados em torno da média.</p>
+                    <p>É usado para avaliar a consistência ou variabilidade dos dados.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="estatistica5">
+                <h3>Exercício 21: Probabilidade</h3>
+                <p>Em um baralho com 52 cartas, qual é a probabilidade de tirar uma carta vermelha?</p>
+                <div class="options">
+                    <div class="option" data-value="1/2">A) 1/2</div>
+                    <div class="option" data-value="1/4">B) 1/4</div>
+                    <div class="option" data-value="3/4">C) 3/4</div>
+                    <div class="option" data-value="2/3">D) 2/3</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('estatistica5', '1/2')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: Em um baralho com 52 cartas, há 26 cartas vermelhas (copas e ouros).</p>
+                    <p>Probabilidade = Número de cartas vermelhas / Número total de cartas</p>
+                    <p>Probabilidade = 26 / 52</p>
+                    <p>Probabilidade = 1/2</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="estatistica6">
+                <h3>Exercício 22: Permutação</h3>
+                <p>Calcule o número de permutações de 3 elementos tomados de 2 a cada vez.</p>
+                <div class="options">
+                    <div class="option" data-value="6">A) 6</div>
+                    <div class="option" data-value="3">B) 3</div>
+                    <div class="option" data-value="9">C) 9</div>
+                    <div class="option" data-value="12">D) 12</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('estatistica6', '6')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: O número de permutações é dado por P(n, k) = n! / (n - k)!</p>
+                    <p>onde n = 3 (total de elementos) e k = 2 (elementos a serem tomados).</p>
+                    <p>P(3, 2) = 3! / (3 - 2)!</p>
+                    <p>P(3, 2) = 6 / 1</p>
+                    <p>P(3, 2) = 6</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="estatistica7">
+                <h3>Exercício 23: Combinação</h3>
+                <p>Calcule o número de combinações de 4 elementos tomados de 2 a cada vez.</p>
+                <div class="options">
+                    <div class="option" data-value="6">A) 6</div>
+                    <div class="option" data-value="12">B) 12</div>
+                    <div class="option" data-value="4">C) 4</div>
+                    <div class="option" data-value="8">D) 8</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('estatistica7', '6')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: O número de combinações é dado por C(n, k) = n! / (k! × (n - k)!)</p>
+                    <p>onde n = 4 (total de elementos) e k = 2 (elementos a serem tomados).</p>
+                    <p>C(4, 2) = 4! / (2! × (4 - 2)!)</p>
+                    <p>C(4, 2) = 24 / (2 × 2)</p>
+                    <p>C(4, 2) = 24 / 4</p>
+                    <p>C(4, 2) = 6</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="estatistica8">
+                <h3>Exercício 24: Distribuição de Frequência</h3>
+                <p>Considerando a seguinte distribuição de frequência:</p>
+                <p>Classe 0-10: 5</p>
+                <p>Classe 11-20: 8</p>
+                <p>Classe 21-30: 7</p>
+                <p>Classe 31-40: 3</p>
+                <p>Qual é a frequência relativa da classe 21-30?</p>
+                <div class="options">
+                    <div class="option" data-value="0.30">A) 0,30</div>
+                    <div class="option" data-value="0.20">B) 0,20</div>
+                    <div class="option" data-value="0.25">C) 0,25</div>
+                    <div class="option" data-value="0.33">D) 0,33</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('estatistica8', '0.30')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: Primeiro, calculamos o número total de observações.</p>
+                    <p>Total = 5 + 8 + 7 + 3 = 23</p>
+                    <p>Então, a frequência relativa da classe 21-30 é:</p>
+                    <p>FR = 7 / 23 ≈ 0,304</p>
+                    <p>Arredondando para duas casas decimais: 0,30</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="result-container" id="resultContainer">
+            <h2>Resultado Final</h2>
+            <div class="result-score">Você acertou <span id="finalScore">0</span> de <span id="finalTotal">0</span> exercícios</div>
+            <div class="result-message" id="resultMessage"></div>
+            <button class="btn btn-restart" onclick="restartQuiz()">Iniciar Novamente</button>
+        </div>
+        
+        <div class="warning-container" id="warningContainer">
+            <div class="warning-box">
+                <h2 class="warning-title">⚠️ AVISO IMPORTANTE</h2>
+                <p class="warning-message">
+                    Você mudou de guia durante o teste. Esta ação foi registrada. 
+                    Mudar de guia durante a realização do teste é considerado uma violação das regras.
+                </p>
+                <p class="warning-message">
+                    Número de violações: <span class="warning-count" id="warningCount">1</span>
+                </p>
+                <p class="warning-message">
+                    Se você exceder o limite de <strong>3 violações</strong>, seu teste será anulado automaticamente.
+                </p>
+                <button class="btn btn-primary" onclick="closeWarning()">Entendido</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="JS/exerciciomatematica.js"></script>
+    
+</body>
+</html>

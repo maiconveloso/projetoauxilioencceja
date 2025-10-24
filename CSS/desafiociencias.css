@@ -1,0 +1,256 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #D3D3D3 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #34495e);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .timer-container {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            height: 40px;
+            margin: 15px auto;
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .progress-container {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            height: 8px;
+            margin: 15px auto;
+            width: 80%;
+        }
+
+        .progress-bar {
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            height: 100%;
+            width: 30%;
+            transition: width 0.5s ease;
+        }
+
+        .challenge-container {
+            padding: 30px;
+        }
+
+        .question {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            background-color: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            color: #495057;
+        }
+
+        .option:hover {
+            border-color: #1e88e5;
+            background-color: #e3f2fd;
+        }
+
+        .option.selected {
+            border-color: #1e88e5;
+            background-color: #e3f2fd;
+            font-weight: 500;
+        }
+
+        .option.correct {
+            border-color: #2ecc71;
+            background-color: #d5f5e3;
+        }
+
+        .option.incorrect {
+            border-color: #e74c3c;
+            background-color: #fadbd8;
+        }
+
+        .feedback {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .feedback.correct {
+            background-color: #d5f5e3;
+            border-left: 5px solid #2ecc71;
+            color: #27ae60;
+        }
+
+        .feedback.incorrect {
+            background-color: #fadbd8;
+            border-left: 5px solid #e74c3c;
+            color: #c0392b;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn {
+            background: linear-gradient(90deg, #1e88e5, #0d47a1);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 136, 229, 0.3);
+        }
+        .btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background: linear-gradient(90deg, #95a5a6, #7f8c8d);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+           background-color: white;
+           padding: 60px;
+           border-radius: 15px;
+           max-width: 500px;
+           text-align: center;
+           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .modal p {
+            color: #34495e;
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+
+        .modal .btn {
+            margin: 45px;
+        }
+
+        .timer-warning {
+            color: #e74c3c;
+            font-weight: bold;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .question {
+                font-size: 18px;
+            }
+            
+            .option {
+                padding: 12px;
+                font-size: 15px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 15px;
+            }
+        }

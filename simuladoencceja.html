@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado Completo ENCCEJA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/simuladoencceja.css">
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRNKXZCX54"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SRNKXZCX54');
+</script>
+
+</head>
+<body>
+    <div class="container">
+        <main class="main-content">
+            <section class="welcome-section">
+                <h1>Bem-vindo ao Simulado Completo ENCCEJA</h1>
+                <p>Prepare-se para o Encceja com nosso simulado completo que abrange todas as áreas do conhecimento. Este teste contém 30 questões que são comuns no Encceja. Boa sorte!</p>
+            </section>
+            
+            <section class="simulado-section">
+                <h2><i class="fas fa-clipboard-list"></i> Simulado Completo ENCCEJA</h2>
+                <div class="rules-notice">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Regras do Simulado</h4>
+                    <ul>
+                        <li>Não é permitido abrir outras abas ou janelas do navegador durante o simulado</li>
+                        <li>O simulado será encerrado automaticamente se você tentar sair desta página</li>
+                        <li>Você terá 120 minutos para concluir o teste</li>
+                        <li>As respostas são salvas automaticamente ao navegar entre as questões</li>
+                    </ul>
+                </div>
+                
+                <div class="simulado-info">
+                    <div class="timer" id="timer-display">
+                        <i class="fas fa-clock"></i>
+                        <span id="timer">120:00</span>
+                    </div>
+                    <div class="question-counter">
+                        Questão <span id="current-question">0</span> de <span id="total-questions">30</span>
+                    </div>
+                </div>
+                
+                <div id="start-screen">
+                    <p>Este simulado contém 30 questões que são comuns no Encceja, cobrindo todas as áreas do conhecimento. Você terá 120 minutos para concluir o teste. Ao final, receberá sua nota e um feedback detalhado.</p>
+                    <button class="start-btn" id="start-btn">
+                        <i class="fas fa-play"></i> Iniciar Simulado
+                    </button>
+                </div>
+                
+                <div id="question-container" class="question-container">
+                    <div id="question-1" class="question">
+                        <h3><span class="question-number">1</span><span class="subject-tag">Matemática</span> Uma loja oferece um desconto de 15% sobre o preço de um produto que custa R$ 120,00. Qual será o valor do desconto?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q1" value="A"> A) R$ 12,00
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="B"> B) R$ 18,00
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="C"> C) R$ 20,00
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="D"> D) R$ 22,50
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-1"></div>
+                    </div>
+                    
+                    <div id="question-2" class="question">
+                        <h3><span class="question-number">2</span><span class="subject-tag">Matemática</span> Qual é o valor de x na equação: 3x + 7 = 22?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q2" value="A"> A) 5
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="B"> B) 3
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="C"> C) 7
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="D"> D) 9
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-2"></div>
+                    </div>
+                    
+                    <div id="question-3" class="question">
+                        <h3><span class="question-number">3</span><span class="subject-tag">Matemática</span> Um retângulo tem lados de 8 cm e 12 cm. Qual é a área desse retângulo?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q3" value="A"> A) 20 cm²
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="B"> B) 32 cm²
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="C"> C) 96 cm²
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="D"> D) 100 cm²
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-3"></div>
+                    </div>
+                    
+                    <div id="question-4" class="question">
+                        <h3><span class="question-number">4</span><span class="subject-tag">Matemática</span> Qual é o valor de √(16 + 9)?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q4" value="A"> A) 5
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="B"> B) 7
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="C"> C) 25
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="D"> D) 5,5
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-4"></div>
+                    </div>
+                    
+                    <div id="question-5" class="question">
+                        <h3><span class="question-number">5</span><span class="subject-tag">Matemática</span> Em uma urna há 5 bolas vermelhas, 3 bolas azuis e 2 bolas amarelas. Qual é a probabilidade de sacar uma bola azul?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q5" value="A"> A) 3/10
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="B"> B) 1/3
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="C"> C) 2/5
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="D"> D) 3/5
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-5"></div>
+                    </div>
+                    
+                    <div id="question-6" class="question">
+                        <h3><span class="question-number">6</span><span class="subject-tag">Matemática</span> Qual é o valor de 23 × 5 + 12 ÷ 3?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q6" value="A"> A) 120
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6" value="B"> B) 115
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6" value="C"> C) 125
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6" value="D"> D) 130
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-6"></div>
+                    </div>
+                    
+                    <div id="question-7" class="question">
+                        <h3><span class="question-number">7</span><span class="subject-tag">Matemática</span> Um carro percorre 300 km em 4 horas. Qual é a velocidade média do carro?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q7" value="A"> A) 75 km/h
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q7" value="B"> B) 80 km/h
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q7" value="C"> C) 85 km/h
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q7" value="D"> D) 90 km/h
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-7"></div>
+                    </div>
+                    
+                    <div id="question-8" class="question">
+                        <h3><span class="question-number">8</span><span class="subject-tag">Matemática</span> Qual é o valor de x no sistema de equações: 2x + y = 8 e x - y = 1?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q8" value="A"> A) 1
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q8" value="B"> B) 2
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q8" value="C"> C) 3
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q8" value="D"> D) 4
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-8"></div>
+                    </div>
+                    
+                    <div id="question-9" class="question">
+                        <h3><span class="question-number">9</span><span class="subject-tag">Matemática</span> Qual é a soma dos ângulos internos de um triângulo?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q9" value="A"> A) 90°
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="B"> B) 180°
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="C"> C) 270°
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="D"> D) 360°
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-9"></div>
+                    </div>
+                    
+                    <div id="question-10" class="question">
+                        <h3><span class="question-number">10</span><span class="subject-tag">Matemática</span> Qual é o valor de 2³ + 4²?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q10" value="A"> A) 12
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="B"> B) 20
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="C"> C) 24
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="D"> D) 32
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-10"></div>
+                    </div>
+                    
+                    <div id="question-11" class="question">
+                        <h3><span class="question-number">11</span><span class="subject-tag">Português</span> Qual das seguintes opções apresenta a forma verbal correta para completar a frase: "Nós ________ (ir) ao cinema amanhã."</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q11" value="A"> A) vai
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q11" value="B"> B) vão
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q11" value="C"> C) vamos
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q11" value="D"> D) veio
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-11"></div>
+                    </div>
+                    
+                    <div id="question-12" class="question">
+                        <h3><span class="question-number">12</span><span class="subject-tag">Português</span> Qual das seguintes palavras NÃO é um sinônimo de "importante"?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q12" value="A"> A) Significativo
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q12" value="B"> B) Relevante
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q12" value="C"> C) Insignificante
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q12" value="D"> D) Essencial
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-12"></div>
+                    </div>
+                    
+                    <div id="question-13" class="question">
+                        <h3><span class="question-number">13</span><span class="subject-tag">Português</span> Marque a opção que apresenta a grafia correta de todas as palavras:</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q13" value="A"> A) Acolhimento, aterrissagem, aprimoramento
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q13" value="B"> B) Acolhimento, aterrisagem, aperfeiçoamento
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q13" value="C"> C) Acolhimento, aterrissagem, aperfeiçoamento
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q13" value="D"> D) Acolhimento, aterrisagem, aprimoramento
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-13"></div>
+                    </div>
+                    
+                    <div id="question-14" class="question">
+                        <h3><span class="question-number">14</span><span class="subject-tag">Português</span> Qual das seguintes frases está gramaticalmente incorreta?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q14" value="A"> A) Ele não sabe como fazer.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q14" value="B"> B) Ela não sabe como fazer.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q14" value="C"> C) Nós não sabemos como fazer.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q14" value="D"> D) Vocês não sabe como fazer.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-14"></div>
+                    </div>
+                    
+                    <div id="question-15" class="question">
+                        <h3><span class="question-number">15</span><span class="subject-tag">Português</span> Qual das seguintes opções apresenta a forma verbal correta para completar a frase: "Se ele ________ (estar) aqui, teria ajudado."</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q15" value="A"> A) estiver
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q15" value="B"> B) estaria
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q15" value="C"> C) estava
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q15" value="D"> D) estivesse
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-15"></div>
+                    </div>
+                    
+                    <div id="question-16" class="question">
+                        <h3><span class="question-number">16</span><span class="subject-tag">Ciências</span> Qual dos seguintes órgãos é responsável por filtrar o sangue e eliminar resíduos do corpo?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q16" value="A"> A) Fígado
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q16" value="B"> B) Pulmão
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q16" value="C"> C) Rim
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q16" value="D"> D) Coração
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-16"></div>
+                    </div>
+                    
+                    <div id="question-17" class="question">
+                        <h3><span class="question-number">17</span><span class="subject-tag">Ciências</span> Qual é o gás que os vegetais utilizam na fotossíntese?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q17" value="A"> A) Oxigênio
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q17" value="B"> B) Dióxido de carbono
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q17" value="C"> C) Nitrogênio
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q17" value="D"> D) Hidrogênio
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-17"></div>
+                    </div>
+                    
+                    <div id="question-18" class="question">
+                        <h3><span class="question-number">18</span><span class="subject-tag">Ciências</span> Qual das seguintes opções NÃO é um estado físico da matéria?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q18" value="A"> A) Sólido
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q18" value="B"> B) Líquido
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q18" value="C"> C) Gasoso
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q18" value="D"> D) Energético
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-18"></div>
+                    </div>
+                    
+                    <div id="question-19" class="question">
+                        <h3><span class="question-number">19</span><span class="subject-tag">Ciências</span> Qual das seguintes doenças é causada pelo vírus da rubéola?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q19" value="A"> A) Sarampo
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q19" value="B"> B) Catapora
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q19" value="C"> C) Rubéola
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q19" value="D"> D) Caxumba
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-19"></div>
+                    </div>
+                    
+                    <div id="question-20" class="question">
+                        <h3><span class="question-number">20</span><span class="subject-tag">Ciências</span> Qual das seguintes vitaminas é conhecida como vitamina C?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q20" value="A"> A) Tiamina
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q20" value="B"> B) Riboflavina
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q20" value="C"> C) Ácido ascórbico
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q20" value="D"> D) Niacina
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-20"></div>
+                    </div>
+                    
+                    <div id="question-21" class="question">
+                        <h3><span class="question-number">21</span><span class="subject-tag">História</span> Em que ano a Independência do Brasil foi proclamada?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q21" value="A"> A) 1808
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q21" value="B"> B) 1815
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q21" value="C"> C) 1822
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q21" value="D"> D) 1824
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-21"></div>
+                    </div>
+                    
+                    <div id="question-22" class="question">
+                        <h3><span class="question-number">22</span><span class="subject-tag">História</span> Qual das seguintes personalidades foi o primeiro presidente do Brasil?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q22" value="A"> A) Deodoro da Fonseca
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q22" value="B"> B) Floriano Peixoto
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q22" value="C"> C) Prudente de Morais
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q22" value="D"> D) Campos Sales
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-22"></div>
+                    </div>
+                    
+                    <div id="question-23" class="question">
+                        <h3><span class="question-number">23</span><span class="subject-tag">História</span> Qual das seguintes opções NÃO foi uma das causas da Segunda Guerra Mundial?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q23" value="A"> A) A ascensão do fascismo
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q23" value="B"> B) A Primeira Guerra Mundial
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q23" value="C"> C) A crise econômica de 1929
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q23" value="D"> D) A Revolução Russa
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-23"></div>
+                    </div>
+                    
+                    <div id="question-24" class="question">
+                        <h3><span class="question-number">24</span><span class="subject-tag">História</span> Qual das seguintes civilizações construiu as pirâmides de Gizé?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q24" value="A"> A) Gregos
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q24" value="B"> B) Romanos
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q24" value="C"> C) Egípcios
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q24" value="D"> D) Maias
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-24"></div>
+                    </div>
+                    
+                    <div id="question-25" class="question">
+                        <h3><span class="question-number">25</span><span class="subject-tag">Geografia</span> Qual é a capital do Brasil?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q25" value="A"> A) São Paulo
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q25" value="B"> B) Rio de Janeiro
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q25" value="C"> C) Brasília
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q25" value="D"> D) Belo Horizonte
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-25"></div>
+                    </div>
+                    
+                    <div id="question-26" class="question">
+                        <h3><span class="question-number">26</span><span class="subject-tag">Geografia</span> Qual é o maior oceano da Terra?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q26" value="A"> A) Oceano Atlântico
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q26" value="B"> B) Oceano Índico
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q26" value="C"> C) Oceano Pacífico
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q26" value="D"> D) Oceano Ártico
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-26"></div>
+                    </div>
+                    
+                    <div id="question-27" class="question">
+                        <h3><span class="question-number">27</span><span class="subject-tag">Geografia</span> Qual é o país com a maior população do mundo?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q27" value="A"> A) Estados Unidos
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q27" value="B"> B) Índia
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q27" value="C"> C) China
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q27" value="D"> D) Brasil
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-27"></div>
+                    </div>
+                    
+                    <div id="question-28" class="question">
+                        <h3><span class="question-number">28</span><span class="subject-tag">Geografia</span> Qual é a maior montanha do mundo?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q28" value="A"> A) Monte Everest
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q28" value="B"> B) Monte Kilimanjaro
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q28" value="C"> C) Monte Fuji
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q28" value="D"> D) Monte Whitney
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-28"></div>
+                    </div>
+                    
+                    <div id="question-29" class="question">
+                        <h3><span class="question-number">29</span><span class="subject-tag">Geografia</span> Qual é o rio mais longo da América do Sul?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q29" value="A"> A) Rio Amazonas
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q29" value="B"> B) Rio Paraná
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q29" value="C"> C) Rio São Francisco
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q29" value="D"> D) Rio Paraguai
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-29"></div>
+                    </div>
+                    
+                    <div id="question-30" class="question">
+                        <h3><span class="question-number">30</span><span class="subject-tag">Sociologia</span> Qual das seguintes opções define a democracia?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q30" value="A"> A) Forma de governo onde o poder está concentrado em mãos de um único indivíduo
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q30" value="B"> B) Sistema político onde o poder é exercido pelos cidadãos, diretamente ou por representantes
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q30" value="C"> C) Governo baseado na lei divina
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q30" value="D"> D) Sistema onde o poder é herdado por linhagem familiar
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-30"></div>
+                    </div>
+                    
+                    <div class="navigation-buttons">
+                        <button id="prev-btn" class="nav-btn" disabled>
+                            <i class="fas fa-arrow-left"></i> Questão Anterior
+                        </button>
+                        <button id="next-btn" class="nav-btn">
+                            Próxima Questão <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="result-container" class="result-container">
+                    <h2>Resultado do Simulado</h2>
+                    <p>Parabéns! Você completou o simulado.</p>
+                    <div class="score">0/30</div>
+                    <p class="result-message">Veja como você se saiu e onde pode melhorar.</p>
+                    
+                    <div class="results-summary">
+                        <div class="result-card">
+                            <h4>Matemática</h4>
+                            <div class="score" id="math-score">0/10</div>
+                        </div>
+                        <div class="result-card">
+                            <h4>Português</h4>
+                            <div class="score" id="portuguese-score">0/5</div>
+                        </div>
+                        <div class="result-card">
+                            <h4>Ciências</h4>
+                            <div class="score" id="science-score">0/5</div>
+                        </div>
+                        <div class="result-card">
+                            <h4>História</h4>
+                            <div class="score" id="history-score">0/4</div>
+                        </div>
+                        <div class="result-card">
+                            <h4>Geografia</h4>
+                            <div class="score" id="geography-score">0/5</div>
+                        </div>
+                        <div class="result-card">
+                            <h4>Sociologia</h4>
+                            <div class="score" id="sociology-score">0/1</div>
+                        </div>
+                    </div>
+                    
+                    <button class="retry-btn" id="retry-btn">
+                        <i class="fas fa-redo"></i> Tentar Novamente
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <div id="warning-modal" class="warning-modal">
+        <div class="warning-content">
+            <h3><i class="fas fa-exclamation-triangle"></i> Aviso Importante</h3>
+            <p id="warning-message">Você tentou sair da página do simulado. Esta ação não é permitida e o simulado será encerrado automaticamente.</p>
+            <button id="close-warning">OK</button>
+        </div>
+    </div>
+    
+    <script src="JS/simuladoencceja.js"></script>
+
+</body>
+</html>

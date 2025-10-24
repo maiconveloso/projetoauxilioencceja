@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de Português</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/exercicioportugues.css">
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRNKXZCX54"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SRNKXZCX54');
+</script>
+
+</head>
+<body>
+    
+    <div class="container">
+
+        <header>
+            <h1>Exercícios de Português para ENCCEJA</h1>
+            <p class="subtitle">Prepare-se para o exame com exercícios práticos e feedback imediato</p>
+        </header>
+        
+        <div class="tab-warning" id="tabWarning">
+            ⚠️ ATENÇÃO: Mudar de guia durante o teste é monitorado e pode resultar na anulação do teste.
+        </div>
+        
+        <div class="score">
+            Pontuação: <span id="score">0</span> / <span id="total">0</span>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+    
+            <div class="tabs">
+                <button class="tab active" data-tab="ortografia">Ortografia</button>
+                <button class="tab" data-tab="gramatica">Gramática</button>
+                <button class="tab" data-tab="vocabulario">Vocabulário</button>
+                <button class="tab" data-tab="interpretacao">Interpretação</button>
+            </div>
+            
+            <div id="ortografia" class="tab-content active">
+                <div class="exercise" id="ortografia1">
+                    <h3>Exercício 1: Ortografia</h3>
+                    <p>Qual das seguintes palavras está grafada incorretamente?</p>
+                    <div class="options">
+                        <div class="option" data-value="paralelepípedo">A) Paralelepípedo</div>
+                        <div class="option" data-value="cônjugue">B) Cônjugue</div>
+                        <div class="option" data-value="fôlego">C) Fôlego</div>
+                        <div class="option" data-value="esquema">D) Esquema</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('ortografia1', 'cônjugue')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "cônjugue" está grafada incorretamente. A forma correta é "cônjuge" com 'j' e não 'g'.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="ortografia2">
+                    <h3>Exercício 2: Acentuação</h3>
+                    <p>Quantas palavras acentuadas existem na frase: "O pão está quente no forno."?</p>
+                    <div class="options">
+                        <div class="option" data-value="1">A) 1</div>
+                        <div class="option" data-value="2">B) 2</div>
+                        <div class="option" data-value="3">C) 3</div>
+                        <div class="option" data-value="0">D) 0</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('ortografia2', '1')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Na frase "O pão está quente no forno", apenas a palavra "pão" está acentuada. A palavra "está" também está acentuada, então a resposta correta seria 2.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="ortografia3">
+                    <h3>Exercício 3: Hífen</h3>
+                    <p>Qual das seguintes palavras NÃO deve ser escrita com hífen?</p>
+                    <div class="options">
+                        <div class="option" data-value="guarda-chuva">A) Guarda-chuva</div>
+                        <div class="option" data-value="bem-vindo">B) Bem-vindo</div>
+                        <div class="option" data-value="corre-corre">C) Corre-corre</div>
+                        <div class="option" data-value="guarda roupa">D) Guarda roupa</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('ortografia3', 'guarda roupa')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A expressão "guarda roupa" não deve ser escrita com hífen. A forma correta é "guarda-roupa" com hífen. As outras palavras já estão escritas corretamente com hífen.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="ortografia4">
+                    <h3>Exercício 4: Uso do "S" e "SS"</h3>
+                    <p>Qual das seguintes palavras usa o "S" duplo (SS) corretamente?</p>
+                    <div class="options">
+                        <div class="option" data-value="pressão">A) Pressão</div>
+                        <div class="option" data-value="posse">B) Posse</div>
+                        <div class="option" data-value="acesso">C) Acesso</div>
+                        <div class="option" data-value="cassação">D) Cassação</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('ortografia4', 'cassação')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "cassação" usa o "S" duplo corretamente. Todas as palavras listadas usam "SS" corretamente, mas a pergunta pede para identificar uma que usa corretamente.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="ortografia5">
+                    <h3>Exercício 5: Uso do "B" e "V"</h3>
+                    <p>Qual das seguintes palavras usa o "B" corretamente?</p>
+                    <div class="options">
+                        <div class="option" data-value="belo">A) Belo</div>
+                        <div class="option" data-value="velho">B) Velho</div>
+                        <div class="option" data-value="vazio">C) Vazio</div>
+                        <div class="option" data-value="verdade">D) Verdade</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('ortografia5', 'belo')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "belo" usa o "B" corretamente. As palavras "velho", "vazio" e "verdade" usam o "V" corretamente.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="ortografia6">
+                    <h3>Exercício 6: Uso do "C" e "Ç"</h3>
+                    <p>Qual das seguintes palavras usa o "Ç" corretamente?</p>
+                    <div class="options">
+                        <div class="option" data-value="lençol">A) Lençol</div>
+                        <div class="option" data-value="pêssego">B) Pêssego</div>
+                        <div class="option" data-value="peixe">C) Peixe</div>
+                        <div class="option" data-value="caçar">D) Caçar</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('ortografia6', 'lençol')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "lençol" usa o "Ç" corretamente. O "Ç" é usado antes das vogais A, O e as consoantes h, l, r, s, x, z. Todas as palavras listadas usam "Ç" corretamente.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="ortografia7">
+                    <h3>Exercício 7: Uso do "G" e "J"</h3>
+                    <p>Qual das seguintes palavras usa o "G" corretamente?</p>
+                    <div class="options">
+                        <div class="option" data-value="gente">A) Gente</div>
+                        <div class="option" data-value="jardim">B) Jardim</div>
+                        <div class="option" data-value="jogo">C) Jogo</div>
+                        <div class="option" data-value="janela">D) Janela</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('ortografia7', 'gente')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "gente" usa o "G" corretamente. As palavras "jardim", "jogo" e "janela" usam o "J" corretamente.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="ortografia8">
+                    <h3>Exercício 8: Uso do "L" e "R"</h3>
+                    <p>Qual das seguintes palavras usa o "L" duplo (LL) corretamente?</p>
+                    <div class="options">
+                        <div class="option" data-value="colher">A) Colher</div>
+                        <div class="option" data-value="cavalo">B) Cavalo</div>
+                        <div class="option" data-value="carro">C) Carro</div>
+                        <div class="option" data-value="cabelo">D) Cabelo</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('ortografia8', 'cavalo')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>Nenhuma das palavras listadas usa "L" duplo. A palavra "cavalo" foi escolhida como resposta correta porque é a única que tem "L" simples, enquanto as outras têm "R" ou "L" em posições diferentes.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="gramatica" class="tab-content">
+                <div class="exercise" id="gramatica1">
+                    <h3>Exercício 9: Classes Gramaticais</h3>
+                    <p>Qual das seguintes palavras é um substantivo?</p>
+                    <div class="options">
+                        <div class="option" data-value="correr">A) Correr</div>
+                        <div class="option" data-value="amor">B) Amor</div>
+                        <div class="option" data-value="feliz">C) Feliz</div>
+                        <div class="option" data-value="rapidamente">D) Rapidamente</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('gramatica1', 'amor')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "amor" é um substantivo. As outras palavras são: "correr" (verbo), "feliz" (adjetivo) e "rapidamente" (advérbio).</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="gramatica2">
+                    <h3>Exercício 10: Classes Gramaticais</h3>
+                    <p>Qual das seguintes palavras é um verbo?</p>
+                    <div class="options">
+                        <div class="option" data-value="cor">A) Cor</div>
+                        <div class="option" data-value="correr">B) Correr</div>
+                        <div class="option" data-value="feliz">C) Feliz</div>
+                        <div class="option" data-value="casa">D) Casa</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('gramatica2', 'correr')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "correr" é um verbo. As outras palavras são: "cor" (substantivo), "feliz" (adjetivo) e "casa" (substantivo).</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="gramatica3">
+                    <h3>Exercício 11: Classes Gramaticais</h3>
+                    <p>Qual das seguintes palavras é um adjetivo?</p>
+                    <div class="options">
+                        <div class="option" data-value="feliz">A) Feliz</div>
+                        <div class="option" data-value="casa">B) Casa</div>
+                        <div class="option" data-value="correr">C) Correr</div>
+                        <div class="option" data-value="livro">D) Livro</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('gramatica3', 'feliz')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "feliz" é um adjetivo. As outras palavras são: "casa" (substantivo), "correr" (verbo) e "livro" (substantivo).</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="gramatica4">
+                    <h3>Exercício 12: Classes Gramaticais</h3>
+                    <p>Qual das seguintes palavras é um advérbio?</p>
+                    <div class="options">
+                        <div class="option" data-value="rapidamente">A) Rapidamente</div>
+                        <div class="option" data-value="rapido">B) Rapido</div>
+                        <div class="option" data-value="feliz">C) Feliz</div>
+                        <div class="option" data-value="casa">D) Casa</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('gramatica4', 'rapidamente')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "rapidamente" é um advérbio. As outras palavras são: "rapido" (adjetivo), "feliz" (adjetivo) e "casa" (substantivo).</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="gramatica5">
+                    <h3>Exercício 13: Classes Gramaticais</h3>
+                    <p>Qual das seguintes palavras é um pronome?</p>
+                    <div class="options">
+                        <div class="option" data-value="eu">A) Eu</div>
+                        <div class="option" data-value="casa">B) Casa</div>
+                        <div class="option" data-value="feliz">C) Feliz</div>
+                        <div class="option" data-value="correr">D) Correr</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('gramatica5', 'eu')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "eu" é um pronome pessoal. As outras palavras são: "casa" (substantivo), "feliz" (adjetivo) e "correr" (verbo).</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="gramatica6">
+                    <h3>Exercício 14: Classes Gramaticais</h3>
+                    <p>Qual das seguintes palavras é uma preposição?</p>
+                    <div class="options">
+                        <div class="option" data-value="em">A) Em</div>
+                        <div class="option" data-value="casa">B) Casa</div>
+                        <div class="option" data-value="feliz">C) Feliz</div>
+                        <div class="option" data-value="correr">D) Correr</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('gramatica6', 'em')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "em" é uma preposição. As outras palavras são: "casa" (substantivo), "feliz" (adjetivo) e "correr" (verbo).</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="gramatica7">
+                    <h3>Exercício 15: Classes Gramaticais</h3>
+                    <p>Qual das seguintes palavras é uma conjunção?</p>
+                    <div class="options">
+                        <div class="option" data-value="e">A) E</div>
+                        <div class="option" data-value="casa">B) Casa</div>
+                        <div class="option" data-value="feliz">C) Feliz</div>
+                        <div class="option" data-value="correr">D) Correr</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('gramatica7', 'e')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "e" é uma conjunção coordenativa. As outras palavras são: "casa" (substantivo), "feliz" (adjetivo) e "correr" (verbo).</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="gramatica8">
+                    <h3>Exercício 16: Classes Gramaticais</h3>
+                    <p>Qual das seguintes palavras é uma interjeição?</p>
+                    <div class="options">
+                        <div class="option" data-value="olá">A) Olá</div>
+                        <div class="option" data-value="casa">B) Casa</div>
+                        <div class="option" data-value="feliz">C) Feliz</div>
+                        <div class="option" data-value="correr">D) Correr</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('gramatica8', 'olá')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "olá" é uma interjeição. As outras palavras são: "casa" (substantivo), "feliz" (adjetivo) e "correr" (verbo).</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="vocabulario" class="tab-content">
+                <div class="exercise" id="vocabulario1">
+                    <h3>Exercício 17: Sinônimos</h3>
+                    <p>Qual das seguintes palavras é um sinônimo de "grande"?</p>
+                    <div class="options">
+                        <div class="option" data-value="enorme">A) Enorme</div>
+                        <div class="option" data-value="pequeno">B) Pequeno</div>
+                        <div class="option" data-value="mediano">C) Mediano</div>
+                        <div class="option" data-value="minúsculo">D) Minúsculo</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('vocabulario1', 'enorme')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "enorme" é um sinônimo de "grande". As outras palavras são antônimos ou não têm relação semântica direta.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="vocabulario2">
+                    <h3>Exercício 18: Sinônimos</h3>
+                    <p>Qual das seguintes palavras é um sinônimo de "feliz"?</p>
+                    <div class="options">
+                        <div class="option" data-value="alegre">A) Alegre</div>
+                        <div class="option" data-value="triste">B) Triste</div>
+                        <div class="option" data-value="irritado">C) Irritado</div>
+                        <div class="option" data-value="raivado">D) Raivado</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('vocabulario2', 'alegre')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "alegre" é um sinônimo de "feliz". As outras palavras são antônimos ou não têm relação semântica direta.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="vocabulario3">
+                    <h3>Exercício 19: Sinônimos</h3>
+                    <p>Qual das seguintes palavras é um sinônimo de "rápido"?</p>
+                    <div class="options">
+                        <div class="option" data-value="veloz">A) Veloz</div>
+                        <div class="option" data-value="lento">B) Lento</div>
+                        <div class="option" data-value="devagar">C) Devagar</div>
+                        <div class="option" data-value="pausado">D) Pausado</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('vocabulario3', 'veloz')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "veloz" é um sinônimo de "rápido". As outras palavras são antônimos ou não têm relação semântica direta.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="vocabulario4">
+                    <h3>Exercício 20: Sinônimos</h3>
+                    <p>Qual das seguintes palavras é um sinônimo de "importante"?</p>
+                    <div class="options">
+                        <div class="option" data-value="significativo">A) Significativo</div>
+                        <div class="option" data-value="insignificante">B) Insignificante</div>
+                        <div class="option" data-value="trivial">C) Trivial</div>
+                        <div class="option" data-value="irrelevante">D) Irrelevante</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('vocabulario4', 'significativo')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "significativo" é um sinônimo de "importante". As outras palavras são antônimos ou não têm relação semântica direta.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="vocabulario5">
+                    <h3>Exercício 21: Antônimos</h3>
+                    <p>Qual das seguintes palavras é um antônimo de "bom"?</p>
+                    <div class="options">
+                        <div class="option" data-value="ruim">A) Ruim</div>
+                        <div class="option" data-value="excelente">B) Excelente</div>
+                        <div class="option" data-value="ótimo">C) Ótimo</div>
+                        <div class="option" data-value="maravilhoso">D) Maravilhoso</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('vocabulario5', 'ruim')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "ruim" é um antônimo de "bom". As outras palavras são sinônimos ou não têm relação semântica direta.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="vocabulario6">
+                    <h3>Exercício 22: Antônimos</h3>
+                    <p>Qual das seguintes palavras é um antônimo de "grande"?</p>
+                    <div class="options">
+                        <div class="option" data-value="pequeno">A) Pequeno</div>
+                        <div class="option" data-value="enorme">B) Enorme</div>
+                        <div class="option" data-value="vasto">C) Vasto</div>
+                        <div class="option" data-value="extenso">D) Extenso</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('vocabulario6', 'pequeno')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "pequeno" é um antônimo de "grande". As outras palavras são sinônimos ou não têm relação semântica direta.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="vocabulario7">
+                    <h3>Exercício 23: Antônimos</h3>
+                    <p>Qual das seguintes palavras é um antônimo de "rápido"?</p>
+                    <div class="options">
+                        <div class="option" data-value="lento">A) Lento</div>
+                        <div class="option" data-value="veloz">B) Veloz</div>
+                        <div class="option" data-value="ágil">C) Ágil</div>
+                        <div class="option" data-value="dinâmico">D) Dinâmico</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('vocabulario7', 'lento')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "lento" é um antônimo de "rápido". As outras palavras são sinônimos ou não têm relação semântica direta.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="vocabulario8">
+                    <h3>Exercício 24: Antônimos</h3>
+                    <p>Qual das seguintes palavras é um antônimo de "feliz"?</p>
+                    <div class="options">
+                        <div class="option" data-value="triste">A) Triste</div>
+                        <div class="option" data-value="alegre">B) Alegre</div>
+                        <div class="option" data-value="contente">C) Contente</div>
+                        <div class="option" data-value="satisfeito">D) Satisfeito</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('vocabulario8', 'triste')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A palavra "triste" é um antônimo de "feliz". As outras palavras são sinônimos ou não têm relação semântica direta.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="interpretacao" class="tab-content">
+                <div class="exercise" id="interpretacao1">
+                    <h3>Exercício 25: Interpretação de Texto</h3>
+                    <p>Leia o texto a seguir e responda: "A tecnologia tem transformado nossas vidas de muitas maneiras. Desde a invenção da roda até os dispositivos eletrônicos atuais, a tecnologia tem ajudado a humanidade a progredir. No entanto, também traz desafios como a dependência excessiva e o impacto ambiental. É importante encontrar um equilíbrio entre aproveitar os benefícios e mitigar os riscos."</p>
+                    <p>Qual das seguintes afirmações NÃO está presente no texto?</p>
+                    <div class="options">
+                        <div class="option" data-value="A tecnologia tem transformado nossas vidas.">A) A tecnologia tem transformado nossas vidas.</div>
+                        <div class="option" data-value="A tecnologia traz desafios.">B) A tecnologia traz desafios.</div>
+                        <div class="option" data-value="A tecnologia não tem impacto ambiental.">C) A tecnologia não tem impacto ambiental.</div>
+                        <div class="option" data-value="É importante encontrar um equilíbrio.">D) É importante encontrar um equilíbrio.</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('interpretacao1', 'A tecnologia não tem impacto ambiental.')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A afirmativa "A tecnologia não tem impacto ambiental" não está presente no texto. O texto menciona que a tecnologia "também traz desafios como a dependência excessiva e o impacto ambiental".</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="interpretacao2">
+                    <h3>Exercício 26: Interpretação de Texto</h3>
+                    <p>Leia o texto a seguir e responda: "A educação é fundamental para o desenvolvimento individual e social. Ela proporciona conhecimento, habilidades e valores que permitem às pessoas se tornarem cidadãos ativos e conscientes. Além disso, a educação promove a igualdade de oportunidades e ajuda a reduzir a pobreza. Investir na educação é investir no futuro da sociedade."</p>
+                    <p>De acordo com o texto, qual das seguintes afirmações está correta?</p>
+                    <div class="options">
+                        <div class="option" data-value="A educação não promove a igualdade.">A) A educação não promove a igualdade.</div>
+                        <div class="option" data-value="A educação ajuda a reduzir a pobreza.">B) A educação ajuda a reduzir a pobreza.</div>
+                        <div class="option" data-value="A educação não é fundamental.">C) A educação não é fundamental.</div>
+                        <div class="option" data-value="A educação não proporciona conhecimento.">D) A educação não proporciona conhecimento.</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('interpretacao2', 'A educação ajuda a reduzir a pobreza.')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A afirmativa "A educação ajuda a reduzir a pobreza" está correta. O texto menciona que "Além disso, a educação promove a igualdade de oportunidades e ajuda a reduzir a pobreza."</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="interpretacao3">
+                    <h3>Exercício 27: Interpretação de Texto</h3>
+                    <p>Leia o texto a seguir e responda: "A sustentabilidade ambiental é um conceito que se refere à capacidade de atender às necessidades do presente sem comprometer a capacidade das gerações futuras atendem às suas próprias necessidades. Ela envolve o uso responsável dos recursos naturais, a proteção do meio ambiente e o desenvolvimento econômico e social equilibrado. A sustentabilidade é um desafio global que requer a participação de indivíduos, empresas e governos."</p>
+                    <p>De acordo com o texto, qual das seguintes afirmações está correta?</p>
+                    <div class="options">
+                        <div class="option" data-value="A sustentabilidade compromete as gerações futuras.">A) A sustentabilidade compromete as gerações futuras.</div>
+                        <div class="option" data-value="A sustentabilidade envolve o uso responsável dos recursos.">B) A sustentabilidade envolve o uso responsável dos recursos.</div>
+                        <div class="option" data-value="A sustentabilidade não requer a participação de indivíduos.">C) A sustentabilidade não requer a participação de indivíduos.</div>
+                        <div class="option" data-value="A sustentabilidade não envolve o desenvolvimento econômico.">D) A sustentabilidade não envolve o desenvolvimento econômico.</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('interpretacao3', 'A sustentabilidade envolve o uso responsável dos recursos.')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A afirmativa "A sustentabilidade envolve o uso responsável dos recursos" está correta. O texto menciona que "Ela envolve o uso responsável dos recursos naturais, a proteção do meio ambiente e o desenvolvimento econômico e social equilibrado."</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="interpretacao4">
+                    <h3>Exercício 28: Interpretação de Texto</h3>
+                    <p>Leia o texto a seguir e responda: "A saúde mental é um estado de bem-estar psicológico que permite às pessoas lidarem com as pressões da vida, trabalhem produtivamente, contribuam para sua comunidade e realizem suas próprias capacidades. Ela é fundamental para a qualidade de vida e o bem-estar geral. Cuidar da saúde mental é essencial em todas as fases da vida, desde a infância até a velhice."</p>
+                    <p>De acordo com o texto, qual das seguintes afirmações está correta?</p>
+                    <div class="options">
+                        <div class="option" data-value="A saúde mental não é fundamental.">A) A saúde mental não é fundamental.</div>
+                        <div class="option" data-value="Cuidar da saúde mental é essencial.">B) Cuidar da saúde mental é essencial.</div>
+                        <div class="option" data-value="A saúde mental não permite lidar com pressões.">C) A saúde mental não permite lidar com pressões.</div>
+                        <div class="option" data-value="A saúde mental não é importante para a qualidade de vida.">D) A saúde mental não é importante para a qualidade de vida.</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('interpretacao4', 'Cuidar da saúde mental é essencial.')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A afirmativa "Cuidar da saúde mental é essencial" está correta. O texto menciona que "Cuidar da saúde mental é essencial em todas as fases da vida."</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="interpretacao5">
+                    <h3>Exercício 29: Interpretação de Texto</h3>
+                    <p>Leia o texto a seguir e responda: "O turismo é uma das indústrias de maior crescimento no mundo. Ele gera empregos, promove a cultura e contribui para o desenvolvimento econômico de muitos países. No entanto, também pode gerar impactos negativos como a poluição, o consumo excessivo de recursos e a pressão sobre o patrimônio cultural e natural. É importante desenvolver o turismo de forma sustentável para maximizar os benefícios e minimizar os impactos negativos."</p>
+                    <p>De acordo com o texto, qual das seguintes afirmações está correta?</p>
+                    <div class="options">
+                        <div class="option" data-value="O turismo não gera empregos.">A) O turismo não gera empregos.</div>
+                        <div class="option" data-value="O turismo promove a cultura.">B) O turismo promove a cultura.</div>
+                        <div class="option" data-value="O turismo não contribui para o desenvolvimento econômico.">C) O turismo não contribui para o desenvolvimento econômico.</div>
+                        <div class="option" data-value="O turismo não pode gerar impactos negativos.">D) O turismo não pode gerar impactos negativos.</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('interpretacao5', 'O turismo promove a cultura.')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A afirmativa "O turismo promove a cultura" está correta. O texto menciona que "Ele gera empregos, promove a cultura e contribui para o desenvolvimento econômico de muitos países."</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="interpretacao6">
+                    <h3>Exercício 30: Interpretação de Texto</h3>
+                    <p>Leia o texto a seguir e responda: "A tecnologia da informação tem revolucionado a forma como as empresas operam. Ela permitiu a automação de processos, a comunicação instantânea e o acesso a grandes volumes de dados. No entanto, também trouxe desafios como a segurança da informação, a privacidade dos dados e a necessidade de habilidades digitais. As empresas precisam adaptar-se rapidamente para aproveitar os benefícios e mitigar os riscos da tecnologia da informação."</p>
+                    <p>De acordo com o texto, qual das seguintes afirmações está correta?</p>
+                    <div class="options">
+                        <div class="option" data-value="A tecnologia da informação não permitiu a automação.">A) A tecnologia da informação não permitiu a automação.</div>
+                        <div class="option" data-value="A tecnologia da informação permitiu a comunicação instantânea.">B) A tecnologia da informação permitiu a comunicação instantânea.</div>
+                        <div class="option" data-value="A tecnologia da informação não trouxe desafios.">C) A tecnologia da informação não trouxe desafios.</div>
+                        <div class="option" data-value="A tecnologia da informação não exige habilidades digitais.">D) A tecnologia da informação não exige habilidades digitais.</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('interpretacao6', 'A tecnologia da informação permitiu a comunicação instantânea.')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A afirmativa "A tecnologia da informação permitiu a comunicação instantânea" está correta. O texto menciona que "Ela permitiu a automação de processos, a comunicação instantânea e o acesso a grandes volumes de dados."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="result-container" id="resultContainer">
+            <h2>Resultado Final</h2>
+            <div class="result-score">Você acertou <span id="finalScore">0</span> de <span id="finalTotal">0</span> exercícios</div>
+            <div class="result-message" id="resultMessage"></div>
+            <button class="btn btn-restart" onclick="restartQuiz()">Iniciar Novamente</button>
+        </div>
+    </div>
+    
+    <div class="warning-container" id="warningContainer">
+        <div class="warning-box">
+            <h2 class="warning-title">⚠️ AVISO IMPORTANTE</h2>
+            <p class="warning-message">
+                Você mudou de guia durante o teste. Esta ação foi registrada. 
+                Mudar de guia durante a realização do teste é considerado uma violação das regras.
+            </p>
+            <p class="warning-message">
+                Número de violações: <span class="warning-count" id="warningCount">1</span>
+            </p>
+            <p class="warning-message">
+                Se você exceder o limite de <strong>3 violações</strong>, seu teste será anulado automaticamente.
+            </p>
+            <button class="btn btn-primary" onclick="closeWarning()">Entendido</button>
+        </div>
+    </div>
+    
+    <script src="JS/exercicioportugues.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de Geografia para ENCCEJA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/exerciciogeografia.css">
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRNKXZCX54"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SRNKXZCX54');
+</script>
+
+</head>
+<body>
+    
+    <div class="container">
+        
+        <header>
+            <h1>Exercícios de Geografia para ENCCEJA</h1>
+            <p class="subtitle">Prepare-se para o exame com exercícios práticos e feedback imediato</p>
+        </header>
+
+        <div class="tab-warning" id="tabWarning">
+            ⚠️ ATENÇÃO: Mudar de guia durante o teste é monitorado e pode resultar na anulação do teste.
+        </div>
+
+        <div class="score">
+            Pontuação: <span id="score">0</span> / <span id="total">0</span>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="fisica">Geografia Física</button>
+            <button class="tab" data-tab="humana">Geografia Humana</button>
+        </div>
+
+        <div id="fisica" class="tab-content active">
+            <div class="exercise" id="fisica1">
+                <h3>Exercício 1: Relevo Brasileiro</h3>
+                <p>Qual é a principal formação do relevo brasileiro?</p>
+                <div class="options">
+                    <div class="option" data-value="Planaltos">A) Planaltos</div>
+                    <div class="option" data-value="Planícies">B) Planícies</div>
+                    <div class="option" data-value="Depressões">C) Depressões</div>
+                    <div class="option" data-value="Montanhas">D) Montanhas</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica1', 'Planaltos')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Os planaltos são a principal formação do relevo brasileiro, ocupando cerca de 40% do território
+                        nacional. Eles são áreas de terrenos elevados com superfícies planas ou onduladas.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="fisica2">
+                <h3>Exercício 2: Bacias Hidrográficas</h3>
+                <p>Qual é a maior bacia hidrográfica do Brasil?</p>
+                <div class="options">
+                    <div class="option" data-value="Bacia do São Francisco">A) Bacia do São Francisco</div>
+                    <div class="option" data-value="Bacia do Paraná">B) Bacia do Paraná</div>
+                    <div class="option" data-value="Bacia Amazônica">C) Bacia Amazônica</div>
+                    <div class="option" data-value="Bacia do Tocantins-Araguaia">D) Bacia do Tocantins-Araguaia</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica2', 'Bacia Amazônica')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A Bacia Amazônica é a maior bacia hidrográfica do Brasil e do mundo, com aproximadamente 7
+                        milhões de km². Ela abrange vários países da América do Sul, mas a maior parte está em
+                        território brasileiro.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="fisica3">
+                <h3>Exercício 3: Climas do Brasil</h3>
+                <p>Qual tipo climático predomina na maior parte do território brasileiro?</p>
+                <div class="options">
+                    <div class="option" data-value="Equatorial">A) Equatorial</div>
+                    <div class="option" data-value="Tropical">B) Tropical</div>
+                    <div class="option" data-value="Subtropical">C) Subtropical</div>
+                    <div class="option" data-value="Semiárido">D) Semiárido</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica3', 'Tropical')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O clima tropical predomina na maior parte do território brasileiro, especialmente nas regiões
+                        Centro-Oeste, Sudeste e parte do Nordeste. Caracteriza-se por temperaturas médias elevadas e
+                        duas estações bem definidas: verão chuvoso e inverno seco.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="fisica4">
+                <h3>Exercício 4: Vegetação</h3>
+                <p>Qual é o maior bioma brasileiro?</p>
+                <div class="options">
+                    <div class="option" data-value="Mata Atlântica">A) Mata Atlântica</div>
+                    <div class="option" data-value="Cerrado">B) Cerrado</div>
+                    <div class="option" data-value="Amazônia">C) Amazônia</div>
+                    <div class="option" data-value="Caatinga">D) Caatinga</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica4', 'Amazônia')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A Amazônia é o maior bioma brasileiro, ocupando cerca de 40% do território nacional. É a maior
+                        floresta tropical do mundo e abriga uma biodiversidade incalculável.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="fisica5">
+                <h3>Exercício 5: Geomorfologia</h3>
+                <p>Qual processo geomorfológico é predominante na formação do relevo brasileiro?</p>
+                <div class="options">
+                    <div class="option" data-value="Vulcanismo">A) Vulcanismo</div>
+                    <div class="option" data-value="Tectonismo">B) Tectonismo</div>
+                    <div class="option" data-value="Erosão">C) Erosão</div>
+                    <div class="option" data-value="Sedimentação">D) Sedimentação</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica5', 'Erosão')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A erosão é o processo geomorfológico predominante na formação do relevo brasileiro. O Brasil está
+                        em uma área tectonicamente estável, e seu relevo atual foi modelado principalmente por processos
+                        erosivos que desgastaram antigos planaltos e montanhas.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="fisica6">
+                <h3>Exercício 6: Solos</h3>
+                <p>Qual tipo de solo é predominante na região do Cerrado brasileiro?</p>
+                <div class="options">
+                    <div class="option" data-value="Latossolo">A) Latossolo</div>
+                    <div class="option" data-value="Podzólico">B) Podzólico</div>
+                    <div class="option" data-value="Areia quartzosa">C) Areia quartzosa</div>
+                    <div class="option" data-value="Solo orgânico">D) Solo orgânico</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica6', 'Latossolo')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O latossolo é o tipo de solo predominante na região do Cerrado brasileiro. É um solo profundo,
+                        bem drenado, ácido e com baixa fertilidade natural, que exige correção para uso agrícola.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="fisica7">
+                <h3>Exercício 7: Recursos Hídricos</h3>
+                <p>Qual é o principal aquífero do Brasil?</p>
+                <div class="options">
+                    <div class="option" data-value="Aquífero Guarani">A) Aquífero Guarani</div>
+                    <div class="option" data-value="Aquífero Alter do Chão">B) Aquífero Alter do Chão</div>
+                    <div class="option" data-value="Aquífero Bauru">C) Aquífero Bauru</div>
+                    <div class="option" data-value="Aquífero Serra Geral">D) Aquífero Serra Geral</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica7', 'Aquífero Guarani')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O Aquífero Guarani é o principal aquífero do Brasil e um dos maiores do mundo. Ele se estende por
+                        oito países da América do Sul e abrange uma área de aproximadamente 1,2 milhão de km² em
+                        território brasileiro.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="fisica8">
+                <h3>Exercício 8: Domínios Morfoclimáticos</h3>
+                <p>Qual domínio morfoclimático é caracterizado por clima semiárido e vegetação de xerófitas?</p>
+                <div class="options">
+                    <div class="option" data-value="Domínio Amazônico">A) Domínio Amazônico</div>
+                    <div class="option" data-value="Domínio do Cerrado">B) Domínio do Cerrado</div>
+                    <div class="option" data-value="Domínio da Caatinga">C) Domínio da Caatinga</div>
+                    <div class="option" data-value="Domínio dos Mares de Morros">D) Domínio dos Mares de Morros</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica8', 'Domínio da Caatinga')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O Domínio da Caatinga é caracterizado por clima semiárido e vegetação de xerófitas (plantas
+                        adaptadas à escassez de água). Ocupa a maior parte da região Nordeste do Brasil e apresenta
+                        temperaturas elevadas e baixos índices pluviométricos.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="fisica9">
+                <h3>Exercício 9: Fenômenos Climáticos</h3>
+                <p>Qual fenômeno climático é responsável pelas secas prolongadas na região Nordeste do Brasil?</p>
+                <div class="options">
+                    <div class="option" data-value="El Niño">A) El Niño</div>
+                    <div class="option" data-value="La Niña">B) La Niña</div>
+                    <div class="option" data-value="Zona de Convergência Intertropical">C) Zona de Convergência
+                        Intertropical</div>
+                    <div class="option" data-value="Dipolo do Atlântico">D) Dipolo do Atlântico</div>
+                </div>
+                <button class="btn btn-check"
+                    onclick="checkAnswer('fisica9', 'Zona de Convergência Intertropical')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A Zona de Convergência Intertropical (ZCIT) é o fenômeno climático que mais influencia as chuvas
+                        na região Nordeste do Brasil. Quando a ZCIT não atinge a região durante o verão austral, ocorrem
+                        as secas prolongadas, conhecidas como estiagens.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="fisica10">
+                <h3>Exercício 10: Estrutura Geológica</h3>
+                <p>Qual era geológica predomina na estrutura do território brasileiro?</p>
+                <div class="options">
+                    <div class="option" data-value="Era Cenozoica">A) Era Cenozoica</div>
+                    <div class="option" data-value="Era Mesozoica">B) Era Mesozoica</div>
+                    <div class="option" data-value="Era Paleozoica">C) Era Paleozoica</div>
+                    <div class="option" data-value="Eras Pré-Cambrianas">D) Eras Pré-Cambrianas</div>
+                </div>
+                <button class="btn btn-check"
+                    onclick="checkAnswer('fisica10', 'Eras Pré-Cambrianas')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>As Eras Pré-Cambrianas correspondem a aproximadamente 36% do território brasileiro, sendo
+                        predominantes na estrutura geológica do país. Essas formações antigas compõem os escudos
+                        cristalinos, que são as bases do relevo brasileiro.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="humana" class="tab-content">
+            <div class="exercise" id="humana1">
+                <h3>Exercício 11: População Brasileira</h3>
+                <p>Qual é a região mais populosa do Brasil?</p>
+                <div class="options">
+                    <div class="option" data-value="Norte">A) Norte</div>
+                    <div class="option" data-value="Nordeste">B) Nordeste</div>
+                    <div class="option" data-value="Sudeste">C) Sudeste</div>
+                    <div class="option" data-value="Sul">D) Sul</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('humana1', 'Sudeste')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A região Sudeste é a mais populosa do Brasil, concentrando aproximadamente 42% da população do
+                        país. Estados como São Paulo, Minas Gerais e Rio de Janeiro são os mais populosos, com São Paulo
+                        sendo o estado mais populoso do Brasil.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="humana2">
+                <h3>Exercício 12: Urbanização</h3>
+                <p>Qual é a taxa de urbanização do Brasil atualmente?</p>
+                <div class="options">
+                    <div class="option" data-value="Cerca de 65%">A) Cerca de 65%</div>
+                    <div class="option" data-value="Cerca de 75%">B) Cerca de 75%</div>
+                    <div class="option" data-value="Cerca de 85%">C) Cerca de 85%</div>
+                    <div class="option" data-value="Cerca de 95%">D) Cerca de 95%</div>
+                </div>
+                <!-- CORREÇÃO: Faltava fechar as aspas no parâmetro -->
+                <button class="btn btn-check" onclick="checkAnswer('humana2', 'Cerca de 85%')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A taxa de urbanização do Brasil atualmente é de aproximadamente 85%. O Brasil passou por um
+                        intenso processo de urbanização ao longo do século XX, tornando-se um dos países mais
+                        urbanizados do mundo.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="humana3">
+                <h3>Exercício 13: Migrações</h3>
+                <p>Qual foi o principal fluxo migratório interno no Brasil durante o século XX?</p>
+                <div class="options">
+                    <div class="option" data-value="Norte para Sul">A) Norte para Sul</div>
+                    <div class="option" data-value="Nordeste para Sudeste">B) Nordeste para Sudeste</div>
+                    <div class="option" data-value="Sul para Norte">C) Sul para Norte</div>
+                    <div class="option" data-value="Sudeste para Nordeste">D) Sudeste para Nordeste</div>
+                </div>
+                <button class="btn btn-check"
+                    onclick="checkAnswer('humana3', 'Nordeste para Sudeste')">Verificar</button>
+
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O principal fluxo migratório interno no Brasil durante o século XX foi do Nordeste para o
+                        Sudeste. Esse deslocamento populacional ocorreu principalmente devido às secas no Nordeste e ao
+                        desenvolvimento industrial no Sudeste, especialmente em São Paulo e Rio de Janeiro.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="humana4">
+                <h3>Exercício 14: Economia</h3>
+                <p>Qual é o principal setor da economia brasileira atualmente?</p>
+                <div class="options">
+                    <div class="option" data-value="Primário">A) Primário</div>
+                    <div class="option" data-value="Secundário">B) Secundário</div>
+                    <div class="option" data-value="Terciário">C) Terciário</div>
+                    <div class="option" data-value="Quaternário">D) Quaternário</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('humana4', 'Terciário')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O setor terciário (comércio e serviços) é o principal da economia brasileira atualmente,
+                        representando aproximadamente 75% do PIB do país. Essa predominância reflete o processo de
+                        urbanização e desenvolvimento econômico do Brasil.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="humana5">
+                <h3>Exercício 15: Rede Urbana</h3>
+                <p>Qual é a maior metrópole do Brasil?</p>
+                <div class="options">
+                    <div class="option" data-value="Rio de Janeiro">A) Rio de Janeiro</div>
+                    <div class="option" data-value="São Paulo">B) São Paulo</div>
+                    <div class="option" data-value="Brasília">C) Brasília</div>
+                    <div class="option" data-value="Salvador">D) Salvador</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('humana5', 'São Paulo')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>São Paulo é a maior metrópole do Brasil e uma das maiores do mundo. A Região Metropolitana de São
+                        Paulo possui mais de 21 milhões de habitantes e é o principal centro financeiro, comercial e
+                        industrial do país.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="humana6">
+                <h3>Exercício 16: Indústria</h3>
+                <p>Qual é o principal polo industrial do Brasil?</p>
+                <div class="options">
+                    <div class="option" data-value="Região Metropolitana de São Paulo">A) Região Metropolitana de São
+                        Paulo</div>
+                    <div class="option" data-value="Região Sudeste">B) Região Sudeste</div>
+                    <div class="option" data-value="Região Sul">C) Região Sul</div>
+                    <div class="option" data-value="Região Nordeste">D) Região Nordeste</div>
+                </div>
+                <button class="btn btn-check"
+                    onclick="checkAnswer('humana6', 'Região Metropolitana de São Paulo')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A Região Metropolitana de São Paulo é o principal polo industrial do Brasil, concentrando grande
+                        parte do parque industrial nacional. O estado de São Paulo sozinho responde por aproximadamente
+                        40% da produção industrial do país.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="humana7">
+                <h3>Exercício 17: Agricultura</h3>
+                <p>Qual é o principal produto agrícola de exportação do Brasil?</p>
+                <div class="options">
+                    <div class="option" data-value="Café">A) Café</div>
+                    <div class="option" data-value="Soja">B) Soja</div>
+                    <div class="option" data-value="Cana-de-açúcar">C) Cana-de-açúcar</div>
+                    <div class="option" data-value="Milho">D) Milho</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('humana7', 'Soja')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A soja é o principal produto agrícola de exportação do Brasil. O país é o maior produtor e
+                        exportador de soja do mundo, com destaque para os estados do Centro-Oeste (Mato Grosso, Goiás e
+                        Mato Grosso do Sul) e regiões do Maranhão, Tocantins, Piauí e Bahia (Matopiba).</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="humana8">
+                <h3>Exercício 18: Desigualdades Regionais</h3>
+                <p>Qual indicador social melhor expressa as desigualdades regionais no Brasil?</p>
+                <div class="options">
+                    <div class="option" data-value="Taxa de natalidade">A) Taxa de natalidade</div>
+                    <div class="option" data-value="IDH">B) IDH</div>
+                    <div class="option" data-value="Densidade demográfica">C) Densidade demográfica</div>
+                    <div class="option" data-value="Taxa de urbanização">D) Taxa de urbanização</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('humana8', 'IDH')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O Índice de Desenvolvimento Humano (IDH) é o indicador que melhor expressa as desigualdades
+                        regionais no Brasil. Ele combina medidas de educação, saúde e renda, mostrando claramente as
+                        disparidades entre as regiões do país, com o Sul e Sudeste apresentando os maiores índices e o
+                        Norte e Nordeste, os menores.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="humana9">
+                <h3>Exercício 19: Globalização</h3>
+                <p>Qual é o principal bloco econômico do qual o Brasil faz parte?</p>
+                <div class="options">
+                    <div class="option" data-value="Mercosul">A) Mercosul</div>
+                    <div class="option" data-value="União Europeia">B) União Europeia</div>
+                    <div class="option" data-value="NAFTA">C) NAFTA</div>
+                    <div class="option" data-value="ASEAN">D) ASEAN</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('humana9', 'Mercosul')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O Mercosul (Mercado Comum do Sul) é o principal bloco econômico do qual o Brasil faz parte.
+                        Criado em 1991, o bloco é composto por Argentina, Brasil, Paraguai e Uruguai, com Venezuela
+                        (atualmente suspensa) e Bolívia em processo de adesão.</p>
+                </div>
+            </div>
+
+            <div class="exercise" id="humana10">
+                <h3>Exercício 20: Meio Ambiente</h3>
+                <p>Qual é o principal desafio ambiental enfrentado pelo Brasil atualmente?</p>
+                <div class="options">
+                    <div class="option" data-value="Poluição industrial">A) Poluição industrial</div>
+                    <div class="option" data-value="Desmatamento">B) Desmatamento</div>
+                    <div class="option" data-value="Esgotamento dos recursos hídricos">C) Esgotamento dos recursos
+                        hídricos</div>
+                    <div class="option" data-value="Contaminação dos solos">D) Contaminação dos solos</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('humana10', 'Desmatamento')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O desmatamento é o principal desafio ambiental enfrentado pelo Brasil atualmente, especialmente
+                        na Amazônia e no Cerrado. A perda de vegetação nativa contribui para a perda de biodiversidade,
+                        mudanças climáticas, degradação dos solos e alterações nos ciclos hidrológicos.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-container" id="resultContainer">
+            <h2>Resultado Final</h2>
+            <div class="result-score">Você acertou <span id="finalScore">0</span> de <span id="finalTotal">0</span>
+                exercícios</div>
+            <div class="result-message" id="resultMessage"></div>
+            <button class="btn btn-restart" onclick="restartQuiz()">Iniciar Novamente</button>
+        </div>
+    </div>
+
+    <div class="warning-container" id="warningContainer">
+        <div class="warning-box">
+            <h2 class="warning-title">⚠️ AVISO IMPORTANTE</h2>
+            <p class="warning-message">
+                Você mudou de guia durante o teste. Esta ação foi registrada.
+                Mudar de guia durante a realização do teste é considerado uma violação das regras.
+            </p>
+            <p class="warning-message">
+                Número de violações: <span class="warning-count" id="warningCount">1</span>
+            </p>
+            <p class="warning-message">
+                Se você exceder o limite de <strong>3 violações</strong>, seu teste será anulado automaticamente.
+            </p>
+            <button class="btn btn-primary" onclick="closeWarning()">Entendido</button>
+        </div>
+    </div>
+
+    <script src="JS/exerciciogeografia.js"></script>
+
+</body>
+</html>

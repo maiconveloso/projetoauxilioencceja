@@ -1,0 +1,201 @@
+:root {
+            --primary-color: #3a5a78;
+            --secondary-color: #D3D3D3;
+            --accent-color: #e63946;
+            --text-color: #333;
+            --light-text: #6c757d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: #D3D3D3;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: #f8f9fa !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #2c3e50);
+            color: #f8f9fa;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .apostila-card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        
+        .apostila-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+            border-bottom: none;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #2c4760;
+            border-color: #2c4760;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .topic-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .topic-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .topic-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .topic-list i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+        
+        @media (max-width: 768px) {
+            .apostila-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        /* Estilos para a modal de visualização */
+        .modal-content {
+            border-radius: 8px;
+            border: none;
+        }
+        
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .apostila-preview {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .preview-content p {
+            margin-bottom: 0.75rem;
+        }
+        
+        .preview-content ul {
+            padding-left: 1.5rem;
+        }
+        
+        .preview-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Estilos para seções das matérias */
+        .subject-section {
+            padding: 3rem 0;
+        }
+        
+        .subject-section h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .subject-section h2:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 25%;
+        }

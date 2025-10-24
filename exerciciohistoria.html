@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de História para ENCCEJA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/exerciciohistoria.css">
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRNKXZCX54"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SRNKXZCX54');
+</script>
+
+</head>
+<body>
+    
+    <div class="container">
+        
+        <header>
+            <h1>Exercícios de História para ENCCEJA</h1>
+            <p class="subtitle">Prepare-se para o exame com exercícios práticos e feedback imediato</p>
+        </header>
+        
+        <div class="tab-warning" id="tabWarning">
+            ⚠️ ATENÇÃO: Mudar de guia durante o teste é monitorado e pode resultar na anulação do teste. 
+        </div>
+        
+        <div class="score">
+            Pontuação: <span id="score">0</span> / <span id="total">0</span>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+    
+        <div class="tabs">
+            <button class="tab active" data-tab="colonizacao">Colonização</button>
+            <button class="tab" data-tab="independencia">Independência</button>
+            <button class="tab" data-tab="imperio">Império</button>
+            <button class="tab" data-tab="republica">República</button>
+            <button class="tab" data-tab="segunda">Segunda Guerra</button>
+        </div>
+        
+        <div id="colonizacao" class="tab-content active">
+            <div class="exercise" id="colonizacao1">
+                <h3>Exercício 1: Colonização Portuguesa</h3>
+                <p>Qual foi o primeiro território no Brasil a ser explorado pelos portugueses?</p>
+                <div class="options">
+                    <div class="option" data-value="Bahia">A) Bahia</div>
+                    <div class="option" data-value="São Paulo">B) São Paulo</div>
+                    <div class="option" data-value="Pernambuco">C) Pernambuco</div>
+                    <div class="option" data-value="Rio de Janeiro">D) Rio de Janeiro</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('colonizacao1', 'Bahia')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A Bahia foi o primeiro território no Brasil a ser explorado pelos portugueses. O primeiro estabelecimento português no Brasil foi o de Porto Seguro, em 1531, mas a Bahia se tornou a primeira capital colonial em 1549.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="colonizacao2">
+                <h3>Exercício 2: Ciclo da Cana-de-Açúcar</h3>
+                <p>Qual foi a principal região produtora de cana-de-açúcar no Brasil Colonial?</p>
+                <div class="options">
+                    <div class="option" data-value="Sudeste">A) Sudeste</div>
+                    <div class="option" data-value="Norte">B) Norte</div>
+                    <div class="option" data-value="Nordeste">C) Nordeste</div>
+                    <div class="option" data-value="Sul">D) Sul</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('colonizacao2', 'Nordeste')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O Nordeste foi a principal região produtora de cana-de-açúcar no Brasil Colonial. Estados como Pernambuco, Bahia e Alagoas se tornaram os principais centros de produção e exportação de açúcar.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="colonizacao3">
+                <h3>Exercício 3: Ciclo do Ouro</h3>
+                <p>Qual foi o estado que mais se beneficiou do Ciclo do Ouro no Brasil Colonial?</p>
+                <div class="options">
+                    <div class="option" data-value="Minas Gerais">A) Minas Gerais</div>
+                    <div class="option" data-value="São Paulo">B) São Paulo</div>
+                    <div class="option" data-value="Rio de Janeiro">C) Rio de Janeiro</div>
+                    <div class="option" data-value="Bahia">D) Bahia</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('colonizacao3', 'Minas Gerais')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Minas Gerais foi o estado que mais se beneficiou do Ciclo do Ouro no Brasil Colonial. A descoberta de ouro na região em 1693 levou a uma grande migração e ao desenvolvimento econômico da região.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="colonizacao4">
+                <h3>Exercício 4: Escravidão</h3>
+                <p>Qual foi a principal causa da escravidão no Brasil Colonial?</p>
+                <div class="options">
+                    <div class="option" data-value="Falta de mão de obra nativa">A) Falta de mão de obra nativa</div>
+                    <div class="option" data-value="Desejo dos africanos de vir para o Brasil">B) Desejo dos africanos de vir para o Brasil</div>
+                    <div class="option" data-value="Vingança contra os índios">C) Vingança contra os índios</div>
+                    <div class="option" data-value="Divertimento dos portugueses">D) Divertimento dos portugueses</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('colonizacao4', 'Falta de mão de obra nativa')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A principal causa da escravidão no Brasil Colonial foi a falta de mão de obra nativa. Os índios eram suscetíveis a doenças e muitas vezes resistiam à escravidão, levando os colonizadores a buscar escravos africanos.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="colonizacao5">
+                <h3>Exercício 5: Guerra dos Emboabas</h3>
+                <p>Quem participou da Guerra dos Emboabas em 1707?</p>
+                <div class="options">
+                    <div class="option" data-value="Portugueses e espanhóis">A) Portugueses e espanhóis</div>
+                    <div class="option" data-value="Portugueses e indígenas">B) Portugueses e indígenas</div>
+                    <div class="option" data-value="Paulistas e emboabas">C) Paulistas e emboabas</div>
+                    <div class="option" data-value="Brasileiros e africanos">D) Brasileiros e africanos</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('colonizacao5', 'Paulistas e emboabas')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A Guerra dos Emboabas foi um conflito entre os paulistas (colonos nascidos no Brasil) e os emboabas (colonos vindos de Portugal ou de outras colônias). O conflito surgiu por disputas sobre os direitos de exploração do ouro nas Minas Gerais.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="independencia" class="tab-content">
+            <div class="exercise" id="independencia1">
+                <h3>Exercício 6: Inconfidência Mineira</h3>
+                <p>Quem foi o líder da Inconfidência Mineira?</p>
+                <div class="options">
+                    <div class="option" data-value="João Mendes de Albuquerque">A) João Mendes de Albuquerque</div>
+                    <div class="option" data-value="Tiradentes">B) Tiradentes</div>
+                    <div class="option" data-value="Dona Leopoldina">C) Dona Leopoldina</div>
+                    <div class="option" data-value="Dom João VI">D) Dom João VI</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('independencia1', 'Tiradentes')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Tiradentes (Joaquim José da Silva Xavier) foi o líder da Inconfidência Mineira, um movimento separatista que ocorreu em 1789 na capitania de Minas Gerais.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="independencia2">
+                <h3>Exercício 7: Guerra de Canudos</h3>
+                <p>Quem liderou a resistência em Canudos contra o governo republicano?</p>
+                <div class="options">
+                    <div class="option" data-value="Antônio Conselheiro">A) Antônio Conselheiro</div>
+                    <div class="option" data-value="D. Pedro II">B) D. Pedro II</div>
+                    <div class="option" data-value="Deodoro da Fonseca">C) Deodoro da Fonseca</div>
+                    <div class="option" data-value="Marechal Hermes">D) Marechal Hermes</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('independencia2', 'Antônio Conselheiro')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Antônio Conselheiro foi quem liderou a resistência em Canudos contra o governo republicano. Ele fundou uma comunidade religiosa em 1893 no sertão da Bahia, que foi destruída pelo exército em 1897.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="independencia3">
+                <h3>Exercício 8: Independência do Brasil</h3>
+                <p>Em que data o Brasil declarou sua independência?</p>
+                <div class="options">
+                    <div class="option" data-value="15 de novembro de 1889">A) 15 de novembro de 1889</div>
+                    <div class="option" data-value="7 de setembro de 1822">B) 7 de setembro de 1822</div>
+                    <div class="option" data-value="1820">C) 1820</div>
+                    <div class="option" data-value="1825">D) 1825</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('independencia3', '7 de setembro de 1822')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O Brasil declarou sua independência em 7 de setembro de 1822. No dia 7 de setembro, D. Pedro I proclamou a independência do Brasil do Império Português.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="independencia4">
+                <h3>Exercício 9: Abolição da Escravatura</h3>
+                <p>Qual lei aboliu a escravatura no Brasil?</p>
+                <div class="options">
+                    <div class="option" data-value="Lei Áurea">A) Lei Áurea</div>
+                    <div class="option" data-value="Estatuto do Trabalho">B) Estatuto do Trabalho</div>
+                    <div class="option" data-value="Constituição de 1891">C) Constituição de 1891</div>
+                    <div class="option" data-value="Lei do Ventre Livre">D) Lei do Ventre Livre</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('independencia4', 'Lei Áurea')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A Lei Áurea, sancionada em 13 de maio de 1888, aboliu a escravatura no Brasil. A lei foi proposta pela Condessa de Barral e sancionada pelo então presidente Rodrigues Alves.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="independencia5">
+                <h3>Exercício 10: Guerra do Paraguai</h3>
+                <p>Quem comandou o Exército Brasileiro na Guerra do Paraguai?</p>
+                <div class="options">
+                    <div class="option" data-value="Deodoro da Fonseca">A) Deodoro da Fonseca</div>
+                    <div class="option" data-value="Marechal Hermes">B) Marechal Hermes</div>
+                    <div class="option" data-value="Marechal Floriano Peixoto">C) Marechal Floriano Peixoto</div>
+                    <div class="option" data-value="Marechal Cândido Rondon">D) Marechal Cândido Rondon</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('independencia5', 'Marechal Floriano Peixoto')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Marechal Floriano Peixoto comandou o Exército Brasileiro na Guerra do Paraguai. Ele foi um dos heróis da guerra e posteriormente tornou-se vice-presidente e depois presidente da República.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="imperio" class="tab-content">
+            <div class="exercise" id="imperio1">
+                <h3>Exercício 11: Constituição de 1824</h3>
+                <p>Qual foi o sistema de governo estabelecido pela Constituição de 1824?</p>
+                <div class="options">
+                    <div class="option" data-value="Monarquia Absoluta">A) Monarquia Absoluta</div>
+                    <div class="option" data-value="Monarquia Parlamentar">B) Monarquia Parlamentar</div>
+                    <div class="option" data-value="República Federal">C) República Federal</div>
+                    <div class="option" data-value="República Presidencial">D) República Presidencial</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('imperio1', 'Monarquia Parlamentar')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A Constituição de 1824 estabeleceu uma Monarquia Parlamentar no Brasil. O sistema conferia amplos poderes ao imperador, mas também previa limitações e controles por parte do Congresso Nacional.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="imperio2">
+                <h3>Exercício 12: Guerra dos Farrapos</h3>
+                <p>Quem foi o líder da República Rio-Grandense durante a Guerra dos Farrapos?</p>
+                <div class="options">
+                    <div class="option" data-value="Dom Pedro I">A) Dom Pedro I</div>
+                    <div class="option" data-value="Dom João VI">B) Dom João VI</div>
+                    <div class="option" data-value="Manuel Luis Osório">C) Manuel Luis Osório</div>
+                    <div class="option" data-value="Bento Gonçalves da Silva">D) Bento Gonçalves da Silva</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('imperio2', 'Bento Gonçalves da Silva')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Bento Gonçalves da Silva foi o líder da República Rio-Grandense durante a Guerra dos Farrapos. Ele proclamou a República Rio-Grandense em 11 de setembro de 1835, separando-se do Império do Brasil.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="imperio3">
+                <h3>Exercício 13: Abolicionismo</h3>
+                <p>Qual foi a principal organização abolicionista no Brasil?</p>
+                <div class="options">
+                    <div class="option" data-value="Partido Republicano">A) Partido Republicano</div>
+                    <div class="option" data-value="Partido Liberal">B) Partido Liberal</div>
+                    <div class="option" data-value="Comissão Central Abolicionista">C) Comissão Central Abolicionista</div>
+                    <div class="option" data-value="Inconfidência Mineira">D) Inconfidência Mineira</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('imperio3', 'Comissão Central Abolicionista')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A Comissão Central Abolicionista foi a principal organização abolicionista no Brasil. Fundada em 1880, ela coordenou as campanhas abolicionistas no país até a promulgação da Lei Áurea em 1888.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="imperio4">
+                <h3>Exercício 14: Crise na Monarquia</h3>
+                <p>Qual foi um dos principais fatores que levaram à crise na monarquia no Brasil?</p>
+                <div class="options">
+                    <div class="option" data-value="Política do Cabidão">A) Política do Cabidão</div>
+                    <div class="option" data-value="Questão religiosa">B) Questão religiosa</div>
+                    <div class="option" data-value="Guerra do Paraguai">C) Guerra do Paraguai</div>
+                    <div class="option" data-value="Abolição da escravatura">D) Abolição da escravatura</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('imperio4', 'Questão religiosa')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A Questão religiosa foi um dos principais fatores que levaram à crise na monarquia no Brasil. O conflito surgiu em 1872 quando o imperador D. Pedro II tentou limitar os privilégios da Igreja Católica, que gerou forte oposição da hierarquia eclesiástica e de setores conservadores da sociedade.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="imperio5">
+                <h3>Exercício 15: Proclamação da República</h3>
+                <p>Quem liderou a Proclamação da República do Brasil?</p>
+                <div class="options">
+                    <div class="option" data-value="Deodoro da Fonseca">A) Deodoro da Fonseca</div>
+                    <div class="option" data-value="Marechal Hermes">B) Marechal Hermes</div>
+                    <div class="option" data-value="Marechal Floriano Peixoto">C) Marechal Floriano Peixoto</div>
+                    <div class="option" data-value="Marechal Cândido Rondon">D) Marechal Cândido Rondon</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('imperio5', 'Deodoro da Fonseca')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Deodoro da Fonseca liderou a Proclamação da República do Brasil. Ele era marechal do Exército e presidente do Conselho de Ministros e do Senado Imperial no momento da revolução.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="republica" class="tab-content">
+            <div class="exercise" id="republica1">
+                <h3>Exercício 16: Constituição de 1891</h3>
+                <p>Qual foi a forma de governo estabelecida pela Constituição de 1891?</p>
+                <div class="options">
+                    <div class="option" data-value="República Presidencialista">A) República Presidencialista</div>
+                    <div class="option" data-value="República Parlamentarista">B) República Parlamentarista</div>
+                    <div class="option" data-value="Monarquia Federal">C) Monarquia Federal</div>
+                    <div class="option" data-value="República Monárquica">D) República Monárquica</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('republica1', 'República Presidencialista')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A Constituição de 1891 estabeleceu uma República Presidencialista no Brasil. O sistema conferia amplos poderes ao presidente da República, eleito indiretamente pelo Congresso Nacional.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="republica2">
+                <h3>Exercício 17: República Velha</h3>
+                <p>Qual foi o sistema político predominante durante a República Velha (1889-1930)?</p>
+                <div class="options">
+                    <div class="option" data-value="Democracia direta">A) Democracia direta</div>
+                    <div class="option" data-value="Partidarismo">B) Partidarismo</div>
+                    <div class="option" data-value="Caciquismo e coronelismo">C) Caciquismo e coronelismo</div>
+                    <div class="option" data-value="Federalismo">D) Federalismo</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('republica2', 'Caciquismo e coronelismo')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O sistema político predominante durante a República Velha (1889-1930) foi o Caciquismo e coronelismo. Esse sistema baseava-se em clientelismo, corrupção e controle político regional por parte de líderes locais (coroneis) apoiados por políticos nacionais (caciques).</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="republica3">
+                <h3>Exercício 18: Revolta da Armada</h3>
+                <p>Quando ocorreu a Revolta da Armada?</p>
+                <div class="options">
+                    <div class="option" data-value="1891">A) 1891</div>
+                    <div class="option" data-value="1893">B) 1893</div>
+                    <div class="option" data-value="1895">C) 1895</div>
+                    <div class="option" data-value="1890">D) 1890</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('republica3', '1893')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A Revolta da Armada ocorreu em 1893. Foi uma rebelião de oficiais da Marinha contra o governo de Floriano Peixoto, que resultou em um conflito armado que durou cerca de um ano.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="republica4">
+                <h3>Exercício 19: Revolução de 1930</h3>
+                <p>Quem liderou a Revolução de 1930?</p>
+                <div class="options">
+                    <div class="option" data-value="Getúlio Vargas">A) Getúlio Vargas</div>
+                    <div class="option" data-value="Washington Luís">B) Washington Luís</div>
+                    <div class="option" data-value="Júlio Prestes">C) Júlio Prestes</div>
+                    <div class="option" data-value="Arthur Bernardes">D) Arthur Bernardes</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('republica4', 'Getúlio Vargas')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Getúlio Vargas liderou a Revolução de 1930. A revolta foi motivada pela fraude eleitoral nas eleições de 1930 e resultou no fim da República Velha e na ascensão de Vargas ao poder.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="republica5">
+                <h3>Exercício 20: Estado Novo</h3>
+                <p>Qual foi a característica principal do Estado Novo (1937-1945)?</p>
+                <div class="options">
+                    <div class="option" data-value="Democracia representativa">A) Democracia representativa</div>
+                    <div class="option" data-value="Autoritarismo">B) Autoritarismo</div>
+                    <div class="option" data-value="Federalismo">C) Federalismo</div>
+                    <div class="option" data-value="Parlamentarismo">D) Parlamentarismo</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('republica5', 'Autoritarismo')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A característica principal do Estado Novo (1937-1945) foi o Autoritarismo. Getúlio Vargas fechou o Congresso Nacional, promulgou uma nova constituição e concentrou poderes executivos, criando um regime semelhante ao fascismo europeu.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="segunda" class="tab-content">
+            <div class="exercise" id="segunda1">
+                <h3>Exercício 21: Segunda Guerra Mundial</h3>
+                <p>Em que ano o Brasil entrou na Segunda Guerra Mundial?</p>
+                <div class="options">
+                    <div class="option" data-value="1941">A) 1941</div>
+                    <div class="option" data-value="1942">B) 1942</div>
+                    <div class="option" data-value="1943">C) 1943</div>
+                    <div class="option" data-value="1944">D) 1944</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('segunda1', '1942')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O Brasil entrou na Segunda Guerra Mundial em 1942. A entrada foi motivada pelo afundamento de vários navios brasileiros por submarinos alemães, após o qual o governo brasileiro declarou guerra contra as potências do Eixo.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="segunda2">
+                <h3>Exercício 22: Força Expedicionária Brasira</h3>
+                <p>Qual foi a principal contribuição da Força Expedicionária Brasileira na Segunda Guerra Mundial?</p>
+                <div class="options">
+                    <div class="option" data-value="Combate na frente do Pacífico">A) Combate na frente do Pacífico</div>
+                    <div class="option" data-value="Combate na frente da Itália">B) Combate na frente da Itália</div>
+                    <div class="option" data-value="Produção de material bélico">C) Produção de material bélico</div>
+                    <div class="option" data-value="Transporte aéreo de tropas">D) Transporte aéreo de tropas</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('segunda2', 'Combate na frente da Itália')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>A principal contribuição da Força Expedicionária Brasileira na Segunda Guerra Mundial foi o Combate na frente da Itália. Cerca de 25 mil brasileiros integraram a Força Expedicionária, que lutou na Campanha da Itália entre 1944 e 1945.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="segunda3">
+                <h3>Exercício 23: Guerra Fria</h3>
+                <p>Qual foi a posição do Brasil durante a Guerra Fria?</p>
+                <div class="options">
+                    <div class="option" data-value="Neutral">A) Neutral</div>
+                    <div class="option" data-value="Aliado dos EUA">B) Aliado dos EUA</div>
+                    <div class="option" data-value="Aliado da URSS">C) Aliado da URSS</div>
+                    <div class="option" data-value="Aliado da China">D) Aliado da China</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('segunda3', 'Aliado dos EUA')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O Brasil posicionou-se como Aliado dos EUA durante a Guerra Fria. O país manteve uma posição anticomunista e participou de diversas organizações internacionais lideradas pelos EUA.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="segunda4">
+                <h3>Exercício 24: Ditadura Militar</h3>
+                <p>Qual foi o principal evento que marcou o início da Ditadura Militar no Brasil?</p>
+                <div class="options">
+                    <div class="option" data-value="Golpe de Estado de 1964">A) Golpe de Estado de 1964</div>
+                    <div class="option" data-value="Revolução de 1930">B) Revolução de 1930</div>
+                    <div class="option" data-value="Revolução de 1932">C) Revolução de 1932</div>
+                    <div class="option" data-value="Proclamação da República">D) Proclamação da República</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('segunda4', 'Golpe de Estado de 1964')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O principal evento que marcou o início da Ditadura Militar no Brasil foi o Golpe de Estado de 1964. A revolta militar, liderada por generais como Castello Branco, depôs o presidente João Goulart e instaurou um regime militar no país.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="segunda5">
+                <h3>Exercício 25: Diretas Já</h3>
+                <p>Em que ano ocorreu o processo de redemocratização no Brasil?</p>
+                <div class="options">
+                    <div class="option" data-value="1982">A) 1982</div>
+                    <div class="option" data-value="1984">B) 1984</div>
+                    <div class="option" data-value="1986">C) 1986</div>
+                    <div class="option" data-value="1988">D) 1988</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('segunda5', '1984')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>O ano de 1984 foi marcado pelo movimento Diretas Já, que exigia a realização de eleições diretas para presidente. Embora as eleições diretas só ocorreram em 1989, o movimento Diretas Já foi um importante passo no processo de redemocratização do Brasil.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="result-container" id="resultContainer">
+            <h2>Resultado Final</h2>
+            <div class="result-score">Você acertou <span id="finalScore">0</span> de <span id="finalTotal">0</span> exercícios</div>
+            <div class="result-message" id="resultMessage"></div>
+            <button class="btn btn-restart" onclick="restartQuiz()">Iniciar Novamente</button>
+        </div>
+    </div>
+    
+    <div class="warning-container" id="warningContainer">
+        <div class="warning-box">
+            <h2 class="warning-title">⚠️ AVISO IMPORTANTE</h2>
+            <p class="warning-message">
+                Você mudou de guia durante o teste. Esta ação foi registrada. 
+                Mudar de guia durante a realização do teste é considerado uma violação das regras.
+            </p>
+            <p class="warning-message">
+                Número de violações: <span class="warning-count" id="warningCount">1</span>
+            </p>
+            <p class="warning-message">
+                Se você exceder o limite de <strong>3 violações</strong>, seu teste será anulado automaticamente.
+            </p>
+            <button class="btn btn-primary" onclick="closeWarning()">Entendido</button>
+        </div>
+    </div>
+    
+    <script src="JS/exerciciohistoria.js"></script>
+    
+</body>
+</html>

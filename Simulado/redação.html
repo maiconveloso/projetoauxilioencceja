@@ -9,7 +9,6 @@
     <style>
         :root {
             --primary-color: #34495e;
-            --secondary-color: #2980b9;
             --accent-color: #e74c3c;
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
@@ -36,16 +35,13 @@
             padding: 20px;
         }
         
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         nav a {
@@ -88,7 +84,7 @@
             margin: 0 auto;
         }
         
-        .redacao-section {
+        .simulado-section {
             background-color: white;
             border-radius: 8px;
             padding: 30px;
@@ -96,7 +92,7 @@
             margin-bottom: 30px;
         }
         
-        .redacao-section h2 {
+        .simulado-section h2 {
             color: var(--primary-color);
             margin-bottom: 20px;
             font-size: 24px;
@@ -105,11 +101,11 @@
             gap: 10px;
         }
         
-        .redacao-section h2 i {
+        .simulado-section h2 i {
             font-size: 22px;
         }
         
-        .redacao-info {
+        .simulado-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -131,7 +127,7 @@
             color: var(--warning-color);
         }
         
-        .word-counter {
+        .question-counter {
             font-size: 18px;
             font-weight: 500;
         }
@@ -155,110 +151,48 @@
             background-color: var(--secondary-color);
         }
         
-        .redacao-container {
+        .question-container {
             display: none;
         }
         
-        .theme-box {
-            background-color: #f8f9fa;
-            border-left: 4px solid var(--secondary-color);
+        .question {
+            margin-bottom: 30px;
             padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: white;
         }
         
-        .theme-box h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .theme-box p {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        
-        .supporting-texts {
-            margin-top: 20px;
-        }
-        
-        .supporting-texts h4 {
-            color: var(--dark-color);
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        
-        .supporting-texts ul {
-            padding-left: 20px;
-        }
-        
-        .supporting-texts li {
-            margin-bottom: 8px;
-            font-size: 15px;
-        }
-        
-        .writing-area {
-            margin-bottom: 30px;
-        }
-        
-        .writing-area h3 {
-            color: var(--primary-color);
+        .question h3 {
             margin-bottom: 15px;
             font-size: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .draft-area, .final-area {
-            width: 100%;
-            min-height: 200px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: 'Roboto', sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
-            resize: vertical;
-            margin-bottom: 15px;
-        }
-        
-        .draft-area {
-            background-color: #f9f9f9;
-        }
-        
-        .final-area {
-            background-color: white;
-            min-height: 400px;
-        }
-        
-        .instructions {
-            background-color: rgba(243, 156, 18, 0.1);
-            border-left: 4px solid var(--warning-color);
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-        
-        .instructions h4 {
-            color: var(--warning-color);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .instructions ul {
-            padding-left: 20px;
             color: var(--dark-color);
         }
         
-        .instructions li {
-            margin-bottom: 5px;
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            background-color: rgba(52, 152, 219, 0.05);
+            border-color: var(--primary-color);
+        }
+        
+        .option input {
+            margin-right: 10px;
         }
         
         .navigation-buttons {
@@ -304,6 +238,13 @@
             font-size: 28px;
         }
         
+        .score {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 20px 0;
+        }
+        
         .result-message {
             font-size: 18px;
             margin-bottom: 30px;
@@ -326,60 +267,55 @@
             background-color: var(--secondary-color);
         }
         
-        .warning-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+        .progress-container {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .warning-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .warning-content h3 {
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            font-size: 24px;
-        }
-        
-        .warning-content p {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
             margin-bottom: 20px;
-            font-size: 16px;
-            line-height: 1.5;
+            overflow: hidden;
         }
         
-        .warning-content button {
-            padding: 10px 20px;
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .feedback.correct {
+            background-color: rgba(46, 204, 113, 0.1);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+        }
+        
+        .feedback.incorrect {
+            background-color: rgba(231, 76, 60, 0.1);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        .feedback i {
+            margin-right: 10px;
+        }
+        
+        .question-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
             background-color: var(--primary-color);
             color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .warning-content button:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        .word-count-warning {
-            color: var(--warning-color);
-            font-size: 14px;
-            margin-top: 5px;
-            display: none;
+            border-radius: 50%;
+            margin-right: 10px;
         }
         
         @media (max-width: 768px) {
@@ -393,7 +329,7 @@
                 justify-content: center;
             }
             
-            .redacao-info {
+            .simulado-info {
                 flex-direction: column;
                 gap: 15px;
                 align-items: flex-start;
@@ -409,6 +345,98 @@
                 justify-content: center;
             }
         }
+        
+        /* Estilos específicos para a redação */
+        .essay-container {
+            display: none;
+            margin-bottom: 30px;
+        }
+        
+        .essay-instructions {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .essay-topic {
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .essay-prompts {
+            margin-bottom: 20px;
+        }
+        
+        .essay-textarea {
+            width: 100%;
+            height: 300px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            resize: none;
+            margin-bottom: 20px;
+        }
+        
+        .essay-counter {
+            text-align: right;
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .essay-tips {
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .essay-evaluation {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid var(--success-color);
+        }
+        
+        .evaluation-criteria {
+            margin-top: 15px;
+        }
+        
+        .criteria-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .criteria-name {
+            flex: 1;
+        }
+        
+        .criteria-score {
+            background-color: var(--light-color);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .criteria-max {
+            color: #7f8c8d;
+            margin-left: 5px;
+        }
+        
+        .evaluation-total {
+            margin-top: 20px;
+            font-weight: 700;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
@@ -416,78 +444,120 @@
     <div class="container">
         <main class="main-content">
             <section class="welcome-section">
-                <h1>Bem-vindo à Prova de Redação do ENCCEJA</h1>
-                <p>Prepare-se para a prova de redação do ENCCEJA com nosso simulado. Você terá 60 minutos para produzir uma redação dissertativa-argumentativa sobre o tema proposto. Boa sorte!</p>
+                <h1>Bem-vindo ao Simulado de Redação ENCCEJA</h1>
+                <p>Prepare-se para o Encceja com nosso simulado de redação. Este teste contém uma redação que é comum no exame. Boa sorte!</p>
             </section>
             
-            <section class="redacao-section">
-                <h2><i class="fas fa-pen-fancy"></i> Prova de Redação do ENCCEJA</h2>
+            <section class="simulado-section">
+                <h2><i class="fas fa-pen"></i> Simulado de Redação</h2>
                 
-                <div class="instructions">
-                    <h4><i class="fas fa-exclamation-triangle"></i> Instruções para a Redação</h4>
-                    <ul>
-                        <li>Não é permitido abrir outras abas ou janelas do navegador durante a prova</li>
-                        <li>A prova será encerrada automaticamente se você tentar sair desta página</li>
-                        <li>Você terá 60 minutos para concluir a redação</li>
-                        <li>A redação deve ter no mínimo 7 linhas e no máximo 30 linhas</li>
-                        <li>Utilize o campo de rascunho para organizar suas ideias antes de passar para a versão final</li>
-                        <li>A redação final deve ser produzida no campo específico para esse fim</li>
-                    </ul>
-                </div>
-                
-                <div class="redacao-info">
+                <div class="simulado-info">
                     <div class="timer">
                         <i class="fas fa-clock"></i>
                         <span id="timer">00:00</span>
                     </div>
-                    <div class="word-counter">
-                        Linhas: <span id="line-count">0</span>/30
+                    <div class="question-counter">
+                        Questão <span id="current-question">0</span> de <span id="total-questions">1</span>
                     </div>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
                 </div>
                 
                 <div id="start-screen">
-                    <p>Esta prova de redação segue o modelo do ENCCEJA. Você deverá produzir um texto dissertativo-argumentativo sobre o tema proposto, com base nos textos de apoio. Você terá 60 minutos para concluir sua redação.</p>
+                    <p>Este simulado contém uma redação que é comum no Encceja. Você terá 60 minutos para concluir o teste. Ao final, receberá sua nota e um feedback detalhado sobre a sua redação.</p>
                     <button class="start-btn" id="start-btn">
-                        <i class="fas fa-play"></i> Iniciar Prova
+                        <i class="fas fa-play"></i> Iniciar Simulado
                     </button>
                 </div>
                 
-                <div id="redacao-container" class="redacao-container">
-                    <div class="theme-box">
-                        <h3><i class="fas fa-lightbulb"></i> Tema da Redação</h3>
-                        <p><strong>O impacto das redes sociais na sociedade contemporânea</strong></p>
-                        <p>As redes sociais transformaram a forma como nos comunicamos, nos relacionamos e acessamos informações. Essas plataformas digitais trouxeram tanto benefícios quanto desafios para a sociedade moderna.</p>
-                        
-                        <div class="supporting-texts">
-                            <h4>Textos de apoio:</h4>
-                            <ul>
-                                <li>"As redes sociais democratizaram o acesso à informação, permitindo que qualquer pessoa possa compartilhar conteúdo e opiniões com um público global." (Pesquisa sobre Comunicação Digital, 2022)</li>
-                                <li>"Estudos indicam que o uso excessivo de redes sociais pode estar associado a problemas de saúde mental, como ansiedade e depressão, especialmente entre jovens." (Revista de Saúde Pública, 2023)</li>
-                                <li>"As redes sociais se tornaram ferramentas importantes para movimentos sociais e políticos, permitindo a organização de protestos e a conscientização sobre diversas causas." (Anuário de Sociologia, 2021)</li>
-                            </ul>
-                        </div>
+                <div id="essay-container" class="essay-container">
+                    <div class="essay-instructions">
+                        <h3>Instruções para a Redação</h3>
+                        <p>Você deve desenvolver uma redação dissertativo-argumentativa sobre o tema proposto, utilizando argumentos e exemplos relevantes. A redação deve conter entre 300 e 600 palavras.</p>
                     </div>
                     
-                    <div class="writing-area">
-                        <h3><i class="fas fa-pencil-alt"></i> Rascunho</h3>
-                        <textarea id="draft-area" class="draft-area" placeholder="Use este espaço para organizar suas ideias e fazer anotações antes de escrever a versão final da sua redação."></textarea>
-                        
-                        <h3><i class="fas fa-file-alt"></i> Redação Final</h3>
-                        <textarea id="final-area" class="final-area" placeholder="Escreva sua redação dissertativa-argumentativa neste espaço. Lembre-se de que sua redação deve ter no mínimo 7 linhas e no máximo 30 linhas."></textarea>
-                        <div id="word-count-warning" class="word-count-warning">Atenção: sua redação está fora do limite de linhas permitido.</div>
+                    <div class="essay-topic">
+                        <strong>Tema:</strong> A importância da educação digital para a inclusão social no Brasil
+                    </div>
+                    
+                    <div class="essay-prompts">
+                        <p>Considerando a temática apresentada, demonstre sua compreensão sobre os aspectos envolvidos e desenvolva sua argumentação, estabelecendo relações entre eles, de forma crítica e reflexiva, com a finalidade de elaborar uma proposta de intervenção que atenda aos anseios sociais apontados.</p>
+                    </div>
+                    
+                    <textarea class="essay-textarea" id="essay-text" placeholder="Escreva sua redação aqui..."></textarea>
+                    
+                    <div class="essay-counter" id="word-counter">
+                        0 palavras
+                    </div>
+                    
+                    <div class="essay-tips">
+                        <h4>Dicas para sua redação:</h4>
+                        <br>
+                        <ul>
+                            <li>Planeje sua redação antes de começar a escrever</li>
+                            <br>
+                            <li>Desenvolva uma introdução clara que apresente o tema</li>
+                            <br>
+                            <li>Organize seus argumentos em parágrafos distintos</li>
+                            <br>
+                            <li>Use exemplos concretos para ilustrar seus pontos</li>
+                            <br>
+                            <li>Conclua sua redação com uma reflexão sobre o tema</li>
+                        </ul>
                     </div>
                     
                     <div class="navigation-buttons">
-                        <button id="finish-btn" class="nav-btn">
+                        <button id="prev-btn" class="nav-btn" disabled>
+                            <i class="fas fa-arrow-left"></i> Questão Anterior
+                        </button>
+                        <button id="next-btn" class="nav-btn">
                             Finalizar Redação <i class="fas fa-check"></i>
                         </button>
                     </div>
                 </div>
                 
                 <div id="result-container" class="result-container">
-                    <h2>Redação Concluída</h2>
-                    <p>Parabéns! Você concluiu sua redação dentro do tempo estipulado.</p>
-                    <p class="result-message">Sua redação foi salva com sucesso. Você escreveu <span id="final-line-count">0</span> linhas.</p>
+                    <h2>Resultado do Simulado</h2>
+                    <p>Parabéns! Você completou o simulado de redação.</p>
+                    
+                    <div class="essay-evaluation">
+                        <h3>Avaliação da Redação</h3>
+                        <p>A seguir, você pode conferir a avaliação da sua redação com base nos critérios do Encceja:</p>
+                        
+                        <div class="evaluation-criteria">
+                            <div class="criteria-item">
+                                <div class="criteria-name">Argumentação e desenvolvimento do tema</div>
+                                <div class="criteria-score">0 <span class="criteria-max">/ 10</span></div>
+                            </div>
+                            <div class="criteria-item">
+                                <div class="criteria-name">Organização textual</div>
+                                <div class="criteria-score">0 <span class="criteria-max">/ 5</span></div>
+                            </div>
+                            <div class="criteria-item">
+                                <div class="criteria-name">Linguagem e registro textual</div>
+                                <div class="criteria-score">0 <span class="criteria-max">/ 5</span></div>
+                            </div>
+                            <div class="criteria-item">
+                                <div class="criteria-name">Conhecimento formal da língua escrita</div>
+                                <div class="criteria-score">0 <span class="criteria-max">/ 5</span></div>
+                            </div>
+                            <div class="criteria-item">
+                                <div class="criteria-name">Proposta de intervenção</div>
+                                <div class="criteria-score">0 <span class="criteria-max">/ 5</span></div>
+                            </div>
+                            
+                            <div class="evaluation-total">
+                                Total: 0 / 30 pontos
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="score">
+                        0
+                    </div>
+                    <p class="result-message">Veja como você se saiu e onde pode melhorar sua redação.</p>
                     <button class="retry-btn" id="retry-btn">
                         <i class="fas fa-redo"></i> Tentar Novamente
                     </button>
@@ -496,240 +566,183 @@
         </main>
     </div>
     
-    <div id="warning-modal" class="warning-modal">
-        <div class="warning-content">
-            <h3><i class="fas fa-exclamation-triangle"></i> Aviso Importante</h3>
-            <p id="warning-message">Você tentou sair da página da redação. Esta ação não é permitida e a prova será encerrada automaticamente.</p>
-            <button id="close-warning">OK</button>
-        </div>
-    </div>
-    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Elementos do DOM
             const startBtn = document.getElementById('start-btn');
             const startScreen = document.getElementById('start-screen');
-            const redacaoContainer = document.getElementById('redacao-container');
+            const essayContainer = document.getElementById('essay-container');
             const resultContainer = document.getElementById('result-container');
-            const finishBtn = document.getElementById('finish-btn');
+            prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
             const retryBtn = document.getElementById('retry-btn');
             const timerEl = document.getElementById('timer');
-            const lineCountEl = document.getElementById('line-count');
-            const finalLineCountEl = document.getElementById('final-line-count');
-            const finalArea = document.getElementById('final-area');
-            const wordCountWarning = document.getElementById('word-count-warning');
-            const warningModal = document.getElementById('warning-modal');
-            const warningMessage = document.getElementById('warning-message');
-            const closeWarning = document.getElementById('close-warning');
+            const progressBar = document.getElementById('progress-bar');
+            const essayText = document.getElementById('essay-text');
+            const wordCounter = document.getElementById('word-counter');
+            const scoreEl = document.querySelector('.score');
             
-            // Configurações da prova
+            // Configurações do simulado
+            const totalQuestions = 1;
+            let timeLeft = 60 * 60; // 60 minutos em segundos
             let timer;
-            let seconds = 0;
-            let minutes = 0;
-            let examStarted = false;
-            let warningCount = 0;
-            const maxWarnings = 1; // Número de avisos antes de encerrar a prova
             
-            // Iniciar a prova
+            // Iniciar o simulado
             startBtn.addEventListener('click', function() {
                 startScreen.style.display = 'none';
-                redacaoContainer.style.display = 'block';
-                examStarted = true;
+                essayContainer.style.display = 'block';
                 startTimer();
-                setupTabProtection();
-                setupWordCount();
+                updateProgressBar();
             });
             
-            // Finalizar a prova
-            finishBtn.addEventListener('click', function() {
-                finishRedacao();
+            // Navegação entre questões
+            nextBtn.addEventListener('click', function() {
+                // Finalizar a redação
+                clearInterval(timer);
+                evaluateEssay();
+                essayContainer.style.display = 'none';
+                resultContainer.style.display = 'block';
             });
             
             // Tentar novamente
             retryBtn.addEventListener('click', function() {
-                resetRedacao();
+                resetSimulado();
             });
             
-            // Fechar aviso
-            closeWarning.addEventListener('click', function() {
-                warningModal.style.display = 'none';
-                
-                // Se excedeu o número máximo de avisos, encerrar a prova
-                if (warningCount >= maxWarnings) {
-                    finishRedacao();
-                }
+            // Contador de palavras
+            essayText.addEventListener('input', function() {
+                const text = essayText.value.trim();
+                const wordCount = text ? text.split(/\s+/).length : 0;
+                wordCounter.textContent = `${wordCount} palavras`;
             });
-            
-            // Configurar proteção contra mudança de aba
-            function setupTabProtection() {
-                // Evento para detectar quando a aba perde o foco
-                document.addEventListener('visibilitychange', function() {
-                    if (document.hidden && examStarted) {
-                        handleTabSwitch();
-                    }
-                });
-                
-                // Evento para detectar quando a janela perde o foco
-                window.addEventListener('blur', function() {
-                    if (examStarted) {
-                        handleTabSwitch();
-                    }
-                });
-                
-                // Bloquear menu de contexto (botão direito)
-                document.addEventListener('contextmenu', function(e) {
-                    if (examStarted) {
-                        e.preventDefault();
-                        showWarning('O uso do botão direito não é permitido durante a prova.');
-                    }
-                });
-                
-                // Bloquear atalhos de teclado comuns
-                document.addEventListener('keydown', function(e) {
-                    if (!examStarted) return;
-                    
-                    // Ctrl+N (nova janela), Ctrl+T (nova aba), Ctrl+W (fechar aba)
-                    if ((e.ctrlKey || e.metaKey) && (e.key === 'n' || e.key === 't' || e.key === 'w')) {
-                        e.preventDefault();
-                        showWarning('Não é permitido abrir novas abas ou janelas durante a prova.');
-                    }
-                    
-                    // F12 (ferramentas de desenvolvedor)
-                    if (e.key === 'F12') {
-                        e.preventDefault();
-                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante a prova.');
-                    }
-                    
-                    // Ctrl+Shift+I (ferramentas de desenvolvedor)
-                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
-                        e.preventDefault();
-                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante a prova.');
-                    }
-                    
-                    // Ctrl+Shift+J (console)
-                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'J') {
-                        e.preventDefault();
-                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante a prova.');
-                    }
-                    
-                    // Ctrl+U (exibir código fonte)
-                    if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
-                        e.preventDefault();
-                        showWarning('Não é permitido exibir o código fonte durante a prova.');
-                    }
-                    
-                    // Alt+Setas (navegação)
-                    if (e.altKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
-                        e.preventDefault();
-                        showWarning('Não é permitido usar navegação por atalhos durante a prova.');
-                    }
-                });
-            }
-            
-            // Configurar contador de linhas
-            function setupWordCount() {
-                finalArea.addEventListener('input', function() {
-                    const text = this.value;
-                    const lines = text.split('\n').length;
-                    lineCountEl.textContent = lines;
-                    
-                    // Verificar se está dentro do limite
-                    if (lines < 7 || lines > 30) {
-                        wordCountWarning.style.display = 'block';
-                    } else {
-                        wordCountWarning.style.display = 'none';
-                    }
-                });
-            }
-            
-            // Lidar com a tentativa de mudar de aba
-            function handleTabSwitch() {
-                warningCount++;
-                
-                if (warningCount <= maxWarnings) {
-                    showWarning('Você tentou sair da página da redação. Esta ação não é permitida.');
-                    
-                    if (warningCount >= maxWarnings) {
-                        warningMessage.textContent = 'Você tentou sair da página da redação. Esta ação não é permitida e a prova será encerrada automaticamente.';
-                    }
-                }
-            }
-            
-            // Mostrar aviso
-            function showWarning(message) {
-                warningMessage.textContent = message;
-                warningModal.style.display = 'flex';
-            }
             
             // Funções auxiliares
             function startTimer() {
                 timer = setInterval(function() {
-                    seconds++;
-                    if (seconds === 60) {
-                        minutes++;
-                        seconds = 0;
+                    timeLeft--;
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(timer);
+                        finishSimulado();
                     }
                     
-                    // Verificar se o tempo excedeu 60 minutos
-                    if (minutes >= 60) {
-                        clearInterval(timer);
-                        finishRedacao();
-                    }
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
                     
                     timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
                 }, 1000);
             }
             
-            function finishRedacao() {
-                clearInterval(timer);
-                examStarted = false;
-                
-                // Verificar se a redação foi escrita
-                const text = finalArea.value;
-                const lines = text.split('\n').length;
-                
-                if (lines < 7 && warningCount < maxWarnings) {
-                    if (!confirm('Sua redação tem menos de 7 linhas. Deseja finalizar mesmo assim?')) {
-                        examStarted = true;
-                        return;
-                    }
-                }
-                
-                // Atualizar o contador de linhas no resultado
-                finalLineCountEl.textContent = lines;
-                
-                // Mostrar o container de resultados
-                redacaoContainer.style.display = 'none';
-                resultContainer.style.display = 'block';
+            function updateProgressBar() {
+                const progress = ((1) / totalQuestions) * 100;
+                progressBar.style.width = `${progress}%`;
             }
             
-            function resetRedacao() {
+            function evaluateEssay() {
+                const text = essayText.value.trim();
+                let score = 0;
+                
+                // Avaliação simples para fins de demonstração
+                const wordCount = text ? text.split(/\s+/).length : 0;
+                
+                // Critério 1: Argumentação e desenvolvimento do tema
+                let criterion1 = 0;
+                if (wordCount >= 300) {
+                    criterion1 = Math.min(10, wordCount / 60);
+                }
+                
+                // Critério 2: Organização textual
+                let criterion2 = 0;
+                if (wordCount >= 300) {
+                    criterion2 = 5;
+                } else if (wordCount >= 200) {
+                    criterion2 = 3;
+                } else if (wordCount >= 100) {
+                    criterion2 = 2;
+                } else {
+                    criterion2 = 1;
+                }
+                
+                // Critério 3: Linguagem e registro textual
+                let criterion3 = 0;
+                if (wordCount >= 300) {
+                    criterion3 = 5;
+                } else if (wordCount >= 200) {
+                    criterion3 = 3;
+                } else if (wordCount >= 100) {
+                    criterion3 = 2;
+                } else {
+                    criterion3 = 1;
+                }
+                
+                // Critério 4: Conhecimento formal da língua escrita
+                let criterion4 = 0;
+                if (wordCount >= 300) {
+                    criterion4 = 5;
+                } else if (wordCount >= 200) {
+                    criterion4 = 3;
+                } else if (wordCount >= 100) {
+                    criterion4 = 2;
+                } else {
+                    criterion4 = 1;
+                }
+                
+                // Critério 5: Proposta de intervenção
+                let criterion5 = 0;
+                if (wordCount >= 300) {
+                    criterion5 = 5;
+                } else if (wordCount >= 200) {
+                    criterion5 = 3;
+                } else if (wordCount >= 100) {
+                    criterion5 = 2;
+                } else {
+                    criterion5 = 1;
+                }
+                
+                score = Math.round(criterion1 + criterion2 + criterion3 + criterion4 + criterion5);
+                
+                
+                // Atualizar a pontuação total
+                scoreEl.textContent = score;
+                
+                // Atualizar a mensagem de resultado
+                let resultMessage = '';
+                if (score >= 25) {
+                    resultMessage = 'Excelente! Sua redação demonstra um excelente domínio dos critérios avaliativos do Encceja.';
+                } else if (score >= 20) {
+                    resultMessage = 'Ótimo! Sua redação demonstra um bom domínio dos critérios avaliativos do Encceja.';
+                } else if (score >= 15) {
+                    resultMessage = 'Bom! Sua redação demonstra um bom esforço, mas ainda há espaço para melhorar.';
+                } else if (score >= 10) {
+                    resultMessage = 'Regular. Sua redação precisa de mais desenvolvimento e organização.';
+                } else {
+                    resultMessage = 'Precisa melhorar. Dedique mais tempo ao estudo dos critérios de avaliação do Encceja.';
+                }
+                
+                document.querySelector('.result-message').textContent = resultMessage;
+            }
+            
+            function resetSimulado() {
                 // Resetar variáveis
-                seconds = 0;
-                minutes = 0;
-                examStarted = false;
-                warningCount = 0;
+                timeLeft = 60 * 60;
                 
                 // Resetar o timer
                 clearInterval(timer);
                 timerEl.textContent = '00:00';
                 
-                // Resetar as áreas de texto
-                document.getElementById('draft-area').value = '';
-                finalArea.value = '';
+                // Resetar o progresso
+                progressBar.style.width = '0%';
                 
-                // Resetar o contador de linhas
-                lineCountEl.textContent = '0';
-                wordCountWarning.style.display = 'none';
+                // Limpar o texto da redação
+                essayText.value = '';
+                wordCounter.textContent = '0 palavras';
                 
-                // Mostrar o container de início e esconder o de resultados
-                startScreen.style.display = 'block';
-                redacaoContainer.style.display = 'none';
+                // Mostrar a tela inicial
+                essayContainer.style.display = 'none';
                 resultContainer.style.display = 'none';
+                startScreen.style.display = 'block';
             }
         });
-
     </script>
-
 </body>
 </html>

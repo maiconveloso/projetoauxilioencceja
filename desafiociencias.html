@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafios Encceja - Ciências</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/desafiociencias.css">
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRNKXZCX54"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SRNKXZCX54');
+</script>
+    
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Desafios Encceja - Ciências</h1>
+            <p>Teste seus conhecimentos sobre células, organelas e funções biológicas</p>
+            <div class="timer-container" id="timer">25:00</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+        
+        <div class="challenge-container">
+            <div class="question" id="question">
+                Qual é a unidade básica de estrutura e função de todos os seres vivos?
+            </div>
+            
+            <div class="options" id="options">
+                <div class="option" data-value="a">a) Átomo</div>
+                <div class="option" data-value="b">b) Molécula</div>
+                <div class="option" data-value="c">c) Célula</div>
+                <div class="option" data-value="d">d) Tecido</div>
+            </div>
+            
+            <div class="feedback" id="feedback"></div>
+            
+            <div class="navigation">
+                <button class="btn btn-secondary" id="prevBtn" disabled>
+                    <i class="fas fa-arrow-left"></i> Anterior
+                </button>
+                <button class="btn" id="checkBtn">
+                    <i class="fas fa-check"></i> Verificar Resposta
+                </button>
+                <button class="btn" id="nextBtn" disabled>
+                    Próximo <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            
+            <div class="stats">
+                <span id="currentQuestion">Questão 1 de 10</span>
+                <span id="score">Acertos: 0/0</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="completionModal">
+        <div class="modal-content">
+            <h2>Parabéns!</h2>
+            <p>Você completou todos os desafios!</p>
+            <p>Sua pontuação final: <span id="finalScore">0/10</span></p>
+            <button class="btn" id="restartBtn">
+                <i class="fas fa-redo"></i> Refazer Desafios
+            </button>
+        </div>
+    </div>
+    
+    <div class="modal" id="timeUpModal">
+        <div class="modal-content">
+            <h2>Tempo Esgotado!</h2>
+            <p>O tempo de 25 minutos terminou.</p>
+            <p>Sua pontuação final: <span id="timeUpScore">0/10</span></p>
+            <button class="btn" id="restartBtnTimeUp">
+                <i class="fas fa-redo"></i> Refazer Desafios
+            </button>
+        </div>
+    </div>
+    
+    <script src="JS/desafiociencias.js"></script>
+    
+</body>
+</html>

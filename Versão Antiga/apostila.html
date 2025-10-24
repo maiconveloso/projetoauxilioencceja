@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostilas Encceja - Auxílio Estudos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin-bottom: 80px; /* Espaço para o rodapé */
+        }
+        
+        /* Menu Moderno */
+        .sidebar {
+            background-color: #34495e;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            padding-top: 20px;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .sidebar.collapsed {
+            margin-left: -250px;
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 5px;
+            border-radius: 5px;
+            padding: 12px 15px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .sidebar .nav-link.active {
+            background-color: #34495e;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            text-align: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .logo h4 {
+            margin: 0;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .logo .toggle-btn {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .content.expanded {
+            margin-left: 0;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background-color: #34495e;
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .card-header i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .session-title {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #212529;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+        }
+        
+        .resource-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        
+        .resource-item:hover {
+            background-color: #f1f3f5;
+            cursor: pointer;
+        }
+        
+        .resource-item i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .resource-item .title {
+            font-weight: 500;
+            flex-grow: 1;
+        }
+        
+        .resource-item .badge {
+            margin-left: auto;
+        }
+        
+        .card-footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid rgba(0,0,0,.125);
+            padding: 12px;
+        }
+        
+        .welcome-banner {
+            background: linear-gradient(135deg, #34495e, #34495e);
+            color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .welcome-banner h2 {
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .welcome-banner p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .btn-primary {
+            background-color: #34495e;
+            border-color: #34495e;
+            padding: 8px 20px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background-color: #34495e;
+            border-color: #34495e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline-primary {
+            color: #34495e;
+            border-color: #34495e;
+            padding: 8px 20px;
+            font-weight: 500;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: #34495e;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Estilos do rodapé */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #34495e;
+            color: white;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #34495e;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 250px;
+                margin-left: -250px;
+            }
+            
+            .sidebar.expanded {
+                margin-left: 0;
+            }
+            
+            .content {
+                margin-left: 0;
+            }
+            
+            .content.shifted {
+                margin-left: 250px;
+            }
+            
+            .mobile-toggle {
+                display: block !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content.shifted {
+                margin-left: 0;
+            }
+        }
+        
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background-color: #34495e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Badges personalizados */
+        .badge-success {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .badge-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+        
+        .badge-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .badge-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        
+        /* Estilos específicos para apostilas */
+        .apostila-card {
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .apostila-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .apostila-card .card-img-top {
+            height: 160px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .apostila-level {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+        
+        .apostila-content {
+            padding: 15px;
+        }
+        
+        .apostila-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #34495e;
+        }
+        
+        .apostila-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .apostila-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .apostila-size {
+            display: flex;
+            align-items: center;
+        }
+        
+        .apostila-size i {
+            margin-right: 5px;
+        }
+        
+        .apostila-date {
+            display: flex;
+            align-items: center;
+        }
+        
+        .apostila-date i {
+            margin-right: 5px;
+        }
+        
+        .apostila-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .filter-section {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .filter-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        .search-box {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 12px;
+            color: #6c757d;
+        }
+        
+        .search-input {
+            padding-left: 40px;
+            border-radius: 20px;
+        }
+        
+        .filter-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .filter-chip {
+            background-color: #e9ecef;
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-size: 0.85rem;
+            color: #495057;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .filter-chip:hover {
+            background-color: #dee2e6;
+        }
+        
+        .filter-chip.active {
+            background-color: #34495e;
+            color: white;
+        }
+        
+        .filter-chip i {
+            margin-left: 5px;
+        }
+        
+        .filter-dropdown {
+            margin-bottom: 15px;
+        }
+        
+        .btn-filter {
+            background-color: #34495e;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        
+        .btn-filter:hover {
+            background-color: #2c3e50;
+        }
+        
+        .btn-filter i {
+            margin-right: 5px;
+        }
+        
+        .apostila-category {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .category-matematica {
+            background-color: #e3f2fd;
+            color: #0d6efd;
+        }
+        
+        .category-portugues {
+            background-color: #fce4ec;
+            color: #d63384;
+        }
+        
+        .category-historia {
+            background-color: #fff3cd;
+            color: #ffc107;
+        }
+        
+        .category-geografia {
+            background-color: #d1e7dd;
+            color: #198754;
+        }
+        
+        .category-ciencias {
+            background-color: #cfe2ff;
+            color: #0d6efd;
+        }
+        
+        .category-ingles {
+            background-color: #e2e3e5;
+            color: #6c757d;
+        }
+        
+        .category-filosofia {
+            background-color: #f8d7da;
+            color: #dc3545;
+        }
+        
+        .category-sociologia {
+            background-color: #d1e7dd;
+            color: #198754;
+        }
+        
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão de toggle para mobile -->
+    <button class="mobile-toggle" id="mobileToggle">
+        <i class="bi bi-list"></i>
+    </button>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <h4><i class="bi bi-book"></i> Auxílio Encceja</h4>
+            <button class="toggle-btn" id="toggleSidebar">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="index.html">
+                    <i class="bi bi-house-door"></i>
+                    <span>Página Inicial</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="videoaula.html">
+                    <i class="bi bi-camera-video me-2"></i>
+                    <span>Video aulas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="apostila.html">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span>Apostilas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="exercicio.html">
+                    <i class="bi bi-pencil-square"></i>
+                    <span>Exercícios</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="simulado.html">
+                    <i class="bi bi-controller"></i>
+                    <span>Simulados</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="acompanhamento.html">
+                    <i class="bi bi-trophy"></i>
+                    <span>Acompanhamento</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="config.html">
+                    <i class="bi bi-gear"></i>
+                    <span>Configurações</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Main Content -->
+    <div class="content" id="content">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="welcome-banner animate-in">
+                        <h2>Apostilas para Estudo Encceja</h2>
+                        <p class="mb-4">Material didático completo para te ajudar a se preparar para a prova do Encceja. Organizamos as apostilas por disciplinas e níveis de dificuldade para facilitar sua preparação.</p>
+                        <div>
+                            <button class="btn btn-light me-2">Ver Guia de Estudo</button>
+                            <button class="btn btn-outline-light">Baixar Lista de Apostilas</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filtros de Apostilas -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="filter-section animate-in">
+                        <div class="filter-title">Filtre as Apostilas</div>
+                        <div class="search-box">
+                            <i class="bi bi-search"></i>
+                            <input type="text" class="form-control search-input" placeholder="Pesquisar apostilas...">
+                        </div>
+                        <div class="filter-chips">
+                            <div class="filter-chip active" data-filter="all">
+                                Todas
+                                <i class="bi bi-check"></i>
+                            </div>
+                            <div class="filter-chip" data-filter="matematica">
+                                Matemática
+                                <i class="bi bi-check"></i>
+                            </div>
+                            <div class="filter-chip" data-filter="portugues">
+                                Português
+                                <i class="bi bi-check"></i>
+                            </div>
+                            <div class="filter-chip" data-filter="historia">
+                                História
+                                <i class="bi bi-check"></i>
+                            </div>
+                            <div class="filter-chip" data-filter="geografia">
+                                Geografia
+                                <i class="bi bi-check"></i>
+                            </div>
+                            <div class="filter-chip" data-filter="ciencias">
+                                Ciências
+                                <i class="bi bi-check"></i>
+                            </div>
+                            <div class="filter-chip" data-filter="ingles">
+                                Inglês
+                                <i class="bi bi-check"></i>
+                            </div>
+                            <div class="filter-chip" data-filter="filosofia">
+                                Filosofia
+                                <i class="bi bi-check"></i>
+                            </div>
+                            <div class="filter-chip" data-filter="sociologia">
+                                Sociologia
+                                <i class="bi bi-check"></i>
+                            </div>
+                        </div>
+                        <div class="row filter-dropdown">
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <select class="form-select" id="levelFilter">
+                                    <option value="">Nível de Dificuldade</option>
+                                    <option value="basico">Básico</option>
+                                    <option value="intermediario">Intermediário</option>
+                                    <option value="avancado">Avançado</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <select class="form-select" id="yearFilter">
+                                    <option value="">Ano do Material</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2020">2020</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 d-flex align-items-end">
+                                <button class="btn btn-filter w-100" id="applyFilters">
+                                    <i class="bi bi-funnel"></i> Aplicar Filtros
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Apostilas por Categoria -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h4 class="session-title">Apostilas Recomendadas</h4>
+                </div>
+                
+                <!-- Matemática -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-in delay-1">
+                    <div class="card apostila-card" data-category="matematica" data-level="basico" data-year="2023">
+                        <span class="badge apostila-level bg-success">Básico</span>
+                        <img src="https://www.topapostilas.com.br/image/cache/catalog/mat%20b-500x500.jpg" class="card-img-top" alt="Apostila de Matemática">
+                        <div class="apostila-content">
+                            <h5 class="apostila-title">Matemática Básica</h5>
+                            <div class="apostila-categories">
+                                <span class="apostila-category category-matematica">Matemática</span>
+                            </div>
+                            <p class="apostila-description">Conceitos fundamentais de matemática para a prova do Encceja, com foco em operações básicas, frações e porcentagens.</p>
+                            <div class="apostila-meta">
+                                <div class="apostila-size">
+                                    <i class="bi bi-file-earmark"></i> 2.4 MB
+                                </div>
+                                <div class="apostila-date">
+                                    <i class="bi bi-calendar3"></i> 2023
+                                </div>
+                            </div>
+                            <div class="apostila-actions">
+                                <button class="btn btn-sm btn-primary download-btn">
+                                    <i class="bi bi-download"></i> Baixar
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary view-btn">
+                                    <i class="bi bi-eye"></i> Visualizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4 animate-in delay-2">
+                    <div class="card apostila-card" data-category="matematica" data-level="intermediario" data-year="2023">
+                        <span class="badge apostila-level bg-warning">Intermediário</span>
+                        <img src="https://image.isu.pub/230129153217-d781d42e8286f85e4c09b945258f9075/jpg/page_1_thumb_large.jpg" class="card-img-top" alt="Apostila de Matemática">
+                        <div class="apostila-content">
+                            <h5 class="apostila-title">Geometria e Trigonometria</h5>
+                            <div class="apostila-categories">
+                                <span class="apostila-category category-matematica">Matemática</span>
+                            </div>
+                            <p class="apostila-description">Estudo detalhado de geometria plana e espacial, trigonometria e aplicações para a prova do Encceja.</p>
+                            <div class="apostila-meta">
+                                <div class="apostila-size">
+                                    <i class="bi bi-file-earmark"></i> 3.7 MB
+                                </div>
+                                <div class="apostila-date">
+                                    <i class="bi bi-calendar3"></i> 2023
+                                </div>
+                            </div>
+                            <div class="apostila-actions">
+                                <button class="btn btn-sm btn-primary download-btn">
+                                    <i class="bi bi-download"></i> Baixar
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary view-btn">
+                                    <i class="bi bi-eye"></i> Visualizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4 animate-in delay-3">
+                    <div class="card apostila-card" data-category="matematica" data-level="avancado" data-year="2023">
+                        <span class="badge apostila-level bg-danger">Avançado</span>
+                        <img src="https://0.academia-photos.com/attachment_thumbnails/48685794/mini_magick20190202-16142-dsv5kd.png?1549168990" class="card-img-top" alt="Apostila de Matemática">
+                        <div class="apostila-content">
+                            <h5 class="apostila-title">Probabilidade</h5>
+                            <div class="apostila-categories">
+                                <span class="apostila-category category-matematica">Matemática</span>
+                            </div>
+                            <p class="apostila-description">Conceitos avançados de álgebra, equações, funções e probabilidade para a prova do Encceja.</p>
+                            <div class="apostila-meta">
+                                <div class="apostila-size">
+                                    <i class="bi bi-file-earmark"></i> 4.1 MB
+                                </div>
+                                <div class="apostila-date">
+                                    <i class="bi bi-calendar3"></i> 2023
+                                </div>
+                            </div>
+                            <div class="apostila-actions">
+                                <button class="btn btn-sm btn-primary download-btn">
+                                    <i class="bi bi-download"></i> Baixar
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary view-btn">
+                                    <i class="bi bi-eye"></i> Visualizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Português -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-in delay-4">
+                    <div class="card apostila-card" data-category="portugues" data-level="basico" data-year="2023">
+                        <span class="badge apostila-level bg-success">Básico</span>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ85SgDlcIw9zlXVKO0nuXZrrmJjT9qec-XCQ&s" class="card-img-top" alt="Apostila de Português">
+                        <div class="apostila-content">
+                            <h5 class="apostila-title">Ortografia, Leitura e Pontuação</h5>
+                            <div class="apostila-categories">
+                                <span class="apostila-category category-portugues">Português</span>
+                            </div>
+                            <p class="apostila-description">Revisão completa de gramática básica, pontuação e ortografia para a prova do Encceja.</p>
+                            <div class="apostila-meta">
+                                <div class="apostila-size">
+                                    <i class="bi bi-file-earmark"></i> 2.8 MB
+                                </div>
+                                <div class="apostila-date">
+                                    <i class="bi bi-calendar3"></i> 2023
+                                </div>
+                            </div>
+                            <div class="apostila-actions">
+                                <button class="btn btn-sm btn-primary download-btn">
+                                    <i class="bi bi-download"></i> Baixar
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary view-btn">
+                                    <i class="bi bi-eye"></i> Visualizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4 animate-in delay-5">
+                    <div class="card apostila-card" data-category="portugues" data-level="intermediario" data-year="2023">
+                        <span class="badge apostila-level bg-warning">Intermediário</span>
+                        <img src="https://1.bp.blogspot.com/-0dz9AOE8CSI/YTn_F8LnpSI/AAAAAAAAGHM/LKdFhS1Cux09c0wqK4M6hjwIjzb7JRm8ACLcBGAsYHQ/s960/atividade-apostila-leitura-interpreta%25C3%25A7%25C3%25A3o-texto.jpg" class="card-img-top" alt="Apostila de Português">
+                        <div class="apostila-content">
+                            <h5 class="apostila-title">Leitura e Interpretação</h5>
+                            <div class="apostila-categories">
+                                <span class="apostila-category category-portugues">Português</span>
+                            </div>
+                            <p class="apostila-description">Estudo de gêneros textuais, análise crítica e interpretação de textos para a prova do Encceja.</p>
+                            <div class="apostila-meta">
+                                <div class="apostila-size">
+                                    <i class="bi bi-file-earmark"></i> 3.5 MB
+                                </div>
+                                <div class="apostila-date">
+                                    <i class="bi bi-calendar3"></i> 2023
+                                </div>
+                            </div>
+                            <div class="apostila-actions">
+                                <button class="btn btn-sm btn-primary download-btn">
+                                    <i class="bi bi-download"></i> Baixar
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary view-btn">
+                                    <i class="bi bi-eye"></i> Visualizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- História -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-in delay-6">
+                    <div class="card apostila-card" data-category="historia" data-level="basico" data-year="2023">
+                        <span class="badge apostila-level bg-success">Básico</span>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTqVZoTdszIgCivd8FmlHYZ2KQpi-FGt-tvw&s" class="card-img-top" alt="Apostila de História">
+                        <div class="apostila-content">
+                            <h5 class="apostila-title">História do Brasil</h5>
+                            <div class="apostila-categories">
+                                <span class="apostila-category category-historia">História</span>
+                            </div>
+                            <p class="apostila-description">Período colonial, independência e império do Brasil para a prova do Encceja.</p>
+                            <div class="apostila-meta">
+                                <div class="apostila-size">
+                                    <i class="bi bi-file-earmark"></i> 3.2 MB
+                                </div>
+                                <div class="apostila-date">
+                                    <i class="bi bi-calendar3"></i> 2023
+                                </div>
+                            </div>
+                            <div class="apostila-actions">
+                                <button class="btn btn-sm btn-primary download-btn">
+                                    <i class="bi bi-download"></i> Baixar
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary view-btn">
+                                    <i class="bi bi-eye"></i> Visualizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Geografia -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-in delay-7">
+                    <div class="card apostila-card" data-category="geografia" data-level="basico" data-year="2023">
+                        <span class="badge apostila-level bg-success">Básico</span>
+                        <img src="https://m.media-amazon.com/images/I/51dxOWNgaKL._AC_UF350,350_QL80_.jpg" class="card-img-top" alt="Apostila de Geografia">
+                        <div class="apostila-content">
+                            <h5 class="apostila-title">Geografia do Brasil</h5>
+                            <div class="apostila-categories">
+                                <span class="apostila-category category-geografia">Geografia</span>
+                            </div>
+                            <p class="apostila-description">Relevo, hidrografia, clima e regiões geográficas do Brasil para a prova do Encceja.</p>
+                            <div class="apostila-meta">
+                                <div class="apostila-size">
+                                    <i class="bi bi-file-earmark"></i> 2.9 MB
+                                </div>
+                                <div class="apostila-date">
+                                    <i class="bi bi-calendar3"></i> 2023
+                                </div>
+                            </div>
+                            <div class="apostila-actions">
+                                <button class="btn btn-sm btn-primary download-btn">
+                                    <i class="bi bi-download"></i> Baixar
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary view-btn">
+                                    <i class="bi bi-eye"></i> Visualizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ciências -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-in delay-8">
+                    <div class="card apostila-card" data-category="ciencias" data-level="basico" data-year="2023">
+                        <span class="badge apostila-level bg-success">Básico</span>
+                        <img src="https://atenaeditora.thecdn.cloud/atenaeditora/documentos/ebook_imagem/202107/d9eff905108b0980fe68c508d84719da97ac9273.png" class="card-img-top" alt="Apostila de Ciências">
+                        <div class="apostila-content">
+                            <h5 class="apostila-title">Ecologia</h5>
+                            <div class="apostila-categories">
+                                <span class="apostila-category category-ciencias">Ciências</span>
+                            </div>
+                            <p class="apostila-description">Estudo da biodiversidade, ecossistemas e sustentabilidade para a prova do Encceja.</p>
+                            <div class="apostila-meta">
+                                <div class="apostila-size">
+                                    <i class="bi bi-file-earmark"></i> 3.6 MB
+                                </div>
+                                <div class="apostila-date">
+                                    <i class="bi bi-calendar3"></i> 2023
+                                </div>
+                            </div>
+                            <div class="apostila-actions">
+                                <button class="btn btn-sm btn-primary download-btn">
+                                    <i class="bi bi-download"></i> Baixar
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary view-btn">
+                                    <i class="bi bi-eye"></i> Visualizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Filosofia -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-in delay-9">
+                    <div class="card apostila-card" data-category="filosofia" data-level="intermediario" data-year="2023">
+                        <span class="badge apostila-level bg-warning">Intermediário</span>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuDgZ0ERVMwpa-DNu89GUDo_De33LUXDANDA&s" class="card-img-top" alt="Apostila de Filosofia">
+                        <div class="apostila-content">
+                            <h5 class="apostila-title">Filosofia Antiga e Medieval</h5>
+                            <div class="apostila-categories">
+                                <span class="apostila-category category-filosofia">osofia</span>
+                            </div>
+                            <p class="apostila-description">Estudo dos principais pensadores e correntes filosóficas da antiguidade e idade média para a prova do Encceja.</p>
+                            <div class="apostila-meta">
+                                <div class="apostila-size">
+                                    <i class="bi bi-file-earmark"></i> 3.3 MB
+                                </div>
+                                <div class="apostila-date">
+                                    <i class="bi bi-calendar3"></i> 2023
+                                </div>
+                            </div>
+                            <div class="apostila-actions">
+                                <button class="btn btn-sm btn-primary download-btn">
+                                    <i class="bi bi-download"></i> Baixar
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary view-btn">
+                                    <i class="bi bi-eye"></i> Visualizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sociologia -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-in delay-10">
+                    <div class="card apostila-card" data-category="sociologia" data-level="intermediario" data-year="2023">
+                        <span class="badge apostila-level bg-warning">Intermediário</span>
+                        <img src="https://m.media-amazon.com/images/I/814b1jn+Z0L.jpg" class="card-img-top" alt="Apostila de Sociologia">
+                        <div class="apostila-content">
+                            <h5 class="apostila-title">Sociologia e Administração</h5>
+                            <div class="apostila-categories">
+                                <span class="apostila-category category-sociologia">Sociologia</span>
+                            </div>
+                            <p class="apostila-description">Estudo das estruturas sociais, relações de poder e movimentos sociais para a prova do Encceja.</p>
+                            <div class="apostila-meta">
+                                <div class="apostila-size">
+                                    <i class="bi bi-file-earmark"></i> 3.0 MB
+                                </div>
+                                <div class="apostila-date">
+                                    <i class="bi bi-calendar3"></i> 2023
+                                </div>
+                            </div>
+                            <div class="apostila-actions">
+                                <button class="btn btn-sm btn-primary download-btn">
+                                    <i class="bi bi-download"></i> Baixar
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary view-btn">
+                                    <i class="bi bi-eye"></i> Visualizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Inglês -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-in delay-11">
+                    <div class="card apostila-card" data-category="ingles" data-level="basico" data-year="2023">
+                        <span class="badge apostila-level bg-success">Básico</span>
+                        <img src="https://m.media-amazon.com/images/I/51IVKQlm-dS._UF894,1000_QL80_.jpg" class="card-img-top" alt="Apostila de Inglês">
+                        <div class="apostila-content">
+                            <h5 class="apostila-title">Gramática Inglesa Básica</h5>
+                            <div class="apostila-categories">
+                                <span class="apostila-category category-ingles">Inglês</span>
+                            </div>
+                            <p class="apostila-description">Revisão de gramática básica, vocabulário e leitura para a prova do Encceja.</p>
+                            <div class="apostila-meta">
+                                <div class="apostila-size">
+                                    <i class="bi bi-file-earmark"></i> 2.7 MB
+                                </div>
+                                <div class="apostila-date">
+                                    <i class="bi bi-calendar3"></i> 2023
+                                </div>
+                            </div>
+                            <div class="apostila-actions">
+                                <button class="btn btn-sm btn-primary download-btn">
+                                    <i class="bi bi-download"></i> Baixar
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary view-btn">
+                                    <i class="bi bi-eye"></i> Visualizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Apostilas Recentes -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h4 class="session-title">Apostilas Recentes</h4>
+                </div>
+                
+                <div class="col-md-6 mb-4 animate-in delay-1">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Apostila Completa Encceja 2023</h5>
+                            <p class="card-text">Apostila completa com todos os conteúdos programáticos do Encceja 2023, organizada por disciplinas e com exemplos de questões.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-primary">PDF</span>
+                                <button class="btn btn-sm btn-primary">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4 animate-in delay-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Apostila de Matemática Avançada</h5>
+                            <p class="card-text">Estudo avançado de estatística, probabilidade e geometria para a prova do Encceja, com exercícios resolvidos.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-primary">PDF</span>
+                                <button class="btn btn-sm btn-primary">Baixar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dicas de Estudo -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h4 class="session-title">Dicas de Estudo</h4>
+                </div>
+                <div class="col-md-4 mb-4 animate-in delay-1">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="bi bi-lightbulb text-warning me-2"></i> Organize seu Tempo</h5>
+                            <p class="card-text">Crie um cronograma de estudos realista, distribua os conteúdos por dia e reserve tempo para revisão e descanso.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animate-in delay-2">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="bi bi-journal-text text-primary me-2"></i> Estude por Áreas</h5>
+                            <p class="card-text">Divida os estudos por áreas de conhecimento e concentre-se em uma área por vez para melhor absorção do conteúdo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animate-in delay-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="bi bi-check2-circle text-success me-2"></i> Faça Exercícios</h5>
+                            <p class="card-text">Resolver exercícios e simulados é fundamental para fixar o conhecimento e identificar pontos fracos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Rodapé com redes sociais -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="footer-links">
+                        <a href="#">Termos de Uso</a>
+                        <a href="#">Política de Privacidade</a>
+                        <a href="#">Contato</a>
+                        <a href="#">Sobre Nós</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-icons">
+                        <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright text-center">
+                &copy; 2023 Plataforma de Estudos - Auxílio Encceja. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast container para notificações -->
+    <div class="toast-container"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função para toggle do sidebar
+        document.getElementById('toggleSidebar').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const toggleIcon = this.querySelector('i');
+            
+            sidebar.classList.toggle('collapsed');
+            content.classList.toggle('expanded');
+            
+            if (sidebar.classList.contains('collapsed')) {
+                toggleIcon.classList.remove('bi-chevron-left');
+                toggleIcon.classList.add('bi-chevron-right');
+            } else {
+                toggleIcon.classList.remove('bi-chevron-right');
+                toggleIcon.classList.add('bi-chevron-left');
+            }
+        });
+        
+        // Função para toggle do sidebar em mobile
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            sidebar.classList.toggle('expanded');
+            content.classList.toggle('shifted');
+        });
+        
+        // Função para criar toast notification
+        function showToast(message, type = 'success') {
+            const toastContainer = document.querySelector('.toast-container');
+            
+            const toast = document.createElement('div');
+            toast.className = `toast show align-items-center text-white bg-${type} border-0 mb-2`;
+            toast.setAttribute('role', 'alert');
+            toast.setAttribute('aria-live', 'assertive');
+            toast.setAttribute('aria-atomic', 'true');
+            
+            toast.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            `;
+            
+            toastContainer.appendChild(toast);
+            
+            // Remove o toast após 3 segundos
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+        
+        // Adiciona funcionalidade aos filtros de categoria
+        document.querySelectorAll('.filter-chip').forEach(chip => {
+            chip.addEventListener('click', function() {
+                document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Adiciona funcionalidade ao botão de aplicar filtros
+        document.getElementById('applyFilters').addEventListener('click', function() {
+            const activeCategory = document.querySelector('.filter-chip.active').getAttribute('data-filter');
+            const levelFilter = document.getElementById('levelFilter').value;
+            const yearFilter = document.getElementById('yearFilter').value;
+            
+            document.querySelectorAll('.apostila-card').forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                const cardLevel = card.getAttribute('data-level');
+                const cardYear = card.getAttribute('data-year');
+                
+                let showCard = true;
+                
+                if (activeCategory !== 'all' && cardCategory !== activeCategory) {
+                    showCard = false;
+                }
+                
+                if (levelFilter && cardLevel !== levelFilter) {
+                    showCard = false;
+                }
+                
+                if (yearFilter && cardYear !== yearFilter) {
+                    showCard = false;
+                }
+                
+                if (showCard) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            showToast('Filtros aplicados com sucesso!');
+        });
+        
+        // Adiciona funcionalidade aos botões de download
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const cardTitle = this.closest('.apostila-card').querySelector('.apostila-title').textContent;
+                showToast(`Iniciando download de: ${cardTitle}`);
+            });
+        });
+        
+        // Adiciona funcionalidade aos botões de visualizar
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const cardTitle = this.closest('.apostila-card').querySelector('.apostila-title').textContent;
+                showToast(`Abrindo visualização: ${cardTitle}`, 'info');
+            });
+        });
+        
+        // Adiciona funcionalidade aos cards de apostila
+        document.querySelectorAll('.apostila-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const cardTitle = this.querySelector('.apostila-title').textContent;
+                showToast(`Abrindo detalhes da apostila: ${cardTitle}`);
+            });
+        });
+        
+        // Adiciona funcionalidade aos links de pesquisa
+        document.querySelector('.search-input').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.toLowerCase();
+                if (searchTerm.trim() !== '') {
+                    document.querySelectorAll('.apostila-card').forEach(card => {
+                        const title = card.querySelector('.apostila-title').textContent.toLowerCase();
+                        const categories = Array.from(card.querySelectorAll('.apostila-category')).map(cat => cat.textContent.toLowerCase());
+                        
+                        let found = false;
+                        
+                        if (title.includes(searchTerm)) {
+                            found = true;
+                        }
+                        
+                        categories.forEach(category => {
+                            if (category.includes(searchTerm)) {
+                                found = true;
+                            }
+                        });
+                        
+                        if (found) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    showToast(`Pesquisa por: "${searchTerm}"`);
+                }
+            }
+        });
+        
+        // Responsividade
+        function handleResize() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            if (window.innerWidth < 992) {
+                sidebar.classList.remove('collapsed');
+                content.classList.remove('expanded');
+                sidebar.classList.remove('expanded');
+                content.classList.remove('shifted');
+                document.getElementById('toggleSidebar').style.display = 'none';
+            } else {
+                document.getElementById('toggleSidebar').style.display = 'block';
+            }
+        }
+        
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Chama na inicialização
+    </script>
+</body>
+</html>
