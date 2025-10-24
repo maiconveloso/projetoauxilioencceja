@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós | Auxílio Encceja</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin-bottom: 80px; /* Espaço para o rodapé */
+        }
+        
+        /* Menu Moderno */
+        .sidebar {
+            background-color: #34495e;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            padding-top: 20px;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .sidebar.collapsed {
+            margin-left: -250px;
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 5px;
+            border-radius: 5px;
+            padding: 12px 15px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .sidebar .nav-link.active {
+            background-color: #34495e;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            text-align: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .logo h4 {
+            margin: 0;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .logo .toggle-btn {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .content.expanded {
+            margin-left: 0;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background-color: #34495e;
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-header i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .session-title {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #212529;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+        }
+        
+        .resource-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        
+        .resource-item:hover {
+            background-color: #f1f3f5;
+            cursor: pointer;
+        }
+        
+        .resource-item i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .resource-item .title {
+            font-weight: 500;
+        }
+        
+        .resource-item .badge {
+            margin-left: auto;
+        }
+        
+        .card-footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid rgba(0,0,0,.125);
+            padding: 12px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        
+        /* Estilos específicos para a página Sobre Nós */
+        .about-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 5px solid #f8f9fa;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mission-vision {
+            background-color: #f8f9fa;
+            border-left: 4px solid #34495e;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 30px;
+        }
+        
+        .testimonial {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .testimonial img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .contact-info {
+            background-color: #34495e;
+            color: white;
+            border-radius: 10px;
+            padding: 30px;
+        }
+        
+        .contact-info i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 250px;
+                margin-left: -250px;
+            }
+            
+            .sidebar.expanded {
+                margin-left: 0;
+            }
+            
+            .content {
+                margin-left: 0;
+            }
+            
+            .content.shifted {
+                margin-left: 250px;
+            }
+            
+            .mobile-toggle {
+                display: block !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content.shifted {
+                margin-left: 0;
+            }
+        }
+        
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background-color: #34495e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Badges personalizados */
+        .badge-success {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .badge-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+        
+        .badge-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .badge-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        /* Estilos do rodapé */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #34495e;
+            color: white;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #34495e;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão de toggle para mobile -->
+    <button class="mobile-toggle" id="mobileToggle">
+        <i class="bi bi-list"></i>
+    </button>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <h4><i class="bi bi-book"></i> Auxílio Encceja</h4>
+            <button class="toggle-btn" id="toggleSidebar">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="index.html">
+                    <i class="bi bi-house-door"></i>
+                    <span>Página Inicial</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="videoaula.html">
+                    <i class="bi bi-camera-video me-2"></i>
+                    <span>Video aulas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="apostila.html">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span>Apostilas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="exercicio.html">
+                    <i class="bi bi-pencil-square"></i>
+                    <span>Exercícios</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="simulado.html">
+                    <i class="bi bi-controller"></i>
+                    <span>Simulados</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="acompanhamento.html">
+                    <i class="bi bi-trophy"></i>
+                    <span>Acompanhamento</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="config.html">
+                    <i class="bi bi-gear"></i>
+                    <span>Configurações</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Main Content -->
+    <div class="content" id="content">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="about-section animate-in">
+                        <h2 class="mb-4">Sobre o Auxílio Encceja</h2>
+                        <p class="lead">Conheça nossa missão de ajudar estudantes a alcançarem seus objetivos no Encceja.</p>
+                        <p>Nosso projeto surgiu da necessidade de oferecer um suporte pedagógico acessível e de qualidade para estudantes que buscam o certificado de conclusão do ensino fundamental e médio através da Exame Nacional para Certificação de Jovens e Adultos (Encceja).</p>
+                        <p>Com uma equipe de educadores experientes e tecnologia de ponta, desenvolvemos uma plataforma completa que reúne videoaulas, apostilas, exercícios práticos e simulados que reproduzem o formato da prova oficial.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="about-section animate-in delay-1">
+                        <h3 class="mb-4">Missão e Visão</h3>
+                        <div class="mission-vision">
+                            <h4>Missão</h4>
+                            <p>Fornecer educação de qualidade e acesso facilitado à certificação escolar para jovens e adultos, através de metodologias inovadoras e tecnologia, transformando vidas e promovendo inclusão social.</p>
+                        </div>
+                        <div class="mission-vision">
+                            <h4>Visão</h4>
+                            <p>Tornar-se a plataforma de referência para o preparo para a Encceja no Brasil, reconhecida pela sua eficácia, inovação e pelo impacto positivo na vida de milhares de estudantes, contribuindo para a redução do analfabetismo funcional e a promoção da equidade educacional.</p>
+                        </div>
+                        <div class="mission-vision">
+                            <h4>Valores</h4>
+                            <p><strong>Educacional:</strong> Priorizamos a qualidade pedagógica em todos os nossos conteúdos.</p>
+                            <p><strong>Acessibilidade:</strong> Acreditamos que a educação deve ser acessível a todos, independentemente de condições socioeconômicas.</p>
+                            <p><strong>Inovação:</strong> Estamos constantemente buscando novas tecnologias e métodos para melhorar a experiência de aprendizado.</p>
+                            <p><strong>Respeito:</strong> Valorizamos a diversidade e o respeito mútuo em todas as nossas interações.</p>
+                            <p><strong>Compromisso:</strong> Estamos comprometidos com o sucesso de nossos estudantes e com a qualidade dos nossos serviços.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="session-title">Nossa Equipe</h3>
+                </div>
+                <div class="col-md-6 col-lg-3 animate-in delay-1">
+                    <div class="team-member">
+                        <img src="https://picsum.photos/seed/director123/150/150.jpg" alt="Diretor">
+                        <h5>Dr. Carlos Silva</h5>
+                        <p class="text-muted">Diretor Pedagógico</p>
+                        <p>Ex-professor universitário com 20 anos de experiência no ensino fundamental e médio.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 animate-in delay-2">
+                    <div class="team-member">
+                        <img src="https://picsum.photos/seed/educator456/150/150.jpg" alt="Especialista">
+                        <h5>Prof.ª Ana Oliveira</h5>
+                        <p class="text-muted">Especialista em Educação de Jovens e Adultos</p>
+                        <p>Mestre em Educação com foco em metodologias de ensino para adultos e jovens.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 animate-in delay-3">
+                    <div class="team-member">
+                        <img src="https://picsum.photos/seed/tech789/150/150.jpg" alt="Tecnologia">
+                        <h5>Eng. Roberto Costa</h5>
+                        <p class="text-muted">Chefe de Tecnologia</p>
+                        <p>Expecialista em desenvolvimento de plataformas educacionais e TIC.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 animate-in delay-4">
+                    <div class="team-member">
+                        <img src="https://picsum.photos/seed/psicologa101/150/150.jpg" alt="Psicóloga">
+                        <h5>Drª. Marta Pereira</h5>
+                        <p class="text-muted">Psicóloga Educacional</p>
+                        <p>Especialista em motivação e bem-estar estudantil.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="about-section animate-in delay-1">
+                        <h3 class="mb-4">Nossa História</h3>
+                        <p>O Auxílio Encceja nasceu em 2018, com a visão de criar uma plataforma digital que pudesse ajudar jovens e adultos a se prepararem para a prova de certificação do ensino fundamental e médio.</p>
+                        <p>Inicialmente, nosso projeto consistia apenas em um blog com dicas de estudo e materiais gratuitos. Com o tempo, percebemos a necessidade de uma plataforma mais estruturada e completa, que oferecesse todo o suporte necessário para os estudantes.</p>
+                        <p>Em 2020, lançamos nossa plataforma completa, com videoaulas, apostilas, exercícios e simulados. Desde então, temos crescido exponencialmente, ajudando milhares de estudantes a conquistarem seu diploma escolar.</p>
+                        <p>Hoje, contamos com uma equipe multidisciplinar de educadores, técnicos e especialistas, que trabalham juntos para garantir a qualidade e a eficácia de nossos conteúdos e serviços.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="session-title">Depoimentos</h3>
+                </div>
+                <div class="col-md-6 animate-in delay-1">
+                    <div class="testimonial">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://picsum.photos/seed/student1/60/60.jpg" alt="Estudante">
+                            <div>
+                                <h5 class="mb-0">Maria Santos</h5>
+                                <p class="text-muted mb-0">25 anos</p>
+                            </div>
+                        </div>
+                        <p>"O Auxílio Encceja foi a chave para minha aprovação na Encceja. Os videoaulas e os simulados me prepararam perfeitamente para a prova. Recomendo de olhos fechados!"</p>
+                    </div>
+                </div>
+                <div class="col-md-6 animate-in delay-2">
+                    <div class="testimonial">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://picsum.photos/seed/student2/60/60.jpg" alt="Estudante">
+                            <div>
+                                <h5 class="mb-0">João Almeida</h5>
+                                <p class="text-muted mb-0">30 anos</p>
+                            </div>
+                        </div>
+                        <p>"Depois de tentar várias vezes e não conseguir passar, encontrei o Auxílio Encceja. A metodologia é incrível, focada no que realmente cai na prova. Agora eu tenho meu diploma e uma nova chance na vida."</p>
+                    </div>
+                </div>
+                <div class="col-md-6 animate-in delay-3">
+                    <div class="testimonial">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://picsum.photos/seed/student3/60/60.jpg" alt="Estudante">
+                            <div>
+                                <h5 class="mb-0">Fernanda Costa</h5>
+                                <p class="text-muted mb-0">19 anos</p>
+                            </div>
+                        </div>
+                        <p>"Como mãe solteira e trabalhando, não tinha tempo para frequentar aulas presenciais. A plataforma do Auxílio Encceja me permitiu estudar no meu tempo, no meu ritmo. Amei a flexibilidade!"</p>
+                    </div>
+                </div>
+                <div class="col-md-6 animate-in delay-4">
+                    <div class="testimonial">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://picsum.photos/seed/student4/60/60.jpg" alt="Estudante">
+                            <div>
+                                <h5 class="mb-0">Pedro Lima</h5>
+                                <p class="text-muted mb-0">27 anos</p>
+                            </div>
+                        </div>
+                        <p>"Fui soldado do Exército e precisava concluir o ensino médio para seguir carreira. O Auxílio Encceja me ajudou a me preparar de forma eficiente e focada. Recomendo a todos os militares!"</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="contact-info animate-in">
+                        <h3 class="mb-4">Entre em Contato</h3>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-envelope"></i>
+                                    <div>
+                                        <h5 class="mb-0">E-mail</h5>
+                                        <p class="mb-0">contato@auxilioencceja.com.br</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-telephone"></i>
+                                    <div>
+                                        <h5 class="mb-0">Telefone</h5>
+                                        <p class="mb-0">(11) 1234-5678</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <div>
+                                        <h5 class="mb-0">Endereço</h5>
+                                        <p class="mb-0">Rua Exemplo, 123 - Centro</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-clock"></i>
+                                    <div>
+                                        <h5 class="mb-0">Horário de Atendimento</h5>
+                                        <p class="mb-0">Segunda a Sexta, 9h às 18h</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <a href="mailto:contato@auxilioencceja.com.br" class="btn btn-light me-2"><i class="bi bi-envelope"></i> Enviar E-mail</a>
+                            <a href="tel:+55111234-5678" class="btn btn-light"><i class="bi bi-telephone"></i> Ligar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Rodapé com redes sociais -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="footer-links">
+                        <a href="#">Termos de Uso</a>
+                        <a href="#">Política de Privacidade</a>
+                        <a href="#">Contato</a>
+                        <a href="#">Sobre Nós</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-icons">
+                        <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright text-center">
+                &copy; 2023 Auxílio Encceja. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função para toggle do sidebar
+        document.getElementById('toggleSidebar').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const toggleIcon = this.querySelector('i');
+            
+            sidebar.classList.toggle('collapsed');
+            content.classList.toggle('expanded');
+            
+            if (sidebar.classList.contains('collapsed')) {
+                toggleIcon.classList.remove('bi-chevron-left');
+                toggleIcon.classList.add('bi-chevron-right');
+            } else {
+                toggleIcon.classList.remove('bi-chevron-right');
+                toggleIcon.classList.add('bi-chevron-left');
+            }
+        });
+        
+        // Função para toggle do sidebar em mobile
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            sidebar.classList.toggle('expanded');
+            content.classList.toggle('shifted');
+        });
+        
+        // Adiciona funcionalidade de clique nos itens do menu
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.sidebar .nav-link').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // No mobile, fecha o sidebar após selecionar um item
+                if (window.innerWidth < 992) {
+                    document.getElementById('sidebar').classList.remove('expanded');
+                    document.getElementById('content').classList.remove('shifted');
+                }
+            });
+        });
+        
+        // Adiciona funcionalidade aos links de redes sociais
+        document.querySelectorAll('.social-icons a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.getAttribute('title');
+                console.log(`Redirecionando para ${platform}`);
+                
+                // Aqui você pode adicionar o redirecionamento para as redes sociais
+                // Exemplo: window.open('https://facebook.com', '_blank');
+            });
+        });
+        
+        // Responsividade
+        function handleResize() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            if (window.innerWidth < 992) {
+                sidebar.classList.remove('collapsed');
+                content.classList.remove('expanded');
+                sidebar.classList.remove('expanded');
+                content.classList.remove('shifted');
+                document.getElementById('toggleSidebar').style.display = 'none';
+            } else {
+                document.getElementById('toggleSidebar').style.display = 'block';
+            }
+        }
+        
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Chama na inicialização
+    </script>
+</body>
+</html>

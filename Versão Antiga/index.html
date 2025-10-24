@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Estudos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #075fe2;
+            margin-bottom: 80px; /* Espaço para o rodapé */
+        }
+        
+        /* Menu Moderno */
+        .sidebar {
+            background-color: #34495e;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            padding-top: 20px;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .sidebar.collapsed {
+            margin-left: -250px;
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 5px;
+            border-radius: 5px;
+            padding: 12px 15px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .sidebar .nav-link.active {
+            background-color: #34495e;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            text-align: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .logo h4 {
+            margin: 0;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .logo .toggle-btn {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .content.expanded {
+            margin-left: 0;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background-color: #34495e;
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-header i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .session-title {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #212529;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+        }
+        
+        .resource-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        
+        .resource-item:hover {
+            background-color: #f1f3f5;
+            cursor: pointer;
+        }
+        
+        .resource-item i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .resource-item .title {
+            font-weight: 500;
+        }
+        
+        .resource-item .badge {
+            margin-left: auto;
+        }
+        
+        .card-footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid rgba(0,0,0,.125);
+            padding: 12px;
+        }
+        
+        .welcome-banner {
+            background: linear-gradient(135deg, #34495e, #34495e);
+            color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .welcome-banner h2 {
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .welcome-banner p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .btn-primary {
+            background-color: #34495e;
+            border-color: #34495e;
+            padding: 8px 20px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background-color: #34495e;
+            border-color: #34495e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline-primary {
+            color: #34495e;
+            border-color: #34495e;
+            padding: 8px 20px;
+            font-weight: 500;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: #34495e;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Estilos do rodapé */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #34495e;
+            color: white;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #34495e;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 250px;
+                margin-left: -250px;
+            }
+            
+            .sidebar.expanded {
+                margin-left: 0;
+            }
+            
+            .content {
+                margin-left: 0;
+            }
+            
+            .content.shifted {
+                margin-left: 250px;
+            }
+            
+            .mobile-toggle {
+                display: block !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content.shifted {
+                margin-left: 0;
+            }
+        }
+        
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background-color: #34495e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Badges personalizados */
+        .badge-success {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .badge-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+        
+        .badge-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .badge-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Botão de toggle para mobile -->
+    <button class="mobile-toggle" id="mobileToggle">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <h4><i class="bi bi-book"></i> Auxílio Encceja</h4>
+            <button class="toggle-btn" id="toggleSidebar">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="index.html">
+                    <i class="bi bi-house-door"></i>
+                    <span>Página Inicial</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="videoaula.html">
+                    <i class="bi bi-camera-video me-2"></i>
+                    <span>Video aulas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="apostila.html">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span>Apostilas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="exercicio.html">
+                    <i class="bi bi-pencil-square"></i>
+                    <span>Exercícios</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="simulado.html">
+                    <i class="bi bi-controller"></i>
+                    <span>Simulados</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="acompanhamento.html">
+                    <i class="bi bi-trophy"></i>
+                    <span>Acompanhamento</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="config.html">
+                    <i class="bi bi-gear"></i>
+                    <span>Configurações</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Main Content -->
+    <div class="content" id="content">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="welcome-banner animate-in">
+                        <h2>Bem-vindo à Plataforma de Estudos</h2>
+                        <p class="mb-4">Transforme seu Futuro com uma Educação de qualidade!</p>
+                        <button class="btn btn-light">Começar Estudos</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Videoaulas Section -->
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-1">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-camera-video"></i> Videoaulas
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="resource-item">
+                                <i class="bi bi-play-circle text-primary"></i>
+                                <div class="title">Matemática</div>
+                                <span class="badge bg-success">15 min</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-play-circle text-primary"></i>
+                                <div class="title">Português</div>
+                                <span class="badge bg-success">25 min</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-play-circle text-primary"></i>
+                                <div class="title">História</div>
+                                <span class="badge bg-success">30 min</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-play-circle text-primary"></i>
+                                <div class="title">Geografia</div>
+                                <span class="badge bg-success">20 min</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-play-circle text-primary"></i>
+                                <div class="title">Ciências</div>
+                                <span class="badge bg-success">40 min</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white text-center">
+                            <a href="#" class="btn btn-sm btn-outline-primary">Ver todas</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Apostilas Section -->
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-file-earmark-text"></i> Apostilas
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="resource-item">
+                                <i class="bi bi-file-pdf text-danger"></i>
+                                <div class="title">Matemática Basica</div>
+                                <span class="badge bg-secondary">PDF</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-file-pdf text-danger"></i>
+                                <div class="title">Literatura e Cultura</div>
+                                <span class="badge bg-secondary">PDF</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-file-pdf text-danger"></i>
+                                <div class="title">Antiguidade Oriental</div>
+                                <span class="badge bg-secondary">PDF</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-file-pdf text-danger"></i>
+                                <div class="title">Recursos Minerais</div>
+                                <span class="badge bg-secondary">PDF</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-file-pdf text-danger"></i>
+                                <div class="title">Ciências Humanas</div>
+                                <span class="badge bg-secondary">PDF</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white text-center">
+                            <a href="#" class="btn btn-sm btn-outline-primary">Ver todas</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Exercícios Section -->
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-pencil-square"></i> Exercícios
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="resource-item">
+                                <i class="bi bi-check2-square text-success"></i>
+                                <div class="title">Exercícios de Raciocínio Lógico</div>
+                                <span class="badge bg-info">10 questões</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-check2-square text-success"></i>
+                                <div class="title">Pronomes Demonstrativos</div>
+                                <span class="badge bg-info">15 questões</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-check2-square text-success"></i>
+                                <div class="title">Constituição de 1824</div>
+                                <span class="badge bg-info">12 questões</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-check2-square text-success"></i>
+                                <div class="title">Coordenadas Geográficas</div>
+                                <span class="badge bg-info">8 questões</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-check2-square text-success"></i>
+                                <div class="title">Biodiversidade</div>
+                                <span class="badge bg-info">10 questões</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white text-center">
+                            <a href="#" class="btn btn-sm btn-outline-primary">Ver todas</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Simulados Section -->
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-controller"></i> Simulados
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="resource-item">
+                                <i class="bi bi-award text-warning"></i>
+                                <div class="title">Simulado de Matemática</div>
+                                <span class="badge bg-danger">60 min</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-award text-warning"></i>
+                                <div class="title">Simulado de Português</div>
+                                <span class="badge bg-danger">45 min</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-award text-warning"></i>
+                                <div class="title">Simulado de História</div>
+                                <span class="badge bg-danger">50 min</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-award text-warning"></i>
+                                <div class="title">Simulado de Geografia</div>
+                                <span class="badge bg-danger">120 min</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-award text-warning"></i>
+                                <div class="title">Simulado de Ciências</div>
+                                <span class="badge bg-danger">90 min</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white text-center">
+                            <a href="#" class="btn btn-sm btn-outline-primary">Ver todas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recursos Recomendados -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h4 class="session-title">Recursos Recomendados</h4>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-1">
+                    <div class="card">
+                        <img src="https://mkt-pages.s3-sa-east-1.amazonaws.com/encceja/assets/tudo-o-que-voce-precisa-saber-sobre-o-encceja.png" class="card-img-top" alt="Recurso recomendado">
+                        <div class="card-body">
+                            <h5 class="card-title">Guia Completo da Encceja</h5>
+                            <p class="card-text">Tudo o que você precisa saber para se preparar para a prova.</p>
+                            <a href="#" class="btn btn-primary">Acessar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-2">
+                    <div class="card">
+                        <img src="https://classifilagos.com.br/wp-content/uploads/2025/05/como-estudar-para-o-Encceja-1024x683.jpg" class="card-img-top" alt="Recurso recomendado">
+                        <div class="card-body">
+                            <h5 class="card-title">Dicas de Estudo</h5>
+                            <p class="card-text">Métodos eficazes para otimizar seu tempo de estudo.</p>
+                            <a href="#" class="btn btn-primary">Acessar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-3">
+                    <div class="card">
+                        <img src="https://guiadovestibulinho.com.br/wp-content/uploads/2023/01/provas-anteriores-do-encceja-2.png" class="card-img-top" alt="Recurso recomendado">
+                        <div class="card-body">
+                            <h5 class="card-title">Provas Anteriores</h5>
+                            <p class="card-text">Analise as provas de anos anteriores para entender o formato.</p>
+                            <a href="#" class="btn btn-primary">Acessar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-4">
+                    <div class="card">
+                        <img src="https://scontent.faqa1-1.fna.fbcdn.net/v/t39.30808-6/332742745_3414866645452418_3911971503499189373_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=2285d6&_nc_ohc=jyCS1FsbBb8Q7kNvwHNNQVq&_nc_oc=Adk8i2QrFsbqPadFEZeBYlxDFdW7WUvzPhB8csFkbzcx0xOaSMoRTQPyXQPav2dn7pG_-Mpa30T76JwA_RGnaILj&_nc_zt=23&_nc_ht=scontent.faqa1-1.fna&_nc_gid=as2pan7TxgaxWluevyea6A&oh=00_AfI3RhsXDL6OhtnByeKTmgV_f7oTPHProRjpwXxmF1jCiw&oe=6836D8C1" class="card-img-top" alt="Recurso recomendado">
+                        <div class="card-body">
+                            <h5 class="card-title">Comunidade de Estudos</h5>
+                            <p class="card-text">Conecte-se com outros estudantes para trocar dicas e experiências.</p>
+                            <a href="#" class="btn btn-primary">Acessar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Rodapé com redes sociais -->
+    <footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="footer-links">
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Contato</a>
+                    <a href="#">Sobre Nós</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="social-icons">
+                    <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center">
+            &copy; 2023 Plataforma de Estudos - Auxílio Encceja. Todos os direitos reservados.
+        </div>
+    </div>
+</footer>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função para toggle do sidebar
+        document.getElementById('toggleSidebar').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const toggleIcon = this.querySelector('i');
+            
+            sidebar.classList.toggle('collapsed');
+            content.classList.toggle('expanded');
+            
+            if (sidebar.classList.contains('collapsed')) {
+                toggleIcon.classList.remove('bi-chevron-left');
+                toggleIcon.classList.add('bi-chevron-right');
+            } else {
+                toggleIcon.classList.remove('bi-chevron-right');
+                toggleIcon.classList.add('bi-chevron-left');
+            }
+        });
+        
+        // Função para toggle do sidebar em mobile
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            sidebar.classList.toggle('expanded');
+            content.classList.toggle('shifted');
+        });
+        
+        // Adiciona funcionalidade de clique nos itens do menu
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.sidebar .nav-link').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // No mobile, fecha o sidebar após selecionar um item
+                if (window.innerWidth < 992) {
+                    document.getElementById('sidebar').classList.remove('expanded');
+                    document.getElementById('content').classList.remove('shifted');
+                }
+            });
+        });
+        
+        // Adiciona funcionalidade de clique nos itens de recursos
+        document.querySelectorAll('.resource-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const title = this.querySelector('.title').textContent;
+                const type = this.closest('.card').querySelector('.card-header').textContent.trim();
+                
+                // Aqui você pode adicionar a lógica para abrir o recurso
+                console.log(`Abrindo ${type} - ${title}`);
+                
+                // Exemplo de toast notification
+                const toastContainer = document.createElement('div');
+                toastContainer.className = 'position-fixed bottom-0 end-0 p-3';
+                toastContainer.style.zIndex = '11';
+                
+                toastContainer.innerHTML = `
+                    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                            <i class="bi bi-info-circle text-primary me-2"></i>
+                            <strong class="me-auto">Informação</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            Abrindo ${type}: ${title}
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(toastContainer);
+                
+                setTimeout(() => {
+                    toastContainer.remove();
+                }, 3000);
+            });
+        });
+        
+        // Adiciona funcionalidade aos links de redes sociais
+        document.querySelectorAll('.social-icons a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.getAttribute('title');
+                console.log(`Redirecionando para ${platform}`);
+                
+                // Aqui você pode adicionar o redirecionamento para as redes sociais
+                // Exemplo: window.open('https://facebook.com', '_blank');
+            });
+        });
+        
+        // Responsividade
+        function handleResize() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            if (window.innerWidth < 992) {
+                sidebar.classList.remove('collapsed');
+                content.classList.remove('expanded');
+                sidebar.classList.remove('expanded');
+                content.classList.remove('shifted');
+                document.getElementById('toggleSidebar').style.display = 'none';
+            } else {
+                document.getElementById('toggleSidebar').style.display = 'block';
+            }
+        }
+        
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Chama na inicialização
+    </script>
+</body>
+</html>

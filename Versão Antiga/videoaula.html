@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videoaulas - Auxílio Encceja</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin-bottom: 80px;
+        }
+        
+        /* Menu Moderno */
+        .sidebar {
+            background-color: #34495e;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            padding-top: 20px;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .sidebar.collapsed {
+            margin-left: -250px;
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 5px;
+            border-radius: 5px;
+            padding: 12px 15px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .sidebar .nav-link.active {
+            background-color: #34495e;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            text-align: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .logo h4 {
+            margin: 0;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .logo .toggle-btn {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .content.expanded {
+            margin-left: 0;
+        }
+        
+        /* Estilos do rodapé */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #34495e;
+            color: white;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #34495e;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 250px;
+                margin-left: -250px;
+            }
+            
+            .sidebar.expanded {
+                margin-left: 0;
+            }
+            
+            .content {
+                margin-left: 0;
+            }
+            
+            .content.shifted {
+                margin-left: 250px;
+            }
+            
+            .mobile-toggle {
+                display: block !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content.shifted {
+                margin-left: 0;
+            }
+        }
+        
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background-color: #34495e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Estilos de videoaula */
+        .video-aula-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+            background-color: white;
+        }
+        
+        .video-aula-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .video-aula-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(52, 73, 94, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .play-button:hover {
+            background-color: rgba(52, 73, 94, 1);
+        }
+        
+        .video-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .video-info {
+            padding: 15px;
+        }
+        
+        .video-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #34495e;
+        }
+        
+        .video-subtitle {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .video-stats {
+            display: flex;
+            justify-content: space-between;
+            color: #95a5a6;
+            font-size: 13px;
+        }
+        
+        .category-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .category-matematica {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .category-portugues {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .category-historia {
+            background-color: #f39c12;
+            color: white;
+        }
+        
+        .category-geografia {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .category-ciencias {
+            background-color: #9b59b6;
+            color: white;
+        }
+        
+        .category-educacao-fisica {
+            background-color: #1abc9c;
+            color: white;
+        }
+        
+        .category-sociologia {
+            background-color: #d35400;
+            color: white;
+        }
+        
+        .category-filosofia {
+            background-color: #8e44ad;
+            color: white;
+        }
+        
+        .filter-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .filter-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-option {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-option:hover, .filter-option.active {
+            background-color: #34495e;
+            color: white;
+            border-color: #34495e;
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 1px solid #dee2e6;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #95a5a6;
+        }
+        
+        .welcome-banner {
+            background: linear-gradient(135deg, #34495e, #34495e);
+            color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .welcome-banner h2 {
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .welcome-banner p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .btn-primary {
+            background-color: #34495e;
+            border-color: #34495e;
+            padding: 8px 20px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background-color: #34495e;
+            border-color: #34495e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline-primary {
+            color: #34495e;
+            border-color: #34495e;
+            padding: 8px 20px;
+            font-weight: 500;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: #34495e;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #34495e;
+            border-left: 4px solid #34495e;
+            padding-left: 10px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Botão de toggle para mobile -->
+    <button class="mobile-toggle" id="mobileToggle">
+        <i class="bi bi-list"></i>
+    </button>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <h4><i class="bi bi-book"></i> Auxílio Encceja</h4>
+            <button class="toggle-btn" id="toggleSidebar">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="index.html">
+                    <i class="bi bi-house-door"></i>
+                    <span>Página Inicial</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="videoaula.html">
+                    <i class="bi bi-camera-video me-2"></i>
+                    <span>Video aulas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="apostila.html">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span>Apostilas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="exercicio.html">
+                    <i class="bi bi-pencil-square"></i>
+                    <span>Exercícios</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="simulado.html">
+                    <i class="bi bi-controller"></i>
+                    <span>Simulados</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="acompanhamento.html">
+                    <i class="bi bi-trophy"></i>
+                    <span>Acompanhamento</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="config.html">
+                    <i class="bi bi-gear"></i>
+                    <span>Configurações</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Main Content -->
+    <div class="content" id="content">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="welcome-banner animate-in">
+                        <h2>Bem-vindo às Videoaulas</h2>
+                        <p class="mb-4">Prepare-se para o Encceja com videoaulas de qualidade e foco no conteúdo essencial.</p>
+                        <button class="btn btn-light">Ver recomendações</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filtros -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="filter-section animate-in">
+                        <div class="row">
+                            <div class="col-md-6 mb-3 mb-md-0">
+                                <div class="search-box">
+                                    <i class="bi bi-search"></i>
+                                    <input type="text" placeholder="Pesquisar videoaulas..." class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-md-end">
+                                    <div class="dropdown me-2">
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-sort-down"></i> Ordenar por
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                                            <li><a class="dropdown-item" href="#">Mais recentes</a></li>
+                                            <li><a class="dropdown-item" href="#">Mais populares</a></li>
+                                            <li><a class="dropdown-item" href="#">Menos tempo</a></li>
+                                            <li><a class="dropdown-item" href="#">A-Z</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="viewDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-grid"></i> Visualizar
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="viewDropdown">
+                                            <li><a class="dropdown-item" href="#"><i class="bi bi-grid"></i> Grade</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="bi bi-list"></i> Lista</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Categorias -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="filter-section animate-in">
+                        <div class="filter-title">Disciplinas</div>
+                        <div class="filter-options">
+                            <div class="filter-option active">Todas</div>
+                            <div class="filter-option">Matemática</div>
+                            <div class="filter-option">Português</div>
+                            <div class="filter-option">História</div>
+                            <div class="filter-option">Geografia</div>
+                            <div class="filter-option">Ciências</div>
+                            <div class="filter-option">Educação Física</div>
+                            <div class="filter-option">Sociologia</div>
+                            <div class="filter-option">Filosofia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Videoaulas -->
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="section-title animate-in">Últimas Videoaulas</h3>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 animate-in delay-1">
+                    <div class="video-aula-card">
+                        <div class="video-thumbnail">
+                            <img src="https://i.ytimg.com/vi/afps1EWO05A/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB0K8bUHzGQnly1QX1i9sgJpGW8RQ" alt="Videoaula de Matemática">
+                            <button class="play-button"><i class="bi bi-play-fill"></i></button>
+                            <div class="video-duration">15:30</div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Funções Trigonométricas</h5>
+                            <div class="video-subtitle">Matemática - Nível Intermediário</div>
+                            <div class="mb-2">
+                                <span class="category-badge category-matematica">Matemática</span>
+                                <span class="category-badge category-secondary">Intermediário</span>
+                            </div>
+                            <div class="video-stats">
+                                <span><i class="bi bi-eye"></i> 2.3k visualizações</span>
+                                <span><i class="bi bi-calendar3"></i> 2 dias atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 animate-in delay-2">
+                    <div class="video-aula-card">
+                        <div class="video-thumbnail">
+                            <img src="https://i.ytimg.com/vi/j-tBN48bITU/hqdefault.jpg" alt="Videoaula de Português">
+                            <button class="play-button"><i class="bi bi-play-fill"></i></button>
+                            <div class="video-duration">22:45</div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Gramática: Verbos Irregulares</h5>
+                            <div class="video-subtitle">Português - Nível Básico</div>
+                            <div class="mb-2">
+                                <span class="category-badge category-portugues">Português</span>
+                                <span class="category-badge category-secondary">Básico</span>
+                            </div>
+                            <div class="video-stats">
+                                <span><i class="bi bi-eye"></i> 3.7k visualizações</span>
+                                <span><i class="bi bi-calendar3"></i> 1 semana atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 animate-in delay-3">
+                    <div class="video-aula-card">
+                        <div class="video-thumbnail">
+                            <img src="https://i.ytimg.com/vi/9FuMCplPhH0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDElcJSo6sj8r8sFgpdv6aELKffzg" alt="Videoaula de História">
+                            <button class="play-button"><i class="bi bi-play-fill"></i></button>
+                            <div class="video-duration">18:20</div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Revolução Francesa</h5>
+                            <div class="video-subtitle">História - Nível Intermediário</div>
+                            <div class="mb-2">
+                                <span class="category-badge category-historia">História</span>
+                                <span class="category-badge category-secondary">Intermediário</span>
+                            </div>
+                            <div class="video-stats">
+                                <span><i class="bi bi-eye"></i> 1.9k visualizações</span>
+                                <span><i class="bi bi-calendar3"></i> 3 dias atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 animate-in delay-4">
+                    <div class="video-aula-card">
+                        <div class="video-thumbnail">
+                            <img src="https://i.ytimg.com/vi/tqqV55SgRzw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCZdoaxmvmykyC8KsYN3firO2iazA" alt="Videoaula de Geografia">
+                            <button class="play-button"><i class="bi bi-play-fill"></i></button>
+                            <div class="video-duration">25:10</div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Clima e Vegetação do Brasil</h5>
+                            <div class="video-subtitle">Geografia - Nível Básico</div>
+                            <div class="mb-2">
+                                <span class="category-badge category-geografia">Geografia</span>
+                                <span class="category-badge category-secondary">Básico</span>
+                            </div>
+                            <div class="video-stats">
+                                <span><i class="bi bi-eye"></i> 2.8k visualizações</span>
+                                <span><i class="bi bi-calendar3"></i> 5 dias atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 animate-in delay-1">
+                    <div class="video-aula-card">
+                        <div class="video-thumbnail">
+                            <img src="data:image/jpeg;base64,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" alt="Videoaula de Ciências">
+                            <button class="play-button"><i class="bi bi-play-fill"></i></button>
+                            <div class="video-duration">20:15</div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Ciências da Natureza</h5>
+                            <div class="video-subtitle">Ciências - Nível Intermediário</div>
+                            <div class="mb-2">
+                                <span class="category-badge category-ciencias">Ciências</span>
+                                <span class="category-badge category-secondary">Intermediário</span>
+                            </div>
+                            <div class="video-stats">
+                                <span><i class="bi bi-eye"></i> 1.5k visualizações</span>
+                                <span><i class="bi bi-calendar3"></i> 1 semana atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 animate-in delay-2">
+                    <div class="video-aula-card">
+                        <div class="video-thumbnail">
+                            <img src="https://i.ytimg.com/vi/SVjMqR9diXk/sddefault.jpg" alt="Videoaula de Educação Física">
+                            <button class="play-button"><i class="bi bi-play-fill"></i></button>
+                            <div class="video-duration">15:40</div>
+                        </div>
+                        <div class="video-info">
+                            <h5 class="video-title">Atletismo</h5>
+                            <div class="video-subtitle">Educação Física - Nível Básico</div>
+                            <div class="mb-2">
+                                <span class="category-badge category-educacao-fisica">Educação Física</span>
+                                <span class="category-badge category-secondary">Básico</span>
+                            </div>
+                            <div class="video-stats">
+                                <span><i class="bi bi-eye"></i> 1.2k visualizações</span>
+                                <span><i class="bi bi-calendar3"></i> 4 dias atrás</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recursos Recomendados -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3 class="section-title animate-in">Recomendados para Você</h3>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 animate-in delay-1">
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/encceja-recomendado1/400/200.jpg" class="card-img-top" alt="Recurso recomendado">
+                        <div class="card-body">
+                            <h5 class="card-title">Guia Completo do Encceja</h5>
+                            <p class="card-text">Tudo o que você precisa saber para se preparar para a prova.</p>
+                            <a href="#" class="btn btn-primary">Acessar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 animate-in delay-2">
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/encceja-recomendado2/400/200.jpg" class="card-img-top" alt="Recurso recomendado">
+                        <div class="card-body">
+                            <h5 class="card-title">Dicas de Estudo</h5>
+                            <p class="card-text">Métodos eficazes para otimizar seu tempo de estudo.</p>
+                            <a href="#" class="btn btn-primary">Acessar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 animate-in delay-3">
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/encceja-recomendado3/400/200.jpg" class="card-img-top" alt="Recurso recomendado">
+                        <div class="card-body">
+                            <h5 class="card-title">Provas Anteriores</h5>
+                            <p class="card-text">Analise as provas de anos anteriores para entender o formato.</p>
+                            <a href="#" class="btn btn-primary">Acessar</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3 animate-in delay-4">
+                    <div class="card">
+                        <img src="https://picsum.photos/seed/encceja-recomendado4/400/200.jpg" class="card-img-top" alt="Recurso recomendado">
+                        <div class="card-body">
+                            <h5 class="card-title">Comunidade de Estudos</h5>
+                            <p class="card-text">Conecte-se com outros estudantes para trocar dicas e experiências.</p>
+                            <a href="#" class="btn btn-primary">Acessar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Rodapé com redes sociais -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="footer-links">
+                        <a href="#">Termos de Uso</a>
+                        <a href="#">Política de Privacidade</a>
+                        <a href="#">Contato</a>
+                        <a href="#">Sobre Nós</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-icons">
+                        <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright text-center">
+                &copy; 2023 Plataforma de Estudos - Auxílio Encceja. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função para toggle do sidebar
+        document.getElementById('toggleSidebar').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const toggleIcon = this.querySelector('i');
+            
+            sidebar.classList.toggle('collapsed');
+            content.classList.toggle('expanded');
+            
+            if (sidebar.classList.contains('collapsed')) {
+                toggleIcon.classList.remove('bi-chevron-left');
+                toggleIcon.classList.add('bi-chevron-right');
+            } else {
+                toggleIcon.classList.remove('bi-chevron-right');
+                toggleIcon.classList.add('bi-chevron-left');
+            }
+        });
+        
+        // Função para toggle do sidebar em mobile
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            sidebar.classList.toggle('expanded');
+            content.classList.toggle('shifted');
+        });
+        
+        // Adiciona funcionalidade de clique nos itens do menu
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.sidebar .nav-link').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // No mobile, fecha o sidebar após selecionar um item
+                if (window.innerWidth < 992) {
+                    document.getElementById('sidebar').classList.remove('expanded');
+                    document.getElementById('content').classList.remove('shifted');
+                }
+            });
+        });
+        
+        // Adiciona funcionalidade de clique nos filtros
+        document.querySelectorAll('.filter-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.filter-option').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+        
+        // Adiciona funcionalidade de clique nos botões de play
+        document.querySelectorAll('.play-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const videoTitle = this.closest('.video-aula-card').querySelector('.video-title').textContent;
+                
+                // Aqui você pode adicionar a lógica para abrir o video
+                console.log(`Reproduzindo: ${videoTitle}`);
+                
+                // Exemplo de toast notification
+                const toastContainer = document.createElement('div');
+                toastContainer.className = 'position-fixed bottom-0 end-0 p-3';
+                toastContainer.style.zIndex = '11';
+                
+                toastContainer.innerHTML = `
+                    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                            <i class="bi bi-play-circle-fill text-primary me-2"></i>
+                            <strong class="me-auto">Videoaula</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            Reproduzindo: ${videoTitle}
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(toastContainer);
+                
+                setTimeout(() => {
+                    toastContainer.remove();
+                }, 3000);
+            });
+        });
+        
+        // Adiciona funcionalidade aos links de redes sociais
+        document.querySelectorAll('.social-icons a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.getAttribute('title');
+                console.log(`Redirecionando para ${platform}`);
+                
+                // Aqui você pode adicionar o redirecionamento para as redes sociais
+                // Exemplo: window.open('https://facebook.com', '_blank');
+            });
+        });
+        
+        // Responsividade
+        function handleResize() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            if (window.innerWidth < 992) {
+                sidebar.classList.remove('collapsed');
+                content.classList.remove('expanded');
+                sidebar.classList.remove('expanded');
+                content.classList.remove('shifted');
+                document.getElementById('toggleSidebar').style.display = 'none';
+            } else {
+                document.getElementById('toggleSidebar').style.display = 'block';
+            }
+        }
+        
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Chama na inicialização
+    </script>
+</body>
+</html>
