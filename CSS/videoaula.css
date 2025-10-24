@@ -27,7 +27,6 @@
             background-color: #000;
         }
         
-        /* Mantive todos os estilos CSS existentes */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #D3D3D3;
@@ -36,131 +35,616 @@
             transition: background-color 0.3s, color 0.3s; /* Adiciona transição suave para mudanças de cor */
         }
 
-        /* Modo de alto contraste */
-        body.high-contrast {
-            background-color: #000000;
-            color: #ffffff;
-        }
-        
-        body.high-contrast .sidebar {
-            background-color: #333333;
-        }
-        
-        body.high-contrast .sidebar .nav-link {
-            color: #ffffff;
-            background-color: #555555;
-        }
-        
-        body.high-contrast .sidebar .nav-link:hover {
-            background-color: #777777;
-            color: white;
-        }
-        
-        body.high-contrast .sidebar .nav-link.active {
-            background-color: #333333;
-            color: white;
-        }
-        
-        body.high-contrast .card {
-            background-color: #333333;
-            color: #ffffff;
-        }
-        
-        body.high-contrast .card-header {
-            background-color: #555555;
-            color: #ffffff;
-        }
-        
-        body.high-contrast .resource-item {
-            background-color: #444444;
-            color: #ffffff;
-        }
-        
-        body.high-contrast .resource-item:hover {
-            background-color: #555555;
-        }
-        
-        body.high-contrast .card-footer {
-            background-color: #555555;
-            color: #ffffff;
-        }
-        
-        body.high-contrast .welcome-banner {
-            background: linear-gradient(135deg, #333333, #333333);
-            color: #ffffff;
-        }
-        
-        body.high-contrast .btn-primary {
-            background-color: #ffffff;
-            color: #000000;
-            border-color: #ffffff;
-        }
-        
-        body.high-contrast .btn-outline-primary {
-            color: #ffffff;
-            border-color: #ffffff;
-        }
-        
-        body.high-contrast .footer {
-            background-color: #333333;
-            color: #ffffff;
-        }
-        
-        body.high-contrast .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        body.high-contrast .copyright {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        body.high-contrast .btn-enter {
-            background-color: #ffffff;
-            color: #000000;
-            border-color: #ffffff;
-        }
-        
-        body.high-contrast .user-profile {
-            background-color: #333333;
-        }
-        
-        body.high-contrast .popover-header {
-            background-color: #333333;
-            color: #ffffff;
-        }
-        
-        body.high-contrast .popover-body {
-            background-color: #333333;
-            color: #ffffff;
-        }
-        
-        body.high-contrast .profile-stats {
-            background-color: #444444;
-            color: #ffffff;
-        }
-        
-        body.high-contrast .profile-menu-item {
-            color: #ffffff;
-        }
-        
-        body.high-contrast .profile-menu-divider {
-            background-color: #555555;
-        }
-        
-        body.high-contrast .logout-btn-profile {
-            color: #ffffff;
-            background-color: #555555;
-        }
-        
-        body.high-contrast .toast {
-            background-color: #333333;
-            color: #ffffff;
-        }
-        
-        body.high-contrast .toast-header {
-            background-color: #444444;
-            color: #ffffff;
-        }
+        /* Modo de Alto Contraste */
+            body.high-contrast {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .navbar {
+                background-color: #000000 !important;
+                border-bottom: 2px solid #ffffff !important;
+            }
+
+            body.high-contrast .navbar-brand {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .navbar-nav .nav-link {
+                color: #ffffff !important;
+                background-color: #000000 !important;
+            }
+
+            body.high-contrast .navbar-nav .nav-link:hover {
+                background-color: #333333 !important;
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .navbar-nav .nav-link.active {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
+
+            body.high-contrast .card {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border: 2px solid #ffffff !important;
+            }
+
+            body.high-contrast .card-header {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border-bottom: 2px solid #ffffff !important;
+            }
+
+            body.high-contrast .card-body {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .card-text {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .session-title {
+                color: #ffffff !important;
+                border-bottom-color: #ffffff !important;
+            }              
+
+            body.high-contrast .welcome-banner {
+                background-color: #000000 !important;
+                background-image: none !important; 
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .filter-section {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border: 2px solid #ffffff !important;
+    }
+
+            body.high-contrast .filter-title {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .filter-option {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border: 1px solid #ffffff !important;
+    }
+
+            body.high-contrast .filter-option:hover,
+            body.high-contrast .filter-option.active {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                border-color: #ffffff !important;
+    }
+
+            body.high-contrast .search-box input {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border: 1px solid #ffffff !important;
+    }
+
+            body.high-contrast .search-box i {
+                color: #ffffff !important;
+    }
+
+            body.high-contrast .benefits-section {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border: 2px solid #ffffff !important;
+    }
+
+            body.high-contrast .benefits-section {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border: 2px solid #ffffff !important;
+            }
+
+            body.high-contrast .benefits-header {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .benefits-title {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .benefits-subtitle {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .benefit-item {
+                color: #ffffff !important;
+                border-bottom: 1px solid #ffffff !important;
+            }
+
+            body.high-contrast .benefit-icon {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .hero-title {
+                color: #ffffff !important;
+                background: none !important;
+                -webkit-text-fill-color: #ffffff !important;
+            }
+
+            body.high-contrast .hero-subtitle {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .btn-primary {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                border-color: #ffffff !important;
+            }
+
+            body.high-contrast .btn-outline-primary {
+                background-color: #000000 !important; 
+                color: #ffffff !important;
+                border-color: #ffffff !important;
+            }
+
+            body.high-contrast .btn-outline-primary:hover {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
+
+            body.high-contrast .footer {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border-top: 2px solid #ffffff !important;
+            }
+
+            body.high-contrast .footer-links a {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .copyright {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .btn-enter {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                border-color: #ffffff !important;
+            }
+
+            body.high-contrast .accessibility-modal-content {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border: 2px solid #ffffff !important;
+            }
+
+            body.high-contrast .accessibility-modal-header {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border-bottom: 2px solid #ffffff !important;
+            }
+
+            body.high-contrast .accessibility-modal-title {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .accessibility-modal-body {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .accessibility-section-title {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .accessibility-option {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border: 1px solid #ffffff !important;
+            }
+
+            body.high-contrast .accessibility-option-title {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .accessibility-option-description {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .accessibility-modal-footer {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border-top: 2px solid #ffffff !important;
+            }
+
+            body.high-contrast .accessibility-reset-btn {
+                color: #ffffff !important;
+                border: 1px solid #ffffff !important;
+            }
+
+            body.high-contrast .accessibility-reset-btn:hover {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
+
+            body.high-contrast .accessibility-save-btn {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
+
+            body.high-contrast .toast {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border: 1px solid #ffffff !important;
+            }
+
+            body.high-contrast .toast-header {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border-bottom: 1px solid #ffffff !important;
+            }
+
+            body.high-contrast .toast-body {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .animated-bg,
+            body.high-contrast .white-animated-bg {
+                display: none !important;
+            }
+
+            body.high-contrast #particles-canvas {
+                display: none !important;
+            }
+
+            body.high-contrast .cta-button {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
+
+            body.high-contrast .social-icons a {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .social-icons a:hover {
+                color: #ffffff !important;
+            }
+
+            body.high-contrast .toast-header {
+                background-color: #444444;
+                color: #ffffff;
+            }
+
+            /* Modo Escuro */
+            body.dark-mode {
+                background-color: #121212 !important;
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .navbar {
+                background-color: #1e1e1e !important;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+            }
+
+            body.dark-mode .navbar-brand {
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .navbar-nav .nav-link {
+                color: rgba(224, 224, 224, 0.8) !important;
+            }
+
+            body.dark-mode .navbar-nav .nav-link:hover {
+                background-color: rgba(255, 255, 255, 0.1) !important;
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .navbar-nav .nav-link.active {
+                background-color: #0a58ca !important;
+                color: white !important;
+            }
+ 
+            body.dark-mode .navbar-collapse {
+                background-color: #1e1e1e !important;
+            }
+
+            body.dark-mode .btn-enter {
+                background-color: #1e1e1e !important;
+                color: #e0e0e0 !important;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+            } 
+
+            body.dark-mode .btn-enter:hover {
+                background-color: #2d2d2d !important;
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .hero-section {
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .hero-title {
+                color: #e0e0e0 !important;
+                background: linear-gradient(45deg, #e0e0e0, #b0b0b0, #e0e0e0) !important;
+                background-size: 200% 200% !important;
+                -webkit-background-clip: text !important;
+                background-clip: text !important;
+                -webkit-text-fill-color: transparent !important;
+            }
+
+            body.dark-mode .hero-subtitle {
+                color: #b0b0b0 !important;
+            }
+
+            body.dark-mode .info-card {
+                background-color: #1e1e1e !important;
+                color: #e0e0e0 !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+            }
+
+            body.dark-mode .info-card:hover {
+                transform: translateY(-10px) !important;
+                border-color: rgba(0, 150, 255, 0.3) !important;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+            }
+
+            body.dark-mode .card-header {
+                background-color: #2d2d2d !important;
+                color: #e0e0e0 !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
+
+            body.dark-mode .card-body {
+                background-color: #1e1e1e !important;
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .card-text {
+                color: #b0b0b0 !important;
+            }
+
+            body.dark-mode .session-title {
+                color: #e0e0e0 !important;
+                border-bottom: 2px solid #3d3d3d !important;
+            }
+
+            body.dark-mode .benefits-section {
+                background-color: #1e1e1e !important;
+                color: #e0e0e0 !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
+            }
+
+            body.dark-mode .filter-section {
+                background-color: #1e1e1e !important;
+                color: #e0e0e0 !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
+
+            body.dark-mode .filter-title {
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .filter-option {
+                background-color: #2d2d2d !important;
+                color: #e0e0e0 !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }                   
+
+            body.dark-mode .filter-option:hover, 
+            body.dark-mode .filter-option.active {
+                background-color: #0a58ca !important;
+                color: white !important;
+                border-color: #0a58ca !important;
+            }
+
+            body.dark-mode .search-box input {
+                background-color: #2d2d2d !important;
+                color: #e0e0e0 !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
+
+            body.dark-mode .search-box i {
+                color: #b0b0b0 !important;
+            }
+
+            body.dark-mode .benefits-header {
+               color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .benefits-title {
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .benefits-subtitle {
+                color: #b0b0b0 !important;
+            }
+
+            body.dark-mode .benefit-item {
+                color: #b0b0b0 !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
+
+            body.dark-mode .benefit-icon {
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .cta-button {
+                background: linear-gradient(45deg, #2d2d2d, #1e1e1e) !important;
+                color: #e0e0e0 !important;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+            }
+
+            body.dark-mode .cta-button:hover {
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4) !important;
+            }
+
+            body.dark-mode .footer {
+                background-color: #1e1e1e !important;
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .footer-links a {
+                color: rgba(224, 224, 224, 0.8) !important;
+            }
+
+            body.dark-mode .footer-links a:hover {
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .copyright {
+                color: rgba(224, 224, 224, 0.7) !important;
+                border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
+
+            body.dark-mode .social-icons a {
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .social-icons a:hover {
+                color: #3498db !important;
+            }
+
+            body.dark-mode .btn-primary {
+                background-color: #2d2d2d !important;
+                border-color: #2d2d2d !important;
+                color: #e0e0e0 !important;
+            } 
+
+            body.dark-mode .btn-primary:hover {
+                background-color: #3d3d3d !important;
+                border-color: #3d3d3d !important;
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .btn-outline-primary {
+                color: #e0e0e0 !important;
+                border-color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .btn-outline-primary:hover {
+                background-color: #2d2d2d !important;
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .accessibility-modal-content {
+                background-color: #2d2d2d !important;
+                color: #e0e0e0 !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            } 
+
+            body.dark-mode .accessibility-modal-header {
+                background-color: #1e1e1e !important;
+                color: #e0e0e0 !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
+
+            body.dark-mode .accessibility-modal-title {
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .accessibility-modal-body {
+                background-color: #2d2d2d !important;
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .accessibility-section-title {
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .accessibility-option {
+                background-color: #1e1e1e !important;
+                color: #e0e0e0 !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
+
+            body.dark-mode .accessibility-option:hover {
+                background-color: #3d3d3d !important;
+            }
+
+            body.dark-mode .accessibility-option-title {
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .accessibility-option-description {
+                color: #b0b0b0 !important;
+            }
+
+            body.dark-mode .accessibility-toggle-label {
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .accessibility-range-label {
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .accessibility-range {
+                background: #3d3d3d !important;
+            }
+
+            body.dark-mode .accessibility-modal-footer {
+                background-color: #1e1e1e !important;
+                color: #e0e0e0 !important;
+                border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
+
+            body.dark-mode .accessibility-reset-btn {
+                color: #b0b0b0 !important;
+            }
+
+            body.dark-mode .accessibility-reset-btn:hover {
+                background-color: #3d3d3d !important;
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .accessibility-save-btn {
+                background-color: #2d2d2d !important;
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .accessibility-save-btn:hover {
+                background-color: #3d3d3d !important;
+            }
+
+            body.dark-mode .toast {
+                background-color: #2d2d2d !important;
+                color: #e0e0e0 !important;
+                border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
+
+            body.dark-mode .toast-header {
+                background-color: #1e1e1e !important;
+                color: #e0e0e0 !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            }
+
+            body.dark-mode .toast-body {
+                background-color: #2d2d2d !important;
+                color: #e0e0e0 !important;
+            }
+
+            body.dark-mode .animated-bg {
+                background: linear-gradient(45deg, rgba(18, 18, 18, 0.8), rgba(30, 30, 30, 0.8), rgba(18, 18, 18, 0.8), rgba(25, 25, 25, 0.8)) !important;
+            }
+
+            body.dark-mode .white-animated-bg {
+                background: #121212 !important;
+            }
+
+            body.dark-mode .white-animated-bg::before {
+                background: radial-gradient(circle, rgba(40, 40, 50, 0.8) 0%, rgba(18, 18, 18, 0) 70%) !important;
+            }
+
+            body.dark-mode .white-animated-bg::after {
+                background-image:
+                    radial-gradient(circle at 10% 20%, rgba(0, 50, 100, 0.05) 0%, transparent 20%),
+                    radial-gradient(circle at 80% 40%, rgba(0, 70, 120, 0.07) 0%, transparent 25%),
+                    radial-gradient(circle at 40% 70%, rgba(0, 60, 110, 0.06) 0%, transparent 30%) !important;
+            }
+
+            body.dark-mode .navbar-toggler {
+                color: #e0e0e0 !important;
+            }
         
         /* Estilos da navbar */
         .navbar {
