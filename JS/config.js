@@ -69,7 +69,7 @@
         document.getElementById('logoutBtn').addEventListener('click', function() {
             showToast('Você foi deslogado com sucesso!', 'info');
             setTimeout(() => {
-                window.location.href = 'index.html';
+                window.location.href = 'plataforma.html';
             }, 2000);
         });
         

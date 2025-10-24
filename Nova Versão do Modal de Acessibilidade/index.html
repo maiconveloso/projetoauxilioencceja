@@ -1,0 +1,3127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Plataforma de Estudos</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css2?family=OpenDyslexic&display=swap" rel="stylesheet">
+        
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #D3D3D3;
+                margin-bottom: 80px; /* Espaço para o rodapé */
+                transition: background-color 0.3s, color 0.3s; /* Adiciona transição suave para mudanças de cor */
+            }
+            
+            /* Classe para fonte amigável para dislexia */
+            body.dyslexia-font {
+                font-family: 'OpenDyslexic', cursive;
+            }
+            
+            /* Classe para alinhamento de texto à esquerda */
+            body.left-align-text {
+                text-align: left !important;
+            }
+            
+            body.left-align-text .card,
+            body.left-align-text .card-header,
+            body.left-align-text .card-footer,
+            body.left-align-text .welcome-banner,
+            body.left-align-text .footer {
+                text-align: left !important;
+            }
+            
+            /* Modo de alto contraste - múltiplos perfis */
+            body.high-contrast {
+                background-color: #000000;
+                color: #ffffff;
+            }
+            
+            body.high-contrast .sidebar {
+                background-color: #333333;
+            }
+            
+            body.high-contrast .sidebar .nav-link {
+                color: #ffffff;
+                background-color: #555555;
+            }
+            
+            body.high-contrast .sidebar .nav-link:hover {
+                background-color: #777777;
+                color: white;
+            }
+            
+            body.high-contrast .sidebar .nav-link.active {
+                background-color: #333333;
+                color: white;
+            }
+            
+            body.high-contrast .card {
+                background-color: #333333;
+                color: #ffffff;
+            }
+            
+            body.high-contrast .card-header {
+                background-color: #555555;
+                color: #ffffff;
+            }
+            
+            body.high-contrast .resource-item {
+                background-color: #444444;
+                color: #ffffff;
+            }
+            
+            body.high-contrast .resource-item:hover {
+                background-color: #555555;
+            }
+            
+            body.high-contrast .card-footer {
+                background-color: #555555;
+                color: #ffffff;
+            }
+            
+            body.high-contrast .welcome-banner {
+                background: linear-gradient(135deg, #333333, #333333);
+                color: #ffffff;
+            }
+            
+            body.high-contrast .btn-primary {
+                background-color: #ffffff;
+                color: #000000;
+                border-color: #ffffff;
+            }
+            
+            body.high-contrast .btn-outline-primary {
+                color: #ffffff;
+                border-color: #ffffff;
+            }
+            
+            body.high-contrast .footer {
+                background-color: #333333;
+                color: #ffffff;
+            }
+            
+            body.high-contrast .footer-links a {
+                color: rgba(255, 255, 255, 0.8);
+            }
+            
+            body.high-contrast .copyright {
+                color: rgba(255, 255, 255, 0.7);
+            }
+            
+            body.high-contrast .btn-enter {
+                background-color: #ffffff;
+                color: #000000;
+                border-color: #ffffff;
+            }
+            
+            body.high-contrast .user-profile {
+                background-color: #333333;
+            }
+            
+            body.high-contrast .popover-header {
+                background-color: #333333;
+                color: #ffffff;
+            }
+            
+            body.high-contrast .popover-body {
+                background-color: #333333;
+                color: #ffffff;
+            }
+            
+            body.high-contrast .profile-stats {
+                background-color: #444444;
+                color: #ffffff;
+            }
+            
+            body.high-contrast .profile-menu-item {
+                color: #ffffff;
+            }
+            
+            body.high-contrast .profile-menu-divider {
+                background-color: #555555;
+            }
+            
+            body.high-contrast .logout-btn-profile {
+                color: #ffffff;
+                background-color: #555555;
+            }
+            
+            body.high-contrast .toast {
+                background-color: #333333;
+                color: #ffffff;
+            }
+            
+            body.high-contrast .toast-header {
+                background-color: #444444;
+                color: #ffffff;
+            }
+            
+            body.high-contrast .btn-accessibility {
+                background-color: #ffffff;
+                color: #28a745;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            body.high-contrast .btn-accessibility:hover {
+                background-color: #f8f9fa;
+            }
+            
+            body.high-contrast .modal-content {
+                border-radius: 10px;
+                border: none;
+            }
+            
+            body.high-contrast .modal-header {
+                background-color: #28a745;
+                color: white;
+                border-radius: 10px 10px 0 0;
+            }
+            
+            body.high-contrast .modal-footer {
+                border-top: 1px solid #dee2e6;
+            }
+            
+            body.high-contrast .form-check-label {
+                cursor: pointer;
+            }
+            
+            /* Perfil de alto contraste amarelo sobre preto */
+            body.high-contrast-yellow {
+                background-color: #000000;
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .sidebar {
+                background-color: #222222;
+            }
+            
+            body.high-contrast-yellow .sidebar .nav-link {
+                color: #FFFF00;
+                background-color: #333333;
+            }
+            
+            body.high-contrast-yellow .sidebar .nav-link:hover {
+                background-color: #444444;
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .sidebar .nav-link.active {
+                background-color: #222222;
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .card {
+                background-color: #222222;
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .card-header {
+                background-color: #333333;
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .resource-item {
+                background-color: #333333;
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .resource-item:hover {
+                background-color: #444444;
+            }
+            
+            body.high-contrast-yellow .card-footer {
+                background-color: #333333;
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .welcome-banner {
+                background: linear-gradient(135deg, #333333, #222222);
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .btn-primary {
+                background-color: #FFFF00;
+                color: #000000;
+                border-color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .btn-outline-primary {
+                color: #FFFF00;
+                border-color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .footer {
+                background-color: #222222;
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .footer-links a {
+                color: rgba(255, 255, 0, 0.8);
+            }
+            
+            body.high-contrast-yellow .copyright {
+                color: rgba(255, 255, 0, 0.7);
+            }
+            
+            body.high-contrast-yellow .btn-enter {
+                background-color: #FFFF00;
+                color: #000000;
+                border-color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .user-profile {
+                background-color: #222222;
+            }
+            
+            body.high-contrast-yellow .popover-header {
+                background-color: #222222;
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .popover-body {
+                background-color: #222222;
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .profile-stats {
+                background-color: #333333;
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .profile-menu-item {
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .profile-menu-divider {
+                background-color: #444444;
+            }
+            
+            body.high-contrast-yellow .logout-btn-profile {
+                color: #FFFF00;
+                background-color: #333333;
+            }
+            
+            body.high-contrast-yellow .toast {
+                background-color: #222222;
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .toast-header {
+                background-color: #333333;
+                color: #FFFF00;
+            }
+            
+            body.high-contrast-yellow .btn-accessibility {
+                background-color: #FFFF00;
+                color: #000000;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            body.high-contrast-yellow .btn-accessibility:hover {
+                background-color: #FFFFCC;
+            }
+            
+            body.high-contrast-yellow .modal-content {
+                border-radius: 10px;
+                border: none;
+            }
+            
+            body.high-contrast-yellow .modal-header {
+                background-color: #FFFF00;
+                color: #000000;
+                border-radius: 10px 10px 0 0;
+            }
+            
+            body.high-contrast-yellow .modal-footer {
+                border-top: 1px solid #444444;
+            }
+            
+            body.high-contrast-yellow .form-check-label {
+                cursor: pointer;
+            }
+            
+            /* Perfil de alto contraste branco sobre azul escuro */
+            body.high-contrast-blue {
+                background-color: #000033;
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .sidebar {
+                background-color: #000055;
+            }
+            
+            body.high-contrast-blue .sidebar .nav-link {
+                color: #FFFFFF;
+                background-color: #000077;
+            }
+            
+            body.high-contrast-blue .sidebar .nav-link:hover {
+                background-color: #000099;
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .sidebar .nav-link.active {
+                background-color: #000055;
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .card {
+                background-color: #000055;
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .card-header {
+                background-color: #000077;
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .resource-item {
+                background-color: #000066;
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .resource-item:hover {
+                background-color: #000077;
+            }
+            
+            body.high-contrast-blue .card-footer {
+                background-color: #000077;
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .welcome-banner {
+                background: linear-gradient(135deg, #000077, #000055);
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .btn-primary {
+                background-color: #FFFFFF;
+                color: #000033;
+                border-color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .btn-outline-primary {
+                color: #FFFFFF;
+                border-color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .footer {
+                background-color: #000055;
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .footer-links a {
+                color: rgba(255, 255, 255, 0.8);
+            }
+            
+            body.high-contrast-blue .copyright {
+                color: rgba(255, 255, 255, 0.7);
+            }
+            
+            body.high-contrast-blue .btn-enter {
+                background-color: #FFFFFF;
+                color: #000033;
+                border-color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .user-profile {
+                background-color: #000055;
+            }
+            
+            body.high-contrast-blue .popover-header {
+                background-color: #000055;
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .popover-body {
+                background-color: #000055;
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .profile-stats {
+                background-color: #000066;
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .profile-menu-item {
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .profile-menu-divider {
+                background-color: #000077;
+            }
+            
+            body.high-contrast-blue .logout-btn-profile {
+                color: #FFFFFF;
+                background-color: #000077;
+            }
+            
+            body.high-contrast-blue .toast {
+                background-color: #000055;
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .toast-header {
+                background-color: #000066;
+                color: #FFFFFF;
+            }
+            
+            body.high-contrast-blue .btn-accessibility {
+                background-color: #FFFFFF;
+                color: #000033;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            body.high-contrast-blue .btn-accessibility:hover {
+                background-color: #F0F0F0;
+            }
+            
+            body.high-contrast-blue .modal-content {
+                border-radius: 10px;
+                border: none;
+            }
+            
+            body.high-contrast-blue .modal-header {
+                background-color: #FFFFFF;
+                color: #000033;
+                border-radius: 10px 10px 0 0;
+            }
+            
+            body.high-contrast-blue .modal-footer {
+                border-top: 1px solid #000077;
+            }
+            
+            body.high-contrast-blue .form-check-label {
+                cursor: pointer;
+            }
+            
+            /* Estilos do sidebar */
+            .sidebar {
+                background-color: #34495e;
+                color: white;
+                height: 100vh;
+                position: fixed;
+                padding-top: 20px;
+                transition: all 0.3s;
+                z-index: 1000;
+            }
+            
+            .sidebar.collapsed {
+                margin-left: -250px;
+            }
+            
+            .sidebar .nav-link {
+                color: rgba(255, 255, 255, 0.8);
+                margin-bottom: 5px;
+                border-radius: 5px;
+                padding: 12px 15px;
+                transition: all 0.3s;
+                display: flex;
+                align-items: center;
+            }
+            
+            .sidebar .nav-link:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: white;
+                transform: translateX(5px);
+            }
+            
+            .sidebar .nav-link.active {
+                background-color: #34495e;
+                color: white;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            }
+            
+            .sidebar .nav-link i {
+                margin-right: 15px;
+                font-size: 1.2rem;
+                width: 20px;
+                text-align: center;
+            }
+
+            .sidebar .btn {
+                text-align: left;
+                justify-content: flex-start !important;
+            }
+            
+            .logo {
+               text-align: center;
+               padding: 20px 0;
+               margin-bottom: 20px;
+               border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+               position: relative;
+            }
+
+            .logo .logo-img {
+               height: 60px;
+               margin-bottom: 10px;
+            }
+
+            .logo .logo-text {
+               margin: 0;
+               color: white;
+               font-weight: 600;
+               display: block;
+            }
+
+            .logo .toggle-btn {
+               position: absolute;
+               right: 15px;
+               top: 15px;
+               background: transparent;
+               border: none;
+               color: white;
+               font-size: 1.2rem;
+               cursor: pointer;
+            }
+            
+            .content {
+                margin-left: 250px;
+                padding: 20px;
+                transition: all 0.3s;
+            }
+            
+            .content.expanded {
+                margin-left: 0;
+            }
+            
+            .card {
+                border: none;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s, box-shadow 0.3s;
+                height: 100%;
+            }
+            
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            }
+            
+            .card-header {
+                background-color: #34495e;
+                color: white;
+                border-radius: 10px 10px 0 0 !important;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+            }
+            
+            .card-header i {
+                margin-right: 10px;
+                font-size: 1.2rem;
+            }
+            
+            .session-title {
+                font-weight: bold;
+                margin-bottom: 20px;
+                color: #212529;
+                border-bottom: 2px solid #34495e;
+                padding-bottom: 10px;
+            }
+            
+            .resource-item {
+                display: flex;
+                align-items: center;
+                padding: 12px 10px;
+                border-bottom: 1px solid #eee;
+                transition: background-color 0.2s;
+            }
+            
+            .resource-item:hover {
+                background-color: #f1f3f5;
+                cursor: pointer;
+            }
+            
+            .resource-item i {
+                margin-right: 10px;
+                font-size: 1.2rem;
+            }
+            
+            .resource-item .title {
+                font-weight: 500;
+            }
+            
+            .resource-item .badge {
+                margin-left: auto;
+            }
+            
+            .card-footer {
+                background-color: #f8f9fa;
+                border-top: 1px solid rgba(0,0,0,.125);
+                padding: 12px;
+            }
+            
+            .welcome-banner {
+                background: linear-gradient(135deg, #34495e, #34495e);
+                color: white;
+                border-radius: 10px;
+                padding: 25px;
+                margin-bottom: 30px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                position: relative;
+                overflow: hidden;
+            }
+            
+            /* Relógio em tempo real */
+            .countdown-container {
+                display: flex;
+                justify-content: center;
+                margin: 20px 0;
+                gap: 15px;
+            }
+            
+            .countdown-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: rgba(255, 255, 255, 0.1);
+                border-radius: 8px;
+                padding: 10px;
+                min-width: 80px;
+            }
+            
+            .countdown-value {
+                font-size: 2rem;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            
+            .countdown-label {
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                opacity: 0.8;
+            }
+            
+            .btn-primary {
+                background-color: #34495e;
+                border-color: #34495e;
+                padding: 8px 20px;
+                font-weight: 500;
+            }
+            
+            .btn-primary:hover {
+                background-color: #34495e;
+                border-color: #34495e;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            
+            .btn-outline-primary {
+                color: #34495e;
+                border-color: #34495e;
+                padding: 8px 20px;
+                font-weight: 500;
+            }
+            
+            .btn-outline-primary:hover {
+                background-color: #34495e;
+                color: white;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+                color: var(--bs-btn-active-color);
+                background-color: var(--bs-btn-active-bg);
+                border-color: var(--bs-btn-active-border-color);
+            }
+            
+            /* Estilos do rodapé */
+            .footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                background-color: #34495e;
+                color: white;
+                padding: 15px 0;
+                z-index: 1000;
+            }
+            
+            .social-icons a {
+                color: white;
+                font-size: 1.5rem;
+                margin: 0 10px;
+                transition: color 0.3s;
+            }
+            
+            .social-icons a:hover {
+                color: #34495e;
+            }
+            
+            .footer-links a {
+                color: rgba(255, 255, 255, 0.8);
+                margin: 0 15px;
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+            
+            .footer-links a:hover {
+                color: white;
+            }
+            
+            .copyright {
+                text-align: center;
+                padding-top: 10px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                margin-top: 10px;
+                font-size: 0.9rem;
+                color: rgba(255, 255, 255, 0.7);
+            }
+            
+            /* Responsividade */
+            @media (max-width: 992px) {
+                .sidebar {
+                    width: 250px;
+                    margin-left: -250px;
+                }
+                
+                .sidebar.expanded {
+                    margin-left: 0;
+                }
+                
+                .content {
+                    margin-left: 0;
+                }
+                
+                .content.shifted {
+                    margin-left: 250px;
+                }
+                
+                .mobile-toggle {
+                    display: block;
+                }
+            }
+            
+            @media (max-width: 768px) {
+                .content.shifted {
+                    margin-left: 0;
+                }
+            }
+            
+            .mobile-toggle {
+                display: none;
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                z-index: 1001;
+                background-color: #34495e;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 8px 12px;
+                font-size: 1.2rem;
+                cursor: pointer;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            }
+            
+            /* Badges personalizados */
+            .badge-success {
+                background-color: #28a745;
+                color: white;
+            }
+            
+            .badge-info {
+                background-color: #17a2b8;
+                color: white;
+            }
+            
+            .badge-danger {
+                background-color: #dc3545;
+                color: white;
+            }
+            
+            .badge-secondary {
+                background-color: #6c757d;
+                color: white;
+            }
+            
+            /* Animations */
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .animate-in {
+                animation: fadeIn 0.5s ease-out forwards;
+            }
+            
+            .delay-1 { animation-delay: 0.1s; }
+            .delay-2 { animation-delay: 0.2s; }
+            .delay-3 { animation-delay: 0.3s; }
+            .delay-4 { animation-delay: 0.4s; }
+            
+            /* Estilos do botão de Entrar */
+            .btn-enter {
+                position: fixed;
+                top: 20px;
+                right: 15px;
+                z-index: 1001;
+                background-color: darkblue; 
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-weight: 500;
+                transition: all 0.3s;
+                display: flex;
+                align-items: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            .btn-enter:hover {
+                background-color: darkblue; 
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            
+            .btn-enter i {
+                margin-right: 8px;
+            }
+            
+            /* Classe para ocultar o botão */
+            .btn-enter.hidden {
+                opacity: 0;
+                transform: translateY(-10px);
+                pointer-events: none;
+                transition: opacity 0.3s, transform 0.3s;
+            }
+            
+            /* Estilos do perfil do usuário */
+            .user-profile {
+                position: fixed;
+                top: 20px;
+                right: 15px;
+                z-index: 1001;
+                display: flex;
+                align-items: center;
+                background-color: #34495e;
+                border-radius: 50px;
+                padding: 8px 15px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s;
+            }
+            
+            .user-profile.hidden {
+                opacity: 0;
+                transform: translateY(-10px);
+                pointer-events: none;
+                transition: opacity 0.3s, transform 0.3s;
+            }
+            
+            .user-avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-right: 10px;
+                border: 2px solid white;
+            }
+            
+            .user-info {
+                color: white;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .user-name {
+                font-weight: 600;
+                font-size: 0.9rem;
+            }
+            
+            .user-role {
+                font-size: 0.75rem;
+                opacity: 0.8;
+            }
+            
+            .user-menu {
+                position: absolute;
+                top: 50px;
+                right: 0;
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+                width: 200px;
+                display: none;
+                z-index: 1002;
+            }
+            
+            .user-menu.show {
+                display: block;
+                animation: fadeIn 0.3s ease-out forwards;
+            }
+            
+            .user-menu-item {
+                padding: 12px 15px;
+                display: flex;
+                align-items: center;
+                color: #212529;
+                text-decoration: none;
+                transition: background-color 0.2s;
+            }
+            
+            .user-menu-item:hover {
+                background-color: #f1f3f5;
+            }
+            
+            .user-menu-item i {
+                margin-right: 10px;
+                font-size: 1.1rem;
+                width: 20px;
+                text-align: center;
+                color: #34495e;
+            }
+            
+            .user-menu-divider {
+                height: 1px;
+                background-color: #e9ecef;
+            }
+            
+            .logout-btn {
+                color: #dc3545;
+                font-weight: 500;
+            }
+            
+            .logout-btn:hover {
+                background-color: #f8d7fa;
+            }
+            
+            /* Popover do Perfil */
+            .popover {
+                position: absolute;
+                top: 60px;
+                right: 15px;
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+                width: 250px;
+                display: none;
+                z-index: 1002;
+            }
+            
+            .popover.show {
+                display: block;
+                animation: fadeIn 0.3s ease-out forwards;
+            }
+            
+            .popover-header {
+                background-color: #34495e;
+                color: white;
+                padding: 12px 15px;
+                border-radius: 8px 8px 0 0;
+                display: flex;
+                align-items: center;
+            }
+            
+            .popover-header img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+            
+            .popover-body {
+                padding: 0;
+            }
+            
+            .profile-stats {
+                display: flex;
+                justify-content: space-between;
+                padding: 15px;
+                border-bottom: 1px solid #e9ecef;
+            }
+            
+            .stat-item {
+                text-align: center;
+            }
+            
+            .stat-value {
+                font-weight: 600;
+                font-size: 1.1rem;
+                color: #34495e;
+            }
+            
+            .stat-label {
+                font-size: 0.8rem;
+                color: #6c757d;
+            }
+            
+            .profile-menu {
+                padding: 0;
+            }
+            
+            .profile-menu-item {
+                padding: 12px 15px;
+                display: flex;
+                align-items: center;
+                color: #212529;
+                text-decoration: none;
+            }
+            
+            .profile-menu-item:hover {
+                background-color: #f1f3f5;
+            }
+            
+            .profile-menu-item i {
+                margin-right: 10px;
+                font-size: 1.1rem;
+                width: 20px;
+                text-align: center;
+                color: #34495e;
+            }
+            
+            .profile-menu-divider {
+                height: 1px;
+                background-color: #e9ecef;
+            }
+            
+            .logout-btn-profile {
+                color: #dc3545;
+                font-weight: 500;
+            }
+            
+            .logout-btn-profile:hover {
+                background-color: #f8d7fa;
+            }
+            
+            /* Estilos do botão de configurações de acessibilidade */
+            .btn-accessibility {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 1001;
+                background-color: #28a745;
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s;
+            }
+            
+            .btn-accessibility:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .btn-accessibility:focus {
+                outline: none;
+                box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
+            }
+            
+            .btn-accessibility.high-contrast {
+                background-color: #ffffff;
+                color: #28a745;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            .btn-accessibility.high-contrast:hover {
+                background-color: #f8f9fa;
+            }
+            
+            /* Estilos do modal de configurações de acessibilidade */
+            .accessibility-modal {
+                display: none;
+                position: fixed;
+                z-index: 1050;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                animation: fadeIn 0.3s ease-out;
+            }
+            
+            .accessibility-modal.show {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .accessibility-modal-content {
+                background-color: #fff;
+                border-radius: 16px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                width: 90%;
+                max-width: 110vh;
+                max-height: 90vh;
+                overflow-y: auto;
+                animation: slideUp 0.3s ease-out;
+            }
+            
+            @keyframes slideUp {
+                from {
+                    transform: translateY(50px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+            
+            .accessibility-modal-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px 24px;
+                border-bottom: 1px solid #e9ecef;
+                background-color: #f8f9fa;
+                border-radius: 16px 16px 0 0;
+            }
+            
+            .accessibility-modal-title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: #212529;
+                margin: 0;
+                display: flex;
+                align-items: center;
+            }
+            
+            .accessibility-modal-title i {
+                margin-right: 12px;
+                color: #28a745;
+                font-size: 1.8rem;
+            }
+            
+            .accessibility-modal-close {
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: #6c757d;
+                cursor: pointer;
+                padding: 0;
+                width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                transition: all 0.2s;
+            }
+            
+            .accessibility-modal-close:hover {
+                background-color: #e9ecef;
+                color: #212529;
+            }
+            
+            .accessibility-modal-body {
+                padding: 24px;
+            }
+            
+            .accessibility-section {
+                margin-bottom: 28px;
+            }
+            
+            .accessibility-section:last-child {
+                margin-bottom: 0;
+            }
+            
+            .accessibility-section-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: #34495e;
+                margin-bottom: 16px;
+                display: flex;
+                align-items: center;
+            }
+            
+            .accessibility-section-title i {
+                margin-right: 10px;
+                color: #34495e;
+            }
+            
+            .accessibility-options {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 16px;
+            }
+            
+            .accessibility-option {
+                background-color: #f8f9fa;
+                border-radius: 12px;
+                padding: 16px;
+                transition: all 0.2s;
+                border: 2px solid transparent;
+            }
+            
+            .accessibility-option:hover {
+                background-color: #e9ecef;
+                transform: translateY(-2px);
+            }
+            
+            .accessibility-option.active {
+                border-color: #28a745;
+                background-color: rgba(40, 167, 69, 0.1);
+            }
+            
+            .accessibility-option-header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 8px;
+            }
+            
+            .accessibility-option-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background-color: #28a745;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 12px;
+                font-size: 1.2rem;
+            }
+            
+            .accessibility-option-title {
+                font-weight: 600;
+                color: #212529;
+                font-size: 1rem;
+            }
+            
+            .accessibility-option-description {
+                color: #6c757d;
+                font-size: 0.9rem;
+                margin-left: 48px;
+            }
+            
+            .accessibility-toggle {
+                display: flex;
+                align-items: center;
+                margin-top: 12px;
+                margin-left: 48px;
+            }
+            
+            .accessibility-toggle-switch {
+                position: relative;
+                display: inline-block;
+                width: 48px;
+                height: 24px;
+                margin-right: 10px;
+            }
+            
+            .accessibility-toggle-switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            
+            .accessibility-toggle-slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                transition: .3s;
+                border-radius: 24px;
+            }
+            
+            .accessibility-toggle-slider:before {
+                position: absolute;
+                content: "";
+                height: 18px;
+                width: 18px;
+                left: 3px;
+                bottom: 3px;
+                background-color: white;
+                transition: .3s;
+                border-radius: 50%;
+            }
+            
+            input:checked + .accessibility-toggle-slider {
+                background-color: #28a745;
+            }
+            
+            input:checked + .accessibility-toggle-slider:before {
+                transform: translateX(24px);
+            }
+            
+            .accessibility-toggle-label {
+                font-size: 0.9rem;
+                color: #495057;
+                cursor: pointer;
+            }
+            
+            .accessibility-range-control {
+                margin-top: 12px;
+                margin-left: 48px;
+            }
+            
+            .accessibility-range-label {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 8px;
+                font-size: 0.9rem;
+                color: #495057;
+            }
+            
+            .accessibility-range {
+                width: 100%;
+                height: 6px;
+                border-radius: 3px;
+                background: #e9ecef;
+                outline: none;
+            }
+            
+            .accessibility-range::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                background: #28a745;
+                cursor: pointer;
+            }
+            
+            .accessibility-range::-moz-range-thumb {
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                background: #28a745;
+                cursor: pointer;
+            }
+            
+            .accessibility-modal-footer {
+                display: flex;
+                justify-content: space-between;
+                padding: 16px 24px;
+                border-top: 1px solid #e9ecef;
+                background-color: #f8f9fa;
+                border-radius: 0 0 16px 16px;
+            }
+            
+            .accessibility-reset-btn {
+                background: none;
+                border: none;
+                color: #6c757d;
+                font-size: 0.9rem;
+                padding: 8px 16px;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.2s;
+            }
+            
+            .accessibility-reset-btn:hover {
+                background-color: #e9ecef;
+                color: #212529;
+            }
+            
+            .accessibility-save-btn {
+                background-color: #28a745;
+                color: white;
+                border: none;
+                padding: 10px 24px;
+                border-radius: 8px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.2s;
+                display: flex;
+                align-items: center;
+            }
+            
+            .accessibility-save-btn:hover {
+                background-color: #218838;
+                transform: translateY(-2px);
+            }
+            
+            .accessibility-save-btn i {
+                margin-right: 8px;
+            }
+            
+            /* Estilos do toast */
+            .toast {
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                z-index: 1100;
+            }
+            
+            .toast-header {
+                background-color: #28a745;
+                color: white;
+            }
+            
+            .toast-body {
+                background-color: #f8f9fa;
+            }
+            
+            /* Estilos para o modo de leitura */
+            body.reading-mode {
+                line-height: 1.8;
+                font-size: 1.2rem;
+            }
+            
+            body.reading-mode .card {
+                margin-bottom: 30px;
+            }
+            
+            body.reading-mode .resource-item {
+                padding: 15px;
+            }
+            
+            body.reading-mode .welcome-banner {
+                padding: 40px;
+            }
+            
+            body.reading-mode .profile-stats {
+                padding: 20px;
+            }
+            
+            body.reading-mode .stat-value {
+                font-size: 1.5rem;
+            }
+            
+            body.reading-mode .stat-label {
+                font-size: 1rem;
+            }
+            
+            body.dark-mode {
+                background-color: #121212;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .sidebar {
+                background-color: #1e1e1e;
+            }
+            
+            body.dark-mode .card {
+                background-color: #1e1e1e;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .card-header {
+                background-color: #2d2d2d;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .card-footer {
+                background-color: #2d2d2d;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .welcome-banner {
+                background: linear-gradient(135deg, #2d2d2d, #1e1e1e);
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .footer {
+                background-color: #1e1e1e;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .resource-item {
+                background-color: #2d2d2d;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .resource-item:hover {
+                background-color: #3d3d3d;
+            }
+            
+            body.dark-mode .user-profile {
+                background-color: #1e1e1e;
+            }
+            
+            body.dark-mode .accessibility-modal-content {
+                background-color: #2d2d2d;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .accessibility-modal-header {
+                background-color: #1e1e1e;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .accessibility-modal-footer {
+                background-color: #1e1e1e;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .accessibility-option {
+                background-color: #2d2d2d;
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .accessibility-option:hover {
+                background-color: #3d3d3d;
+            }
+            
+            body.dark-mode .accessibility-option-title {
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .accessibility-option-description {
+                color: #b0b0b0;
+            }
+            
+            body.dark-mode .accessibility-toggle-label {
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .accessibility-range-label {
+                color: #e0e0e0;
+            }
+            
+            body.dark-mode .accessibility-range {
+                background: #3d3d3d;
+            }
+            
+            body.dark-mode .accessibility-reset-btn {
+                color: #b0b0b0;
+            }
+            
+            body.dark-mode .accessibility-reset-btn:hover {
+                background-color: #3d3d3d;
+                color: #e0e0e0;
+            }
+            
+            /* Estilos para aumento de fonte */
+            body.font-size-small {
+                font-size: 0.9rem;
+            }
+            
+            body.font-size-medium {
+                font-size: 1rem;
+            }
+            
+            body.font-size-large {
+                font-size: 1.2rem;
+            }
+            
+            body.font-size-xlarge {
+                font-size: 1.4rem;
+            }
+            
+            /* Estilos para espaçamento de linha */
+            body.line-height-normal {
+                line-height: 1.5;
+            }
+            
+            body.line-height-medium {
+                line-height: 1.7;
+            }
+            
+            body.line-height-large {
+                line-height: 2.0;
+            }
+            
+            /* Estilos para cursor de alto contraste */
+            body.high-contrast-cursor {
+                cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" fill="none" stroke="black" stroke-width="2"/></svg>') 16 16, auto;
+            }
+            
+            body.high-contrast-cursor a,
+            body.high-contrast-cursor button,
+            body.high-contrast-cursor input,
+            body.high-contrast-cursor select,
+            body.high-contrast-cursor textarea {
+                cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" fill="none" stroke="black" stroke-width="2"/></svg>') 16 16, pointer;
+            }
+            
+            /* Estilos para foco visível */
+            body.visible-focus *:focus {
+                outline: 3px solid #28a745 !important;
+                outline-offset: 2px !important;
+            }
+            
+            /* Estilos do botão de digitação */
+            .search-container {
+                position: relative;
+                margin-bottom: 20px;
+            }
+            
+            .search-input {
+                width: 100%;
+                padding: 12px 20px;
+                border: 2px solid #ddd;
+                border-radius: 30px;
+                font-size: 16px;
+                transition: all 0.3s;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            
+            .search-input:focus {
+                border-color: #34495e;
+                box-shadow: 0 0 0 3px rgba(52, 73, 94, 0.2);
+                outline: none;
+            }
+            
+            .search-icon {
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #6c757d;
+            }
+            
+            /* Estilos para a seção de desafios */
+            .challenge-card {
+                border-left: 4px solid #34495e;
+                transition: transform 0.3s;
+            }
+            
+            .challenge-card:hover {
+                transform: translateY(-5px);
+            }
+            
+            .challenge-badge {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                z-index: 10;
+            }
+            
+            .challenge-difficulty {
+                display: inline-block;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 0.75rem;
+                font-weight: bold;
+                margin-right: 5px;
+            }
+            
+            .difficulty-easy {
+                background-color: #28a745;
+                color: white;
+            }
+            
+            .difficulty-medium {
+                background-color: #ffc107;
+                color: #212529;
+            }
+            
+            .difficulty-hard {
+                background-color: #dc3545;
+                color: white;
+            }
+            
+            .challenge-stats {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 10px;
+                font-size: 0.85rem;
+                color: #6c757d;
+            }
+            
+            .challenge-stats span {
+                display: flex;
+                align-items: center;
+            }
+            
+            .challenge-stats i {
+                margin-right: 5px;
+            }
+            
+            .challenge-card-header {
+                background-color: #34495e;
+                color: white;
+                border-radius: 10px 10px 0 0;
+            }
+            
+            /* Estilos para atalhos de teclado */
+            .keyboard-shortcuts {
+                background-color: #f8f9fa;
+                border-radius: 8px;
+                padding: 16px;
+                margin-top: 20px;
+            }
+            
+            .keyboard-shortcuts-title {
+                font-size: 1rem;
+                font-weight: 600;
+                color: #34495e;
+                margin-bottom: 12px;
+                display: flex;
+                align-items: center;
+            }
+            
+            .keyboard-shortcuts-title i {
+                margin-right: 8px;
+                color: #34495e;
+            }
+            
+            .shortcut-list {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 8px;
+            }
+            
+            .shortcut-item {
+                display: flex;
+                align-items: center;
+                font-size: 0.9rem;
+            }
+            
+            .shortcut-key {
+                background-color: #e9ecef;
+                border-radius: 4px;
+                padding: 2px 6px;
+                margin-right: 8px;
+                font-family: monospace;
+                font-weight: 600;
+            }
+            
+            /* Estilos para preview em tempo real */
+            .preview-container {
+                background-color: #f8f9fa;
+                border-radius: 8px;
+                padding: 16px;
+                margin-top: 16px;
+                border: 1px dashed #dee2e6;
+            }
+            
+            .preview-title {
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: #6c757d;
+                margin-bottom: 12px;
+            }
+            
+            .preview-content {
+                font-size: 1rem;
+                line-height: 1.5;
+                color: #212529;
+            }
+            
+            /* Estilos para radio buttons de perfil de contraste */
+            .contrast-profiles {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 12px;
+                margin-left: 48px;
+            }
+            
+            .contrast-profile-option {
+                display: flex;
+                align-items: center;
+            }
+            
+            .contrast-profile-option input[type="radio"] {
+                margin-right: 8px;
+            }
+            
+            .contrast-profile-option label {
+                font-size: 0.9rem;
+                color: #495057;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+            }
+            
+            .contrast-preview {
+                width: 20px;
+                height: 20px;
+                border-radius: 4px;
+                margin-left: 8px;
+                border: 1px solid #dee2e6;
+            }
+            
+            .contrast-preview.standard {
+                background: linear-gradient(to right, #000000, #ffffff);
+            }
+            
+            .contrast-preview.yellow {
+                background: linear-gradient(to right, #000000, #FFFF00);
+            }
+            
+            .contrast-preview.blue {
+                background: linear-gradient(to right, #000033, #FFFFFF);
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Botão de configurações de acessibilidade -->
+        <button class="btn-accessibility" id="accessibilityBtn" aria-label="Configurações de Acessibilidade" title="Configurações de Acessibilidade">
+            <i class="bi bi-universal-access"></i>
+        </button>
+        
+        <!-- Modal de configurações de acessibilidade -->
+        <div class="accessibility-modal" id="accessibilityModal">
+            <div class="accessibility-modal-content">
+                <div class="accessibility-modal-header">
+                    <h3 class="accessibility-modal-title">
+                        <i class="bi bi-universal-access"></i>
+                        Configurações de Acessibilidade
+                    </h3>
+                    <button class="accessibility-modal-close" id="accessibilityModalClose">
+                        <i class="bi bi-x"></i>
+                    </button>
+                </div>
+                <div class="accessibility-modal-body">
+                    <!-- Seção de Visual -->
+                    <div class="accessibility-section">
+                        <h4 class="accessibility-section-title">
+                            <i class="bi bi-eye"></i>
+                            Opções Visuais
+                        </h4>
+                        <div class="accessibility-options">
+                            <div class="accessibility-option" id="highContrastOption">
+                                <div class="accessibility-option-header">
+                                    <div class="accessibility-option-icon">
+                                        <i class="bi bi-circle-half"></i>
+                                    </div>
+                                    <div class="accessibility-option-title">Alto Contraste</div>
+                                </div>
+                                <div class="accessibility-option-description">
+                                    Melhora a visibilidade com contraste elevado entre texto e fundo.
+                                </div>
+                                <div class="contrast-profiles">
+                                    <div class="contrast-profile-option">
+                                        <input type="radio" id="contrastStandard" name="contrastProfile" value="standard">
+                                        <label for="contrastStandard">
+                                            Padrão (Preto e Branco)
+                                            <div class="contrast-preview standard"></div>
+                                        </label>
+                                    </div>
+                                    <div class="contrast-profile-option">
+                                        <input type="radio" id="contrastYellow" name="contrastProfile" value="yellow">
+                                        <label for="contrastYellow">
+                                            Amarelo sobre Preto
+                                            <div class="contrast-preview yellow"></div>
+                                        </label>
+                                    </div>
+                                    <div class="contrast-profile-option">
+                                        <input type="radio" id="contrastBlue" name="contrastProfile" value="blue">
+                                        <label for="contrastBlue">
+                                            Branco sobre Azul Escuro
+                                            <div class="contrast-preview blue"></div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accessibility-option" id="darkModeOption">
+                                <div class="accessibility-option-header">
+                                    <div class="accessibility-option-icon">
+                                        <i class="bi bi-moon-stars"></i>
+                                    </div>
+                                    <div class="accessibility-option-title">Modo Escuro</div>
+                                </div>
+                                <div class="accessibility-option-description">
+                                    Reduz a luminosidade da interface para maior conforto visual.
+                                </div>
+                                <div class="accessibility-toggle">
+                                    <label class="accessibility-toggle-switch">
+                                        <input type="checkbox" id="darkModeToggle">
+                                        <span class="accessibility-toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="accessibility-option" id="readingModeOption">
+                                <div class="accessibility-option-header">
+                                    <div class="accessibility-option-icon">
+                                        <i class="bi bi-book"></i>
+                                    </div>
+                                    <div class="accessibility-option-title">Modo de Leitura</div>
+                                </div>
+                                <div class="accessibility-option-description">
+                                    Aumenta o tamanho do texto e melhora o espaçamento para facilitar a leitura.
+                                </div>
+                                <div class="accessibility-toggle">
+                                    <label class="accessibility-toggle-switch">
+                                        <input type="checkbox" id="readingModeToggle">
+                                        <span class="accessibility-toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="accessibility-option" id="highContrastCursorOption">
+                                <div class="accessibility-option-header">
+                                    <div class="accessibility-option-icon">
+                                        <i class="bi bi-cursor"></i>
+                                    </div>
+                                    <div class="accessibility-option-title">Cursor de Alto Contraste</div>
+                                </div>
+                                <div class="accessibility-option-description">
+                                    Torna o cursor mais visível com um círculo de contraste ao redor.
+                                </div>
+                                <div class="accessibility-toggle">
+                                    <label class="accessibility-toggle-switch">
+                                        <input type="checkbox" id="highContrastCursorToggle">
+                                        <span class="accessibility-toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Seção de Texto -->
+                    <div class="accessibility-section">
+                        <h4 class="accessibility-section-title">
+                            <i class="bi bi-fonts"></i>
+                            Opções de Texto
+                        </h4>
+                        <div class="accessibility-options">
+                            <div class="accessibility-option">
+                                <div class="accessibility-option-header">
+                                    <div class="accessibility-option-icon">
+                                        <i class="bi bi-textarea-resize"></i>
+                                    </div>
+                                    <div class="accessibility-option-title">Tamanho da Fonte</div>
+                                </div>
+                                <div class="accessibility-option-description">
+                                    Ajuste o tamanho do texto para melhor legibilidade.
+                                </div>
+                                <div class="accessibility-range-control">
+                                    <div class="accessibility-range-label">
+                                        <span>Pequeno</span>
+                                        <span id="fontSizeValue">Médio</span>
+                                        <span>Grande</span>
+                                    </div>
+                                    <input type="range" min="1" max="4" value="2" class="accessibility-range" id="fontSizeRange">
+                                </div>
+                                <div class="preview-container">
+                                    <div class="preview-title">Preview:</div>
+                                    <div class="preview-content" id="fontSizePreview">
+                                        Este é um exemplo de texto para visualizar o tamanho da fonte selecionada.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accessibility-option">
+                                <div class="accessibility-option-header">
+                                    <div class="accessibility-option-icon">
+                                        <i class="bi bi-text-paragraph"></i>
+                                    </div>
+                                    <div class="accessibility-option-title">Espaçamento entre Linhas</div>
+                                </div>
+                                <div class="accessibility-option-description">
+                                    Ajuste o espaçamento entre linhas para melhor legibilidade.
+                                </div>
+                                <div class="accessibility-range-control">
+                                    <div class="accessibility-range-label">
+                                        <span>Normal</span>
+                                        <span id="lineHeightValue">Médio</span>
+                                        <span>Alto</span>
+                                    </div>
+                                    <input type="range" min="1" max="3" value="2" class="accessibility-range" id="lineHeightRange">
+                                </div>
+                                <div class="preview-container">
+                                    <div class="preview-title">Preview:</div>
+                                    <div class="preview-content" id="lineHeightPreview">
+                                        Este é um exemplo de texto para visualizar o espaçamento entre linhas selecionado. O espaçamento adequado pode melhorar significativamente a legibilidade do conteúdo.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accessibility-option" id="dyslexiaFontOption">
+                                <div class="accessibility-option-header">
+                                    <div class="accessibility-option-icon">
+                                        <i class="bi bi-type"></i>
+                                    </div>
+                                    <div class="accessibility-option-title">Fonte Amigável para Dislexia</div>
+                                </div>
+                                <div class="accessibility-option-description">
+                                    Usa uma fonte otimizada para pessoas com dislexia.
+                                </div>
+                                <div class="accessibility-toggle">
+                                    <label class="accessibility-toggle-switch">
+                                        <input type="checkbox" id="dyslexiaFontToggle">
+                                        <span class="accessibility-toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="preview-container">
+                                    <div class="preview-title">Preview:</div>
+                                    <div class="preview-content" id="dyslexiaFontPreview" style="font-family: 'OpenDyslexic', cursive;">
+                                        Este é um exemplo de texto usando a fonte OpenDyslexic, projetada para facilitar a leitura para pessoas com dislexia.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accessibility-option" id="leftAlignTextOption">
+                                <div class="accessibility-option-header">
+                                    <div class="accessibility-option-icon">
+                                        <i class="bi bi-text-left"></i>
+                                    </div>
+                                    <div class="accessibility-option-title">Alinhamento de Texto à Esquerda</div>
+                                </div>
+                                <div class="accessibility-option-description">
+                                    Alinha todo o texto à esquerda para melhor legibilidade.
+                                </div>
+                                <div class="accessibility-toggle">
+                                    <label class="accessibility-toggle-switch">
+                                        <input type="checkbox" id="leftAlignTextToggle">
+                                        <span class="accessibility-toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Seção de Navegação -->
+                    <div class="accessibility-section">
+                        <h4 class="accessibility-section-title">
+                            <i class="bi bi-mouse"></i>
+                            Opções de Navegação
+                        </h4>
+                        <div class="accessibility-options">
+                            <div class="accessibility-option" id="visibleFocusOption">
+                                <div class="accessibility-option-header">
+                                    <div class="accessibility-option-icon">
+                                        <i class="bi bi-bullseye"></i>
+                                    </div>
+                                    <div class="accessibility-option-title">Foco Visível</div>
+                                </div>
+                                <div class="accessibility-option-description">
+                                    Destaca o elemento em foco para melhor navegação por teclado.
+                                </div>
+                                <div class="accessibility-toggle">
+                                    <label class="accessibility-toggle-switch">
+                                        <input type="checkbox" id="visibleFocusToggle">
+                                        <span class="accessibility-toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="accessibility-option" id="reduceMotionOption">
+                                <div class="accessibility-option-header">
+                                    <div class="accessibility-option-icon">
+                                        <i class="bi bi-pause-circle"></i>
+                                    </div>
+                                    <div class="accessibility-option-title">Reduzir Movimentos</div>
+                                </div>
+                                <div class="accessibility-option-description">
+                                    Desativa animações e efeitos visuais para reduzir distrações.
+                                </div>
+                                <div class="accessibility-toggle">
+                                    <label class="accessibility-toggle-switch">
+                                        <input type="checkbox" id="reduceMotionToggle">
+                                        <span class="accessibility-toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="accessibility-option" id="screenReaderOption">
+                                <div class="accessibility-option-header">
+                                    <div class="accessibility-option-icon">
+                                        <i class="bi bi-volume-up"></i>
+                                    </div>
+                                    <div class="accessibility-option-title">Leitor de Tela</div>
+                                </div>
+                                <div class="accessibility-option-description">
+                                    Otimiza a interface para uso com leitores de tela.
+                                </div>
+                                <div class="accessibility-toggle">
+                                    <label class="accessibility-toggle-switch">
+                                        <input type="checkbox" id="screenReaderToggle">
+                                        <span class="accessibility-toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Seção de Atalhos de Teclado -->
+                    <div class="keyboard-shortcuts">
+                        <h4 class="keyboard-shortcuts-title">
+                            <i class="bi bi-keyboard"></i>
+                            Atalhos de Teclado
+                        </h4>
+                        <div class="shortcut-list">
+                            <div class="shortcut-item">
+                                <span class="shortcut-key">Alt + A</span>
+                                <span>Abrir configurações de acessibilidade</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-key">Alt + C</span>
+                                <span>Alternar alto contraste</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-key">Alt + D</span>
+                                <span>Alternar modo escuro</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-key">Alt + F</span>
+                                <span>Aumentar tamanho da fonte</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-key">Alt + R</span>
+                                <span>Diminuir tamanho da fonte</span>
+                            </div>
+                            <div class="shortcut-item">
+                                <span class="shortcut-key">Esc</span>
+                                <span>Fechar modal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accessibility-modal-footer">
+                    <button class="accessibility-reset-btn" id="resetAccessibilitySettings">
+                        <i class="bi bi-arrow-counterclockwise"></i> Restaurar Padrões
+                    </button>
+                    <button class="accessibility-save-btn" id="saveAccessibilitySettings">
+                        <i class="bi bi-check-lg"></i> Salvar Configurações
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="accessibilityToast">
+            <div class="toast-header">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                <strong class="me-auto">Configurações de Acessibilidade</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fechar"></button>
+            </div>
+            <div class="toast-body" id="accessibilityToastMessage">
+                Configurações de acessibilidade salvas com sucesso!
+            </div>
+        </div>
+        
+        <!-- Botão de toggle para mobile -->
+        <button class="mobile-toggle" id="mobileToggle">
+            <i class="bi bi-list"></i>
+        </button>
+        
+        <!-- Botão de Entrar (aparece quando não está logado) -->
+        <button class="btn-enter" id="loginBtn">
+            <i class="bi bi-box-arrow-in-right"></i> Entrar
+        </button>
+        
+        <!-- Perfil do Usuário (aparece quando está logado) -->
+        <div class="user-profile hidden" id="userProfile">
+            <img src="https://picsum.photos/seed/user123/200/200.jpg" alt="Avatar do usuário" class="user-avatar">
+            <div class="user-info">
+                <div class="user-name">aluno123</div>
+                <div class="user-role">Estudante</div>
+            </div>
+            <i class="bi bi-chevron-down" id="userMenuToggle"></i>
+            
+            <!-- Menu do perfil -->
+            <div class="user-menu" id="userMenu">
+                <a href="#" class="user-menu-item">
+                    <i class="bi bi-person"></i> Meu Perfil
+                </a>
+                <a href="#" class="user-menu-item">
+                    <i class="bi bi-book"></i> Meus Cursos
+                </a>
+                <a href="#" class="user-menu-item">
+                    <i class="bi bi-trophy"></i> Meus Conquistas
+                </a>
+                <div class="user-menu-divider"></div>
+                <a href="#" class="user-menu-item logout-btn">
+                    <i class="bi bi-box-arrow-right"></i> Sair
+                </a>
+            </div>
+        </div>
+        
+        <!-- Popover do Perfil -->
+        <div class="popover" id="userPopover">
+            <div class="popover-header">
+                <img src="https://picsum.photos/seed/user123/200/200.jpg" alt="Avatar do usuário">
+                <div>
+                    <div class="user-name">aluno123</div>
+                    <div class="user-role">Estudante</div>
+                </div>
+            </div>
+            <div class="popover-body">
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Cursos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">85%</div>
+                        <div class="stat-label">Progresso</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Conquistas</div>
+                    </div>
+                </div>
+                <div class="profile-menu">
+                    <a href="#" class="profile-menu-item">
+                        <i class="bi bi-person"></i> Meu Perfil
+                    </a>
+                    <a href="#" class="profile-menu-item">
+                        <i class="bi bi-book"></i> Meus Cursos
+                    </a>
+                    <a href="#" class="profile-menu-item">
+                        <i class="bi bi-trophy"></i> Meus Conquistas
+                    </a>
+                    <div class="profile-menu-divider"></div>
+                    <a href="#" class="profile-menu-item logout-btn-profile">
+                        <i class="bi bi-box-arrow-right"></i> Sair
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="logo">
+                <img src="Logo 3.0.png" alt="Logo do Auxílio Encceja" class="logo-img">
+                <h4 class="logo-text">Auxílio Encceja</h4>
+                <button class="toggle-btn" id="toggleSidebar">
+                </button>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="btn btn-primary w-100 mb-2 active" href="index.html">
+                        <i class="bi bi-house-door"></i>
+                        <span>Página Inicial</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary w-100 mb-2" href="videoaula.html">
+                        <i class="bi bi-camera-video me-2"></i>
+                        <span>Video aulas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary w-100 mb-2" href="apostila.html">
+                        <i class="bi bi-file-earmark-text"></i>
+                        <span>Apostilas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary w-100 mb-2" href="exercicio.html">
+                        <i class="bi bi-pencil-square"></i>
+                        <span>Exercícios</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary w-100 mb-2" href="simulado.html">
+                        <i class="bi bi-controller"></i>
+                        <span>Simulados</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary w-100 mb-2" href="acompanhamento.html">
+                        <i class="bi bi-trophy"></i>
+                        <span>Acompanhamento</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary w-100 mb-2" href="config.html">
+                        <i class="bi bi-gear"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content" id="content">
+            <div class="container-fluid">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="welcome-banner animate-in">
+                            <h2>Bem-vindo à Plataforma de Estudos</h2>
+                            <p class="mb-4">Transforme seu Futuro com uma Educação de qualidade!</p>
+                            
+                            <!-- Relógio em tempo real -->
+                            <div class="countdown-container">
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="hours">00</div>
+                                    <div class="countdown-label">Horas</div>
+                                </div>
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="minutes">00</div>
+                                    <div class="countdown-label">Minutos</div>
+                                </div>
+                                <div class="countdown-item">
+                                    <div class="countdown-value" id="seconds">00</div>
+                                    <div class="countdown-label">Segundos</div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-light">Começar Estudos</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Barra de Busca com Efeito de Digitação -->
+                <div class="row mb-4 animate-in">
+                    <div class="col-12">
+                        <div class="search-container">
+                            <input type="text" class="search-input" placeholder="Buscar recursos, aulas, exercícios..." id="searchInput">
+                            <i class="bi bi-search search-icon"></i>
+                            <div class="typing-cursor" id="typingCursor"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Videoaulas Section -->
+                    <div class="col-md-6 col-lg-3 mb-4 animate-in delay-1">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="bi bi-camera-video"></i> Videoaulas
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="resource-item">
+                                    <i class="bi bi-play-circle text-primary"></i>
+                                    <div class="title">Matemática</div>
+                                    <span class="badge bg-success">15 min</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-play-circle text-primary"></i>
+                                    <div class="title">Português</div>
+                                    <span class="badge bg-success">25 min</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-play-circle text-primary"></i>
+                                    <div class="title">História</div>
+                                    <span class="badge bg-success">30 min</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-play-circle text-primary"></i>
+                                    <div class="title">Geografia</div>
+                                    <span class="badge bg-success">20 min</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-play-circle text-primary"></i>
+                                    <div class="title">Ciências</div>
+                                    <span class="badge bg-success">40 min</span>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white text-center">
+                                <a href="videoaula.html" class="btn btn-sm btn-outline-primary">Ver todas</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Apostilas Section -->
+                    <div class="col-md-6 col-lg-3 mb-4 animate-in delay-2">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="bi bi-file-earmark-text"></i> Apostilas
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="resource-item">
+                                    <i class="bi bi-file-pdf text-danger"></i>
+                                    <div class="title">Matemática Basica</div>
+                                    <span class="badge bg-secondary">PDF</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-file-pdf text-danger"></i>
+                                    <div class="title">Literatura e Cultura</div>
+                                    <span class="badge bg-secondary">PDF</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-file-pdf text-danger"></i>
+                                    <div class="title">Antiguidade Oriental</div>
+                                    <span class="badge bg-secondary">PDF</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-file-pdf text-danger"></i>
+                                    <div class="title">Recursos Minerais</div>
+                                    <span class="badge bg-secondary">PDF</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-file-pdf text-danger"></i>
+                                    <div class="title">Ciências Humanas</div>
+                                    <span class="badge bg-secondary">PDF</span>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white text-center">
+                                <a href="apostila.html" class="btn btn-sm btn-outline-primary">Ver todas</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Exercícios Section -->
+                    <div class="col-md-6 col-lg-3 mb-4 animate-in delay-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="bi bi-pencil-square"></i> Exercícios
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="resource-item">
+                                    <i class="bi bi-check2-square text-success"></i>
+                                    <div class="title">Exercícios de Raciocínio Lógico</div>
+                                    <span class="badge bg-info">10 questões</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-check2-square text-success"></i>
+                                    <div class="title">Pronomes Demonstrativos</div>
+                                    <span class="badge bg-info">15 questões</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-check2-square text-success"></i>
+                                    <div class="title">Constituição de 1824</div>
+                                    <span class="badge bg-info">12 questões</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-check2-square text-success"></i>
+                                    <div class="title">Coordenadas Geográficas</div>
+                                    <span class="badge bg-info">8 questões</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-check2-square text-success"></i>
+                                    <div class="title">Biodiversidade</div>
+                                    <span class="badge bg-info">10 questões</span>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white text-center">
+                                <a href="exercicio.html" class="btn btn-sm btn-outline-primary">Ver todas</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Simulados Section -->
+                    <div class="col-md-6 col-lg-3 mb-4 animate-in delay-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="bi bi-controller"></i> Simulados
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="resource-item">
+                                    <i class="bi bi-award text-warning"></i>
+                                    <div class="title">Simulado de Matemática</div>
+                                    <span class="badge bg-danger">60 min</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-award text-warning"></i>
+                                    <div class="title">Simulado de Português</div>
+                                    <span class="badge bg-danger">45 min</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-award text-warning"></i>
+                                    <div class="title">Simulado de História</div>
+                                    <span class="badge bg-danger">50 min</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-award text-warning"></i>
+                                    <div class="title">Simulado de Geografia</div>
+                                    <span class="badge bg-danger">120 min</span>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="bi bi-award text-warning"></i>
+                                    <div class="title">Simulado de Ciências</div>
+                                    <span class="badge bg-danger">90 min</span>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white text-center">
+                                <a href="simulado.html" class="btn btn-sm btn-outline-primary">Ver todas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recursos Recomendados -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h4 class="session-title">Recursos Recomendados</h4>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4 animate-in delay-1">
+                        <div class="card">
+                            <img src="https://vestibulares.estrategia.com/portal/wp-content/uploads/2024/07/guia-do-encceja-1-960x540.jpg" class="card-img-top" alt="Recurso recomendado">
+                            <div class="card-body">
+                                <h5 class="card-title">Guia Completo da Encceja</h5>
+                                <p class="card-text">Tudo o que você precisa saber para se preparar para a prova.</p>
+                                <a href="guia.html" class="btn btn-primary">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4 animate-in delay-2">
+                        <div class="card">
+                            <img src="https://wordpress-cms-revista-prod-assets.quero.space/legacy_posts/post_images/50647/0c9cdcab97e9fbc5ab6bc9e67a9fa7b562fe9232.png?1719261181" class="card-img-top" alt="Recurso recomendado">
+                            <div class="card-body">
+                                <h5 class="card-title">Dicas de Estudo</h5>
+                                <p class="card-text">Métodos eficazes para otimizar seu tempo de estudo.</p>
+                                <a href="dicas.html" class="btn btn-primary">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4 animate-in delay-3">
+                        <div class="card">
+                            <img src="https://termine.com.br/wp-content/uploads/2020/03/20-05-07_provas_anteriores_te.jpg" class="card-img-top" alt="Recurso recomendado">
+                            <div class="card-body">
+                                <h5 class="card-title">Provas Anteriores</h5>
+                                <p class="card-text">Analise as provas de anos anteriores para entender o formato.</p>
+                                <a href="provas.html" class="btn btn-primary">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4 animate-in delay-4">
+                        <div class="card">
+                            <img src="https://wordpress-cms-revista-prod-assets.quero.space/legacy_posts/post_images/50647/0c9cdcab97e9fbc5ab6bc9e67a9fa7b562fe9232.png?1719261181" class="card-img-top" alt="Recurso recomendado">
+                            <div class="card-body">
+                                <h5 class="card-title">Comunidade de Estudos</h5>
+                                <p class="card-text">Conecte-se com outros estudantes para trocar dicas e experiências.</p>
+                                <a href="comunidade.html" class="btn btn-primary">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desafios Section -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h4 class="session-title">Desafios Diários</h4>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4 animate-in delay-1">
+                        <div class="card challenge-card">
+                            <div class="card-header challenge-card-header">
+                                <i class="bi bi-trophy"></i> Desafio de Matemática
+                            </div>
+                            <div class="card-body">
+                                <div class="challenge-difficulty difficulty-medium">Médio</div>
+                                <p class="mt-3">Resolva problemas de porcentagem e juros compostos para testar seus conhecimentos.</p>
+                                <div class="challenge-stats">
+                                    <span><i class="bi bi-people"></i> 1.245 participantes</span>
+                                    <span><i class="bi bi-clock"></i> 20 min</span>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white text-center">
+                                <a href="Desafios/matematica.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4 animate-in delay-2">
+                        <div class="card challenge-card">
+                            <div class="card-header challenge-card-header">
+                                <i class="bi bi-book"></i> Desafio de Português
+                            </div>
+                            <div class="card-body">
+                                <div class="challenge-difficulty difficulty-easy">Fácil</div>
+                                <p class="mt-3">Identifique os erros gramaticais em frases e textos para aprimorar sua escrita.</p>
+                                <div class="challenge-stats">
+                                    <span><i class="bi bi-people"></i> 2.187 participantes</span>
+                                    <span><i class="bi bi-clock"></i> 15 min</span>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white text-center">
+                                <a href="Desafios/portugues.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4 animate-in delay-3">
+                        <div class="card challenge-card">
+                            <div class="card-header challenge-card-header">
+                                <i class="bi bi-globe"></i> Desafio de Geografia
+                            </div>
+                            <div class="card-body">
+                                <div class="challenge-difficulty difficulty-hard">Difícil</div>
+                                <p class="mt-3">Teste seus conhecimentos sobre os biomas brasileiros e suas características.</p>
+                                <div class="challenge-stats">
+                                    <span><i class="bi bi-people"></i> 876 participantes</span>
+                                    <span><i class="bi bi-clock"></i> 30 min</span>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white text-center">
+                                <a href="Desafios/geografia.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-4 animate-in delay-4">
+                        <div class="card challenge-card">
+                            <div class="card-header challenge-card-header">
+                                <i class="bi bi-flask"></i> Desafio de Ciências
+                            </div>
+                            <div class="card-body">
+                                <div class="challenge-difficulty difficulty-medium">Médio</div>
+                                <p class="mt-3">Responda questões sobre células, organelas e funções biológicas fundamentais.</p>
+                                <div class="challenge-stats">
+                                    <span><i class="bi bi-people"></i> 1.532 participantes</span>
+                                    <span><i class="bi bi-clock"></i> 25 min</span>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white text-center">
+                                <a href="Desafios/ciencias.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Rodapé com redes sociais -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-links">
+                            <a href="termos.html">Termos de Uso</a>
+                            <a href="politica.html">Política de Privacidade</a>
+                            <a href="contato.html">Contato</a>
+                            <a href="sobre.html">Sobre Nós</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="social-icons">
+                            <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
+                            <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright text-center">
+                    &copy; 2025 Plataforma de Estudos - Auxílio Encceja. Todos os Direitos Reservados.
+                </div>
+            </div>
+        </footer>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            // Função para atualizar o relógio em tempo real
+            function updateClock() {
+                const now = new Date();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+                document.getElementById('seconds').textContent = seconds;
+            }
+            
+            // Atualizar o relógio a cada segundo
+            setInterval(updateClock, 1000);
+            updateClock(); // Executar imediatamente para não esperar 1 segundo
+            
+            // Funcionalidade do sidebar
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const toggleSidebar = document.getElementById('toggleSidebar');
+            const mobileToggle = document.getElementById('mobileToggle');
+            
+            toggleSidebar.addEventListener('click', () => {
+                sidebar.classList.toggle('collapsed');
+                content.classList.toggle('expanded');
+            });
+            
+            mobileToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('expanded');
+                content.classList.toggle('shifted');
+            });
+            
+            // Funcionalidade do perfil do usuário
+            const userProfile = document.getElementById('userProfile');
+            const userMenu = document.getElementById('userMenu');
+            const userMenuToggle = document.getElementById('userMenuToggle');
+            const loginBtn = document.getElementById('loginBtn');
+            const userPopover = document.getElementById('userPopover');
+            
+            // Simulação de login/logout
+            let isLoggedIn = false;
+            
+            loginBtn.addEventListener('click', () => {
+                isLoggedIn = true;
+                loginBtn.classList.add('hidden');
+                userProfile.classList.remove('hidden');
+                showToast('Login realizado com sucesso!');
+            });
+            
+            userMenuToggle.addEventListener('click', () => {
+                userMenu.classList.toggle('show');
+                userPopover.classList.toggle('show');
+            });
+            
+            // Fechar menus ao clicar fora
+            document.addEventListener('click', (e) => {
+                if (!userProfile.contains(e.target)) {
+                    userMenu.classList.remove('show');
+                    userPopover.classList.remove('show');
+                }
+            });
+            
+            // Funcionalidade do modal de acessibilidade
+            const accessibilityBtn = document.getElementById('accessibilityBtn');
+            const accessibilityModal = document.getElementById('accessibilityModal');
+            const accessibilityModalClose = document.getElementById('accessibilityModalClose');
+            const saveAccessibilitySettings = document.getElementById('saveAccessibilitySettings');
+            const resetAccessibilitySettings = document.getElementById('resetAccessibilitySettings');
+            const accessibilityToast = document.getElementById('accessibilityToast');
+            const accessibilityToastMessage = document.getElementById('accessibilityToastMessage');
+            
+            // Abrir modal de acessibilidade
+            accessibilityBtn.addEventListener('click', () => {
+                accessibilityModal.classList.add('show');
+                // Carregar configurações salvas
+                loadAccessibilitySettings();
+            });
+            
+            // Fechar modal de acessibilidade
+            accessibilityModalClose.addEventListener('click', () => {
+                accessibilityModal.classList.remove('show');
+            });
+            
+            // Fechar modal ao clicar fora
+            accessibilityModal.addEventListener('click', (e) => {
+                if (e.target === accessibilityModal) {
+                    accessibilityModal.classList.remove('show');
+                }
+            });
+            
+            // Salvar configurações de acessibilidade
+            saveAccessibilitySettings.addEventListener('click', () => {
+                saveSettingsToStorage();
+                accessibilityModal.classList.remove('show');
+                showToast('Configurações de acessibilidade salvas com sucesso!');
+            });
+            
+            // Restaurar configurações padrão
+            resetAccessibilitySettings.addEventListener('click', () => {
+                resetAccessibilitySettingsToDefault();
+                showToast('Configurações restauradas para o padrão!');
+            });
+            
+            // Função para mostrar toast
+            function showToast(message) {
+                accessibilityToastMessage.textContent = message;
+                const toast = new bootstrap.Toast(accessibilityToast);
+                toast.show();
+            }
+            
+            // Configurações de acessibilidade
+            const contrastStandard = document.getElementById('contrastStandard');
+            const contrastYellow = document.getElementById('contrastYellow');
+            const contrastBlue = document.getElementById('contrastBlue');
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const readingModeToggle = document.getElementById('readingModeToggle');
+            const highContrastCursorToggle = document.getElementById('highContrastCursorToggle');
+            const dyslexiaFontToggle = document.getElementById('dyslexiaFontToggle');
+            const leftAlignTextToggle = document.getElementById('leftAlignTextToggle');
+            const visibleFocusToggle = document.getElementById('visibleFocusToggle');
+            const reduceMotionToggle = document.getElementById('reduceMotionToggle');
+            const screenReaderToggle = document.getElementById('screenReaderToggle');
+            const fontSizeRange = document.getElementById('fontSizeRange');
+            const lineHeightRange = document.getElementById('lineHeightRange');
+            const fontSizeValue = document.getElementById('fontSizeValue');
+            const lineHeightValue = document.getElementById('lineHeightValue');
+            const fontSizePreview = document.getElementById('fontSizePreview');
+            const lineHeightPreview = document.getElementById('lineHeightPreview');
+            
+            // Event listeners para as opções de alto contraste
+            contrastStandard.addEventListener('change', () => {
+                if (contrastStandard.checked) {
+                    applyContrastProfile('standard');
+                }
+            });
+            
+            contrastYellow.addEventListener('change', () => {
+                if (contrastYellow.checked) {
+                    applyContrastProfile('yellow');
+                }
+            });
+            
+            contrastBlue.addEventListener('change', () => {
+                if (contrastBlue.checked) {
+                    applyContrastProfile('blue');
+                }
+            });
+            
+            // Função para aplicar perfil de contraste
+            function applyContrastProfile(profile) {
+                // Remover todas as classes de contraste
+                document.body.classList.remove('high-contrast', 'high-contrast-yellow', 'high-contrast-blue');
+                
+                // Adicionar a classe correspondente ao perfil selecionado
+                if (profile === 'standard') {
+                    document.body.classList.add('high-contrast');
+                } else if (profile === 'yellow') {
+                    document.body.classList.add('high-contrast-yellow');
+                } else if (profile === 'blue') {
+                    document.body.classList.add('high-contrast-blue');
+                }
+                
+                // Marcar a opção de alto contraste como ativa
+                document.getElementById('highContrastOption').classList.add('active');
+            }
+            
+            // Event listeners para outras opções de acessibilidade
+            darkModeToggle.addEventListener('change', () => {
+                document.body.classList.toggle('dark-mode', darkModeToggle.checked);
+                document.getElementById('darkModeOption').classList.toggle('active', darkModeToggle.checked);
+            });
+            
+            readingModeToggle.addEventListener('change', () => {
+                document.body.classList.toggle('reading-mode', readingModeToggle.checked);
+                document.getElementById('readingModeOption').classList.toggle('active', readingModeToggle.checked);
+            });
+            
+            highContrastCursorToggle.addEventListener('change', () => {
+                document.body.classList.toggle('high-contrast-cursor', highContrastCursorToggle.checked);
+                document.getElementById('highContrastCursorOption').classList.toggle('active', highContrastCursorToggle.checked);
+            });
+            
+            dyslexiaFontToggle.addEventListener('change', () => {
+                document.body.classList.toggle('dyslexia-font', dyslexiaFontToggle.checked);
+                document.getElementById('dyslexiaFontOption').classList.toggle('active', dyslexiaFontToggle.checked);
+            });
+            
+            leftAlignTextToggle.addEventListener('change', () => {
+                document.body.classList.toggle('left-align-text', leftAlignTextToggle.checked);
+                document.getElementById('leftAlignTextOption').classList.toggle('active', leftAlignTextToggle.checked);
+            });
+            
+            visibleFocusToggle.addEventListener('change', () => {
+                document.body.classList.toggle('visible-focus', visibleFocusToggle.checked);
+                document.getElementById('visibleFocusOption').classList.toggle('active', visibleFocusToggle.checked);
+            });
+            
+            reduceMotionToggle.addEventListener('change', () => {
+                document.body.classList.toggle('reduce-motion', reduceMotionToggle.checked);
+                document.getElementById('reduceMotionOption').classList.toggle('active', reduceMotionToggle.checked);
+                
+                // Aplicar ou remover animações
+                if (reduceMotionToggle.checked) {
+                    document.querySelectorAll('.animate-in').forEach(el => {
+                        el.style.animation = 'none';
+                    });
+                } else {
+                    document.querySelectorAll('.animate-in').forEach(el => {
+                        el.style.animation = '';
+                    });
+                }
+            });
+            
+            screenReaderToggle.addEventListener('change', () => {
+                document.body.classList.toggle('screen-reader', screenReaderToggle.checked);
+                document.getElementById('screenReaderOption').classList.toggle('active', screenReaderToggle.checked);
+            });
+            
+            // Controle de tamanho da fonte
+            fontSizeRange.addEventListener('input', () => {
+                const value = fontSizeRange.value;
+                let sizeText = 'Médio';
+                
+                // Remover todas as classes de tamanho de fonte
+                document.body.classList.remove('font-size-small', 'font-size-medium', 'font-size-large', 'font-size-xlarge');
+                
+                // Adicionar a classe correspondente ao valor
+                if (value == 1) {
+                    document.body.classList.add('font-size-small');
+                    sizeText = 'Pequeno';
+                    fontSizePreview.style.fontSize = '0.9rem';
+                } else if (value == 2) {
+                    document.body.classList.add('font-size-medium');
+                    sizeText = 'Médio';
+                    fontSizePreview.style.fontSize = '1rem';
+                } else if (value == 3) {
+                    document.body.classList.add('font-size-large');
+                    sizeText = 'Grande';
+                    fontSizePreview.style.fontSize = '1.2rem';
+                } else if (value == 4) {
+                    document.body.classList.add('font-size-xlarge');
+                    sizeText = 'Extra Grande';
+                    fontSizePreview.style.fontSize = '1.4rem';
+                }
+                
+                fontSizeValue.textContent = sizeText;
+            });
+            
+            // Controle de espaçamento entre linhas
+            lineHeightRange.addEventListener('input', () => {
+                const value = lineHeightRange.value;
+                let spacingText = 'Médio';
+                
+                // Remover todas as classes de espaçamento
+                document.body.classList.remove('line-height-normal', 'line-height-medium', 'line-height-large');
+                
+                // Adicionar a classe correspondente ao valor
+                if (value == 1) {
+                    document.body.classList.add('line-height-normal');
+                    spacingText = 'Normal';
+                    lineHeightPreview.style.lineHeight = '1.5';
+                } else if (value == 2) {
+                    document.body.classList.add('line-height-medium');
+                    spacingText = 'Médio';
+                    lineHeightPreview.style.lineHeight = '1.7';
+                } else if (value == 3) {
+                    document.body.classList.add('line-height-large');
+                    spacingText = 'Alto';
+                    lineHeightPreview.style.lineHeight = '2.0';
+                }
+                
+                lineHeightValue.textContent = spacingText;
+            });
+            
+            // Função para salvar configurações no localStorage
+            function saveSettingsToStorage() {
+                const settings = {
+                    contrastProfile: document.querySelector('input[name="contrastProfile"]:checked')?.value || null,
+                    darkMode: darkModeToggle.checked,
+                    readingMode: readingModeToggle.checked,
+                    highContrastCursor: highContrastCursorToggle.checked,
+                    dyslexiaFont: dyslexiaFontToggle.checked,
+                    leftAlignText: leftAlignTextToggle.checked,
+                    visibleFocus: visibleFocusToggle.checked,
+                    reduceMotion: reduceMotionToggle.checked,
+                    screenReader: screenReaderToggle.checked,
+                    fontSize: fontSizeRange.value,
+                    lineHeight: lineHeightRange.value
+                };
+                
+                localStorage.setItem('accessibilitySettings', JSON.stringify(settings));
+            }
+            
+            // Função para carregar configurações do localStorage
+            function loadAccessibilitySettings() {
+                const savedSettings = localStorage.getItem('accessibilitySettings');
+                
+                if (savedSettings) {
+                    const settings = JSON.parse(savedSettings);
+                    
+                    // Aplicar configurações salvas
+                    if (settings.contrastProfile) {
+                        document.querySelector(`input[name="contrastProfile"][value="${settings.contrastProfile}"]`).checked = true;
+                        applyContrastProfile(settings.contrastProfile);
+                    }
+                    
+                    darkModeToggle.checked = settings.darkMode || false;
+                    document.body.classList.toggle('dark-mode', darkModeToggle.checked);
+                    document.getElementById('darkModeOption').classList.toggle('active', darkModeToggle.checked);
+                    
+                    readingModeToggle.checked = settings.readingMode || false;
+                    document.body.classList.toggle('reading-mode', readingModeToggle.checked);
+                    document.getElementById('readingModeOption').classList.toggle('active', readingModeToggle.checked);
+                    
+                    highContrastCursorToggle.checked = settings.highContrastCursor || false;
+                    document.body.classList.toggle('high-contrast-cursor', highContrastCursorToggle.checked);
+                    document.getElementById('highContrastCursorOption').classList.toggle('active', highContrastCursorToggle.checked);
+                    
+                    dyslexiaFontToggle.checked = settings.dyslexiaFont || false;
+                    document.body.classList.toggle('dyslexia-font', dyslexiaFontToggle.checked);
+                    document.getElementById('dyslexiaFontOption').classList.toggle('active', dyslexiaFontToggle.checked);
+                    
+                    leftAlignTextToggle.checked = settings.leftAlignText || false;
+                    document.body.classList.toggle('left-align-text', leftAlignTextToggle.checked);
+                    document.getElementById('leftAlignTextOption').classList.toggle('active', leftAlignTextToggle.checked);
+                    
+                    visibleFocusToggle.checked = settings.visibleFocus || false;
+                    document.body.classList.toggle('visible-focus', visibleFocusToggle.checked);
+                    document.getElementById('visibleFocusOption').classList.toggle('active', visibleFocusToggle.checked);
+                    
+                    reduceMotionToggle.checked = settings.reduceMotion || false;
+                    document.body.classList.toggle('reduce-motion', reduceMotionToggle.checked);
+                    document.getElementById('reduceMotionOption').classList.toggle('active', reduceMotionToggle.checked);
+                    
+                    screenReaderToggle.checked = settings.screenReader || false;
+                    document.body.classList.toggle('screen-reader', screenReaderToggle.checked);
+                    document.getElementById('screenReaderOption').classList.toggle('active', screenReaderToggle.checked);
+                    
+                    fontSizeRange.value = settings.fontSize || 2;
+                    fontSizeRange.dispatchEvent(new Event('input'));
+                    
+                    lineHeightRange.value = settings.lineHeight || 2;
+                    lineHeightRange.dispatchEvent(new Event('input'));
+                }
+            }
+            
+            // Função para restaurar configurações padrão
+            function resetAccessibilitySettingsToDefault() {
+                // Limpar localStorage
+                localStorage.removeItem('accessibilitySettings');
+                
+                // Resetar todos os controles
+                document.querySelectorAll('input[name="contrastProfile"]').forEach(radio => {
+                    radio.checked = false;
+                });
+                
+                darkModeToggle.checked = false;
+                readingModeToggle.checked = false;
+                highContrastCursorToggle.checked = false;
+                dyslexiaFontToggle.checked = false;
+                leftAlignTextToggle.checked = false;
+                visibleFocusToggle.checked = false;
+                reduceMotionToggle.checked = false;
+                screenReaderToggle.checked = false;
+                fontSizeRange.value = 2;
+                lineHeightRange.value = 2;
+                
+                // Remover todas as classes do body
+                document.body.className = '';
+                
+                // Resetar estados visuais das opções
+                document.querySelectorAll('.accessibility-option').forEach(option => {
+                    option.classList.remove('active');
+                });
+                
+                // Disparar eventos para atualizar os valores exibidos
+                fontSizeRange.dispatchEvent(new Event('input'));
+                lineHeightRange.dispatchEvent(new Event('input'));
+            }
+            
+            // Atalhos de teclado
+            document.addEventListener('keydown', (e) => {
+                // Alt + A - Abrir configurações de acessibilidade
+                if (e.altKey && e.key === 'a') {
+                    e.preventDefault();
+                    accessibilityModal.classList.add('show');
+                    loadAccessibilitySettings();
+                }
+                
+                // Alt + C - Alternar alto contraste
+                if (e.altKey && e.key === 'c') {
+                    e.preventDefault();
+                    const currentProfile = document.querySelector('input[name="contrastProfile"]:checked')?.value;
+                    
+                    if (currentProfile === 'standard') {
+                        contrastYellow.checked = true;
+                        applyContrastProfile('yellow');
+                    } else if (currentProfile === 'yellow') {
+                        contrastBlue.checked = true;
+                        applyContrastProfile('blue');
+                    } else if (currentProfile === 'blue') {
+                        // Desativar alto contraste
+                        document.querySelectorAll('input[name="contrastProfile"]').forEach(radio => {
+                            radio.checked = false;
+                        });
+                        document.body.classList.remove('high-contrast', 'high-contrast-yellow', 'high-contrast-blue');
+                        document.getElementById('highContrastOption').classList.remove('active');
+                    } else {
+                        // Ativar o perfil padrão
+                        contrastStandard.checked = true;
+                        applyContrastProfile('standard');
+                    }
+                }
+                
+                // Alt + D - Alternar modo escuro
+                if (e.altKey && e.key === 'd') {
+                    e.preventDefault();
+                    darkModeToggle.checked = !darkModeToggle.checked;
+                    document.body.classList.toggle('dark-mode', darkModeToggle.checked);
+                    document.getElementById('darkModeOption').classList.toggle('active', darkModeToggle.checked);
+                }
+                
+                // Alt + F - Aumentar tamanho da fonte
+                if (e.altKey && e.key === 'f') {
+                    e.preventDefault();
+                    const currentValue = parseInt(fontSizeRange.value);
+                    if (currentValue < 4) {
+                        fontSizeRange.value = currentValue + 1;
+                        fontSizeRange.dispatchEvent(new Event('input'));
+                    }
+                }
+                
+                // Alt + R - Diminuir tamanho da fonte
+                if (e.altKey && e.key === 'r') {
+                    e.preventDefault();
+                    const currentValue = parseInt(fontSizeRange.value);
+                    if (currentValue > 1) {
+                        fontSizeRange.value = currentValue - 1;
+                        fontSizeRange.dispatchEvent(new Event('input'));
+                    }
+                }
+                
+                // Esc - Fechar modal
+                if (e.key === 'Escape' && accessibilityModal.classList.contains('show')) {
+                    accessibilityModal.classList.remove('show');
+                }
+            });
+            
+            // Carregar configurações ao iniciar a página
+            document.addEventListener('DOMContentLoaded', () => {
+                loadAccessibilitySettings();
+            });
+        </script>
+    </body>
+</html>

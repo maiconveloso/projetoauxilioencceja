@@ -185,22 +185,6 @@
             const fontSizeValue = document.getElementById('fontSizeValue');
             const lineHeightValue = document.getElementById('lineHeightValue');
             
-            // Variável para armazenar o tipo de daltonismo selecionado
-            let selectedColorBlindType = 'normal';
-            
-            // Adiciona evento de clique às opções de daltonismo
-            document.querySelectorAll('.accessibility-option[id$="Option"]').forEach(option => {
-                option.addEventListener('click', function() {
-                    // Remove a classe active de todas as opções
-                    document.querySelectorAll('.accessibility-option[id$="Option"]').forEach(opt => {
-                        opt.classList.remove('active');
-                    });
-                    
-                    // Adiciona a classe active à opção clicada
-                    this.classList.add('active');     
-                });
-            });
-            
             // Atualizar valores dos ranges
             fontSizeRange.addEventListener('input', function() {
                 const values = ['Pequeno', 'Médio', 'Grande', 'Muito Grande'];
@@ -283,12 +267,6 @@
                     document.body.classList.add('line-height-large');
                 }
                 
-                // Aplicar filtro de daltonismo
-                document.body.classList.remove('protanopia', 'deuteranopia', 'tritanopia', 'achromatopsia');
-                if (selectedColorBlindType !== 'normal') {
-                    document.body.classList.add(selectedColorBlindType);
-                }
-                
                 // Mostrar toast de confirmação
                 const toastMessage = document.getElementById('accessibilityToastMessage');
                 if (selectedColorBlindType !== 'normal') {
@@ -322,7 +300,7 @@
                 document.querySelectorAll('.accessibility-option[id$="Option"]').forEach(opt => {
                     opt.classList.remove('active');
                 });
-                document.getElementById('normalVisionOption').classList.add('active');
+               
                 
                 // Atualizar valores dos ranges
                 fontSizeValue.textContent = 'Médio';
