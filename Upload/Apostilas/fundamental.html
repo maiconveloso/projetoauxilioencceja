@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostilas para ENCCEJA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #3a5a78;
+            --secondary-color: #D3D3D3;
+            --accent-color: #e63946;
+            --text-color: #333;
+            --light-text: #6c757d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: #D3D3D3;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: #f8f9fa !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #2c3e50);
+            color: #f8f9fa;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .apostila-card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        
+        .apostila-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+            border-bottom: none;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #2c4760;
+            border-color: #2c4760;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .topic-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .topic-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .topic-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .topic-list i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+        
+        @media (max-width: 768px) {
+            .apostila-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        /* Estilos para a modal de visualização */
+        .modal-content {
+            border-radius: 8px;
+            border: none;
+        }
+        
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .apostila-preview {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .preview-content p {
+            margin-bottom: 0.75rem;
+        }
+        
+        .preview-content ul {
+            padding-left: 1.5rem;
+        }
+        
+        .preview-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Estilos para seções das matérias */
+        .subject-section {
+            padding: 3rem 0;
+        }
+        
+        .subject-section h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .subject-section h2:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 25%;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-book me-2"></i>
+                Apostilas ENCCEJA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#matematica">Matemática</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portugues">Português</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ciencias">Ciências</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#historia">História</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#geografia">Geografia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Preparação para o ENCCEJA</h1>
+            <p class="lead mb-4">Acesse nossas apostilas gratuitas para o Ensino Fundamental e prepare-se para o Exame Nacional para Certificação de Competências de Jovens e Adultos.</p>
+            <a href="#apostilas" class="btn btn-light btn-lg me-2">Ver Apostilas</a>
+            <a href="#contato" class="btn btn-outline-light btn-lg">Fale Conosco</a>
+        </div>
+    </section>
+    
+    <!-- Apostilas Section -->
+    <section id="apostilas" class="py-5">
+        <div class="container">
+            <h3 class="text-center mb-5">Apostilas para o Ensino Fundamental</h2>
+        
+            <!-- Matemática Section -->
+            <section id="matematica" class="subject-section">
+                <div class="container">
+                    <h2 class="text-center">Matemática</h2>
+                    <div class="row g-4">
+                        <!-- Matemática Apostila 1 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-calculator me-2"></i>
+                                    Aritmética Básica
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Fundamentos da aritmética para o ENCCEJA, incluindo números inteiros, frações e operações básicas.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Números inteiros e suas operações</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Frações e suas operações</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Decimais e porcentagens</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Razões e proporções</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('Matemática', 'Aritmética Básica')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('Matemática', 'Aritmética Básica')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Matemática Apostila 2 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-pentagon me-2"></i>
+                                    Geometria Plana
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Conceitos de geometria plana para o ENCCEJA, incluindo polígonos, círculos e cálculo de áreas.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Polígonos e suas propriedades</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Círculos e suas relações</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Cálculo de áreas e perímetros</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Teorema de Pitágoras</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('Matemática', 'Geometria Plana')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('Matemática', 'Geometria Plana')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Matemática Apostila 3 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-graph-up me-2"></i>
+                                    Estatística e Probabilidade
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Fundamentos de estatística e probabilidade para o ENCCEJA, com foco na análise de dados.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Coleta e organização de dados</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Gráficos e tabelas</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Medidas de centralidade</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Conceitos básicos de probabilidade</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('Matemática', 'Estatística e Probabilidade')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('Matemática', 'Estatística e Probabilidade')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Português Section -->
+            <section id="portugues" class="subject-section">
+                <div class="container">
+                    <h2 class="text-center">Português</h2>
+                    <div class="row g-4">
+                        <!-- Português Apostila 1 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-journal-text me-2"></i>
+                                    Gramática Básica
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Fundamentos da gramática para o ENCCEJA, incluindo fonética, morfologia e sintaxe.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Fonética e fonologia</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Classes de palavras</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Concordância verbal e nominal</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Regência verbal e nominal</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('Português', 'Gramática Básica')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('Português', 'Gramática Básica')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Português Apostila 2 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-book me-2"></i>
+                                    Literatura Brasileira
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Principais movimentos literários e autores brasileiros para o ENCCEJA, com foco na compreensão dos contextos históricos e culturais.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Período colonial</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Romantismo</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Realismo e Naturalismo</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Modernismo</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('Português', 'Literatura Brasileira')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('Português', 'Literatura Brasileira')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Português Apostila 3 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-pencil-square me-2"></i>
+                                    Redação e Texto Argumentativo
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Técnicas e estratégias para elaborar textos argumentativos para o ENCCEJA.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Tipos de texto</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Estrutura do texto argumentativo</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Argumentação e persuasão</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Revisão e correção</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('Português', 'Redação e Texto Argumentativo')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('Português', 'Redação e Texto Argumentativo')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Ciências Section -->
+            <section id="ciencias" class="subject-section">
+                <div class="container">
+                    <h2 class="text-center">Ciências</h2>
+                    <div class="row g-4">
+                        <!-- Ciências Apostila 1 - Biologia Básica -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card biologia-basic-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-flask me-2"></i>
+                                    Biologia Básica
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Fundamentos de biologia para o ENCCEJA, com foco nos sistemas vivos.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Células e tecidos</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Sistema digestivo</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Sistema circulatório</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Reprodução e desenvolvimento</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('Ciências', 'Biologia Básica')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('Ciências', 'Biologia Básica')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Ciências Apostila 2 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card fisica-quimica-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-atom me-2"></i>
+                                    Física e Química
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Fundamentos de física e química para o ENCCEJA, com foco nos conceitos básicos.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Leis de Newton</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Energia e transformações</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Estados da matéria</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Reações químicas</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('Ciências', 'Física e Química')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('Ciências', 'Física e Química')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Ciências Apostila 3 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card ecologia-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-tree me-2"></i>
+                                    Ecologia e Meio Ambiente
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Fundamentos de ecologia e preservação ambiental para o ENCCEJA.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Ecossistemas</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Ciclos biogeoquímicos</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Biodiversidade</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Poluição e sustentabilidade</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('Ciências', 'Ecologia e Meio Ambiente')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('Ciências', 'Ecologia e Meio Ambiente')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- História Section -->
+            <section id="historia" class="subject-section">
+                <div class="container">
+                    <h2 class="text-center">História</h2>
+                    <div class="row g-4">
+                        <!-- História Apostila 1 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-clock-history me-2"></i>
+                                    História Antiga e Medieval
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Principais civilizações e períodos da história antiga e medieval para o ENCCEJA.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Civilizações mesopotâmicas</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Egito antigo</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Grécia antiga</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Império Romano</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('História', 'História Antiga e Medieval')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('História', 'História Antiga e Medieval')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- História Apostila 2 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-globe-americas me-2"></i>
+                                    Idade Moderna e Contemporânea
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Principais eventos e movimentos da Idade Moderna e Contemporânea para o ENCCEJA.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Descobrimento da América</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Revoluções burguesas</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Guerras mundiais</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Guerra Fria</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('História', 'Idade Moderna e Contemporânea')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('História', 'Idade Moderna e Contemporânea')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- História Apostila 3 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-building me-2"></i>
+                                    História do Brasil
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Principais períodos e eventos da história do Brasil para o ENCCEJA.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Período colonial</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Império</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> República Velha</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Ditadura militar</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('História', 'História do Brasil')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('História', 'História do Brasil')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Geografia Section -->
+            <section id="geografia" class="subject-section">
+                <div class="container">
+                    <h2 class="text-center">Geografia</h2>
+                    <div class="row g-4">
+                        <!-- Geografia Apostila 1 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-map me-2"></i>
+                                    Geografia Física
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Fundamentos de geografia física para o ENCCEJA, com foco nos processos naturais.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Formações geológicas</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Climas do mundo</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Hidrografia</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Populações e densidades</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('Geografia', 'Geografia Física')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('Geografia', 'Geografia Física')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Geografia Apostila 2 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-buildings me-2"></i>
+                                    Geografia Humana
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Fundamentos de geografia humana para o ENCCEJA, com foco nos processos sociais.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Urbanização</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Agricultura</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Indústria</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Transporte e comunicação</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('Geografia', 'Geografia Humana')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('Geografia', 'Geografia Humana')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Geografia Apostila 3 -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="apostila-card card">
+                                <div class="card-header d-flex align-items-center">
+                                    <i class="bi bi-geo-alt me-2"></i>
+                                    Regiões Geográficas
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Principais regiões geográficas do Brasil e do mundo para o ENCCEJA.</p>
+                                    <ul class="topic-list">
+                                        <li><i class="bi bi-check-circle-fill"></i> Regiões do Brasil</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> América Latina</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Europa</li>
+                                        <li><i class="bi bi-check-circle-fill"></i> Ásia</li>
+                                    </ul>
+                                    <div class="d-flex justify-content-between mt-4">
+                                        <button class="btn btn-outline-primary" onclick="showPreview('Geografia', 'Regiões Geográficas')">Visualizar</button>
+                                        <button class="btn btn-primary" onclick="downloadApostila('Geografia', 'Regiões Geográficas')">Baixar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    
+    <section id="sobre" class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="mb-4">Sobre Nossas Apostilas</h2>
+                <p>As apostilas de matemática para o ENCCEJA foram desenvolvidas por especialistas em educação com foco no conteúdo programático do exame. Cada apostila foi cuidadosamente estruturada para proporcionar uma aprendizagem eficaz e direta.</p>
+                <p>As apostilas contêm:</p>
+                <ul>
+                    <li>Explicações claras e concisas dos conceitos matemáticos</li>
+                    <li>Exemplos práticos e resolvidos</li>
+                    <li>Exercícios para fixação do conteúdo</li>
+                    <li>Dicas e estratégias para resolver as questões do ENCCEJA</li>
+                </ul>
+                <p>Nossa metodologia é baseada na experiência de professores que já atuaram como corretores e elaboradores de questões para o ENCCEJA, garantindo que o conteúdo esteja alinhado com o que realmente cai na prova.</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="mb-4">Por que escolher nossas apostilas?</h3>
+                        <div class="d-flex mb-3">
+                            <div class="feature-icon">
+                                <!-- Ícone removido -->
+                            </div>
+                            <div>
+                                <h5>Conteúdo Completo</h5>
+                                <p class="mb-0">Cobrimos todos os tópicos das matérias que podem ser cobrados no ENCCEJA.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <div class="feature-icon">
+                                <!-- Ícone removido -->
+                            </div>
+                            <div>
+                                <h5>Metodologia Eficaz</h5>
+                                <p class="mb-0">Organização do conteúdo que facilita a absorção dos conceitos de cada matéria.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <div class="feature-icon">
+                                <!-- Ícone removido -->
+                            </div>
+                            <div>
+                                <h5>Preparação para a Prova</h5>
+                                <p class="mb-0">Foco nos tipos de questões e formatos que realmente cai na prova do ENCCEJA.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="feature-icon">
+                                <!-- Ícone removido -->
+                            </div>
+                            <div>
+                                <h5>Atualização Constante</h5>
+                                <p class="mb-0">Nossas apostilas são atualizadas regularmente para acompanhar as mudanças no formato do ENCCEJA.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>  
+    
+    <!-- Contato Section -->
+    <section id="contato" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Fale Conosco</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-4">
+                            <form id="contactForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Nome</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">E-mail</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="subject" class="form-label">Assunto</label>
+                                        <input type="text" class="form-control" id="subject" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label">Mensagem</label>
+                                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="btn btn-primary px-4 py-2">Enviar Mensagem</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+    
+    <!-- Modal para visualização da apostila -->
+    <div class="modal fade" id="apostilaModal" tabindex="-1" aria-labelledby="apostilaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="apostilaModalLabel">Visualização da Apostila</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="apostila-preview">
+                        <h4 class="preview-title" id="previewTitle">Título da Apostila</h4>
+                        <div class="preview-content" id="previewContent">
+                            <!-- Conteúdo da apostila será inserido aqui -->
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-muted">Esta é uma visualização parcial da apostila. Baixe a versão completa para acessar todo o conteúdo.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="downloadFromModal">Baixar Apostila</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função para mostrar preview da apostila
+        function showPreview(materia, titulo) {
+            const apostilaModal = new bootstrap.Modal(document.getElementById('apostilaModal'));
+            document.getElementById('previewTitle').textContent = `${materia} - ${titulo}`;
+            
+            // Conteúdo específico para cada apostila
+            let content = '';
+            switch(materia) {
+                case 'Matemática':
+                    if (titulo === 'Aritmética Básica') {
+                        content = `
+                            <p>Esta apostila aborda os fundamentos da aritmética para o ENCCEJA, com foco nos números inteiros, frações e operações básicas.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Números inteiros</strong>: Propriedades, operações e aplicações</li>
+                                <li><strong>Frações</strong>: Tipos de frações, equivalência, comparação e operações</li>
+                                <li><strong>Decimais</strong>: Representação, comparação e operações</li>
+                                <li><strong>Porcentagens</strong>: Conceito, cálculos e aplicações</li>
+                                <li><strong>Razões e proporções</strong>: Conceitos e aplicações</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    } else if (titulo === 'Geometria Plana') {
+                        content = `
+                            <p>Esta apostila aborda os conceitos de geometria plana para o ENCCEJA, com foco nos polígonos, círculos e cálculo de áreas.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Polígonos</strong>: Classificação, propriedades e características</li>
+                                <li><strong>Círculos</strong>: Elementos, propriedades e relações</li>
+                                <li><strong>Áreas e perímetros</strong>: Fórmulas e aplicações</li>
+                                <li><strong>Teorema de Pitágoras</strong>: Demonstração e aplicações</li>
+                                <li><strong>Geometria no cotidiano</strong>: Aplicações práticas</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    } else if (titulo === 'Estatística e Probabilidade') {
+                        content = `
+                            <p>Esta apostila aborda os fundamentos de estatística e probabilidade para o ENCCEJA, com foco na análise de dados.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Coleta e organização de dados</strong>: Tabelas, gráficos e tipos de dados</li>
+                                <li><strong>Medidas de centralidade</strong>: Média, mediana e moda</li>
+                                <li><strong>Medidas de dispersão</strong>: Amplitude, variância e desvio padrão</li>
+                                <li><strong>Conceitos básicos de probabilidade</strong>: Espaço amostral, eventos e cálculo de probabilidades</li>
+                                <li><strong>Aplicações práticas</strong>: Exemplos de uso da estatística no cotidiano</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    }
+                    break;
+                case 'Português':
+                    if (titulo === 'Gramática Básica') {
+                        content = `
+                            <p>Esta apostila aborda os fundamentos da gramática para o ENCCEJA, com foco nos fonética, morfologia e sintaxe.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Fonética e fonologia</strong>: Sons da língua portuguesa e suas representações</li>
+                                <li><strong>Classes de palavras</strong>: Substantivos, adjetivos, verbos, pronomes, advérbios, preposições, conjunções e interjeições</li>
+                                <li><strong>Concordância verbal e nominal</strong>: Regras e exceções</li>
+                                <li><strong>Regência verbal e nominal</strong>: Classes de regência e exemplos</li>
+                                <li><strong>Uso da crase</strong>: Regras e aplicações</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    } else if (titulo === 'Literatura Brasileira') {
+                        content = `
+                            <p>Esta apostila aborda os principais movimentos literários e autores brasileiros para o ENCCEJA, com foco na compreensão dos contextos históricos e culturais.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Período colonial</strong>: Poesia barroca e arcádica, prosa colonial</li>
+                                <li><strong>Romantismo</strong>: Características, autores e obras representativas</li>
+                                <li><strong>Realismo e Naturalismo</strong>: Diferenças e principais autores</li>
+                                <li><strong>Modernismo</strong>: Vanguardas e principais manifestações</li>
+                                <li><strong>Pós-Modernismo e contemporaneidade</strong>: Principais tendências e autores</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    } else if (titulo === 'Redação e Texto Argumentativo') {
+                        content = `
+                            <p>Esta apostila aborda técnicas e estratégias para elaborar textos argumentativos para o ENCCEJA, com foco na construção de argumentos e na organização do texto.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Tipos de texto</strong>: Classificação e características</li>
+                                <li><strong>Estrutura do texto argumentativo</strong>: Introdução, desenvolvimento e conclusão</li>
+                                <li><strong>Argumentação e persuasão</strong>: Técnicas e recursos</li>
+                                <li><strong>Coerência e coesão textual</strong>: Elementos e funções</li>
+                                <li><strong>Revisão e correção</strong>: Passos e dicas</li>
+                                <li><strong>Exemplos de textos argumentativos</strong>: Análise e comentários</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    }
+                    break;
+                case 'Ciências':
+                    if (titulo === 'Biologia Básica') {
+                        content = `
+                            <p>Esta apostila aborda os fundamentos da biologia para o ENCCEJA, com foco nos sistemas vivos e suas interações.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Células e tecidos</strong>: Estrutura, função e tipos</li>
+                                <li><strong>Sistema digestivo</strong>: Órgãos, função e processos</li>
+                                <li><strong>Sistema circulatório</strong>: Órgãos, função e processos</li>
+                                <li><strong>Reprodução e desenvolvimento</strong>: Tipos, processos e adaptações</li>
+                                <li><strong>Ecologia básica</strong>: Relações entre organismos e ambientes</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    } else if (titulo === 'Física e Química') {
+                        content = `
+                            <p>Esta apostila aborda os fundamentos de física e química para o ENCCEJA, com foco nos conceitos básicos e suas aplicações.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Leis de Newton</strong>: Primeira, segunda e terceira lei</li>
+                                <li><strong>Energia e transformações</strong>: Tipos de energia e conversão</li>
+                                <li><strong>Estados da matéria</strong>: Características e transformações</li>
+                                <li><strong>Reações químicas</strong>: Tipos, equilíbrio e velocidade</li>
+                                <li><strong>Ácidos e bases</strong>: Conceitos e aplicações</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    } else if (titulo === 'Ecologia e Meio Ambiente') {
+                        content = `
+                            <p>Esta apostila aborda os fundamentos de ecologia e preservação ambiental para o ENCCEJA, com foco nos processos e na sustentabilidade.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Ecossistemas</strong>: Componentes, ciclos e equilíbrio</li>
+                                <li><strong>Ciclos biogeoquímicos</strong>: Água, carbono, nitrogênio e fósforo</li>
+                                <li><strong>Biodiversidade</strong>: Tipos, importância e ameaças</li>
+                                <li><strong>Poluição e sustentabilidade</strong>: Tipos de poluição e soluções</li>
+                                <li><strong>Meio ambiente e sociedade</strong>: Relações e impactos</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    }
+                    break;
+                case 'História':
+                    if (titulo === 'História Antiga e Medieval') {
+                        content = `
+                            <p>Esta apostila aborda os principais períodos da história antiga e medieval para o ENCCEJA, com foco nas civilizações e seus legados.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Civilizações mesopotâmicas</strong>: Sumérios, acadianos, babilônicos e assírios</li>
+                                <li><strong>Egito antigo</strong>: Sociedade, política, religião e cultura</li>
+                                <li><strong>Grécia antiga</strong>: Polis, democracia, filosofia e cultura</li>
+                                <li><strong>Império Romano</strong>: Expansão, governo e cultura</li>
+                                <li><strong>Idade Média</strong>: Feudalismo, igreja e cultura</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    } else if (titulo === 'Idade Moderna e Contemporânea') {
+                        content = `
+                            <p>Esta apostila aborda os principais eventos e movimentos da Idade Moderna e Contemporânea para o ENCCEJA, com foco nos processos históricos.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Descobrimento da América</strong>: Impactos e consequências</li>
+                                <li><>Revoluções burguesas</strong>: Inglesa, americana e francesa</li>
+                                <li><strong>Guerras mundiais</strong>: Causas, desenvolvimentos e consequências</li>
+                                <li><strong>Guerra Fria</strong>: Conflitos ideológicos e geopolíticos</li>
+                                <li><strong>Globalização</strong>: Processos e impactos</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    } else if (titulo === 'História do Brasil') {
+                        content = `
+                            <p>Esta apostila aborda os principais períodos e eventos da história do Brasil para o ENCCEJA, com foco nos processos de formação nacional.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Período colonial</strong>: Exploração, ocupação e sociedade</li>
+                                <li><strong>Império</strong>: Independência, monarquia e sociedade</li>
+                                <li><strong>República Velha</strong>: Proclamação da República e primeiros governos</li>
+                                <li><strong>Ditadura militar</strong>: Golpe de 1964 e regime militar</li>
+                                <li><strong>Transição democrática</strong>: Redemocratização e constituição de 1988</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    }
+                    break;
+                case 'Geografia':
+                    if (titulo === 'Geografia Física') {
+                        content = `
+                            <p>Esta apostila aborda os fundamentos de geografia física para o ENCCEJA, com foco nos processos naturais e suas manifestações.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Formações geológicas</strong>: Rochas, processos e relevo</li>
+                                <li><strong>Climas do mundo</strong>: Tipos, características e distribuição</li>
+                                <li><strong>Hidrografia</strong>: Tipos de corpos d'água e processos</li>
+                                <li><strong>Populações e densidades</strong>: Distribuição e características</li>
+                                <li><strong>Mapas e representações geográficas</strong>: Tipos e leitura</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    } else if (titulo === 'Geografia Humana') {
+                        content = `
+                            <p>Esta apostila aborda os fundamentos de geografia humana para o ENCCEJA, com foco nos processos sociais e econômicos.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Urbanização</strong>: Tipos de cidades e processos urbanos</li>
+                                <li><strong>Agricultura</strong>: Tipos, distribuição e processos</li>
+                                <li><strong>Indústria</strong>: Tipos, distribuição e processos</li>
+                                <li><strong>Transporte e comunicação</strong>: Redes e processos</li>
+                                <li><strong>Desenvolvimento e desenvolvimento sustentável</strong>: Conceitos e aplicações</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    } else if (titulo === 'Regiões Geográficas') {
+                        content = `
+                            <p>Esta apostila aborda as principais regiões geográficas do Brasil e do mundo para o ENCCEJA, com foco nas características e na organização territorial.</p>
+                            <p>Conheça os principais tópicos abordados:</p>
+                            <ul>
+                                <li><strong>Regiões do Brasil</strong>: Características, economia e sociedade</li>
+                                <li><strong>America Latina</strong>: Características, economia e sociedade</li>
+                                <li><strong>Europa</strong>: Características, economia e sociedade</li>
+                                <li><strong>Ásia</strong>: Características, economia e sociedade</li>
+                                <li><strong>Africa</strong>: Características, economia e sociedade</li>
+                            </ul>
+                            <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                        `;
+                    }
+                    break;
+                default:
+                        content = '<p>Conteúdo da apostila não disponível.</p>';
+            }
+            
+            document.getElementById('previewContent').innerHTML = content;
+            
+            // Configurar o botão de download na modal
+            document.getElementById('downloadFromModal').onclick = function() {
+                apostilaModal.hide();
+                downloadApostila(materia, titulo);
+            };
+            
+            apostilaModal.show();
+        }
+        
+        // Função para baixar apostila
+        function downloadApostila(materia, titulo) {
+            showToast('Download Iniciado', `A apostila de ${materia} - ${titulo} está sendo baixada. Por favor, aguarde.`, 'success');
+            // Simulação de download
+            setTimeout(() => {
+                showToast('Download Concluído', `A apostila de ${materia} - ${titulo} foi baixada com sucesso!`, 'success');
+            }, 3000);
+        }
+        
+        // Função para mostrar toast
+        function showToast(title, message, type) {
+            const toastContainer = document.querySelector('.toast-container');
+            const toastId = 'toast-' + Date.now();
+            const iconClass = type === 'success' ? 'bi-check-circle-fill' : 
+                             type === 'info' ? 'bi-info-circle" class="text-primary' : 
+                             type === 'warning' ? 'bi-exclamation-triangle-fill" class="text-warning' : 'bi-x-circle-fill" class="text-danger';
+            
+            const toastHtml = `
+                <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <i class="bi ${iconClass} me-2"></i>
+                        <strong class="me-auto">${title}</strong>
+                        <small>Agora</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fechar"></button>
+                    </div>
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                </div>
+            `;
+            
+            toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement, { autohide: true, delay: 5000 });
+            toast.show();
+            
+            // Remove o toast do DOM após fechar
+            toastElement.addEventListener('hidden.bs.toast', function () {
+                toastElement.remove();
+            });
+        }
+        
+        // Formulário de contato
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            showToast('Mensagem Enviada', `Obrigado, ${name}! Sua mensagem foi enviada com sucesso. Respondiremos em breve!`, 'success');
+            this.reset();
+        });
+        
+        // Scroll suave para seções
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

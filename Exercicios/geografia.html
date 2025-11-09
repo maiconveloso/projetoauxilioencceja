@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercícios de Geografia para ENCCEJA</title>
+    <title>Exercícios de Geografia</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -16,26 +16,26 @@
             --danger-color: #dc3545;
             --warning-color: #ffc107;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             color: var(--dark-color);
             background-color: var(--light-color);
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-
+        
         header {
             background-color: var(--primary-color);
             color: white;
@@ -45,25 +45,33 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
+        
         h1 {
             font-size: 2.2rem;
             margin-bottom: 10px;
         }
-
+        
         .subtitle {
             font-size: 1.1rem;
             font-weight: 300;
             margin-bottom: 15px;
         }
-
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
         .tabs {
             display: flex;
             margin-bottom: 20px;
             border-bottom: 1px solid #ddd;
             overflow-x: auto;
         }
-
+        
         .tab {
             padding: 10px 20px;
             cursor: pointer;
@@ -74,20 +82,20 @@
             margin-right: 5px;
             transition: background-color 0.3s;
         }
-
+        
         .tab.active {
             background-color: var(--primary-color);
             color: white;
         }
-
+        
         .tab-content {
             display: none;
         }
-
+        
         .tab-content.active {
             display: block;
         }
-
+        
         .exercise {
             margin-bottom: 30px;
             padding: 15px;
@@ -95,23 +103,23 @@
             border-radius: 8px;
             background-color: #f9f9f9;
         }
-
+        
         .exercise h3 {
             margin-bottom: 10px;
             color: var(--primary-color);
         }
-
+        
         .exercise p {
             margin-bottom: 15px;
         }
-
+        
         .options {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
             margin-bottom: 15px;
         }
-
+        
         .option {
             padding: 10px;
             border: 1px solid #ddd;
@@ -119,47 +127,47 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-
+        
         .option:hover {
             background-color: #f1f1f1;
         }
-
+        
         .option.selected {
             background-color: var(--secondary-color);
             color: white;
         }
-
+        
         .option.correct {
             background-color: var(--success-color);
             color: white;
         }
-
+        
         .option.incorrect {
             background-color: var(--danger-color);
             color: white;
         }
-
+        
         .feedback {
             margin-top: 10px;
             padding: 10px;
             border-radius: 4px;
             display: none;
         }
-
+        
         .feedback.correct {
             background-color: rgba(40, 167, 69, 0.1);
             border: 1px solid var(--success-color);
             color: var(--success-color);
             display: block;
         }
-
+        
         .feedback.incorrect {
             background-color: rgba(220, 53, 69, 0.1);
             border: 1px solid var(--danger-color);
             color: var(--danger-color);
             display: block;
         }
-
+        
         .btn {
             padding: 10px 20px;
             border: none;
@@ -168,44 +176,44 @@
             font-weight: 500;
             transition: background-color 0.3s;
         }
-
+        
         .btn-primary {
             background-color: var(--primary-color);
             color: white;
         }
-
+        
         .btn-primary:hover {
             background-color: var(--secondary-color);
         }
-
+        
         .btn-check {
             margin-top: 10px;
         }
-
+        
         .progress-container {
             margin: 20px 0;
         }
-
+        
         .progress-bar {
             height: 20px;
             background-color: #e9ecef;
             border-radius: 4px;
             overflow: hidden;
         }
-
+        
         .progress {
             height: 100%;
             background-color: var(--accent-color);
             width: 0%;
             transition: width 0.3s;
         }
-
+        
         .score {
             text-align: center;
             font-size: 1.2rem;
             margin-bottom: 20px;
         }
-
+        
         .formula {
             background-color: #f8f9fa;
             padding: 10px;
@@ -213,120 +221,62 @@
             margin: 10px 0;
             font-family: monospace;
         }
-
+        
         .explanation {
             margin-top: 10px;
             font-style: italic;
             color: #666;
         }
-
+        
         .btn-next {
             background-color: var(--accent-color);
             color: white;
             margin-top: 15px;
         }
-
+        
         .btn-next:hover {
             background-color: #e09030;
         }
-
+        
         .result-container {
             text-align: center;
             padding: 20px;
             display: none;
         }
-
+        
         .result-container h2 {
             margin-bottom: 20px;
             color: var(--primary-color);
         }
-
+        
         .result-score {
             font-size: 2rem;
             font-weight: bold;
             margin-bottom: 20px;
             color: var(--accent-color);
         }
-
+        
         .result-message {
             margin-bottom: 20px;
             font-size: 1.2rem;
         }
-
+        
         .btn-restart {
             background-color: var(--primary-color);
             color: white;
             padding: 12px 25px;
             font-size: 1.1rem;
         }
-
-        .tab-warning {
-            background-color: var(--warning-color);
-            color: var(--dark-color);
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 500;
-            display: none;
-        }
-
-        .tab-warning.active {
-            display: block;
-        }
-
-        .warning-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .warning-box {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .warning-title {
-            color: var(--danger-color);
-            margin-bottom: 15px;
-        }
-
-        .warning-message {
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-
-        .warning-count {
-            font-weight: bold;
-            color: var(--danger-color);
-        }
-
-        .warning-close {
-            margin-top: 15px;
-            background-color: var(--primary-color);
-            color: white;
-        }
-
+        
         @media (max-width: 768px) {
             .options {
                 grid-template-columns: 1fr;
             }
-
+            
             h1 {
                 font-size: 1.8rem;
             }
-
+            
             .tab {
                 padding: 8px 12px;
                 font-size: 0.9rem;
@@ -335,846 +285,531 @@
     </style>
 </head>
 <body>
-    
     <div class="container">
         <header>
             <h1>Exercícios de Geografia para ENCCEJA</h1>
             <p class="subtitle">Prepare-se para o exame com exercícios práticos e feedback imediato</p>
         </header>
-
-        <div class="tab-warning" id="tabWarning">
-            ⚠️ ATENÇÃO: Mudar de guia durante o teste é monitorado e pode resultar na anulação do teste.
-        </div>
-
+        
         <div class="score">
             Pontuação: <span id="score">0</span> / <span id="total">0</span>
         </div>
-
+        
         <div class="progress-container">
             <div class="progress-bar">
                 <div class="progress" id="progress"></div>
             </div>
         </div>
-
-        <div class="tabs">
-            <button class="tab active" data-tab="fisica">Geografia Física</button>
-            <button class="tab" data-tab="humana">Geografia Humana</button>
-        </div>
-
-        <div id="fisica" class="tab-content active">
-            <div class="exercise" id="fisica1">
-                <h3>Exercício 1: Relevo Brasileiro</h3>
-                <p>Qual é a principal formação do relevo brasileiro?</p>
-                <div class="options">
-                    <div class="option" data-value="Planaltos">A) Planaltos</div>
-                    <div class="option" data-value="Planícies">B) Planícies</div>
-                    <div class="option" data-value="Depressões">C) Depressões</div>
-                    <div class="option" data-value="Montanhas">D) Montanhas</div>
+        
+        <div class="card">
+            <div class="tabs">
+                <button class="tab active" data-tab="fisica">Geografia Física</button>
+                <button class="tab" data-tab="humana">Geografia Humana</button>
+                <button class="tab" data-tab="mistura">Mistura</button>
+            </div>
+            
+            <div id="fisica" class="tab-content active">
+                <!-- Exercícios de Geografia Física -->
+                <div class="exercise" id="fisica1">
+                    <h3>Exercício 1: Formações Costeiras</h3>
+                    <p>Qual das seguintes formações costeiras é criada pela erosão marinha?</p>
+                    <div class="options">
+                        <div class="option" data-value="Arrecifes">A) Arrecifes</div>
+                        <div class="option" data-value="Praia">B) Praia</div>
+                        <div class="option" data-value="Fundo de vale">C) Fundo de vale</div>
+                        <div class="option" data-value="Gruta marinha">D) Gruta marinha</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('fisica1', 'Gruta marinha')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A Gruta marinha é uma formação costeira criada pela erosão marinha, quando as ondas penetram fendas na costa e as ampliam com o tempo.</p>
+                    </div>
                 </div>
-                <button class="btn btn-check" onclick="checkAnswer('fisica1', 'Planaltos')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>Os planaltos são a principal formação do relevo brasileiro, ocupando cerca de 40% do território
-                        nacional. Eles são áreas de terrenos elevados com superfícies planas ou onduladas.</p>
+                
+                <div class="exercise" id="fisica2">
+                    <h3>Exercício 2: Tipos de Clima</h3>
+                    <p>Qual dos seguintes climas é caracterizado por ter verões quentes e invernos frios, com precipitações distribuídas ao longo do ano?</p>
+                    <div class="options">
+                        <div class="option" data-value="Clima tropical">A) Clima tropical</div>
+                        <div class="option" data-value="Clima equatorial">B) Clima equatorial</div>
+                        <div class="option" data-value="Clima temperado">C) Clima temperado</div>
+                        <div class="option" data-value="Clima desértico">D) Clima desértico</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('fisica2', 'Clima temperado')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>O Clima temperado é caracterizado por ter verões quentes e invernos frios, com precipitações distribuídas ao longo do ano.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="fisica3">
+                    <h3>Exercício 3: Formações Glaciais</h3>
+                    <p>Qual das seguintes formações glaciais é um depressão de formato circular no topo de uma montanha?</p>
+                    <div class="options">
+                        <div class="option" data-value="Morrena">A) Morrena</div>
+                        <div class="option" data-value="Circo glacial">B) Circo glacial</div>
+                        <div class="option" data-value="Túmulo">C) Túmulo</div>
+                        <div class="option" data-value="Dríase">D) Dríase</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('fisica3', 'Circo glacial')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>O Circo glacial é uma depressão de formato circular no topo de uma montanha, formada pela erosão glacial.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="fisica4">
+                    <h3>Exercício 4: Tipos de Solo</h3>
+                    <p>Qual dos seguintes tipos de solo é caracterizado por ser rico em matéria orgânica e ter boa capacidade de retenção de água?</p>
+                    <div class="options">
+                        <div class="option" data-value="Solo arenoso">A) Solo arenoso</div>
+                        <div class="option" data-value="Solo argiloso">B) Solo argiloso</div>
+                        <div class="option" data-value="Solo misto">C) Solo misto</div>
+                        <div class="option" data-value="Solo rochoso">D) Solo rochoso</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('fisica4', 'Solo misto')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>O Solo misto, também conhecido como solo argilo-arenoso, é caracterizado por ser rico em matéria orgânica e ter boa capacidade de retenção de água.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="fisica5">
+                    <h3>Exercício 5: Tipos de Relevo</h3>
+                    <p>Qual dos seguintes tipos de relevo é caracterizado por ter altitudes superiores a 500 metros e inclinações acentuadas?</p>
+                    <div class="options">
+                        <div class="option" data-value="Planície">A) Planície</div>
+                        <div class="option" data-value="Colina">B) Colina</div>
+                        <div class="option" data-value="Montanha">C) Montanha</div>
+                        <div class="option" data-value="Depressão">D) Depressão</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('fisica5', 'Montanha')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>As Montanhas são caracterizadas por ter altitudes superiores a 500 metros e inclinações acentuadas.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="fisica6">
+                    <h3>Exercício 6: Tipos de Águas</h3>
+                    <p>Qual dos seguintes tipos de águas subterrâneas é encontrado em áreas de topografia plana e baixa?</p>
+                    <div class="options">
+                        <div class="option" data-value="Águas artesianas">A) Águas artesianas</div>
+                        <div class="option" data-value="Águas subterrâneas">B) Águas subterrâneas</div>
+                        <div class="option" data-value="Águas confinadas">C) Águas confinadas</div>
+                        <div class="option" data-value="Águas livres">D) Águas livres</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('fisica6', 'Águas livres')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>As Águas livres são encontradas em áreas de topografia plana e baixa, sem confinamento geológico.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="fisica7">
+                    <h3>Exercício 7: Tipos de Clima</h3>
+                    <p>Qual dos seguintes climas é caracterizado por ter temperaturas altas e precipitações irregulares ao longo do ano?</p>
+                    <div class="options">
+                        <div class="option" data-value="Clima tropical">A) Clima tropical</div>
+                        <div class="option" data-value="Clima equatorial">B) Clima equatorial</div>
+                        <div class="option" data-value="Clima semiárido">C) Clima semiárido</div>
+                        <div class="option" data-value="Clima mediterrâneo">D) Clima mediterrâneo</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('fisica7', 'Clima semiárido')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>O Clima semiárido é caracterizado por ter temperaturas altas e precipitações irregulares ao longo do ano, com períodos de seca prolongados.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="fisica8">
+                    <h3>Exercício 8: Tipos de Vegetação</h3>
+                    <p>Qual dos seguintes tipos de vegetação é caracterizado por ter árvores de porte médio, com folhas largas e perenes?</p>
+                    <div class="options">
+                        <div class="option" data-value="Floresta tropical">A) Floresta tropical</div>
+                        <div class="option" data-value="Floresta temperada">B) Floresta temperada</div>
+                        <div class="option" data-value="Mata de galeria">C) Mata de galeria</div>
+                        <div class="option" data-value="Caatinga">D) Caatinga</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('fisica8', 'Floresta temperada')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A Floresta temperada é caracterizada por ter árvores de porte médio, com folhas largas eenes, adaptadas ao clima temperado.</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="exercise" id="fisica2">
-                <h3>Exercício 2: Bacias Hidrográficas</h3>
-                <p>Qual é a maior bacia hidrográfica do Brasil?</p>
-                <div class="options">
-                    <div class="option" data-value="Bacia do São Francisco">A) Bacia do São Francisco</div>
-                    <div class="option" data-value="Bacia do Paraná">B) Bacia do Paraná</div>
-                    <div class="option" data-value="Bacia Amazônica">C) Bacia Amazônica</div>
-                    <div class="option" data-value="Bacia do Tocantins-Araguaia">D) Bacia do Tocantins-Araguaia</div>
+            
+            <div id="humana" class="tab-content">
+                <!-- Exercícios de Geografia Humana -->
+                <div class="exercise" id="humana1">
+                    <h3>Exercício 9: Tipos de Setor Econômico</h3>
+                    <p>Qual dos seguintes setores econômicos é caracterizado por produzir bens e serviços relacionados à informação e conhecimento?</p>
+                    <div class="options">
+                        <div class="option" data-value="Setor primário">A) Setor primário</div>
+                        <div class="option" data-value="Setor secundário">B) Setor secundário</div>
+                        <div class="option" data-value="Setor terciário">C) Setor terciário</div>
+                        <div class="option" data-value="Setor quaternário">D) Setor quaternário</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('humana1', 'Setor quaternário')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>O Setor quaternário é caracterizado por produzir bens e serviços relacionados à informação e conhecimento, como educação, pesquisa e desenvolvimento.</p>
+                    </div>
                 </div>
-                <button class="btn btn-check" onclick="checkAnswer('fisica2', 'Bacia Amazônica')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>A Bacia Amazônica é a maior bacia hidrográfica do Brasil e do mundo, com aproximadamente 7
-                        milhões de km². Ela abrange vários países da América do Sul, mas a maior parte está em
-                        território brasileiro.</p>
+                
+                <div class="exercise" id="humana2">
+                    <h3>Exercício 10: Tipos de População</h3>
+                    <p>Qual dos seguintes tipos de população é caracterizado por ter alta taxa de natalidade e baixa taxa de mortalidade?</p>
+                    <div class="options">
+                        <div class="option" data-value="População estável">A) População estável</div>
+                        <div class="option" data-value="População jovem">B) População jovem</div>
+                        <div class="option" data-value="População idosa">C) População idosa</div>
+                        <div class="option" data-value="População em transição">D) População em transição</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('humana2', 'População jovem')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A População jovem é caracterizada por ter alta taxa de natalidade e baixa taxa de mortalidade, resultando em uma estrutura etária com predominância de indivíduos jovens.</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="exercise" id="fisica3">
-                <h3>Exercício 3: Climas do Brasil</h3>
-                <p>Qual tipo climático predomina na maior parte do território brasileiro?</p>
-                <div class="options">
-                    <div class="option" data-value="Equatorial">A) Equatorial</div>
-                    <div class="option" data-value="Tropical">B) Tropical</div>
-                    <div class="option" data-value="Subtropical">C) Subtropical</div>
-                    <div class="option" data-value="Semiárido">D) Semiárido</div>
+                
+                <div class="exercise" id="humana3">
+                    <h3>Exercício 11: Tipos de Transporte</h3>
+                    <p>Qual dos seguintes tipos de transporte é caracterizado por ter alta capacidade de carga e baixo custo unitário?</p>
+                    <div class="options">
+                        <div class="option" data-value="Transporte rodoviário">A) Transporte rodoviário</div>
+                        <div class="option" data-value="Transporte ferroviário">B) Transporte ferroviário</div>
+                        <div class="option" data-value="Transporte aéreo">C) Transporte aéreo</div>
+                        <div class="option" data-value="Transporte marítimo">D) Transporte marítimo</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('humana3', 'Transporte marítimo')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>O Transporte marítimo é caracterizado por ter alta capacidade de carga e baixo custo unitário, tornando-o ideal para o transporte de mercadorias em larga escala.</p>
+                    </div>
                 </div>
-                <button class="btn btn-check" onclick="checkAnswer('fisica3', 'Tropical')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>O clima tropical predomina na maior parte do território brasileiro, especialmente nas regiões
-                        Centro-Oeste, Sudeste e parte do Nordeste. Caracteriza-se por temperaturas médias elevadas e
-                        duas estações bem definidas: verão chuvoso e inverno seco.</p>
+                
+                <div class="exercise" id="humana4">
+                    <h3>Exercício 12: Tipos de Setor Econômico</h3>
+                    <p>Qual dos seguintes setores econômicos é caracterizado por extrair recursos naturais do meio ambiente?</p>
+                    <div class="options">
+                        <div class="option" data-value="Setor primário">A) Setor primário</div>
+                        <div class="option" data-value="Setor secundário">B) Setor secundário</div>
+                        <div class="option" data-value="Setor terciário">C) Setor terciário</div>
+                        <div class="option" data-value="Setor quaternário">D) Setor quaternário</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('humana4', 'Setor primário')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>O Setor primário é caracterizado por extrair recursos naturais do meio ambiente, como agricultura, pecuária e extração mineral.</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="exercise" id="fisica4">
-                <h3>Exercício 4: Vegetação</h3>
-                <p>Qual é o maior bioma brasileiro?</p>
-                <div class="options">
-                    <div class="option" data-value="Mata Atlântica">A) Mata Atlântica</div>
-                    <div class="option" data-value="Cerrado">B) Cerrado</div>
-                    <div class="option" data-value="Amazônia">C) Amazônia</div>
-                    <div class="option" data-value="Caatinga">D) Caatinga</div>
+                
+                <div class="exercise" id="humana5">
+                    <h3>Exercício 13: Tipos de Setor Econômico</h3>
+                    <p>Qual dos seguintes setores econômicos é caracterizado por transformar bens do setor primário em produtos?</p>
+                    <div class="options">
+                        <div class="option" data-value="Setor primário">A) Setor primário</div>
+                        <div class="option" data-value="Setor secundário">B) Setor secundário</div>
+                        <div class="option" data-value="Setor terciário">C) Setor terciário</div>
+                        <div class="option" data-value="Setor quaternário">D) Setor quaternário</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('humana5', 'Setor secundário')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>O Setor secundário é caracterizado por transformar bens do setor primário em produtos, como indústrias de alimentos, têxteis e metalúrgicas.</p>
+                    </div>
                 </div>
-                <button class="btn btn-check" onclick="checkAnswer('fisica4', 'Amazônia')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>A Amazônia é o maior bioma brasileiro, ocupando cerca de 40% do território nacional. É a maior
-                        floresta tropical do mundo e abriga uma biodiversidade incalculável.</p>
+                
+                <div class="exercise" id="humana6">
+                    <h3>Exercício 14: Tipos de Urbanização</h3>
+                    <p>Qual dos seguintes tipos de urbanização é caracterizado por ter alta densidade populacional e infraestrutura desenvolvida?</p>
+                    <div class="options">
+                        <div class="option" data-value="Metrópole">A) Metrópole</div>
+                        <div class="option" data-value="Cidade média">B) Cidade média</div>
+                        <div class="option" data-value="Vila">C) Vila</div>
+                        <div class="option" data-value="Povoado">D) Povoado</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('humana6', 'Metrópole')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A Metrópole é caracterizada por ter alta densidade populacional e infraestrutura desenvolvida, com serviços e indústrias diversificadas.</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="exercise" id="fisica5">
-                <h3>Exercício 5: Geomorfologia</h3>
-                <p>Qual processo geomorfológico é predominante na formação do relevo brasileiro?</p>
-                <div class="options">
-                    <div class="option" data-value="Vulcanismo">A) Vulcanismo</div>
-                    <div class="option" data-value="Tectonismo">B) Tectonismo</div>
-                    <div class="option" data-value="Erosão">C) Erosão</div>
-                    <div class="option" data-value="Sedimentação">D) Sedimentação</div>
+                
+                <div class="exercise" id="humana7">
+                    <h3>Exercício 15: Tipos de Agricultura</h3>
+                    <p>Qual dos seguintes tipos de agricultura é caracterizado por usar técnicas intensivas e alta tecnologia?</p>
+                    <div class="options">
+                        <div class="option" data-value="Agricultura de subsistência">A) Agricultura de subsistência</div>
+                        <div class="option" data-value="Agricultura comercial">B) Agricultura comercial</div>
+                        <div class="option" data-value="Agricultura orgânica">C) Agricultura orgânica</div>
+                        <div class="option" data-value="Agricultura tradicional">D) Agricultura tradicional</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('humana7', 'Agricultura comercial')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A Agricultura comercial é caracterizada por usar técnicas intensivas e alta tecnologia, com foco na produção para o mercado.</p>
+                    </div>
                 </div>
-                <button class="btn btn-check" onclick="checkAnswer('fisica5', 'Erosão')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>A erosão é o processo geomorfológico predominante na formação do relevo brasileiro. O Brasil está
-                        em uma área tectonicamente estável, e seu relevo atual foi modelado principalmente por processos
-                        erosivos que desgastaram antigos planaltos e montanhas.</p>
-                </div>
-            </div>
-
-            <div class="exercise" id="fisica6">
-                <h3>Exercício 6: Solos</h3>
-                <p>Qual tipo de solo é predominante na região do Cerrado brasileiro?</p>
-                <div class="options">
-                    <div class="option" data-value="Latossolo">A) Latossolo</div>
-                    <div class="option" data-value="Podzólico">B) Podzólico</div>
-                    <div class="option" data-value="Areia quartzosa">C) Areia quartzosa</div>
-                    <div class="option" data-value="Solo orgânico">D) Solo orgânico</div>
-                </div>
-                <button class="btn btn-check" onclick="checkAnswer('fisica6', 'Latossolo')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>O latossolo é o tipo de solo predominante na região do Cerrado brasileiro. É um solo profundo,
-                        bem drenado, ácido e com baixa fertilidade natural, que exige correção para uso agrícola.</p>
-                </div>
-            </div>
-
-            <div class="exercise" id="fisica7">
-                <h3>Exercício 7: Recursos Hídricos</h3>
-                <p>Qual é o principal aquífero do Brasil?</p>
-                <div class="options">
-                    <div class="option" data-value="Aquífero Guarani">A) Aquífero Guarani</div>
-                    <div class="option" data-value="Aquífero Alter do Chão">B) Aquífero Alter do Chão</div>
-                    <div class="option" data-value="Aquífero Bauru">C) Aquífero Bauru</div>
-                    <div class="option" data-value="Aquífero Serra Geral">D) Aquífero Serra Geral</div>
-                </div>
-                <button class="btn btn-check" onclick="checkAnswer('fisica7', 'Aquífero Guarani')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>O Aquífero Guarani é o principal aquífero do Brasil e um dos maiores do mundo. Ele se estende por
-                        oito países da América do Sul e abrange uma área de aproximadamente 1,2 milhão de km² em
-                        território brasileiro.</p>
-                </div>
-            </div>
-
-            <div class="exercise" id="fisica8">
-                <h3>Exercício 8: Domínios Morfoclimáticos</h3>
-                <p>Qual domínio morfoclimático é caracterizado por clima semiárido e vegetação de xerófitas?</p>
-                <div class="options">
-                    <div class="option" data-value="Domínio Amazônico">A) Domínio Amazônico</div>
-                    <div class="option" data-value="Domínio do Cerrado">B) Domínio do Cerrado</div>
-                    <div class="option" data-value="Domínio da Caatinga">C) Domínio da Caatinga</div>
-                    <div class="option" data-value="Domínio dos Mares de Morros">D) Domínio dos Mares de Morros</div>
-                </div>
-                <button class="btn btn-check" onclick="checkAnswer('fisica8', 'Domínio da Caatinga')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>O Domínio da Caatinga é caracterizado por clima semiárido e vegetação de xerófitas (plantas
-                        adaptadas à escassez de água). Ocupa a maior parte da região Nordeste do Brasil e apresenta
-                        temperaturas elevadas e baixos índices pluviométricos.</p>
-                </div>
-            </div>
-
-            <div class="exercise" id="fisica9">
-                <h3>Exercício 9: Fenômenos Climáticos</h3>
-                <p>Qual fenômeno climático é responsável pelas secas prolongadas na região Nordeste do Brasil?</p>
-                <div class="options">
-                    <div class="option" data-value="El Niño">A) El Niño</div>
-                    <div class="option" data-value="La Niña">B) La Niña</div>
-                    <div class="option" data-value="Zona de Convergência Intertropical">C) Zona de Convergência
-                        Intertropical</div>
-                    <div class="option" data-value="Dipolo do Atlântico">D) Dipolo do Atlântico</div>
-                </div>
-                <button class="btn btn-check"
-                    onclick="checkAnswer('fisica9', 'Zona de Convergência Intertropical')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>A Zona de Convergência Intertropical (ZCIT) é o fenômeno climático que mais influencia as chuvas
-                        na região Nordeste do Brasil. Quando a ZCIT não atinge a região durante o verão austral, ocorrem
-                        as secas prolongadas, conhecidas como estiagens.</p>
+                
+                <div class="exercise" id="humana8">
+                    <h3>Exercício 16: Tipos de Indústria</h3>
+                    <p>Qual dos seguintes tipos de indústria é caracterizado por produzir bens de consumo duráveis?</p>
+                    <div class="options">
+                        <div class="option" data-value="Indústria de base">A) Indústria de base</div>
+                        <div class="option" data-value="Indústria de manufatura">B) Indústria de manufatura</div>
+                        <div class="option" data-value="Indústria de transformação">C) Indústria de transformação</div>
+                        <div class="option" data-value="Indústria de alta tecnologia">D) Indústria de alta tecnologia</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('humana8', 'Indústria de manufatura')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A Indústria de manufatura é caracterizada por produzir bens de consumo duráveis, como automóveis, eletrodomésticos e móveis.</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="exercise" id="fisica10">
-                <h3>Exercício 10: Estrutura Geológica</h3>
-                <p>Qual era geológica predomina na estrutura do território brasileiro?</p>
-                <div class="options">
-                    <div class="option" data-value="Era Cenozoica">A) Era Cenozoica</div>
-                    <div class="option" data-value="Era Mesozoica">B) Era Mesozoica</div>
-                    <div class="option" data-value="Era Paleozoica">C) Era Paleozoica</div>
-                    <div class="option" data-value="Eras Pré-Cambrianas">D) Eras Pré-Cambrianas</div>
+            
+            <div id="mistura" class="tab-content">
+                <!-- Exercícios de Mistura de Geografia Física e Humana -->
+                <div class="exercise" id="mistura1">
+                    <h3>Exercício 17: Tipos de Clima</h3>
+                    <p>Qual dos seguintes climas é caracterizado por ter verões quentes e úmidos e invernos frios e secos?</p>
+                    <div class="options">
+                        <div class="option" data-value="Clima tropical">A) Clima tropical</div>
+                        <div class="option" data-value="Clima subtropical">B) Clima subtropical</div>
+                        <div class="option" data-value="Clima temperado">C) Clima temperado</div>
+                        <div class="option" data-value="Clima mediterrâneo">D) Clima mediterrâneo</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('mistura1', 'Clima mediterrâneo')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>O Clima mediterrâneo é caracterizado por ter verões quentes e úmidos e invernos frios e secos, com vegetação adaptada a períodos de seca.</p>
+                    </div>
                 </div>
-                <button class="btn btn-check"
-                    onclick="checkAnswer('fisica10', 'Eras Pré-Cambrianas')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>As Eras Pré-Cambrianas correspondem a aproximadamente 36% do território brasileiro, sendo
-                        predominantes na estrutura geológica do país. Essas formações antigas compõem os escudos
-                        cristalinos, que são as bases do relevo brasileiro.</p>
+                
+                <div class="exercise" id="mistura2">
+                    <h3>Exercício 18: Tipos de Vegetação</h3>
+                    <p>Qual dos seguintes tipos de vegetação é caracterizado por ter árvores de porte elevado, com folhas largas e decíduas?</p>
+                    <div class="options">
+                        <div class="option" data-value="Floresta tropical">A) Floresta tropical</div>
+                        <div class="option" data-value="Floresta temperada decidual">B) Floresta temperada decidual</div>
+                        <div class="option" data-value="Mata de galeria">C) Mata de galeria</div>
+                        <div class="option" data-value="Manguezal">D) Manguezal</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('mistura2', 'Floresta temperada decidual')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>A Floresta temperada decidual é caracterizada por ter árvores de porte elevado, com folhas largas e decíduas, que perdem suas folhas na estação seca ou fria.</p>
+                    </div>
                 </div>
+                
+                <div class="exercise" id="mistura3">
+                    <h3>Exercício 19: Tipos de Relevo</h3>
+                    <p>Qual dos seguintes tipos de relevo é caracterizado por ter altitudes entre 200 e 800 metros e suaves formas?</p>
+                    <div class="options">
+                        <div class="option" data-value="Planície">A) Planície</div>
+                        <div class="option" data-value="Colina">B) Colina</div>
+                        <div class="option" data-value="Montanha">C) Montanha</div>
+                        <div class="option" data-value="Depressão">D) Depressão</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('mistura3', 'Colina')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>As Colinas são caracterizadas por ter altitudes entre 200 e 800 metros e suaves formas, com inclinações moderadas.</p>
+                    </div>
+                </div>
+                
+                <div class="exercise" id="mistura4">
+                    <h3>Exercício 20: Tipos de Setor Econômico</h3>
+                    <p>Qual dos seguintes setores econômicos é caracterizado por oferecer serviços ao consumidor final?</p>
+                    <div class="options">
+                        <div class="option" data-value="Setor primário">A) Setor primário</div>
+                        <div class="option" data-value="Setor secundário">B) Setor secundário</div>
+                        <div class="option" data-value="Setor terciário">C) Setor terciário</div>
+                        <div class="option" data-value="Setor quaternário">D) Setor quaternário</div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('mistura4', 'Setor terciário')">Verificar</button>
+                    <div class="feedback"></div>
+                    <div class="explanation" style="display: none;">
+                        <p>O Setor terciário é caracterizado por oferecer serviços ao consumidor final, como comércio, hotelaria, turismo e transporte.</p>
+                    </div>
+                </div>
+                
+            
+            <div class="result-container" id="resultContainer">
+                <h2>Resultado Final</h2>
+                <div class="result-score">Você acertou <span id="finalScore">0</span> de <span id="finalTotal">0</span> questões</div>
+                <div class="result-message" id="resultMessage"></div>
+                <button class="btn btn-restart" onclick="restartQuiz()">Iniciar Novamente</button>
             </div>
-        </div>
-
-        <div id="humana" class="tab-content">
-            <div class="exercise" id="humana1">
-                <h3>Exercício 11: População Brasileira</h3>
-                <p>Qual é a região mais populosa do Brasil?</p>
-                <div class="options">
-                    <div class="option" data-value="Norte">A) Norte</div>
-                    <div class="option" data-value="Nordeste">B) Nordeste</div>
-                    <div class="option" data-value="Sudeste">C) Sudeste</div>
-                    <div class="option" data-value="Sul">D) Sul</div>
-                </div>
-                <button class="btn btn-check" onclick="checkAnswer('humana1', 'Sudeste')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>A região Sudeste é a mais populosa do Brasil, concentrando aproximadamente 42% da população do
-                        país. Estados como São Paulo, Minas Gerais e Rio de Janeiro são os mais populosos, com São Paulo
-                        sendo o estado mais populoso do Brasil.</p>
-                </div>
-            </div>
-
-            <div class="exercise" id="humana2">
-                <h3>Exercício 12: Urbanização</h3>
-                <p>Qual é a taxa de urbanização do Brasil atualmente?</p>
-                <div class="options">
-                    <div class="option" data-value="Cerca de 65%">A) Cerca de 65%</div>
-                    <div class="option" data-value="Cerca de 75%">B) Cerca de 75%</div>
-                    <div class="option" data-value="Cerca de 85%">C) Cerca de 85%</div>
-                    <div class="option" data-value="Cerca de 95%">D) Cerca de 95%</div>
-                </div>
-                <!-- CORREÇÃO: Faltava fechar as aspas no parâmetro -->
-                <button class="btn btn-check" onclick="checkAnswer('humana2', 'Cerca de 85%')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>A taxa de urbanização do Brasil atualmente é de aproximadamente 85%. O Brasil passou por um
-                        intenso processo de urbanização ao longo do século XX, tornando-se um dos países mais
-                        urbanizados do mundo.</p>
-                </div>
-            </div>
-
-            <div class="exercise" id="humana3">
-                <h3>Exercício 13: Migrações</h3>
-                <p>Qual foi o principal fluxo migratório interno no Brasil durante o século XX?</p>
-                <div class="options">
-                    <div class="option" data-value="Norte para Sul">A) Norte para Sul</div>
-                    <div class="option" data-value="Nordeste para Sudeste">B) Nordeste para Sudeste</div>
-                    <div class="option" data-value="Sul para Norte">C) Sul para Norte</div>
-                    <div class="option" data-value="Sudeste para Nordeste">D) Sudeste para Nordeste</div>
-                </div>
-                <button class="btn btn-check"
-                    onclick="checkAnswer('humana3', 'Nordeste para Sudeste')">Verificar</button>
-
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>O principal fluxo migratório interno no Brasil durante o século XX foi do Nordeste para o
-                        Sudeste. Esse deslocamento populacional ocorreu principalmente devido às secas no Nordeste e ao
-                        desenvolvimento industrial no Sudeste, especialmente em São Paulo e Rio de Janeiro.</p>
-                </div>
-            </div>
-
-            <div class="exercise" id="humana4">
-                <h3>Exercício 14: Economia</h3>
-                <p>Qual é o principal setor da economia brasileira atualmente?</p>
-                <div class="options">
-                    <div class="option" data-value="Primário">A) Primário</div>
-                    <div class="option" data-value="Secundário">B) Secundário</div>
-                    <div class="option" data-value="Terciário">C) Terciário</div>
-                    <div class="option" data-value="Quaternário">D) Quaternário</div>
-                </div>
-                <button class="btn btn-check" onclick="checkAnswer('humana4', 'Terciário')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>O setor terciário (comércio e serviços) é o principal da economia brasileira atualmente,
-                        representando aproximadamente 75% do PIB do país. Essa predominância reflete o processo de
-                        urbanização e desenvolvimento econômico do Brasil.</p>
-                </div>
-            </div>
-
-            <div class="exercise" id="humana5">
-                <h3>Exercício 15: Rede Urbana</h3>
-                <p>Qual é a maior metrópole do Brasil?</p>
-                <div class="options">
-                    <div class="option" data-value="Rio de Janeiro">A) Rio de Janeiro</div>
-                    <div class="option" data-value="São Paulo">B) São Paulo</div>
-                    <div class="option" data-value="Brasília">C) Brasília</div>
-                    <div class="option" data-value="Salvador">D) Salvador</div>
-                </div>
-                <button class="btn btn-check" onclick="checkAnswer('humana5', 'São Paulo')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>São Paulo é a maior metrópole do Brasil e uma das maiores do mundo. A Região Metropolitana de São
-                        Paulo possui mais de 21 milhões de habitantes e é o principal centro financeiro, comercial e
-                        industrial do país.</p>
-                </div>
-            </div>
-
-            <div class="exercise" id="humana6">
-                <h3>Exercício 16: Indústria</h3>
-                <p>Qual é o principal polo industrial do Brasil?</p>
-                <div class="options">
-                    <div class="option" data-value="Região Metropolitana de São Paulo">A) Região Metropolitana de São
-                        Paulo</div>
-                    <div class="option" data-value="Região Sudeste">B) Região Sudeste</div>
-                    <div class="option" data-value="Região Sul">C) Região Sul</div>
-                    <div class="option" data-value="Região Nordeste">D) Região Nordeste</div>
-                </div>
-                <button class="btn btn-check"
-                    onclick="checkAnswer('humana6', 'Região Metropolitana de São Paulo')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>A Região Metropolitana de São Paulo é o principal polo industrial do Brasil, concentrando grande
-                        parte do parque industrial nacional. O estado de São Paulo sozinho responde por aproximadamente
-                        40% da produção industrial do país.</p>
-                </div>
-            </div>
-
-            <div class="exercise" id="humana7">
-                <h3>Exercício 17: Agricultura</h3>
-                <p>Qual é o principal produto agrícola de exportação do Brasil?</p>
-                <div class="options">
-                    <div class="option" data-value="Café">A) Café</div>
-                    <div class="option" data-value="Soja">B) Soja</div>
-                    <div class="option" data-value="Cana-de-açúcar">C) Cana-de-açúcar</div>
-                    <div class="option" data-value="Milho">D) Milho</div>
-                </div>
-                <button class="btn btn-check" onclick="checkAnswer('humana7', 'Soja')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>A soja é o principal produto agrícola de exportação do Brasil. O país é o maior produtor e
-                        exportador de soja do mundo, com destaque para os estados do Centro-Oeste (Mato Grosso, Goiás e
-                        Mato Grosso do Sul) e regiões do Maranhão, Tocantins, Piauí e Bahia (Matopiba).</p>
-                </div>
-            </div>
-
-            <div class="exercise" id="humana8">
-                <h3>Exercício 18: Desigualdades Regionais</h3>
-                <p>Qual indicador social melhor expressa as desigualdades regionais no Brasil?</p>
-                <div class="options">
-                    <div class="option" data-value="Taxa de natalidade">A) Taxa de natalidade</div>
-                    <div class="option" data-value="IDH">B) IDH</div>
-                    <div class="option" data-value="Densidade demográfica">C) Densidade demográfica</div>
-                    <div class="option" data-value="Taxa de urbanização">D) Taxa de urbanização</div>
-                </div>
-                <button class="btn btn-check" onclick="checkAnswer('humana8', 'IDH')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>O Índice de Desenvolvimento Humano (IDH) é o indicador que melhor expressa as desigualdades
-                        regionais no Brasil. Ele combina medidas de educação, saúde e renda, mostrando claramente as
-                        disparidades entre as regiões do país, com o Sul e Sudeste apresentando os maiores índices e o
-                        Norte e Nordeste, os menores.</p>
-                </div>
-            </div>
-
-            <div class="exercise" id="humana9">
-                <h3>Exercício 19: Globalização</h3>
-                <p>Qual é o principal bloco econômico do qual o Brasil faz parte?</p>
-                <div class="options">
-                    <div class="option" data-value="Mercosul">A) Mercosul</div>
-                    <div class="option" data-value="União Europeia">B) União Europeia</div>
-                    <div class="option" data-value="NAFTA">C) NAFTA</div>
-                    <div class="option" data-value="ASEAN">D) ASEAN</div>
-                </div>
-                <button class="btn btn-check" onclick="checkAnswer('humana9', 'Mercosul')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>O Mercosul (Mercado Comum do Sul) é o principal bloco econômico do qual o Brasil faz parte.
-                        Criado em 1991, o bloco é composto por Argentina, Brasil, Paraguai e Uruguai, com Venezuela
-                        (atualmente suspensa) e Bolívia em processo de adesão.</p>
-                </div>
-            </div>
-
-            <div class="exercise" id="humana10">
-                <h3>Exercício 20: Meio Ambiente</h3>
-                <p>Qual é o principal desafio ambiental enfrentado pelo Brasil atualmente?</p>
-                <div class="options">
-                    <div class="option" data-value="Poluição industrial">A) Poluição industrial</div>
-                    <div class="option" data-value="Desmatamento">B) Desmatamento</div>
-                    <div class="option" data-value="Esgotamento dos recursos hídricos">C) Esgotamento dos recursos
-                        hídricos</div>
-                    <div class="option" data-value="Contaminação dos solos">D) Contaminação dos solos</div>
-                </div>
-                <button class="btn btn-check" onclick="checkAnswer('humana10', 'Desmatamento')">Verificar</button>
-                <div class="feedback"></div>
-                <div class="explanation" style="display: none;">
-                    <p>O desmatamento é o principal desafio ambiental enfrentado pelo Brasil atualmente, especialmente
-                        na Amazônia e no Cerrado. A perda de vegetação nativa contribui para a perda de biodiversidade,
-                        mudanças climáticas, degradação dos solos e alterações nos ciclos hidrológicos.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="result-container" id="resultContainer">
-            <h2>Resultado Final</h2>
-            <div class="result-score">Você acertou <span id="finalScore">0</span> de <span id="finalTotal">0</span>
-                exercícios</div>
-            <div class="result-message" id="resultMessage"></div>
-            <button class="btn btn-restart" onclick="restartQuiz()">Iniciar Novamente</button>
-        </div>
-    </div>
-
-    <div class="warning-container" id="warningContainer">
-        <div class="warning-box">
-            <h2 class="warning-title">⚠️ AVISO IMPORTANTE</h2>
-            <p class="warning-message">
-                Você mudou de guia durante o teste. Esta ação foi registrada.
-                Mudar de guia durante a realização do teste é considerado uma violação das regras.
-            </p>
-            <p class="warning-message">
-                Número de violações: <span class="warning-count" id="warningCount">1</span>
-            </p>
-            <p class="warning-message">
-                Se você exceder o limite de <strong>3 violações</strong>, seu teste será anulado automaticamente.
-            </p>
-            <button class="btn btn-primary" onclick="closeWarning()">Entendido</button>
-        </div>
-    </div>
-
-    <script>
-        // Variáveis globais
-        let score = 0;
-        let totalExercises = 20;
-        let answeredExercises = 0;
-        let tabSwitchCount = 0;
-        const MAX_TAB_SWITCHES = 3;
-
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function () {
-            // Contar total de exercícios
-            const exercises = document.querySelectorAll('.exercise');
-            totalExercises = exercises.length;
-            document.getElementById('total').textContent = totalExercises;
-
-            // Configurar tabs
-            const tabs = document.querySelectorAll('.tab');
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function () {
-                    // Remover active de todas as tabs e conteúdo
-                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-
-                    // Adicionar active na tab clicada e conteúdo correspondente
-                    this.classList.add('active');
-                    document.getElementById(this.getAttribute('data-tab')).classList.add('active');
+        
+        <script>
+            // Variáveis iniciais
+            let score = 0;
+            let totalExercises = 25;
+            let answeredExercises = 0;
+            
+            // Inicialização
+            document.addEventListener('DOMContentLoaded', function() {
+                // Contar total de exercícios
+                const exercises = document.querySelectorAll('.exercise');
+                totalExercises = exercises.length;
+                document.getElementById('total').textContent = totalExercises;
+                
+                // Configurar tabs
+                const tabs = document.querySelectorAll('.tab');
+                tabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        // Remover active de todas as tabs e conteúdo
+                        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                        
+                        // Adicionar active à tab e conteúdo correspondente
+                        this.classList.add('active');
+                        document.getElementById(this.getAttribute('data-tab')).classList.add('active');
+                    });
+                });
+                
+                // Configurar opções de exercícios
+                const options = document.querySelectorAll('.option');
+                options.forEach(option => {
+                    option.addEventListener('click', function() {
+                        // Remover selected de todas as opções no mesmo exercício
+                        const exerciseId = this.parentElement.parentElement.id;
+                        const exerciseOptions = document.querySelectorAll(`#${exerciseId} .option`);
+                        exerciseOptions.forEach(opt => opt.classList.remove('selected'));
+                        
+                        // Selecionar a opção clicada
+                        this.classList.add('selected');
+                    });
                 });
             });
-
-            // Configurar opções dos exercícios
-            const options = document.querySelectorAll('.option');
-            options.forEach(option => {
-                option.addEventListener('click', function () {
-                    // Remover seleção de todas as opções no mesmo exercício
-                    const exerciseId = this.parentElement.parentElement.id;
-                    const exerciseOptions = document.querySelectorAll(`#${exerciseId} .option`);
-                    exerciseOptions.forEach(opt => opt.classList.remove('selected'));
-
-                    // Selecionar a opção clicada
-                    this.classList.add('selected');
-                });
-            });
-
-            // Configurar monitoramento de mudança de guia
-            document.addEventListener('visibilitychange', handleVisibilityChange);
-            window.addEventListener('blur', handleWindowBlur);
-
-            // Bloquear atalhos de teclado para abrir novas guias
-            document.addEventListener('keydown', handleKeyDown);
-
-            // Exibir aviso inicial sobre mudança de guia
-            setTimeout(() => {
-                document.getElementById('tabWarning').classList.add('active');
-            }, 1000);
-        });
-
-        // Função para lidar com mudança de visibilidade da página
-        function handleVisibilityChange() {
-            if (document.hidden) {
-                // A página ficou invisível (usuário mudou de guia)
-                incrementTabSwitchCount();
-            }
-        }
-
-        // Função para lidar com perda de foco da janela
-        function handleWindowBlur() {
-            // A janela perdeu o foco (usuário pode ter mudado de guia)
-            incrementTabSwitchCount();
-        }
-
-        // Função para incrementar o contador de mudança de guia
-        function incrementTabSwitchCount() {
-            tabSwitchCount++;
-
-            // Exibir aviso
-            document.getElementById('warningCount').textContent = tabSwitchCount;
-            document.getElementById('warningContainer').style.display = 'flex';
-
-            // Exibir aviso na aba
-            document.getElementById('tabWarning').classList.add('active');
-
-            // Verificar se excedeu o limite
-            if (tabSwitchCount >= MAX_TAB_SWITCHES) {
-                // Anular o teste
-                invalidateTest();
-            }
-        }
-
-        // Função para fechar o aviso de violação
-        function closeWarning() {
-            document.getElementById('warningContainer').style.display = 'none';
-        }
-
-        function handleKeyDown(e) {
-            // Bloquear Ctrl+T (nova guia)
-            if (e.ctrlKey && e.keyCode === 84) {
-                e.preventDefault();
-                incrementTabSwitchCount();
-                return false;
-            }
-
-            // Bloquear Ctrl+N (nova janela)
-            if (e.ctrlKey && e.keyCode === 78) {
-                e.preventDefault();
-                incrementTabSwitchCount();
-                return false;
-            }
-
-            // Bloquear Ctrl+W (fechar guia)
-            if (e.ctrlKey && e.keyCode === 87) {
-                e.preventDefault();
-                return false;
-            }
-
-            // Bloquear Alt+Setas (navegação)
-            if (e.altKey && (e.keyCode === 37 || e.keyCode === 39)) {
-                e.preventDefault();
-                incrementTabSwitchCount();
-                return false;
-            }
-
-            // Bloquear F12 (ferramentas de desenvolvedor)
-            if (e.keyCode === 123) {
-                e.preventDefault();
-                incrementTabSwitchCount();
-                return false;
-            }
-
-            // Bloquear Ctrl+Shift+I (ferramentas de desenvolvedor)
-            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
-                e.preventDefault();
-                incrementTabSwitchCount();
-                return false;
-            }
-
-            // Bloquear Ctrl+Shift+J (console)
-            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
-                e.preventDefault();
-                incrementTabSwitchCount();
-                return false;
-            }
-
-            // Bloquear Ctrl+U (visualizar código fonte)
-            if (e.ctrlKey && e.keyCode === 85) {
-                e.preventDefault();
-                incrementTabSwitchCount();
-                return false;
-            }
-        }
-
-        function invalidateTest() {
-            // Esconder todos os exercícios
-            document.querySelectorAll('.exercise').forEach(exercise => {
-                exercise.style.display = 'none';
-            });
-
-            // Esconder tabs e outros elementos
-            document.querySelector('.tabs').style.display = 'none';
-            document.querySelector('.score').style.display = 'none';
-            document.querySelector('.progress-container').style.display = 'none';
-            document.getElementById('tabWarning').style.display = 'none';
-
-            // Fechar aviso de violação
-            closeWarning();
-
-            // Exibir mensagem de teste anulado
-            document.getElementById('resultContainer').style.display = 'block';
-            document.getElementById('finalScore').textContent = '0';
-            document.getElementById('finalTotal').textContent = totalExercises;
-            document.getElementById('resultMessage').textContent =
-                `TESTE ANULADO! Você excedeu o limite de ${MAX_TAB_SWITCHES} mudanças de guia permitidas.`;
-            document.getElementById('resultMessage').style.color = 'var(--danger-color)';
-            document.getElementById('resultMessage').style.fontWeight = 'bold';
-
-            // Desabilitar botão de reiniciar
-            document.querySelector('.btn-restart').disabled = true;
-            document.querySelector('.btn-restart').style.backgroundColor = '#cccccc';
-            document.querySelector('.btn-restart').style.cursor = 'not-allowed';
-        }
-
-        // Função para verificar a resposta
-        function checkAnswer(exerciseId, correctAnswer) {
-            const exercise = document.getElementById(exerciseId);
-            const selectedOption = exercise.querySelector('.option.selected');
-            const feedback = exercise.querySelector('.feedback');
-            const explanation = exercise.querySelector('.explanation');
-            const options = exercise.querySelectorAll('.option');
-
-            // Verificar se uma opção foi selecionada
-            if (!selectedOption) {
-                feedback.textContent = 'Por favor, selecione uma resposta.';
-                feedback.className = 'feedback incorrect';
-                feedback.style.display = 'block';
-                return;
-            }
-
-            // Verificar se o exercício já foi respondido
-            if (exercise.querySelector('.btn-check').disabled) {
-                return;
-            }
-
-            // Verificar se a resposta está correta
-            const selectedValue = selectedOption.getAttribute('data-value');
-            const isCorrect = selectedValue === correctAnswer;
-
-            // Atualizar pontuação
-            if (isCorrect) {
-                score++;
-                document.getElementById('score').textContent = score;
-            }
-
-            // Atualizar número de exercícios respondidos
-            answeredExercises++;
-            updateProgress();
-
-            // Marcar opções como corretas ou incorretas
-            options.forEach(option => {
-                const optionValue = option.getAttribute('data-value');
-                if (optionValue === correctAnswer) {
-                    option.classList.add('correct');
-                } else if (option === selectedOption && !isCorrect) {
-                    option.classList.add('incorrect');
+            
+            // Função para verificar a resposta
+            function checkAnswer(exerciseId, correctAnswer) {
+                const exercise = document.getElementById(exerciseId);
+                const selectedOption = exercise.querySelector('.option.selected');
+                const feedback = exercise.querySelector('.feedback');
+                const explanation = exercise.querySelector('.explanation');
+                const options = exercise.querySelectorAll('.option');
+                
+                // Verificar se a resposta foi selecionada
+                if (!selectedOption) {
+                    feedback.textContent = 'Por favor, selecione uma opção.';
+                    feedback.className = 'feedback incorrect';
+                    feedback.style.display = 'block';
+                    return;
                 }
-            });
-
-            // Exibir feedback
-            if (isCorrect) {
-                feedback.textContent = 'Correto! Parabéns.';
-                feedback.className = 'feedback correct';
-            } else {
-                feedback.textContent = 'Incorreto. Tente novamente.';
-                feedback.className = 'feedback incorrect';
-            }
-            feedback.style.display = 'block';
-
-            // Exibir explicação
-            explanation.style.display = 'block';
-
-            // Desabilitar botão de verificação
-            const checkButton = exercise.querySelector('.btn-check');
-            checkButton.disabled = true;
-            checkButton.textContent = 'Verificado';
-
-            // Verificar se todos os exercícios foram respondidos
-            if (answeredExercises === totalExercises) {
-                showResults();
-            }
-        }
-
-        // Função para atualizar o progresso
-        function updateProgress() {
-            const percentage = (answeredExercises / totalExercises) * 100;
-            document.getElementById('progress').style.width = `${percentage}%`;
-        }
-
-        // Função para mostrar os resultados finais
-        function showResults() {
-            document.querySelectorAll('.exercise').forEach(exercise => {
-                exercise.style.display = 'none';
-            });
-
-            document.querySelector('.tabs').style.display = 'none';
-            document.querySelector('.score').style.display = 'none';
-            document.querySelector('.progress-container').style.display = 'none';
-
-            document.getElementById('resultContainer').style.display = 'block';
-            document.getElementById('finalScore').textContent = score;
-            document.getElementById('finalTotal').textContent = totalExercises;
-
-            // Mensagem personalizada com base na pontuação
-            let message = '';
-
-            if (score === totalExercises) {
-                message = 'Parabéns! Você acertou todas as questões. Você tem um excelente conhecimento de geografia.';
-            } else if (score >= totalExercises * 0.8) {
-                message = 'Excelente! Você tem um bom domínio dos conceitos de geografia. Continue estudando para aperfeiçoar seus conhecimentos.';
-            } else if (score >= totalExercises * 0.6) {
-                message = 'Bom trabalho! Você tem um conhecimento razoável de geografia. Continue estudando para melhorar ainda mais.';
-            } else if (score >= totalExercises * 0.4) {
-                message = 'Você está no caminho certo. Continue estudando e praticando para melhorar seus conhecimentos de geografia.';
-            } else {
-                message = 'Recomendamos que você estude mais sobre geografia. Consulte livros e fontes confiáveis para melhorar seus conhecimentos.';
-            }
-
-            document.getElementById('resultMessage').textContent = message;
-        }
-
-        // Função para reiniciar o quiz
-        function restartQuiz() {
-
-            // Reiniciar pontuação e contadores
-            score = 0;
-            answeredExercises = 0;
-            tabSwitchCount = 0;
-            document.getElementById('score').textContent = score;
-            document.getElementById('progress').style.width = '0%';
-
-            // Exibir novamente os exercícios e componentes
-            document.querySelectorAll('.exercise').forEach(exercise => {
-                exercise.style.display = 'block';
-                exercise.querySelectorAll('.option').forEach(option => {
-                    option.classList.remove('selected', 'correct', 'incorrect');
+                
+                // Verificar se a resposta está correta
+                const isSelectedCorrect = selectedOption.getAttribute('data-value') === correctAnswer;
+                
+                // Atualizar pontuação
+                if (isSelectedCorrect && !exercise.classList.contains('answered')) {
+                    score++;
+                    document.getElementById('score').textContent = score;
+                }
+                
+                // Marcar exercício como respondido
+                exercise.classList.add('answered');
+                answeredExercises++;
+                
+                // Atualizar progresso
+                updateProgress();
+                
+                // Marcar opções como corretas ou incorretas
+                options.forEach(option => {
+                    const optionValue = option.getAttribute('data-value');
+                    if (optionValue === correctAnswer) {
+                        option.classList.add('correct');
+                    } else if (option === selectedOption && !isSelectedCorrect) {
+                        option.classList.add('incorrect');
+                    }
                 });
-                exercise.querySelector('.feedback').style.display = 'none';
-                exercise.querySelector('.explanation').style.display = 'none';
-                exercise.querySelector('.btn-check').disabled = false;
-                exercise.querySelector('.btn-check').textContent = 'Verificar';
-            });
-
-            document.querySelector('.tabs').style.display = 'flex';
-            document.querySelector('.score').style.display = 'block';
-            document.querySelector('.progress-container').style.display = 'block';
-            document.getElementById('resultContainer').style.display = 'none';
-
-            // Ativar a primeira tab
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.querySelector('.tab').classList.add('active');
-            document.getElementById('fisica').classList.add('active');
-        }
-
-        // Função para desativar o bloqueio de tela
-        function disableTabLock() {
-
-            // Remover event listeners de mudança de aba
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
-            window.removeEventListener('blur', handleWindowBlur);
-            document.removeEventListener('keydown', handleKeyDown);
-
-            // Esconder aviso sobre mudança de aba
-            document.getElementById('tabWarning').classList.remove('active');
-        }
-
-        // Função para reativar o bloqueio de tela (usada ao reiniciar o quiz)
-        function enableTabLock() {
-
-            // Adicionar novamente os event listeners
-            document.addEventListener('visibilitychange', handleVisibilityChange);
-            window.addEventListener('blur', handleWindowBlur);
-            document.addEventListener('keydown', handleKeyDown);
-
-            // Exibir aviso sobre mudança de aba
-            document.getElementById('tabWarning').classList.add('active');
-        }
-
-        // Modificar a função showResults() para incluir a desativação do bloqueio
-        function showResults() {
-            document.querySelectorAll('.exercise').forEach(exercise => {
-                exercise.style.display = 'none';
-            });
-
-            document.querySelector('.tabs').style.display = 'none';
-            document.querySelector('.score').style.display = 'none';
-            document.querySelector('.progress-container').style.display = 'none';
-
-            document.getElementById('resultContainer').style.display = 'block';
-            document.getElementById('finalScore').textContent = score;
-            document.getElementById('finalTotal').textContent = totalExercises;
-
-            // Mensagem personalizada com base na pontuação
-            let message = '';
-
-            if (score === totalExercises) {
-                message = 'Parabéns! Você acertou todas as questões. Você tem um excelente conhecimento de geografia.';
-            } else if (score >= totalExercises * 0.8) {
-                message = 'Excelente! Você tem um bom domínio dos conceitos de geografia. Continue estudando para aperfeiçoar seus conhecimentos.';
-            } else if (score >= totalExercises * 0.6) {
-                message = 'Bom trabalho! Você tem um conhecimento razoável de geografia. Continue estudando para melhorar ainda mais.';
-            } else if (score >= totalExercises * 0.4) {
-                message = 'Você está no caminho certo. Continue estudando e praticando para melhorar seus conhecimentos de geografia.';
-            } else {
-                message = 'Recomendamos que você estude mais sobre geografia. Consulte livros e fontes confiáveis para melhorar seus conhecimentos.';
+                
+                // Mostrar feedback e explicação
+                if (isSelectedCorrect) {
+                    feedback.textContent = 'Correto!';
+                    feedback.className = 'feedback correct';
+                } else {
+                    feedback.textContent = 'Incorreto. Tente novamente.';
+                    feedback.className = 'feedback incorrect';
+                }
+                feedback.style.display = 'block';
+                explanation.style.display = 'block';
+                
+                // Desabilitar botão de verificação
+                const checkButton = exercise.querySelector('.btn-check');
+                checkButton.disabled = true;
+                checkButton.textContent = 'Verificado';
+                
+                // Verificar se todos os exercícios foram respondidos
+                if (answeredExercises === totalExercises) {
+                    setTimeout(showResults, 1000);
+                }
             }
-
-            document.getElementById('resultMessage').textContent = message;
-
-            // Desativar o bloqueio de tela quando todos os exercícios forem respondidos
-            disableTabLock();
-        }
-
-        // Modificar a função restartQuiz() para reativar o bloqueio de tela
-        function restartQuiz() {
-            // Reiniciar pontuação e contadores
-            score = 0;
-            answeredExercises = 0;
-            tabSwitchCount = 0;
-            document.getElementById('score').textContent = score;
-            document.getElementById('progress').style.width = '0%';
-
-            // Exibir novamente os exercícios e componentes
-            document.querySelectorAll('.exercise').forEach(exercise => {
-                exercise.style.display = 'block';
-                exercise.querySelectorAll('.option').forEach(option => {
-                    option.classList.remove('selected', 'correct', 'incorrect');
+            
+            // Função para atualizar a barra de progresso
+            function updateProgress() {
+                const percentage = (answeredExercises / totalExercises) * 100;
+                document.getElementById('progress').style.width = percentage + '%';
+            }
+            
+            // Função para mostrar o resultado final
+            function showResults() {
+                document.getElementById('finalScore').textContent = score;
+                document.getElementById('finalTotal').textContent = totalExercises;
+                
+                let message = '';
+                if (score === totalExercises) {
+                    message = 'Parabéns! Você acertou todas as questões. Você tem um excelente conhecimento de geografia física e humana.';
+                } else if (score >= totalExercises * 0.8) {
+                    message = 'Excelente! Você tem um excelente conhecimento de geografia física e humana. Continue estudando para perfeccionar seus conhecimentos.';
+                } else if (score >= totalExercises * 0.6) {
+                    message = 'Bom trabalho! Você tem um bom conhecimento de geografia física e humana. Continue estudando para melhorar ainda mais.';
+                } else if (score >= totalExercises * 0.4) {
+                    message = 'Você está no caminho certo. Continue estudando para melhorar seu conhecimento de geografia física e humana.';
+                } else {
+                    message = 'Recomendamos que revise os conceitos básicos de geografia física e humana e pratique mais exercícios.';
+                }
+                
+                document.getElementById('resultMessage').textContent = message;
+                document.getElementById('resultContainer').style.display = 'block';
+            }
+            
+            // Função para reiniciar o quiz
+            function restartQuiz() {
+                // Resetar pontuação e contadores
+                score = 0;
+                answeredExercises = 0;
+                document.getElementById('score').textContent = score;
+                document.getElementById('progress').style.width = '0%';
+                
+                // Exibir novamente os exercícios e componentes
+                document.querySelectorAll('.exercise').forEach(exercise => {
+                    exercise.style.display = 'block';
+                    exercise.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected', 'correct', 'incorrect');
+                    });
+                    exercise.querySelector('.feedback').style.display = 'none';
+                    exercise.querySelector('.explanation').style.display = 'none';
+                    const checkButton = exercise.querySelector('.btn-check');
+                    checkButton.disabled = false;
+                    checkButton.textContent = 'Verificar';
                 });
-                exercise.querySelector('.feedback').style.display = 'none';
-                exercise.querySelector('.explanation').style.display = 'none';
-                exercise.querySelector('.btn-check').disabled = false;
-                exercise.querySelector('.btn-check').textContent = 'Verificar';
-            });
-
-            document.querySelector('.tabs').style.display = 'flex';
-            document.querySelector('.score').style.display = 'block';
-            document.querySelector('.progress-container').style.display = 'block';
-            document.getElementById('resultContainer').style.display = 'none';
-
-            // Ativar a primeira tab
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.querySelector('.tab').classList.add('active');
-            document.getElementById('fisica').classList.add('active');
-
-            // Reativar o bloqueio de tela ao reiniciar o quiz
-            enableTabLock();
-        }
-
-    </script>
-
-</body>
+                
+                document.querySelector('.tabs').style.display = 'flex';
+                document.querySelector('.score').style.display = 'block';
+                document.querySelector('.progress-container').style.display = 'block';
+                document.getElementById('resultContainer').style.display = 'none';
+                
+                // Ativar a primeira tab
+                document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                document.querySelector('.tab').classList.add('active');
+                document.getElementById('fisica').classList.add('active');
+            }
+        </script>
+    </body>
 </html>

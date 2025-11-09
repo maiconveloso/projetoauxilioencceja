@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de Ciências para ENCCEJA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/exerciciociencias.css">
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRNKXZCX54"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SRNKXZCX54');
+</script>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Exercícios de Ciências para ENCCEJA</h1>
+            <p class="subtitle">Prepare-se para o exame com exercícios práticos de Física, Química e Biologia</p>
+        </header>
+        
+        <div class="tab-warning" id="tabWarning">
+            ⚠️ ATENÇÃO: Mudar de guia durante o teste é monitorado e pode resultar na anulação do teste.
+        </div>
+        
+        <div class="score">
+            Pontuação: <span id="score">0</span> / <span id="total">0</span>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" data-tab="fisica">Física</button>
+            <button class="tab" data-tab="quimica">Química</button>
+            <button class="tab" data-tab="biologia">Biologia</button>
+        </div>
+        
+        <div id="fisica" class="tab-content active">
+            <div class="exercise" id="fisica1">
+                <h3>Exercício 1: Movimento Retilíneo Uniforme</h3>
+                <p>Um carro se desloca com velocidade constante de 60 km/h. Quantos metros ele percorre em 10 segundos?</p>
+                <div class="options">
+                    <div class="option" data-value="166.7m">A) 166,7 m</div>
+                    <div class="option" data-value="600m">B) 600 m</div>
+                    <div class="option" data-value="100m">C) 100 m</div>
+                    <div class="option" data-value="60m">D) 60 m</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica1', '166.7m')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: Primeiro, convertemos a velocidade para m/s:</p>
+                    <p>v = 60 km/h = 60 × (1000 m / 3600 s) = 16,67 m/s</p>
+                    <p>Em seguida, usamos a fórmula do movimento uniforme: d = v × t</p>
+                    <p>d = 16,67 m/s × 10 s = 166,7 m</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="fisica2">
+                <h3>Exercício 2: Segunda Lei de Newton</h3>
+                <p>Uma força de 20 N é aplicada em um corpo de massa 5 kg. Qual é a aceleração adquirida pelo corpo?</p>
+                <div class="options">
+                    <div class="option" data-value="4m/s²">A) 4 m/s²</div>
+                    <div class="option" data-value="100m/s²">B) 100 m/s²</div>
+                    <div class="option" data-value="0.25m/s²">C) 0,25 m/s²</div>
+                    <div class="option" data-value="15m/s²">D) 15 m/s²</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica2', '4m/s²')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: Pela Segunda Lei de Newton, F = m × a</p>
+                    <p>20 N = 5 kg × a</p>
+                    <p>a = 20 N / 5 kg = 4 m/s²</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="fisica3">
+                <h3>Exercício 3: Energia Cinética</h3>
+                <p>Qual é a energia cinética de um corpo com massa de 2 kg que se move com velocidade de 10 m/s?</p>
+                <div class="options">
+                    <div class="option" data-value="100J">A) 100 J</div>
+                    <div class="option" data-value="20J">B) 20 J</div>
+                    <div class="option" data-value="200J">C) 200 J</div>
+                    <div class="option" data-value="50J">D) 50 J</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica3', '100J')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A energia cinética é calculada pela fórmula: Ec = ½ × m × v²</p>
+                    <p>Ec = ½ × 2 kg × (10 m/s)²</p>
+                    <p>Ec = 1 × 100 = 100 J</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="fisica4">
+                <h3>Exercício 4: Lei de Ohm</h3>
+                <p>Um resistor de 10 Ω é submetido a uma diferença de potencial de 20 V. Qual é a corrente elétrica que o percorre?</p>
+                <div class="options">
+                    <div class="option" data-value="2A">A) 2 A</div>
+                    <div class="option" data-value="0.5A">B) 0,5 A</div>
+                    <div class="option" data-value="200A">C) 200 A</div>
+                    <div class="option" data-value="30A">D) 30 A</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica4', '2A')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: Pela Lei de Ohm, U = R × I</p>
+                    <p>20 V = 10 Ω × I</p>
+                    <p>I = 20 V / 10 Ω = 2 A</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="fisica5">
+                <h3>Exercício 5: Calorimetria</h3>
+                <p>Quantos calorias são necessárias para elevar a temperatura de 200 g de água de 20°C para 30°C? (Dado: calor específico da água = 1 cal/g°C)</p>
+                <div class="options">
+                    <div class="option" data-value="2000cal">A) 2000 cal</div>
+                    <div class="option" data-value="200cal">B) 200 cal</div>
+                    <div class="option" data-value="4000cal">C) 4000 cal</div>
+                    <div class="option" data-value="1000cal">D) 1000 cal</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica5', '2000cal')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A quantidade de calor é calculada por: Q = m × c × ΔT</p>
+                    <p>Q = 200 g × 1 cal/g°C × (30°C - 20°C)</p>
+                    <p>Q = 200 g × 1 cal/g°C × 10°C = 2000 cal</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="fisica6">
+                <h3>Exercício 6: Ondas Sonoras</h3>
+                <p>O som viaja no ar com velocidade aproximada de 340 m/s. Se um trovão é ouvido 3 segundos após o relâmpago ser visto, a que distância ocorreu a tempestade?</p>
+                <div class="options">
+                    <div class="option" data-value="1020m">A) 1020 m</div>
+                    <div class="option" data-value="340m">B) 340 m</div>
+                    <div class="option" data-value="113.3m">C) 113,3 m</div>
+                    <div class="option" data-value="1360m">D) 1360 m</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica6', '1020m')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A distância é calculada por: d = v × t</p>
+                    <p>d = 340 m/s × 3 s = 1020 m</p>
+                    <p>Considerando que a velocidade da luz é muito maior que a do som, o tempo entre o relâmpago e o trovão é aproximadamente o tempo que o som leva para percorrer a distância.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="fisica7">
+                <h3>Exercício 7: Pressão Hidrostática</h3>
+                <p>Qual é a pressão exercida por uma coluna de água de 10 metros de altura? (Dado: densidade da água = 1000 kg/m³, g = 10 m/s²)</p>
+                <div class="options">
+                    <div class="option" data-value="100000Pa">A) 100000 Pa</div>
+                    <div class="option" data-value="1000Pa">B) 1000 Pa</div>
+                    <div class="option" data-value="10000Pa">C) 10000 Pa</div>
+                    <div class="option" data-value="1000000Pa">D) 1000000 Pa</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica7', '100000Pa')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A pressão hidrostática é calculada por: p = d × g × h</p>
+                    <p>p = 1000 kg/m³ × 10 m/s² × 10 m</p>
+                    <p>p = 100000 N/m² = 100000 Pa</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="fisica8">
+                <h3>Exercício 8: Espelhos Planos</h3>
+                <p>Uma pessoa de 1,70 m de altura está em frente a um espelho plano. Qual é a altura mínima que o espelho deve ter para que a pessoa possa ver sua imagem completa?</p>
+                <div class="options">
+                    <div class="option" data-value="0.85m">A) 0,85 m</div>
+                    <div class="option" data-value="1.70m">B) 1,70 m</div>
+                    <div class="option" data-value="3.40m">C) 3,40 m</div>
+                    <div class="option" data-value="0.425m">D) 0,425 m</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('fisica8', '0.85m')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: Em um espelho plano, para ver a imagem completa, o espelho precisa ter no mínimo metade da altura da pessoa.</p>
+                    <p>Altura mínima do espelho = 1,70 m / 2 = 0,85 m</p>
+                    <p>Isso ocorre porque a luz que parte do topo da pessoa atinge o espelho na metade de sua altura, e a luz que parte dos pés atinge o espelho na metade inferior.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="quimica" class="tab-content">
+            <div class="exercise" id="quimica1">
+                <h3>Exercício 9: Tabela Periódica</h3>
+                <p>Qual é o número atômico do elemento Carbono (C)?</p>
+                <div class="options">
+                    <div class="option" data-value="6">A) 6</div>
+                    <div class="option" data-value="12">B) 12</div>
+                    <div class="option" data-value="4">C) 4</div>
+                    <div class="option" data-value="8">D) 8</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('quimica1', '6')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: O número atômico (Z) corresponde ao número de prótons no núcleo de um átomo.</p>
+                    <p>Para o elemento Carbono (C), o número atômico é 6, o que significa que seu átomo possui 6 prótons.</p>
+                    <p>O número 12 corresponde ao número de massa (A), que é a soma de prótons e nêutrons.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="quimica2">
+                <h3>Exercício 10: Ligações Químicas</h3>
+                <p>Qual é o tipo de ligação química que ocorre entre átomos de sódio (Na) e cloro (Cl) para formar o cloreto de sódio (NaCl)?</p>
+                <div class="options">
+                    <div class="option" data-value="Iônica">A) Iônica</div>
+                    <div class="option" data-value="Covalente">B) Covalente</div>
+                    <div class="option" data-value="Metálica">C) Metálica</div>
+                    <div class="option" data-value="Dipolo-dipolo">D) Dipolo-dipolo</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('quimica2', 'Iônica')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A ligação entre átomos de sódio (metal) e cloro (não-metal) é do tipo iônica.</p>
+                    <p>Nesse tipo de ligação, ocorre a transferência de elétrons do sódio para o cloro, formando íons Na⁺ e Cl⁻, que se atraem por forças eletrostáticas.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="quimica3">
+                <h3>Exercício 11: Funções Inorgânicas</h3>
+                <p>Qual é a fórmula química do ácido sulfúrico?</p>
+                <div class="options">
+                    <div class="option" data-value="H₂SO₄">A) H₂SO₄</div>
+                    <div class="option" data-value="H₂SO₃">B) H₂SO₃</div>
+                    <div class="option" data-value="H₂S">C) H₂S</div>
+                    <div class="option" data-value="HSO₄">D) HSO₄</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('quimica3', 'H₂SO₄')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: O ácido sulfúrico é um ácido inorgânico forte, de fórmula H₂SO₄.</p>
+                    <p>É formado por dois átomos de hidrogênio, um átomo de enxofre e quatro átomos de oxigênio.</p>
+                    <p>O H₂SO₃ corresponde ao ácido sulfuroso, e o H₂S ao ácido sulfídrico.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="quimica4">
+                <h3>Exercício 12: Estequiometria</h3>
+                <p>Na reação de combustão do metano: CH₄ + 2O₂ → CO₂ + 2H₂O, quantos mols de CO₂ são produzidos quando 2 mols de CH₄ reagem completamente?</p>
+                <div class="options">
+                    <div class="option" data-value="2mols">A) 2 mols</div>
+                    <div class="option" data-value="1mol">B) 1 mol</div>
+                    <div class="option" data-value="4mols">C) 4 mols</div>
+                    <div class="option" data-value="0.5mol">D) 0,5 mol</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('quimica4', '2mols')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: Pela estequiometria da reação, a proporção entre CH₄ e CO₂ é de 1:1.</p>
+                    <p>CH₄ + 2O₂ → CO₂ + 2H₂O</p>
+                    <p>Isso significa que para cada mol de CH₄ que reage, é produzido 1 mol de CO₂.</p>
+                    <p>Portanto, se 2 mols de CH₄ reagem completamente, serão produzidos 2 mols de CO₂.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="quimica5">
+                <h3>Exercício 13: Soluções</h3>
+                <p>Qual é a concentração molar de uma solução que contém 58,5 g de NaCl dissolvidos em água suficiente para 500 mL de solução? (Dado: massa molar do NaCl = 58,5 g/mol)</p>
+                <div class="options">
+                    <div class="option" data-value="2M">A) 2 M</div>
+                    <div class="option" data-value="1M">B) 1 M</div>
+                    <div class="option" data-value="0.5M">C) 0,5 M</div>
+                    <div class="option" data-value="4M">D) 4 M</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('quimica5', '2M')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A concentração molar (M) é calculada por: M = n / V</p>
+                    <p>Onde n é o número de mols e V é o volume em litros.</p>
+                    <p>n = massa / massa molar = 58,5 g / 58,5 g/mol = 1 mol</p>
+                    <p>V = 500 mL = 0,5 L</p>
+                    <p>M = 1 mol / 0,5 L = 2 M</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="quimica6">
+                <h3>Exercício 14: pH de Soluções</h3>
+                <p>Qual é o pH de uma solução aquosa com [H⁺] = 0,001 mol/L?</p>
+                <div class="options">
+                    <div class="option" data-value="3">A) 3</div>
+                    <div class="option" data-value="1">B) 1</div>
+                    <div class="option" data-value="7">C) 7</div>
+                    <div class="option" data-value="11">D) 11</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('quimica6', '3')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: O pH é calculado por: pH = -log[H⁺]</p>
+                    <p>Para [H⁺] = 0,001 mol/L = 10⁻³ mol/L:</p>
+                    <p>pH = -log(10⁻³) = 3</p>
+                    <p>Como o pH é menor que 7, a solução é ácida.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="quimica7">
+                <h3>Exercício 15: Termoquímica</h3>
+                <p>Na reação de formação da água: H₂ + ½O₂ → H₂O + 286 kJ, o que representa o valor 286 kJ?</p>
+                <div class="options">
+                    <div class="option" data-value="Calor de formação">A) Calor de formação</div>
+                    <div class="option" data-value="Calor de combustão">B) Calor de combustão</div>
+                    <div class="option" data-value="Energia de ativação">C) Energia de ativação</div>
+                    <div class="option" data-value="Calor de neutralização">D) Calor de neutralização</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('quimica7', 'Calor de formação')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: O valor 286 kJ representa o calor de formação da água, que é a energia liberada quando 1 mol de água é formada a partir de seus elementos constituintes (H₂ e O₂) no estado padrão.</p>
+                    <p>Como o valor é positivo no lado dos produtos, a reação é exotérmica, liberando 286 kJ por mol de água formada.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="quimica8">
+                <h3>Exercício 16: Química Orgânica</h3>
+                <p>Qual é a fórmula estrutural do eteno (etileno)?</p>
+                <div class="options">
+                    <div class="option" data-value="H₂C=CH₂">A) H₂C=CH₂</div>
+                    <div class="option" data-value="H₃C-CH₃">B) H₃C-CH₃</div>
+                    <div class="option" data-value="H₂C-CH₂">C) H₂C-CH₂</div>
+                    <div class="option" data-value="HC≡CH">D) HC≡CH</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('quimica8', 'H₂C=CH₂')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: O eteno, também conhecido como etileno, é um hidrocarboneto com fórmula molecular C₂H₄.</p>
+                    <p>Sua fórmula estrutural é H₂C=CH₂, que indica a presença de uma ligação dupla entre os átomos de carbono.</p>
+                    <p>É o alceno mais simples e um importante composto orgânico utilizado na produção de plásticos.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="biologia" class="tab-content">
+            <div class="exercise" id="biologia1">
+                <h3>Exercício 17: Células</h3>
+                <p>Qual é a organela celular responsável pela produção de energia na forma de ATP?</p>
+                <div class="options">
+                    <div class="option" data-value="Mitocôndria">A) Mitocôndria</div>
+                    <div class="option" data-value="Núcleo">B) Núcleo</div>
+                    <div class="option" data-value="Retículo endoplasmático">C) Retículo endoplasmático</div>
+                    <div class="option" data-value="Complexo de Golgi">D) Complexo de Golgi</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('biologia1', 'Mitocôndria')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A mitocôndria é a organela responsável pela produção de energia na forma de ATP através do processo de respiração celular.</p>
+                    <p>É na mitocôndria que ocorrem as etapas finais da respiração aeróbia, incluindo o ciclo de Krebs e a cadeia transportadora de elétrons.</p>
+                    <p>Por essa razão, a mitocôndria é frequentemente chamada de "usina de energia" da célula.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="biologia2">
+                <h3>Exercício 18: Fotossíntese</h3>
+                <p>Quais são os principais produtos da fotossíntese?</p>
+                <div class="options">
+                    <div class="option" data-value="Glicose e oxigênio">A) Glicose e oxigênio</div>
+                    <div class="option" data-value="Glicose e dióxido de carbono">B) Glicose e dióxido de carbono</div>
+                    <div class="option" data-value="Água e glicose">C) Água e glicose</div>
+                    <div class="option" data-value="Água e oxigênio">D) Água e oxigênio</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('biologia2', 'Glicose e oxigênio')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A fotossíntese é o processo pelo qual as plantas convertem energia luminosa em energia química.</p>
+                    <p>A equação geral da fotossíntese é: 6CO₂ + 6H₂O + energia luminosa → C₆H₁₂O₆ (glicose) + 6O₂</p>
+                    <p>Portanto, os principais produtos da fotossíntese são a glicose e o oxigênio.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="biologia3">
+                <h3>Exercício 19: Genética</h3>
+                <p>Em uma cruzamento entre dois indivíduos heterozigotos para um caráter (Aa), qual é a probabilidade de nascer um descendente homozigoto recessivo (aa)?</p>
+                <div class="options">
+                    <div class="option" data-value="25%">A) 25%</div>
+                    <div class="option" data-value="50%">B) 50%</div>
+                    <div class="option" data-value="75%">C) 75%</div>
+                    <div class="option" data-value="100%">D) 100%</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('biologia3', '25%')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: No cruzamento entre dois heterozigotos (Aa × Aa), os gametas possíveis são A e a para cada indivíduo.</p>
+                    <p>O quadro de Punnett mostra os seguintes genótipos possíveis na descendência:</p>
+                    <p>AA (25%), Aa (50%), aa (25%)</p>
+                    <p>Portanto, a probabilidade de nascer um descendente homozigoto recessivo (aa) é de 25%.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="biologia4">
+                <h3>Exercício 20: Evolução</h3>
+                <p>Quem foi o naturalista que propôs a teoria da evolução por meio da seleção natural?</p>
+                <div class="options">
+                    <div class="option" data-value="Charles Darwin">A) Charles Darwin</div>
+                    <div class="option" data-value="Gregor Mendel">B) Gregor Mendel</div>
+                    <div class="option" data-value="Jean-Baptiste Lamarck">C) Jean-Baptiste Lamarck</div>
+                    <div class="option" data-value="Louis Pasteur">D) Louis Pasteur</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('biologia4', 'Charles Darwin')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: Charles Darwin foi o naturalista que propôs a teoria da evolução por meio da seleção natural, publicada em 1859 na obra "A Origem das Espécies".</p>
+                    <p>Segundo essa teoria, os indivíduos com características mais adaptadas ao ambiente têm maior probabilidade de sobreviver e deixar descendentes, transmitindo essas características às gerações seguintes.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="biologia5">
+                <h3>Exercício 21: Ecologia</h3>
+                <p>Qual é o nome dado ao conjunto de todos os ecossistemas da Terra?</p>
+                <div class="options">
+                    <div class="option" data-value="Biosfera">A) Biosfera</div>
+                    <div class="option" data-value="Atmosfera">B) Atmosfera</div>
+                    <div class="option" data-value="Hidrosfera">C) Hidrosfera</div>
+                    <div class="option" data-value="Litosfera">D) Litosfera</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('biologia5', 'Biosfera')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: A biosfera é o conjunto de todos os ecossistemas da Terra, onde existe vida.</p>
+                    <p>Ela abrange desde as profundezas dos oceanos até as altas montanhas, incluindo porções da atmosfera, hidrosfera e litosfera.</p>
+                    <p>A biosfera é o maior nível de organização ecológica, englobando todos os seres vivos e seus ambientes.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="biologia6">
+                <h3>Exercício 22: Fisiologia Humana</h3>
+                <p>Qual é o nome do órgão responsável pela produção de insulina no corpo humano?</p>
+                <div class="options">
+                    <div class="option" data-value="Pâncreas">A) Pâncreas</div>
+                    <div class="option" data-value="Fígado">B) Fígado</div>
+                    <div class="option" data-value="Rim">C) Rim</div>
+                    <div class="option" data-value="Timo">D) Timo</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('biologia6', 'Pâncreas')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: O pâncreas é o órgão responsável pela produção de insulina no corpo humano.</p>
+                    <p>Especificamente, a insulina é produzida pelas células beta das ilhotas de Langerhans, que são estruturas localizadas no pâncreas.</p>
+                    <p>A insulina é um hormônio essencial para a regulação dos níveis de glicose no sangue, facilitando sua entrada nas células.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="biologia7">
+                <h3>Exercício 23: Botânica</h3>
+                <p>Qual é o nome do tecido vegetal responsável pelo transporte de seiva bruta (água e sais minerais) das raízes para as folhas?</p>
+                <div class="options">
+                    <div class="option" data-value="Xilema">A) Xilema</div>
+                    <div class="option" data-value="Floema">B) Floema</div>
+                    <div class="option" data-value="Súber">C) Súber</div>
+                    <div class="option" data-value="Parênquima">D) Parênquima</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('biologia7', 'Xilema')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: O xilema é o tecido vascular responsável pelo transporte de seiva bruta (água e sais minerais) das raízes para as folhas.</p>
+                    <p>Esse transporte ocorre principalmente por força de sucção gerada pela transpiração nas folhas e por pressão positiva nas raízes.</p>
+                    <p>O floema, por sua vez, é responsável pelo transporte de seiva elaborada (substâncias orgânicas) das folhas para o resto da planta.</p>
+                </div>
+            </div>
+            
+            <div class="exercise" id="biologia8">
+                <h3>Exercício 24: Zoologia</h3>
+                <p>Qual é o filo animal caracterizado pela presença de corpo segmentado e exoesqueleto quitinoso?</p>
+                <div class="options">
+                    <div class="option" data-value="Artrópodes">A) Artrópodes</div>
+                    <div class="option" data-value="Anelídeos">B) Anelídeos</div>
+                    <div class="option" data-value="Moluscos">C) Moluscos</div>
+                    <div class="option" data-value="Equinodermos">D) Equinodermos</div>
+                </div>
+                <button class="btn btn-check" onclick="checkAnswer('biologia8', 'Artrópodes')">Verificar</button>
+                <div class="feedback"></div>
+                <div class="explanation" style="display: none;">
+                    <p>Resolução: Os artrópodes constituem o filo animal caracterizado pela presença de corpo segmentado e exoesqueleto quitinoso.</p>
+                    <p>Esses animais apresentam apêndices articulados e corpo dividido em cabeça, tórax e abdome (em insetos) ou cefalotórax e abdome (em aracnídeos e crustáceos).</p>
+                    <p>Exemplos de artrópodes incluem insetos, aracnídeos, crustáceos e quilópodes.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="result-container" id="resultContainer">
+            <h2>Resultado Final</h2>
+            <div class="result-score">Você acertou <span id="finalScore">0</span> de <span id="finalTotal">0</span> exercícios</div>
+            <div class="result-message" id="resultMessage"></div>
+            <button class="btn btn-restart" onclick="restartQuiz()">Iniciar Novamente</button>
+        </div>
+        
+        <div class="warning-container" id="warningContainer">
+            <div class="warning-box">
+                <h2 class="warning-title">⚠️ AVISO IMPORTANTE</h2>
+                <p class="warning-message">
+                    Você mudou de guia durante o teste. Esta ação foi registrada. 
+                    Mudar de guia durante a realização do teste é considerado uma violação das regras.
+                </p>
+                <p class="warning-message">
+                    Número de violações: <span class="warning-count" id="warningCount">1</span>
+                </p>
+                <p class="warning-message">
+                    Se você exceder o limite de <strong>3 violações</strong>, seu teste será anulado automaticamente.
+                </p>
+                <button class="btn btn-primary" onclick="closeWarning()">Entendido</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="JS/exerciciociencias.js"></script>
+    
+</body>
+</html>

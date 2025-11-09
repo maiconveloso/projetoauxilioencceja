@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Plataforma de Estudos</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+        <link rel="stylesheet" href="CSS/plataforma.css">
+
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRNKXZCX54"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SRNKXZCX54');
+</script>
+
+    </head>
+    <body>
+
+        <!-- Botão de configurações de acessibilidade -->
+        <button class="btn-accessibility" id="accessibilityBtn" aria-label="Configurações de Acessibilidade" title="Configurações de Acessibilidade">
+            <i class="bi bi-universal-access"></i>
+        </button>
+        
+        <!-- Modal de configurações de acessibilidade -->
+        <div class="accessibility-modal" id="accessibilityModal">
+            <div class="accessibility-modal-content">
+                <div class="accessibility-modal-header">
+                    <h3 class="accessibility-modal-title">
+                        <i class="bi bi-universal-access"></i>
+                        Configurações de Acessibilidade
+                    </h3>
+                    <button class="accessibility-modal-close" id="accessibilityModalClose">
+                        <i class="bi bi-x"></i>
+                    </button>
+                </div>
+            <div class="accessibility-modal-body">
+
+            <!-- Seção de Visual -->
+            <div class="accessibility-section">
+                <h4 class="accessibility-section-title">
+                    <i class="bi bi-eye"></i>
+                        Opções Visuais
+                        </h4>
+                <div class="accessibility-options">
+                    <div class="accessibility-option" id="highContrastOption">
+                        <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                                <i class="bi bi-circle-half"></i>
+                        </div>
+                <div class="accessibility-option-title">Alto Contraste</div>
+                        </div>
+                    <div class="accessibility-option-description">
+                            Melhora a visibilidade com contraste elevado entre texto e fundo.
+                        </div>
+                <div class="accessibility-toggle">
+                    <label class="accessibility-toggle-switch">
+                        <input type="checkbox" id="highContrastToggle">
+                        <span class="accessibility-toggle-slider"></span>
+                    </label>
+                        <span class="accessibility-toggle-label">Ativar</span>
+                    </div>
+                </div>
+                            
+                <div class="accessibility-option" id="darkModeOption">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                            <i class="bi bi-moon-stars"></i>
+                        </div>
+                            <div class="accessibility-option-title">Modo Escuro</div>
+                    </div>
+                <div class="accessibility-option-description">
+                        Reduz a luminosidade da interface para maior conforto visual.
+                    </div>
+                <div class="accessibility-toggle">
+                        <label class="accessibility-toggle-switch">
+                            <input type="checkbox" id="darkModeToggle">
+                            <span class="accessibility-toggle-slider"></span>
+                        </label>
+                            <span class="accessibility-toggle-label">Ativar</span>
+                        </div>
+                    </div>
+                            
+                <div class="accessibility-option" id="readingModeOption">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                            <i class="bi bi-book"></i>
+                        </div>
+                <div class="accessibility-option-title">Modo de Leitura</div>
+                        </div>
+                <div class="accessibility-option-description">
+                            Aumenta o tamanho do texto e melhora o espaçamento para facilitar a leitura.
+                        </div>
+                <div class="accessibility-toggle">
+                    <label class="accessibility-toggle-switch">
+                        <input type="checkbox" id="readingModeToggle">
+                        <span class="accessibility-toggle-slider"></span>
+                    </label>
+                        <span class="accessibility-toggle-label">Ativar</span>
+                    </div>
+                </div>
+                            
+                <div class="accessibility-option" id="highContrastCursorOption">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                            <i class="bi bi-cursor"></i>
+                        </div>
+                <div class="accessibility-option-title">Cursor de Alto Contraste</div>
+                        </div>
+                <div class="accessibility-option-description">
+                        Torna o cursor mais visível com um círculo de contraste ao redor.
+                        </div>
+                <div class="accessibility-toggle">
+                        <label class="accessibility-toggle-switch">
+                            <input type="checkbox" id="highContrastCursorToggle">
+                            <span class="accessibility-toggle-slider"></span>
+                        </label>
+                            <span class="accessibility-toggle-label">Ativar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    
+            <!-- Seção de Texto -->
+                <div class="accessibility-section">
+                    <h4 class="accessibility-section-title">
+                        <i class="bi bi-fonts"></i>
+                            Opções de Texto
+                    </h4>
+                <div class="accessibility-options">
+                    <div class="accessibility-option">
+                        <div class="accessibility-option-header">
+                            <div class="accessibility-option-icon">
+                                <i class="bi bi-textarea-resize"></i>
+                            </div>
+                <div class="accessibility-option-title">Tamanho da Fonte</div>
+                            </div>
+                <div class="accessibility-option-description">
+                            Ajuste o tamanho do texto para melhor legibilidade.
+                            </div>
+                <div class="accessibility-range-control">
+                    <div class="accessibility-range-label">
+                        <span>Pequeno</span>
+                        <span id="fontSizeValue">Médio</span>
+                        <span>Grande</span>
+                    </div>
+                <input type="range" min="1" max="4" value="2" class="accessibility-range" id="fontSizeRange">
+            </div>
+        </div>
+                            
+                <div class="accessibility-option">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                            <i class="bi bi-text-paragraph"></i>
+                        </div>
+                    <div class="accessibility-option-title">Espaçamento entre Linhas</div>
+                        </div>
+                    <div class="accessibility-option-description">
+                            Ajuste o espaçamento entre linhas para melhor legibilidade.
+                        </div>
+                <div class="accessibility-range-control">
+                    <div class="accessibility-range-label">
+                        <span>Normal</span>
+                        <span id="lineHeightValue">Médio</span>
+                        <span>Alto</span>
+                </div>
+                    <input type="range" min="1" max="3" value="2" class="accessibility-range" id="lineHeightRange">
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    
+            <!-- Seção de Navegação -->
+                <div class="accessibility-section">
+                    <h4 class="accessibility-section-title">
+                        <i class="bi bi-mouse"></i>
+                            Opções de Navegação
+                    </h4>
+                <div class="accessibility-options">
+                    <div class="accessibility-option" id="visibleFocusOption">
+                        <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                            <i class="bi bi-bullseye"></i>
+                       </div>
+                <div class="accessibility-option-title">Foco Visível</div>
+                    </div>
+                <div class="accessibility-option-description">
+                           Destaca o elemento em foco para melhor navegação por teclado.
+                    </div>
+                <div class="accessibility-toggle">
+                    <label class="accessibility-toggle-switch">
+                        <input type="checkbox" id="visibleFocusToggle">
+                        <span class="accessibility-toggle-slider"></span>
+                    </label>
+                        <span class="accessibility-toggle-label">Ativar</span>
+                    </div>
+                </div>
+                            
+               <div class="accessibility-option" id="reduceMotionOption">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                            <i class="bi bi-pause-circle"></i>
+                    </div>
+                        <div class="accessibility-option-title">Reduzir Movimentos</div>
+                    </div>
+                <div class="accessibility-option-description">
+                            Desativa animações e efeitos visuais para reduzir distrações.
+                    </div>
+                <div class="accessibility-toggle">
+                    <label class="accessibility-toggle-switch">
+                        <input type="checkbox" id="reduceMotionToggle">
+                        <span class="accessibility-toggle-slider"></span>
+                    </label>
+                        <span class="accessibility-toggle-label">Ativar</span>
+                    </div>
+                </div>
+                            
+                <div class="accessibility-option" id="screenReaderOption">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon">
+                            <i class="bi bi-volume-up"></i>
+                        </div>
+                            <div class="accessibility-option-title">Leitor de Tela</div>
+                        </div>
+                    <div class="accessibility-option-description">
+                              Otimiza a interface para uso com leitores de tela.
+                        </div>
+                    <div class="accessibility-toggle">
+                        <label class="accessibility-toggle-switch">
+                            <input type="checkbox" id="screenReaderToggle">
+                            <span class="accessibility-toggle-slider"></span>
+                        </label>
+                            <span class="accessibility-toggle-label">Ativar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="accessibility-modal-footer">
+            <button class="accessibility-reset-btn" id="resetAccessibilitySettings">
+                <i class="bi bi-arrow-counterclockwise"></i> Restaurar Padrões
+            </button>
+                <button class="accessibility-save-btn" id="saveAccessibilitySettings">
+                      <i class="bi bi-check-lg"></i> Salvar Configurações
+                </button>
+            </div>
+        </div>
+    </div>
+        
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="accessibilityToast">
+            <div class="toast-header">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                <strong class="me-auto">Configurações de Acessibilidade</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fechar"></button>
+            </div>
+        <div class="toast-body" id="accessibilityToastMessage">
+                Configurações de acessibilidade salvas com sucesso!
+        </div>
+    </div>
+        
+        <!-- Botão de toggle para mobile -->
+        <button class="mobile-toggle" id="mobileToggle">
+            <i class="bi bi-list"></i>
+        </button>
+        
+        <!-- Botão de Entrar (aparece quando não está logado) -->
+        <button class="btn-enter" id="loginBtn">
+            <i class="bi bi-box-arrow-in-right"></i> Entrar
+        </button>
+        
+        <!-- Perfil do Usuário (aparece quando está logado) -->
+        <div class="user-profile hidden" id="userProfile">
+            <img src="https://picsum.photos/seed/user123/200/200.jpg" alt="Avatar do usuário" class="user-avatar">
+            <div class="user-info">
+                <div class="user-name">aluno123</div>
+                <div class="user-role">Estudante</div>
+            </div>
+            <i class="bi bi-chevron-down" id="userMenuToggle"></i>
+            
+            <!-- Menu do perfil -->
+            <div class="user-menu" id="userMenu">
+                <a href="#" class="user-menu-item">
+                    <i class="bi bi-person"></i> Meu Perfil
+                </a>
+                <a href="#" class="user-menu-item">
+                    <i class="bi bi-book"></i> Meus Cursos
+                </a>
+                <a href="#" class="user-menu-item">
+                    <i class="bi bi-trophy"></i> Meus Conquistas
+                </a>
+                <div class="user-menu-divider"></div>
+                <a href="#" class="user-menu-item logout-btn">
+                    <i class="bi bi-box-arrow-right"></i> Sair
+                </a>
+            </div>
+        </div>
+        
+        <!-- Popover do Perfil -->
+        <div class="popover" id="userPopover">
+            <div class="popover-header">
+                <img src="https://picsum.photos/seed/user123/200/200.jpg" alt="Avatar do usuário">
+                <div>
+                    <div class="user-name">aluno123</div>
+                    <div class="user-role">Estudante</div>
+                </div>
+            </div>
+            <div class="popover-body">
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Cursos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">85%</div>
+                        <div class="stat-label">Progresso</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Conquistas</div>
+                    </div>
+                </div>
+                <div class="profile-menu">
+                    <a href="#" class="profile-menu-item">
+                        <i class="bi bi-person"></i> Meu Perfil
+                    </a>
+                    <a href="#" class="profile-menu-item">
+                        <i class="bi bi-book"></i> Meus Cursos
+                    </a>
+                    <a href="#" class="profile-menu-item">
+                        <i class="bi bi-trophy"></i> Meus Conquistas
+                    </a>
+                    <div class="profile-menu-divider"></div>
+                    <a href="#" class="profile-menu-item logout-btn-profile">
+                        <i class="bi bi-box-arrow-right"></i> Sair
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="logo">
+                <img src="Logo 3.0.png" alt="Logo do Auxílio Encceja" class="logo-img">
+                <h4 class="logo-text">Auxílio Encceja</h4>
+                <button class="toggle-btn" id="toggleSidebar">
+                </button>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="btn btn-primary w-100 mb-2" href="index.html">
+                        <i class="bi bi-house-door"></i>
+                        <span>Página Inicial</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2 active" href="plataforma.html">
+                    <i class="bi bi-laptop"></i>
+                    <span>Plataforma</span>
+                </a>
+            </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary w-100 mb-2" href="videoaula.html">
+                        <i class="bi bi-camera-video me-2"></i>
+                        <span>Video aulas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary w-100 mb-2" href="apostila.html">
+                        <i class="bi bi-file-earmark-text"></i>
+                        <span>Apostilas</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary w-100 mb-2" href="exercicio.html">
+                        <i class="bi bi-pencil-square"></i>
+                        <span>Exercícios</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary w-100 mb-2" href="simulado.html">
+                        <i class="bi bi-controller"></i>
+                        <span>Simulados</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary w-100 mb-2" href="acompanhamento.html">
+                        <i class="bi bi-trophy"></i>
+                        <span>Acompanhamento</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary w-100 mb-2" href="config.html">
+                        <i class="bi bi-gear"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content" id="content">
+            <div class="container-fluid">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="welcome-banner animate-in">
+                            <h2>Bem-vindo à Plataforma de Estudos</h2>
+                            <p class="mb-4">Transforme seu Futuro com uma Educação de qualidade!</p>
+                            
+                    <!-- Relógio em tempo real -->
+                        <div class="countdown-container">
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="hours">00</div>
+                                <div class="countdown-label">Horas</div>
+                            </div>
+                        <div class="countdown-item">
+                                <div class="countdown-value" id="minutes">00</div>
+                                <div class="countdown-label">Minutos</div>
+                            </div>
+                        <div class="countdown-item">
+                                <div class="countdown-value" id="seconds">00</div>
+                                <div class="countdown-label">Segundos</div>
+                            </div>
+                        </div>
+                            
+                        <button class="btn btn-light">Começar Estudos</button>
+                    </div>
+                </div>
+            </div>
+                
+            <!-- Barra de Busca com Efeito de Digitação -->
+                <div class="row mb-4 animate-in">
+            <div class="col-12">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Buscar recursos, aulas, exercícios..." id="searchInput">
+                    <i class="bi bi-search search-icon"></i>
+                    <div class="typing-cursor" id="typingCursor"></div>
+                </div>
+            </div>
+        </div>
+
+            <div class="row">
+            <!-- Videoaulas Section -->
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-1">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-camera-video"></i> Videoaulas
+                        </div>
+                    <div class="card-body p-0">
+                        <div class="resource-item">
+                            <i class="bi bi-play-circle text-primary"></i>
+                            <div class="title">Matemática</div>
+                            <span class="badge bg-success">15 min</span>
+                        </div>
+                    <div class="resource-item">
+                            <i class="bi bi-play-circle text-primary"></i>
+                            <div class="title">Português</div>
+                            <span class="badge bg-success">25 min</span>
+                        </div>
+                    <div class="resource-item">
+                        <i class="bi bi-play-circle text-primary"></i>
+                            <div class="title">História</div>
+                            <span class="badge bg-success">30 min</span>
+                        </div>
+                    <div class="resource-item">
+                        <i class="bi bi-play-circle text-primary"></i>
+                            <div class="title">Geografia</div>
+                            <span class="badge bg-success">20 min</span>
+                        </div>
+                    <div class="resource-item">
+                        <i class="bi bi-play-circle text-primary"></i>
+                        <div class="title">Ciências</div>
+                        <span class="badge bg-success">40 min</span>
+                    </div>
+                </div>
+                    <div class="card-footer bg-white text-center">
+                        <a href="videoaula.html" class="btn btn-sm btn-outline-primary">Ver todas</a>
+                        </div>
+                    </div>
+                </div>
+                    
+            <!-- Apostilas Section -->
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-2">
+                    <div class="card">
+                        <div class="card-header">
+                        <i class="bi bi-file-earmark-text"></i> Apostilas
+                    </div>
+                <div class="card-body p-0">
+                    <div class="resource-item">
+                        <i class="bi bi-file-pdf text-danger"></i>
+                        <div class="title">Matemática Basica</div>
+                        <span class="badge bg-secondary">PDF</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-pdf text-danger"></i>
+                        <div class="title">Literatura e Cultura</div>
+                        <span class="badge bg-secondary">PDF</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-pdf text-danger"></i>
+                        <div class="title">Antiguidade Oriental</div>
+                        <span class="badge bg-secondary">PDF</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-pdf text-danger"></i>
+                        <div class="title">Recursos Minerais</div>
+                        <span class="badge bg-secondary">PDF</span>
+                    </div>
+                <div class="resource-item">
+                        <i class="bi bi-file-pdf text-danger"></i>
+                        <div class="title">Ciências Humanas</div>
+                        <span class="badge bg-secondary">PDF</span>
+                    </div>
+                </div>
+            <div class="card-footer bg-white text-center">
+                    <a href="apostila.html" class="btn btn-sm btn-outline-primary">Ver todas</a>
+                </div>
+            </div>
+        </div>
+                    
+            <!-- Exercícios Section -->
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-pencil-square"></i> Exercícios
+                        </div>
+                    <div class="card-body p-0">
+                        <div class="resource-item">
+                            <i class="bi bi-check2-square text-success"></i>
+                            <div class="title">Exercícios de Raciocínio Lógico</div>
+                            <span class="badge bg-info">10 questões</span>
+                        </div>
+                    <div class="resource-item">
+                            <i class="bi bi-check2-square text-success"></i>
+                            <div class="title">Pronomes Demonstrativos</div>
+                                <span class="badge bg-info">15 questões</span>
+                        </div>
+                    <div class="resource-item">
+                            <i class="bi bi-check2-square text-success"></i>
+                            <div class="title">Constituição de 1824</div>
+                            <span class="badge bg-info">12 questões</span>
+                        </div>
+                    <div class="resource-item">
+                            <i class="bi bi-check2-square text-success"></i>
+                            <div class="title">Coordenadas Geográficas</div>
+                            <span class="badge bg-info">8 questões</span>
+                        </div>
+                    <div class="resource-item">
+                            <i class="bi bi-check2-square text-success"></i>
+                            <div class="title">Biodiversidade</div>
+                            <span class="badge bg-info">10 questões</span>
+                        </div>
+                    </div>
+                <div class="card-footer bg-white text-center">
+                    <a href="exercicio.html" class="btn btn-sm btn-outline-primary">Ver todas</a>
+                </div>
+            </div>
+        </div>
+                    
+            <!-- Simulados Section -->
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-4">
+                    <div class="card">
+                        <div class="card-header">
+                           <i class="bi bi-controller"></i> Simulados
+                        </div>
+                    <div class="card-body p-0">
+                       <div class="resource-item">
+                          <i class="bi bi-award text-warning"></i>
+                          <div class="title">Simulado de Matemática</div>
+                          <span class="badge bg-danger">60 min</span>
+                       </div>
+                    <div class="resource-item">
+                            <i class="bi bi-award text-warning"></i>
+                            <div class="title">Simulado de Português</div>
+                            <span class="badge bg-danger">45 min</span>
+                        </div>
+                    <div class="resource-item">
+                            <i class="bi bi-award text-warning"></i>
+                            <div class="title">Simulado de História</div>
+                            <span class="badge bg-danger">50 min</span>
+                        </div>
+                    <div class="resource-item">
+                            <i class="bi bi-award text-warning"></i>
+                            <div class="title">Simulado de Geografia</div>
+                            <span class="badge bg-danger">120 min</span>
+                            </div>
+                    <div class="resource-item">
+                            <i class="bi bi-award text-warning"></i>
+                                <div class="title">Simulado de Ciências</div>
+                                <span class="badge bg-danger">90 min</span>
+                            </div>
+                        </div>
+                    <div class="card-footer bg-white text-center">
+                            <a href="simulado.html" class="btn btn-sm btn-outline-primary">Ver todas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <!-- Recursos Recomendados -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h4 class="session-title">Recursos Recomendados</h4>
+                    </div>
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-1">
+                    <div class="card">
+                        <img src="https://vestibulares.estrategia.com/portal/wp-content/uploads/2024/07/guia-do-encceja-1-960x540.jpg" class="card-img-top" alt="Recurso recomendado">
+                <div class="card-body">
+                    <h5 class="card-title">Guia Completo da Encceja</h5>
+                        <p class="card-text">Tudo o que você precisa saber para se preparar para a prova.</p>
+                        <a href="guia.html" class="btn btn-primary">Acessar</a>
+                    </div>
+                </div>
+            </div>
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-2">
+                    <div class="card">
+                        <img src="https://classifilagos.com.br/wp-content/uploads/2025/05/como-estudar-para-o-Encceja-1024x683.jpg" class="card-img-top" alt="Recurso recomendado">
+                <div class="card-body">
+                    <h5 class="card-title">Dicas de Estudo</h5>
+                        <p class="card-text">Métodos eficazes para otimizar seu tempo de estudo.</p>
+                        <a href="dicas.html" class="btn btn-primary">Acessar</a>
+                    </div>
+                </div>
+            </div>
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-3">
+                    <div class="card">
+                        <img src="https://termine.com.br/wp-content/uploads/2020/03/20-05-07_provas_anteriores_te.jpg" class="card-img-top" alt="Recurso recomendado">
+                <div class="card-body">
+                    <h5 class="card-title">Provas Anteriores</h5>
+                        <p class="card-text">Analise as provas de anos anteriores para entender o formato.</p>
+                        <a href="provas.html" class="btn btn-primary">Acessar</a>
+                    </div>
+                </div>
+            </div>
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-4">
+                    <div class="card">
+                        <img src="https://wordpress-cms-revista-prod-assets.quero.space/legacy_posts/post_images/50647/0c9cdcab97e9fbc5ab6bc9e67a9fa7b562fe9232.png?1719261181" class="card-img-top" alt="Recurso recomendado">
+                <div class="card-body">
+                    <h5 class="card-title">Comunidade de Estudos</h5>
+                        <p class="card-text">Conecte-se com outros estudantes para trocar dicas e experiências.</p>
+                        <a href="comunidade.html" class="btn btn-primary">Acessar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+                
+            <!-- Desafios Section -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h4 class="session-title">Desafios Diários</h4>
+                    </div>
+                <div class="col-md-6 col-lg-3 mb-4 animate-in delay-1">
+                    <div class="card challenge-card">
+                    <div class="card-header challenge-card-header">
+                        <i class="bi bi-trophy"></i> Desafio de Matemática
+                    </div>
+                <div class="card-body">
+                        <div class="challenge-difficulty difficulty-medium">Médio</div>
+                        <p class="mt-3">Resolva problemas de porcentagem e juros compostos para testar seus conhecimentos.</p>
+                <div class="challenge-stats">
+                        <span><i class="bi bi-people"></i> 1.245 participantes</span>
+                        <span><i class="bi bi-clock"></i> 20 min</span>
+                    </div>
+                </div>
+            <div class="card-footer bg-white text-center">
+                    <a href="desafiomatematica.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
+                </div>
+            </div>
+        </div>
+            <div class="col-md-6 col-lg-3 mb-4 animate-in delay-2">
+                <div class="card challenge-card">
+                    <div class="card-header challenge-card-header">
+                        <i class="bi bi-book"></i> Desafio de Português
+                </div>
+                    <div class="card-body">
+                <div class="challenge-difficulty difficulty-easy">Fácil</div>
+                    <p class="mt-3">Identifique os erros gramaticais em frases e textos para aprimorar sua escrita.</p>
+                <div class="challenge-stats">
+                        <span><i class="bi bi-people"></i> 2.187 participantes</span>
+                        <span><i class="bi bi-clock"></i> 15 min</span>
+                    </div>
+                </div>
+            <div class="card-footer bg-white text-center">
+                    <a href="desafioportugues.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
+                </div>
+            </div>
+        </div>
+            <div class="col-md-6 col-lg-3 mb-4 animate-in delay-3">
+                <div class="card challenge-card">
+                    <div class="card-header challenge-card-header">
+                        <i class="bi bi-globe"></i> Desafio de Geografia
+                </div>
+                    <div class="card-body">
+                <div class="challenge-difficulty difficulty-hard">Difícil</div>
+                    <p class="mt-3">Teste seus conhecimentos sobre os biomas brasileiros e suas características.</p>
+                <div class="challenge-stats">
+                        <span><i class="bi bi-people"></i> 876 participantes</span>
+                        <span><i class="bi bi-clock"></i> 30 min</span>
+                    </div>
+                </div>
+            <div class="card-footer bg-white text-center">
+                    <a href="desafiogeografia.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
+                </div>
+            </div>
+        </div>
+            <div class="col-md-6 col-lg-3 mb-4 animate-in delay-4">
+                <div class="card challenge-card">
+            <div class="card-header challenge-card-header">
+                    <i class="bi bi-flask"></i> Desafio de Ciências
+                </div>
+            <div class="card-body">
+                <div class="challenge-difficulty difficulty-medium">Médio</div>
+                    <p class="mt-3">Responda questões sobre células, organelas e funções biológicas fundamentais.</p>
+                <div class="challenge-stats">
+                        <span><i class="bi bi-people"></i> 1.532 participantes</span>
+                        <span><i class="bi bi-clock"></i> 25 min</span>
+                    </div>
+                </div>
+            <div class="card-footer bg-white text-center">
+                    <a href="desafiociencias.html" class="btn btn-sm btn-outline-primary">Começar Desafio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        <!-- Rodapé com redes sociais -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+            <div class="col-md-6">
+                <div class="footer-links">
+                    <a href="termos.html">Termos de Uso</a>
+                    <a href="politica.html">Política de Privacidade</a>
+                    <a href="contato.html">Contato</a>
+                    <a href="sobre.html">Sobre Nós</a>
+                </div>
+            </div>
+        <div class="col-md-6">
+            <div class="social-icons">
+                    <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+          <div class="copyright text-center">
+            &copy; 2025 Plataforma de Estudos - Auxílio Encceja. Todos os Direitos Reservados.
+                </div>
+            </div>
+        </footer>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="JS/plataforma.js"></script>
+
+    </body>
+</html>

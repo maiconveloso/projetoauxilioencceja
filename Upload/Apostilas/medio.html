@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostilas para ENCCEJA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #3a5a78;
+            --secondary-color: #D3D3D3;
+            --accent-color: #e63946;
+            --text-color: #333;
+            --light-text: #6c757d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: #D3D3D3;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: #f8f9fa !important;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #2c3e50);
+            color: #f8f9fa;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .apostila-card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .apostila-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+            border-bottom: none;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #2c4760;
+            border-color: #2c4760;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .topic-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .topic-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .topic-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .topic-list i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+        
+        @media (max-width: 768px) {
+            .apostila-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        /* Estilos para a modal de visualização */
+        .modal-content {
+            border-radius: 8px;
+            border: none;
+        }
+        
+        .modal-header {
+            background-color: var(--primary-color);
+            color: white;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .apostila-preview {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-content {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .preview-content p {
+            margin-bottom: 0.75rem;
+        }
+        
+        .preview-content ul {
+            padding-left: 1.5rem;
+        }
+        
+        .preview-content li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-book me-2"></i>
+                Apostilas ENCCEJA
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#matematica">Matemática</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portugues">Português</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#fisica">Física</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#quimica">Química</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#historia">História</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">Apostilas do Ensino Médio</h1>
+            <p class="lead mb-4">Prepare-se para os seus exames com nossas apostilas completas e bem estruturadas para todas as matérias do ensino médio.</p>
+            <a href="#apostilas" class="btn btn-light btn-lg me-2">Ver Apostilas</a>
+            <a href="#contato" class="btn btn-outline-light btn-lg">Fale Conosco</a>
+        </div>
+    </section>
+    
+    <!-- Apostilas Section -->
+    <section id="apostilas" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Nossas Apostilas</h2>
+            
+            <!-- Matemática Section -->
+            <section id="matematica" class="mb-5">
+                <h3 class="text-center mb-4">Matemática</h3>
+                <div class="row g-4">
+                    <!-- Apostila 1 - Álgebra -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-calculator me-2"></i>
+                                Álgebra
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Fundamentos de álgebra para o ensino médio, incluindo equações, inequações e funções.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Equações lineares e quadráticas</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Sistemas de equações</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Funções e gráficos</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Progressões aritméticas e geométricas</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('Álgebra')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('Álgebra')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Apostila 2 - Geometria -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-triangle me-2"></i>
+                                Geometria
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Princípios da geometria plana e espacial, com foco em teoremas e demonstrações.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Triângulos e seus teoremas</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Geometria analítica</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Círculos e suas propriedades</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Geometria espacial: volumes e áreas</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('Geometria')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('Geometria')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Apostila 3 - Trigonometria -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-circle me-2"></i>
+                                Trigonometria
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Fundamentos da trigonometria e suas aplicações em problemas geométricos e físicos.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Funções trigonométricas</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Identidades trigonométricas</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Triângulos e trigonometria</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Aplicações da trigonometria</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('Trigonometria')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('Trigonometria')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Português Section -->
+            <section id="portugues" class="mb-5">
+                <h3 class="text-center mb-4">Português</h3>
+                <div class="row g-4">
+                    <!-- Apostila 1 - Gramática Básica -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-journal-text me-2"></i>
+                                Gramática Básica
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Conceitos fundamentais de gramática para o ensino médio, incluindo fonética, morfologia e sintaxe.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Fonética e fonologia</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Classes de palavras</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Concordância verbal e nominal</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Regência verbal e nominal</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('Gramática Básica')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('Gramática Básica')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Apostila 2 - Literatura Brasileira -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-book me-2"></i>
+                                Literatura Brasileira
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Principais movimentos literários e autores brasileiros para o ensino médio.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Período colonial</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Romantismo</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Realismo e Naturalismo</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Modernismo</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('Literatura Brasileira')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('Literatura Brasileira')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Apostila 3 - Redação e Texto Argumentativo -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-pencil-square me-2"></i>
+                                Redação e Texto Argumentativo
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Técnicas e estratégias para elaborar textos argumentativos para o ensino médio.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Tipos de texto</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Estrutura do texto argumentativo</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Argumentação e persuasão</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Revisão e correção</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('Redação e Texto Argumentativo')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('Redação e Texto Argumentativo')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Física Section -->
+            <section id="fisica" class="mb-5">
+                <h3 class="text-center mb-4">Física</h3>
+                <div class="row g-4">
+                    <!-- Apostila 1 - Mecânica -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-gear me-2"></i>
+                                Mecânica
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Fundamentos da mecânica clássica, incluindo movimento, forças e energia.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Movimento e vetores</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Leis de Newton</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Trabalho e energia</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Dinâmica e conservação de energia</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('Mecânica')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('Mecânica')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--ila 2 - Eletricidade -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-lightning me-2"></i>
+                                Eletricidade
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Princípios da eletricidade estática e dinâmica, com foco em circuitos elétricos.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Eletricidade estática</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Campo elétrico</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Eletricidade dinâmica</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Circuitos elétricos e Ohm</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('Eletricidade')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('Eletricidade')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Apostila 3 - Óptica -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-eye me-2"></i>
+                                Óptica
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Estudo da luz, suas propriedades e aplicações em sistemas ópticos.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Propriedades da luz</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Reflexão e refração</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Lentes e espelhos</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Instrumentos ópticos</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('Óptica')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('Óptica')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Química Section -->
+            <section id="quimica" class="mb-5">
+                <h3 class="text-center mb-4">Química</h3>
+                <div class="row g-4">
+                    <!-- Apostila 1 - Química Orgânica -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-flask me-2"></i>
+                                Química Orgânica
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Fundamentos da química orgânica, com foco em compostos orgânicos e reações.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Estrutura da matéria orgânica</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Hidrocarbonetos</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Funções orgânicas</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Reações orgânicas</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('Química Orgânica')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('Química Orgânica')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Apostila 2 - Química Inorgânica -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-droplet me-2"></i>
+                                Química Inorgânica
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Estudo dos elementos químicos, suas propriedades e compostos inorgânicos.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Tabela periódica</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Reações químicas</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Ácidos e bases</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Sais e oxidação-redução</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('Química Inorgânica')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('Química Inorgânica')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Apostila 3 - Química Analítica -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-search me-2"></i>
+                                Química Analítica
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Métodos e técnicas para análise química de substâncias e compostos.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Métodos de análise química</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Técnicas de titulação</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Análise espectrométrica</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Análise de água e solo</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('Química Analítica')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('Química Analítica')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- História Section -->
+            <section id="historia" class="mb-5">
+                <h3 class="text-center mb-4">História</h3>
+                <div class="row g-4">
+                    <!-- Apostila 1 - História Antiga -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-building me-2"></i>
+                                História Antiga
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Civilizações antigas e seus legados para a humanidade.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Civilizações mesopotâmicas</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Egito antigo</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Grécia antiga</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Império Romano</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('História Antiga')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('História Antiga')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Apostila 2 - História Medieval -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-shield me-2"></i>
+                                História Medieval
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Período medieval e suas transformações sociais, políticas e culturais.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Feudalismo</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Impérios islâmicos</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Cruzadas</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Renascimento</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('História Medieval')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('História Medieval')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Apostila 3 - História Moderna e Contemporânea -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="apostila-card card">
+                            <div class="card-header d-flex align-items-center">
+                                <i class="bi bi-globe me-2"></i>
+                                História Moderna e Contemporânea
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Transformações do mundo moderno e contemporâneo, com foco em movimentos sociais e políticos.</p>
+                                <ul class="topic-list">
+                                    <li><i class="bi bi-check-circle-fill"></i> Revoluções burguesas</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Imperialismo e colonialismo</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Guerras mundiais</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Guerra Fria e globalização</li>
+                                </ul>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button class="btn btn-outline-primary" onclick="showPreview('História Moderna e Contemporânea')">Visualizar</button>
+                                    <button class="btn btn-primary" onclick="downloadApostila('História Moderna e Contemporânea')">Baixar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    
+    <!-- Sobre Section -->
+    <section id="sobre" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Sobre Nossas Apostilas</h2>
+                    <p>As apostilas do ensino médio foram desenvolvidas por especialistas em educação com foco no conteúdo programático dos exames e vestibulares. Cada apostila foi cuidadosamente estruturada para proporcionar uma aprendizagem eficaz e direta.</p>
+                    <p>As apostilas contêm:</p>
+                    <ul>
+                        <li>Explicações claras e concisas dos conceitos de cada matéria</li>
+                        <li>Exemplos práticos e resolvidos</li>
+                        <li>Exercícios para fixação do conteúdo</li>
+                        <li>Dicas e estratégias para resolver questões</li>
+                    </ul>
+                    <p>Nossa metodologia é baseada na experiência de professores que atuam em escolas de excelência e já atuaram como corretores e elaboradores de questões para os principais vestibulares do país.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h3 class="mb-4">Por que escolher nossas apostilas?</h3>
+                            <div class="d-flex mb-3">
+                                <div class="feature-icon">
+                                    <!-- Ícone removido -->
+                                </div>
+                                <div>
+                                    <h5>Conteúdo Atualizado</h5>
+                                    <p class="mb-0">Nossas apostilas são atualizadas regularmente para acompanhar as mudanças nos currículos escolares e nos formatos dos exames.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <div class="feature-icon">
+                                    <!-- Ícone removido -->
+                                </div>
+                                <div>
+                                    <h5>Metodologia Eficaz</h5>
+                                    <p class="mb-0">Organização do conteúdo que facilita a absorção dos conceitos de cada matéria.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <div class="feature-icon">
+                                    <!-- Ícone removido -->
+                                </div>
+                                <div>
+                                    <h5>Material Completo</h5>
+                                    <p class="mb-0">Cobertura de todos os tópicos de cada matéria que podem ser cobrados nos exames e vestibulares.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="feature-icon">
+                                    <!-- Ícone removido -->
+                                </div>
+                                <div>
+                                    <h5>Resultados Comprovados</h5>
+                                    <p class="mb-0">Estudantes que utilizam nossas apostilas apresentam melhor desempenho nos exames e vestibulares.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contato Section -->
+    <section id="contato" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="text-center mb-4">Fale Conosco</h2>
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-4">
+                            <form id="contactForm">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Nome</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label">E-mail</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="subject" class="form-label">Assunto</label>
+                                        <input type="text" class="form-control" id="subject" required>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label">Mensagem</label>
+                                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="btn btn-primary px-4 py-2">Enviar Mensagem</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+    
+    <!-- Modal para visualização da apostila -->
+    <div class="modal fade" id="apostilaModal" tabindex="-1" aria-labelledby="apostilaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="apostilaModalLabel">Visualização da Apostila</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="apostila-preview">
+                        <h4 class="preview-title" id="previewTitle">Título da Apostila</h4>
+                        <div class="preview-content" id="previewContent">
+                            <!-- Conteúdo da apostila será inserido aqui -->
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-muted">Esta é uma visualização parcial da apostila. Baixe a versão completa para acessar todo o conteúdo.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="downloadFromModal">Baixar Apostila</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função para mostrar preview da apostila
+        function showPreview(apostila) {
+            const apostilaModal = new bootstrap.Modal(document.getElementById('apostilaModal'));
+            document.getElementById('previewTitle').textContent = apostila;
+            
+            // Conteúdo específico para cada apostila
+            let content = '';
+            switch(apostila) {
+                case 'Álgebra':
+                    content = `
+                        <p>Esta apostila aborda os fundamentos da álgebra para o ensino médio, incluindo equações, inequações e funções.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Equações lineares e quadráticas</li>
+                            <li>Sistemas de equações</li>
+                            <li>Funções e gráficos</li>
+                            <li>Progressões aritméticas e geométricas</li>
+                            <li>Matrizes e determinantes</li>
+                            <li>Probabilidade e estatística</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Geometria':
+                    content = `
+                        <p>Esta apostila aborda os princípios da geometria plana e espacial, com foco em teoremas e demonstrações.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Teoremas de Pitágoras e Tales</li>
+                            <li>Geometria analítica: coordenadas e equações</li>
+                            <li>Ángulos e suas propriedades</li>
+                            <li>Teoremas de congruência e semelhança</li>
+                            <li>Geometria espacial: volumes e áreas</li>
+                            <li>Trigonometria aplicada à geometria</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Trigonometria':
+                    content = `
+                        <p>Esta apostila aborda os fundamentos da trigonometria e suas aplicações em problemas geométricos e físicos.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Funções trigonométricas: seno, cosseno e tangente</li>
+                            <li>Identidades trigonométricas</li>
+                            <li>Triângulos e trigonometria</li>
+                            <li>Trigonometria no círculo trigonométrico</li>
+                            <li>Aplicações da trigonometria em física e engenharia</li>
+                            <li>Funções trigonométricas inversas</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Gramática Básica':
+                    content = `
+                        <p>Esta apostila aborda os conceitos fundamentais de gramática para o ensino médio, incluindo fonética, morfologia e sintaxe.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Fonética e fonologia: sons da língua portuguesa</li>
+                            <li>Classes de palavras: substantivos, adjetivos, verbos, etc.</li>
+                            <li>Concordância verbal e nominal</li>
+                            <li>Regência verbal e nominal</li>
+                            <li>Tempo e modo verbal</li>
+                            <li> Pontuação e parênteses</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Literatura Brasileira':
+                    content = `
+                        <p>Esta apostila aborda os principais movimentos literários e autores brasileiros para o ensino médio.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Período colonial: poesia barroca e arcádica</li>
+                            <li>Romantismo: gêneros, temas e autores representativos</li>
+                            <li>Realismo e Naturalismo: características e principais autores</li>
+                            <li>Modernismo: Vanguardas e principais manifestações</li>
+                            <li>Pós-Modernismo e contemporaneidade</li>
+                            <li>Análise de textos literários com foco no ensino médio</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Redação e Texto Argumentativo':
+                    content = `
+                        <p>Esta apostila aborda técnicas e estratégias para elaborar textos argumentativos para o ensino médio.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Tipos de texto e seus elementos constitutivos</li>
+                            <li>Estrutura do texto argumentativo: introdução, desenvolvimento e conclusão</li>
+                            <li>Argumentação e persuasão: tipos de argumentos e técnicas de persuasão</li>
+                            <li>Coerência e coesão textual</li>
+                            <li>Revisão e correção de texto</li>
+                            <li>Exemplos de textos argumentativos com análise crítica</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Mecânica':
+                    content = `
+                        <p>Esta apostila aborda os fundamentos da mecânica clássica, incluindo movimento, forças e energia.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Movimento e vetores: tipos de movimento e análise vetorial</li>
+                            <li>Leis de Newton: primeira, segunda e terceira lei</li>
+                            <li>Trabalho e energia: conceitos e aplicações</li>
+                            <li>Dinâmica e conservação de energia: princípios fundamentais</li>
+                            <li>Impulso e quantidade de movimento</li>
+                            <li>Gravitação e movimento circular</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Eletricidade':
+                    content = `
+                        <p>Esta apostila aborda os princípios da eletricidade estática e dinâmica, com foco em circuitos elétricos.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Eletricidade estática: cargas elétricas e campos elétricos</li>
+                            <li>Leis de Coulomb e Gauss</li>
+                            <li>Eletricidade dinâmica: corrente elétrica e tensão</li>
+                            <li>Circuitos elétricos: resistência, Ohm e lei de Joule</li>
+                            <li>Circuitos em série e paralelo</li>
+                            <li>Fontes de energia elétrica</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Óptica':
+                    content = `
+                        <p>Esta apostila aborda o estudo da luz, suas propriedades e aplicações em sistemas ópticos.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Propriedades da luz: natureza e velocidade</li>
+                            <li>Reflexão e refração: leis e aplicações</li>
+                            <li>Lentes e espelhos: tipos e propriedades</li>
+                            <li>Instrumentos ópticos: microscópio, telescópio, etc.</li>
+                            <li>Óptica física: interferência e difração</li>
+                            <li>Óptica moderna: lasers e fibra óptica</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Química Orgânica':
+                    content = `
+                        <p>Esta apostila aborda os fundamentos da química orgânica, com foco em compostos orgânicos e reações.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Estrutura da matéria orgânica: ligação química</li>
+                            <li>Hidrocarbonetos: propriedades e classificação</li>
+                            <li>Funções orgânicas: álcoois, ácidos carboxílicos, etc.</li>
+                            <li>Reações orgânicas: mecanismos e tipos</li>
+                            <li>Química farmacêutica: compostos orgânicos de interesse medicinal</li>
+                            <li>Química ambiental: poluição e soluções</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Química Inorgânica':
+                    content = `
+                        <p>Esta apostila aborda o estudo dos elementos químicos, suas propriedades e compostos inorgânicos.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Tabela periódica: organização e leitura</li>
+                            <li>Reações químicas: tipos e equilíbrio</li>
+                            <li>Ácidos e bases: teorias e propriedades</li>
+                            <li>Sais e oxidação-redução: mecanismos e aplicações</li>
+                            <li>Química do meio ambiente: poluição e soluções</li>
+                            <li>Química industrial: processos e aplicações</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'Química Analítica':
+                    content = `
+                        <p>Esta apostila aborda os métodos e técnicas para análise química de substâncias e compostos.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Métodos de análise química: quantitativos e qualitativos</li>
+                            <li>Técnicas de titulação: ácido-base, complexométrica, etc.</li>
+                            <li>Análise espectrométrica: UV-Vis, IR, etc.</li>
+                            <li>Análise de água: parâmetros e métodos</li>
+                            <li>Análise de solo: componentes e características</li>
+                            <li>Análise de alimentos: nutrientes e aditivos</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'História Antiga':
+                    content = `
+                        <p>Esta apostila aborda as civilizações antigas e seus legados para a humanidade.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Civilizações mesopotâmicas: Sumérios, Acadianos, Babilônicos</li>
+                            <li>Egito antigo: dinastias, pirâmides e religião</li>
+                            <li>Grécia antiga: democracia, filosofia e ciência</li>
+                            <li>Roma antiga: república, império e direito</li>
+                            <li>Impérios da Ásia: Persa, Indiano e Chinês</li>
+                            <li>Religiões e mitologias antigas</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'História Medieval':
+                    content = `
+                        <p>Esta apostila aborda o período medieval e suas transformações sociais, políticas e culturais.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Feudalismo: estrutura social e política</li>
+                            <li>Impérios islâmicos: Califado e ciência</li>
+                            <li>Cruzadas: causas e consequências</li>
+                            <li>Universidades medievais: desenvolvimento do conhecimento</li>
+                            <li>Arte e arquitetura medieval: estilos e características</li>
+                            <li>Declínio do feudalismo e surgimento do capitalismo</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                case 'História Moderna e Contemporânea':
+                    content = `
+                        <p>Esta apostila aborda as transformações do mundo moderno e contemporâneo, com foco em movimentos sociais e políticos.</p>
+                        <p>Conheça os principais tópicos abordados:</p>
+                        <ul>
+                            <li>Revoluções burguesas: Inglesa, Americana e Francesa</li>
+                            <li>Imperialismo e colonialismo: expansão européia</li>
+                            <li>Guerras mundiais: causas, eventos e consequências</li>
+                            <li>Guerra Fria: confronto ideológico e geopolítico</li>
+                            <li>Globalização e suas consequências</li>
+                            <li>Descolonização e movimentos de independência</li>
+                        </ul>
+                        <p>A apostila contém exemplos práticos e exercícios resolvidos para ajudar na fixação do conteúdo.</p>
+                    `;
+                    break;
+                default:
+                    content = '<p>Conteúdo da apostila não disponível.</p>';
+            }
+            
+            document.getElementById('previewContent').innerHTML = content;
+            
+            // Configurar o botão de download na modal
+            document.getElementById('downloadFromModal').onclick = function() {
+                apostilaModal.hide();
+                downloadApostila(apostila);
+            };
+            
+            apostilaModal.show();
+        }
+        
+        // Função para baixar apostila
+        function downloadApostila(apostila) {
+            showToast('Download Iniciado', `A apostila de ${apostila} está sendo baixada. Por favor, aguarde.`, 'success');
+            // Simulação de download
+            setTimeout(() => {
+                showToast('Download Concluído', `A apostila de ${apostila} foi baixada com sucesso!`, 'success');
+            }, 3000);
+        }
+        
+        // Função para mostrar toast
+        function showToast(title, message, type) {
+            const toastContainer = document.querySelector('.toast-container');
+            const toastId = 'toast-' + Date.now();
+            const iconClass = type === 'success' ? 'bi-check-circle-fill' : 
+                             type === 'info' ? 'bi-info-circle-fill' : 
+                             type === 'warning' ? 'bi-exclamation-triangle-fill' : 'bi-x-circle-fill';
+            
+            const toastHtml = `
+                <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <i class="bi ${iconClass} me-2 text-${type === 'info' ? 'primary' : type}"></i>
+                        <strong class="me-auto">${title}</strong>
+                        <small>Agora</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                </div>
+            `;
+            
+            toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement, { autohide: true, delay: 5000 });
+            toast.show();
+            
+            // Remove o toast do DOM após fechar
+            toastElement.addEventListener('hidden.bs.toast', function () {
+                toastElement.remove();
+            });
+        }
+        
+        // Formulário de contato
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            showToast('Mensagem Enviada', `Obrigado, ${name}! Sua mensagem foi enviada com sucesso. responderemos em breve.`, 'success');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

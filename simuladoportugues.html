@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado Português e Literatura ENCCEJA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/simuladoportugues.css">
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRNKXZCX54"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SRNKXZCX54');
+</script>
+    
+</head>
+<body>
+   
+    <div class="container">
+        <main class="main-content">
+            <section class="welcome-section">
+                <h1>Bem-vindo ao Simulado de Português e Literatura ENCCEJA</h1>
+                <p>Prepare-se para o Encceja com nosso simulado de Português e Literatura. Este teste contém 10 questões que cobrem os principais tópicos do exame. Boa sorte!</p>
+            </section>
+            
+            <section class="simulado-section">
+                <h2><i class="fas fa-clipboard-list"></i> Simulado de Português e Literatura</h2>
+                <div class="rules-notice">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Regras do Simulado</h4>
+                    <ul>
+                        <li>Não é permitido abrir outras abas ou janelas do navegador durante o simulado</li>
+                        <li>O simulado será encerrado automaticamente se você tentar sair desta página</li>
+                        <li>Você terá 60 minutos para concluir o teste</li>
+                        <li>As respostas são salvas automaticamente ao navegar entre as questões</li>
+                    </ul>
+                </div>
+                
+                <div class="simulado-info">
+                    <div class="timer">
+                        <i class="fas fa-clock"></i>
+                        <span id="timer">00:00</span>
+                    </div>
+                    <div class="question-counter">
+                        Questão <span id="current-question">0</span> de <span id="total-questions">10</span>
+                    </div>
+                </div>
+                
+                <div id="start-screen">
+                    <p>Este simulado contém 10 questões de Português e Literatura que são comuns no Encceja. Você terá 60 minutos para concluir o teste. Ao final, receberá sua nota e um feedback detalhado.</p>
+                    <button class="start-btn" id="start-btn">
+                        <i class="fas fa-play"></i> Iniciar Simulado
+                    </button>
+                </div>
+                
+                <div id="question-container" class="question-container">
+                    <div id="question-1" class="question">
+                        <h3><span class="question-number">1</span> Qual das seguintes frases está gramaticalmente correta?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q1" value="A"> A) Ele e ela foi ao cinema.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="B"> B) Ele e ela foiem ao cinema.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="C"> C) Ele e ela foram ao cinema.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="D"> D) Ele e ela foi ao cinema.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-1"></div>
+                    </div>
+                    
+                    <div id="question-2" class="question">
+                        <h3><span class="question-number">2</span> Qual o sinônimo de "indiferença"?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q2" value="A"> A) Afeição
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="B"> B) Desinteresse
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="C"> C) Apego
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="D"> D) Empatia
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-2"></div>
+                    </div>
+                    
+                    <div id="question-3" class="question">
+                        <h3><span class="question-number">3</span> Em qual palavra a letra "c" tem som de "ss"?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q3" value="A"> A) Cadeira
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="B"> B) Canto
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="C"> C) Cemitério
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="D"> D) Cisne
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-3"></div>
+                    </div>
+                    
+                    <div id="question-4" class="question">
+                        <h3><span class="question-number">4</span> Qual o antônimo de "abundante"?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q4" value="A"> A) Farto
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="B"> B) Rico
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="C"> C) Escasso
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="D"> D) Pleno
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-4"></div>
+                    </div>
+                    
+                    <div id="question-5" class="question">
+                        <h3><span class="question-number">5</span> Qual das seguintes frases utiliza corretamente a crase?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q5" value="A"> A) Fui à escola de manhã.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="B"> B) Vamos a praia amanhã.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="C"> C) Ele foi ao shopping.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="D"> D) Ela foi a farmácia.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-5"></div>
+                    </div>
+                    
+                    <div id="question-6" class="question">
+                        <h3><span class="question-number">6</span> Qual o gênero literário de "Dom Quixote" de Miguel de Cervantes?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q6" value="A"> A) Romance
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6" value="B"> B) Poesia
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6" value="C"> C) Teatro
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6" value="D"> D) Crônica
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-6"></div>
+                    </div>
+                    
+                    <div id="question-7" class="question">
+                        <h3><span class="question-number">7</span> Qual das seguintes palavras tem a consoante "s" com som de "z"?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q7" value="A"> A) Sapo
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q7" value="B"> B) Sino
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q7" value="C"> C) Mesa
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q7" value="D"> D) Sombra
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-7"></div>
+                    </div>
+                    
+                    <div id="question-8" class="question">
+                        <h3><span class="question-number">8</span> Qual o autor do livro "Memórias Póstumas de Brás Cubas"?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q8" value="A"> A) Machado de Assis
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q8" value="B"> B) José de Alencar
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q8" value="C"> C) Clarice Lispector
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q8" value="D"> D) Graciliano Ramos
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-8"></div>
+                    </div>
+                    
+                    <div id="question-9" class="question">
+                        <h3><span class="question-number">9</span> Qual das seguintes palavras está no plural?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q9" value="A"> A) Criança
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="B"> B) Peixe
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="C"> C) Crianças
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="D"> D) Paisagem
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-9"></div>
+                    </div>
+                    
+                    <div id="question-10" class="question">
+                        <h3><span class="question-number">10</span> Qual o tempo verbal da frase: "Eles irão ao cinema amanhã"?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q10" value="A"> A) Presente
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="B"> B) Pretérito Perfeito
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="C"> C) Futuro do Presente
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="D"> D) Futuro do Pretérito
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-10"></div>
+                    </div>
+                    
+                    <div class="navigation-buttons">
+                        <button id="prev-btn" class="nav-btn" disabled>
+                            <i class="fas fa-arrow-left"></i> Questão Anterior
+                        </button>
+                        <button id="next-btn" class="nav-btn">
+                            Próxima Questão <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="result-container" class="result-container">
+                    <h2>Resultado do Simulado</h2>
+                    <p>Parabéns! Você completou o simulado de Português e Literatura.</p>
+                    <div class="score">0/10</div>
+                    <p class="result-message">Veja como você se saiu e onde pode melhorar.</p>
+                    <button class="retry-btn" id="retry-btn">
+                        <i class="fas fa-redo"></i> Tentar Novamente
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="warning-modal" class="warning-modal">
+        <div class="warning-content">
+            <h3><i class="fas fa-exclamation-triangle"></i> Aviso Importante</h3>
+            <p id="warning-message">Você tentou sair da página do simulado. Esta ação não é permitida e o simulado será encerrado automaticamente.</p>
+            <button id="close-warning">OK</button>
+        </div>
+    </div>
+    
+    <script src="JS/simuladoportugues.js"></script>
+
+</body>
+</html>

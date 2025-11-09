@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auxílio Encceja - Simulado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin-bottom: 80px; /* Espaço para o rodapé */
+        }
+        
+        /* Menu Moderno */
+        .sidebar {
+            background-color: #34495e;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            padding-top: 20px;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .sidebar.collapsed {
+            margin-left: -250px;
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 5px;
+            border-radius: 5px;
+            padding: 12px 15px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .sidebar .nav-link.active {
+            background-color: #34495e;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            text-align: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .logo h4 {
+            margin: 0;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .logo .toggle-btn {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .content.expanded {
+            margin-left: 0;
+        }
+        
+        /* Estilos do rodapé */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #34495e;
+            color: white;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #34495e;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 250px;
+                margin-left: -250px;
+            }
+            
+            .sidebar.expanded {
+                margin-left: 0;
+            }
+            
+            .content {
+                margin-left: 0;
+            }
+            
+            .content.shifted {
+                margin-left: 250px;
+            }
+        }
+        
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background-color: #34495e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Badges personalizados */
+        .badge-success {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .badge-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+        
+        .badge-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .badge-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        
+        /* Estilos do simulado */
+        .simulado-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .simulado-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .simulado-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #34495e;
+            margin: 0;
+        }
+        
+        .simulado-timer {
+            display: flex;
+            align-items: center;
+            background-color: #f8f9fa;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #34495e;
+        }
+        
+        .simulado-timer i {
+            margin-right: 8px;
+        }
+        
+        .question-container {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            transition: all 0.3s;
+        }
+        
+        .question-container:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question-number {
+            display: inline-block;
+            background-color: #34495e;
+            color: white;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: 600;
+        }
+        
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #34495e;
+        }
+        
+        .options-container {
+            margin-bottom: 15px;
+        }
+        
+        .option-item {
+            padding: 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .option-item:hover {
+            border-color: #34495e;
+            background-color: #f1f3f5;
+        }
+        
+        .option-item.selected {
+            border-color: #34495e;
+            background-color: rgba(52, 73, 94, 0.1);
+        }
+        
+        .option-item.correct {
+            border-color: #28a745;
+            background-color: rgba(40, 167, 69, 0.1);
+        }
+        
+        .option-item.incorrect {
+            border-color: #dc3545;
+            background-color: rgba(220, 53, 69, 0.1);
+        }
+        
+        .option-letter {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            background-color: #34495e;
+            color: white;
+            margin-right: 15px;
+            font-weight: 600;
+        }
+        
+        .option-text {
+            flex-grow: 1;
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        /* Estilos melhorados para os botões de navegação */
+        .btn-primary {
+            background-color: #34495e;
+            border-color: #34495e;
+            padding: 10px 20px;
+            font-weight: 500;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2c3e50;
+            border-color: #2c3e50;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline-primary {
+            color: #34495e;
+            border-color: #34495e;
+            padding: 10px 20px;
+            font-weight: 500;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: #34495e;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline-primary:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-danger {
+            background-color: #e74c3c;
+            border-color: #e74c3c;
+            padding: 10px 20px;
+            font-weight: 500;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-danger:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .progress-container {
+            margin: 30px 0;
+        }
+        
+        .progress {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e9ecef;
+        }
+        
+        .progress-bar {
+            background-color: #34495e;
+        }
+        
+        .question-status {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        .status-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .status-item i {
+            margin-right: 5px;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .result-summary {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .result-score {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+        
+        .result-percentage {
+            font-size: 1.5rem;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        
+        .result-message {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+        
+        .result-details {
+            margin-bottom: 30px;
+        }
+        
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .result-table th, .result-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .result-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #34495e;
+        }
+        
+        .result-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .result-action {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .question-review {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .review-question {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        .review-option {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .review-correct {
+            background-color: rgba(40, 167, 69, 0.1);
+            border-left: 3px solid #28a745;
+        }
+        
+        .review-selected {
+            background-color: rgba(52, 73, 94, 0.1);
+            border-left: 3px solid #34495e;
+        }
+        
+        .review-incorrect {
+            background-color: rgba(220, 53, 69, 0.1);
+            border-left: 3px solid #dc3545;
+        }
+        
+        .review-explanation {
+            font-style: italic;
+            color: #6c757d;
+            margin-top: 15px;
+        }
+        
+        .simulado-info {
+            background-color: #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .info-label {
+            width: 120px;
+            font-weight: 500;
+            color: #6c757d;
+        }
+        
+        .info-value {
+            flex-grow: 1;
+            font-weight: 500;
+            color: #34495e;
+        }
+        
+        .simulado-instructions {
+            background-color: rgba(52, 73, 94, 0.1);
+            border-left: 4px solid #34495e;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 20px;
+        }
+        
+        .instructions-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+        
+        .instructions-list {
+            padding-left: 20px;
+        }
+        
+        .instructions-list li {
+            margin-bottom: 5px;
+            color: #495057;
+        }
+        
+        .simulado-subjects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .subject-badge {
+            background-color: rgba(52, 73, 94, 0.1);
+            color: #34495e;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .difficulty-selector {
+            margin-bottom: 20px;
+        }
+        
+        .difficulty-selector .btn-group {
+            width: 100%;
+        }
+        
+        .difficulty-selector .btn {
+            flex: 1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão de toggle para mobile -->
+    <button class="mobile-toggle" id="mobileToggle">
+        <i class="bi bi-list"></i>
+    </button>
+    
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <h4><i class="bi bi-book"></i> Auxílio Encceja</h4>
+            <button class="toggle-btn" id="toggleSidebar">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="index.html">
+                    <i class="bi bi-house-door"></i>
+                    <span>Página Inicial</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="videoaula.html">
+                    <i class="bi bi-camera-video me-2"></i>
+                    <span>Video aulas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="apostila.html">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span>Apostilas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="exercicio.html">
+                    <i class="bi bi-pencil-square"></i>
+                    <span>Exercícios</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="simulado.html">
+                    <i class="bi bi-controller"></i>
+                    <span>Simulados</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="acompanhamento.html">
+                    <i class="bi bi-trophy"></i>
+                    <span>Acompanhamento</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="config.html">
+                    <i class="bi bi-gear"></i>
+                    <span>Configurações</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="content" id="content">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="welcome-banner animate-in">
+                        <h2>Bem-vindo aos Simulados do Auxílio Encceja</h2>
+                        <p class="mb-4">Teste seus conhecimentos com simulados que imitam a estrutura da prova.</p>
+                        <button class="btn btn-light">Ver Recursos Recomendados</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="simulado-container animate-in">
+                        <div class="simulado-header">
+                            <h1 class="simulado-title">Simulado Completo da Encceja</h1>
+                            <div class="simulado-timer">
+                                <i class="bi bi-clock"></i>
+                                <span id="timer">01:30:00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="simulado-info animate-in">
+                            <div class="info-item">
+                                <div class="info-label">Duração:</div>
+                                <div class="info-value">03:00:00</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Questões:</div>
+                                <div class="info-value">45</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Nível:</div>
+                                <div class="info-value">Completo</div>
+                            </div>
+                        </div>
+                        
+                        <div class="simulado-subjects animate-in">
+                            <div class="subject-badge">Matemática</div>
+                            <div class="subject-badge">Português</div>
+                            <div class="subject-badge">Ciências</div>
+                            <div class="subject-badge">História</div>
+                            <div class="subject-badge">Geografia</div>
+                            <div class="subject-badge">Artes</div>
+                            <div class="subject-badge">Educação Física</div>
+                        </div>
+                        
+                        <div class="simulado-instructions animate-in">
+                            <div class="instructions-title">Instruções para o Simulado:</div>
+                            <ul class="instructions-list">
+                                <li>Este simulado contém questões de todas as áreas do conhecimento.</li>
+                                <li>Para cada questão, selecione a alternativa que corresponde à resposta correta.</li>
+                                <li>Você pode navegar entre as questões usando os botões "Anterior" e "Próximo".</li>
+                                <li>Use o botão "Finalizar Simulado" para encerrar a prova antes do tempo estipulado.</li>
+                                <li>Após concluir o simulado, você receberá um feedback detalhado com suas respostas.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="progress-container animate-in">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="question-status">
+                                <div class="status-item">
+                                    <i class="bi bi-question-circle"></i>
+                                    <span>Questão 1 de 45</span>
+                                </div>
+                                <div class="status-item">
+                                    <i class="bi bi-check-circle"></i>
+                                    <span>0 respondidas</span>
+                                </div>
+                                <div class="status-item">
+                                    <i class="bi bi-clock"></i>
+                                    <span>Restam 01:28:45</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="question-container animate-in">
+                            <div class="question-number">1</div>
+                            <div class="question-text">Qual das seguintes alternativas apresenta a forma correta de escrever o número por extenso para 1.500.000?</div>
+                            
+                            <div class="options-container">
+                                <div class="option-item" onclick="selectOption(this, 1)">
+                                    <div class="option-letter">A</div>
+                                    <div class="option-text">Um milhão e meio</div>
+                                </div>
+                                <div class="option-item" onclick="selectOption(this, 2)">
+                                    <div class="option-letter">B</div>
+                                    <div class="option-text">Um milhão e meio de</div>
+                                </div>
+                                <div class="option-item" onclick="selectOption(this, 3)">
+                                    <div class="option-letter">C</div>
+                                    <div class="option-text">Um milhão e meio milhão</div>
+                                </div>
+                                <div class="option-item" onclick="selectOption(this, 4)">
+                                    <div class="option-letter">D</div>
+                                    <div class="option-text">Um milhão e meio milhões</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="navigation-buttons animate-in">
+                            <button class="btn btn-outline-primary" disabled>
+                                <i class="bi bi-arrow-left"></i> Anterior
+                            </button>
+                            <button class="btn btn-primary" onclick="nextQuestion()">
+                                Próximo <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <button class="btn btn-danger" onclick="stopTimer()">Parar Simulado</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Rodapé com redes sociais -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="footer-links">
+                        <a href="#">Termos de Uso</a>
+                        <a href="#">Política de Privacidade</a>
+                        <a href="#">Contato</a>
+                        <a href="#">Sobre Nós</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-icons">
+                        <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright text-center">
+                &copy; 2023 Plataforma de Estudos - Auxílio Encceja. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Modal de Resultado -->
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultModalLabel">Resultado do Simulado</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="result-summary">
+                        <div class="result-score">35</div>
+                        <div class="result-percentage">78%</div>
+                        <div class="result-message">Parabéns! Você está bem no caminho para a aprovação na Encceja.</div>
+                    </div>
+                    
+                    <div class="result-details">
+                        <h5>Detalhes da Prova</h5>
+                        <table class="result-table">
+                            <thead>
+                                <tr>
+                                    <th>Área</th>
+                                    <th>Questões</th>
+                                    <th>Corretas</th>
+                                    <th>Percentual</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Matemática</td>
+                                    <td>9</td>
+                                    <td>7</td>
+                                    <td>77.8%</td>
+                                </tr>
+                                <tr>
+                                    <td>Português</td>
+                                    <td>9</td>
+                                    <td>8</td>
+                                    <td>88.9%</td>
+                                </tr>
+                                <tr>
+                                    <td>Ciências</td>
+                                    <td>9</td>
+                                    <td>6</td>
+                                    <td>66.7%</td>
+                                </tr>
+                                <tr>
+                                    <td>História</td>
+                                    <td>9</td>
+                                    <td>5</td>
+                                    <td>55.6%</td>
+                                </tr>
+                                <tr>
+                                    <td>Geografia</td>
+                                    <td>9</td>
+                                    <td>5</td>
+                                    <td>55.6%</td>
+                                </tr>
+                                <tr>
+                                    <td>Artes</td>
+                                    <td>9</td>
+                                    <td>3</td>
+                                    <td>33.3%</td>
+                                </tr>
+                                <tr>
+                                    <td>Educação Física</td>
+                                    <td>9</td>
+                                    <td>7</td>
+                                    <td>77.8%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="result-action">
+                        <button class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
+                        <button class="btn btn-outline-primary ms-2" onclick="reviewAnswers()">Ver Detalhes das Respostas</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Revisão de Respostas -->
+    <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reviewModalLabel">Detalhes das Respostas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="question-review">
+                        <div class="review-question">1. Qual das seguintes alternativas apresenta a forma correta de escrever o número por extenso para 1.500.000?</div>
+                        <div class="review-option review-correct">
+                            <strong>A) Um milhão e meio milhões</strong>
+                            <div class="review-explanation">Esta é a forma correta para números que excedem o milhão. Quando o número é maior que um milhão, deve-se usar o plural de milhão.</div>
+                        </div>
+                        <div class="review-option review-selected">
+                            <strong>B) Um milhão e meio de</strong>
+                            <div>Esta opção está incorreta porque não completa a expressão correta.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="question-review">
+                        <div class="review-question">2. Qual dos seguintes processos é característico da fotossíntese?</div>
+                        <div class="review-option review-correct">
+                            <strong>C) Conversão de energia luminosa em energia química</strong>
+                            <div class="review-explanation">A fotossíntese é o processo pelo qual as plantas convertem energia luminosa em energia química, armazenando-a na forma de glicose.</div>
+                        </div>
+                        <div class="review-option review-selected">
+                            <strong>A) Liberação de dióxido de carbono</strong>
+                            <div>Esta opção está incorreta. A fotossíntese utiliza dióxido de carbono, mas libera oxigênio como subproduto.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="question-review">
+                        <div class="review-question">3. Na Constituição Federal de 1988, qual dos seguintes direitos fundamentais é assegurado?</div>
+                        <div class="review-option review-correct">
+                            <strong>D) Direito à vida, à liberdade, à igualdade, à segurança e à propriedade</strong>
+                            <div class="review-explanation">Estes são alguns dos direitos fundamentais assegurados pela Constituição Federal de 1988 no Brasil.</div>
+                        </div>
+                        <div class="review-option review-selected">
+                            <strong>B) Direito à saúde, à educação, à alimentação, à moradia e ao trabalho</strong>
+                            <div>Esta opção está incorreta. Embora estes direitos sejam importantes, eles são considerados direitos sociais, não direitos fundamentais na Constituição.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="question-review">
+                        <div class="review-question">4. Qual das seguintes alternativas apresenta a forma correta de calcular a área de um triângulo?</div>
+                        <div class="review-option review-correct">
+                            <strong>A) (base × altura) ÷ 2</strong>
+                            <div class="review-explanation">A fórmula correta para calcular a área de um triângulo é (base × altura) ÷ 2.</div>
+                        </div>
+                        <div class="review-option review-selected">
+                            <strong>C) (diagonal × altura) ÷ 2</strong>
+                            <div>Esta opção está incorreta. A fórmula correta utiliza a base e a altura, não a diagonal.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função para toggle do sidebar
+        document.getElementById('toggleSidebar').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const toggleIcon = this.querySelector('i');
+            
+            sidebar.classList.toggle('collapsed');
+            content.classList.toggle('expanded');
+            
+            if (sidebar.classList.contains('collapsed')) {
+                toggleIcon.classList.remove('bi-chevron-left');
+                toggleIcon.classList.add('bi-chevron-right');
+            } else {
+                toggleIcon.classList.remove('bi-chevron-right');
+                toggleIcon.classList.add('bi-chevron-left');
+            }
+        });
+        
+        // Função para toggle do sidebar em mobile
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            sidebar.classList.toggle('expanded');
+            content.classList.toggle('shifted');
+        });
+        
+        // Adiciona funcionalidade de clique nos itens do menu
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.sidebar .nav-link').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // No mobile, fecha o sidebar após selecionar um item
+                if (window.innerWidth < 992) {
+                    document.getElementById('sidebar').classList.remove('expanded');
+                    document.getElementById('content').classList.remove('shifted');
+                }
+            });
+        });
+        
+        // Função para selecionar opção
+        function selectOption(element, optionNumber) {
+            // Remove a seleção de todas as opções
+            document.querySelectorAll('.option-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            // Adiciona a seleção à opção clicada
+            element.classList.add('selected');
+            
+            // Armazena a resposta no localStorage
+            localStorage.setItem('answer1', optionNumber);
+            
+            // Mostra um feedback visual de seleção
+            const feedback = document.createElement('div');
+            feedback.className = 'position-fixed top-0 end-0 p-3';
+            feedback.style.zIndex = '11';
+            feedback.innerHTML = `
+                <div class="toast show" role="alert" ariaItem="assertive" aria-ingredient="true">
+                    <div class="toast-header bg-success text-white">
+                        <i class="bi bi-check-circle me-2"></i>
+                        <strong class="me-auto">Seleção</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        Opção selecionada com sucesso!
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(feedback);
+            
+            setTimeout(() => {
+                feedback.remove();
+            }, 1500);
+        }
+        
+        //ção para ir para a próxima questão
+        function nextQuestion() {
+            // Verifica se uma opção foi selecionada
+            const selectedOption = document.querySelector('.option-item.selected');
+            if (!selectedOption) {
+                // Mostra um toast se nenhuma opção foi selecionada
+                const toastContainer = document.createElement('div');
+                toastContainer.className = 'position-fixed top-0 end-0 p-3';
+                toastContainer.style.zIndex = '11';
+                
+                toastContainer.innerHTML = `
+                    <div class="toast show" role="alert" ariaItem="assertive" aria-ingredient="true">
+                        <div class="toast-header bg-danger text-white">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            <strong class="me-auto">Atenção</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            Por favor, selecione uma alternativa antes de continuar.
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(toastContainer);
+                
+                setTimeout(() => {
+                    toastContainer.remove();
+                }, 3000);
+                
+                return;
+            }
+            
+            // Aqui você pode adicionar a lógica para ir para a próxima questão
+            // Por exemplo, carregar a próxima questão do servidor
+            
+            // Simulação de carregamento da próxima questão
+            document.querySelector('.question-number').textContent = '2';
+            document.querySelector('.question-text').textContent = 'Qual das seguintes alternativas apresenta a forma correta de calcular a área de um triângulo?';
+            
+            const optionsContainer = document.querySelector('.options-container');
+            optionsContainer.innerHTML = `
+                <div class="option-item" onclick="selectOption(this, 1)">
+                    <div class="option-letter">A</div>
+                    <div class="option-text">Diagonal × Altura</div>
+                </div>
+                <div class="option-item" onclick="selectOption(this, 2)">
+                    <div class="option-letter">B</div>
+                    <div class="option-text">Perímetro × Altura</div>
+                </div>
+                <div class="option-item" onclick="selectOption(this, 3)">
+                    <div class="option-letter">C</div>
+                    <div class="option-text">Base × Altura ÷ 2</div>
+                </div>
+                <div class="option-item" onclick="selectOption(this, 4)">
+                    <div class="option-letter">D</div>
+                    <div class="option-text">Raio × π × Altura</div>
+                </div>
+            `;
+            
+            // Atualiza o progresso
+            document.querySelector('.progress-bar').style.width = '22%';
+            document.querySelector('.question-status').innerHTML = `
+                <div class="status-item">
+                    <i class="bi bi-question-circle"></i>
+                    <span>Questão 2 de 45</span>
+                </div>
+                <div class="status-item">
+                    <i class="bi bi-check-circle"></>
+                    <span>1 respondida</span>
+                </div>
+                <div class="status-item">
+                    <i class="bi bi-clock"></i>
+                    <span>Restam 01:28:30</span>
+                </div>
+            `;
+            
+            // Atualiza os botões
+            document.querySelector('.btn-outline-primary').disabled = false;
+            document.querySelector('.btn-outline-primary').innerHTML = '<i class="bi bi-arrow-left"></i> Anterior';
+            document.querySelector('.btn-primary').innerHTML = 'Próximo <i class="bi bi-arrow-right"></i>';
+            
+            // Remove a seleção da opção
+            document.querySelectorAll('.option-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            // Adiciona uma animação de entrada para a nova questão
+            const questionContainer = document.querySelector('.question-container');
+            questionContainer.style.animation = 'none';
+            setTimeout(() => {
+                questionContainer.style.animation = 'fadeIn 0.5s ease-out forwards';
+            }, 10);
+        }
+        
+        // Função para parar o temporizador
+        function stopTimer() {
+            clearInterval(interval); // Interrompe o intervalo do temporizador
+            finishSimulado(); // Chama a função que finaliza o simulado
+        }
+        
+        // Função que será chamada quando o temporizador terminar
+        function finishSimulado() {
+            // Armazena as respostas no localStorage
+            localStorage.setItem('simuladoFinished', 'true');
+            
+            // Mostra o modal de resultado
+            const resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
+            resultModal.show();
+        }
+        
+        // Função para revisar as respostas
+        function reviewAnswers() {
+            // Fecha o modal de resultado
+            const resultModal = bootstrap.Modal.getInstance(document.getElementById('resultModal'));
+            resultModal.hide();
+            
+            // Mostra o modal de revisão
+            const reviewModal = new bootstrap.Modal(document.getElementById('reviewModal'));
+            reviewModal.show();
+        }
+        
+        // Inicializa o temporizador
+        window.onload = function () {
+            const display = document.querySelector('#timer');
+            startTimer(5400, display); // 90 minutos em segundos
+        };
+        
+        // Variável para armazenar o intervalo do temporizador
+        let interval;
+        
+        // Função para iniciar o temporizador
+        function startTimer(duration, display) {
+            let timer = duration, minutes, seconds;
+            interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                
+                display.textContent = minutes + ":" + seconds;
+                
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    finishSimulado();
+                }
+            }, 1000);
+        }
+        
+        // Responsividade
+        function handleResize() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            if (window.innerWidth < 992) {
+                sidebar.classList.remove('collapsed');
+                content.classList.remove('expanded');
+                sidebar.classList.remove('expanded');
+                content.classList.remove('shifted');
+                document.getElementById('toggleSidebar').style.display = 'none';
+            } else {
+                document.getElementById('toggleSidebar').style.display = 'block';
+            }
+        }
+        
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Chama na inicialização
+    </script>
+</body>
+</html>

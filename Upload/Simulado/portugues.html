@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado Português e Literatura ENCCEJA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #34495e;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .welcome-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .welcome-section h1 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 32px;
+        }
+        
+        .welcome-section p {
+            color: #7f8c8d;
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .simulado-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        
+        .simulado-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .simulado-section h2 i {
+            font-size: 22px;
+        }
+        
+        .simulado-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: var(--light-color);
+            border-radius: 6px;
+        }
+        
+        .timer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .timer i {
+            color: var(--warning-color);
+        }
+        
+        .question-counter {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .start-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto 0;
+            padding: 12px 0;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .start-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .question-container {
+            display: none;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: white;
+        }
+        
+        .question h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: var(--dark-color);
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            background-color: rgba(52, 152, 219, 0.05);
+            border-color: var(--primary-color);
+        }
+        
+        .option input {
+            margin-right: 10px;
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .nav-btn:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .result-container {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .result-container h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .score {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 20px 0;
+        }
+        
+        .result-message {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #7f8c8d;
+        }
+        
+        .retry-btn {
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .retry-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .feedback.correct {
+            background-color: rgba(46, 204, 113, 0.1);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+        }
+        
+        .feedback.incorrect {
+            background-color: rgba(231, 76, 60, 0.1);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        .feedback i {
+            margin-right: 10px;
+        }
+        
+        .question-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .warning-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .warning-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .warning-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .warning-content p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .warning-content button {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .warning-content button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .rules-notice {
+            background-color: rgba(243, 156, 18, 0.1);
+            border-left: 4px solid var(--warning-color);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .rules-notice h4 {
+            color: var(--warning-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .rules-notice ul {
+            padding-left: 20px;
+            color: var(--dark-color);
+        }
+        
+        .rules-notice li {
+            margin-bottom: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .simulado-info {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+        <main class="main-content">
+            <section class="welcome-section">
+                <h1>Bem-vindo ao Simulado de Português e Literatura ENCCEJA</h1>
+                <p>Prepare-se para o Encceja com nosso simulado de Português e Literatura. Este teste contém 10 questões que cobrem os principais tópicos do exame. Boa sorte!</p>
+            </section>
+            
+            <section class="simulado-section">
+                <h2><i class="fas fa-clipboard-list"></i> Simulado de Português e Literatura</h2>
+                <div class="rules-notice">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Regras do Simulado</h4>
+                    <ul>
+                        <li>Não é permitido abrir outras abas ou janelas do navegador durante o simulado</li>
+                        <li>O simulado será encerrado automaticamente se você tentar sair desta página</li>
+                        <li>Você terá 60 minutos para concluir o teste</li>
+                        <li>As respostas são salvas automaticamente ao navegar entre as questões</li>
+                    </ul>
+                </div>
+                
+                <div class="simulado-info">
+                    <div class="timer">
+                        <i class="fas fa-clock"></i>
+                        <span id="timer">00:00</span>
+                    </div>
+                    <div class="question-counter">
+                        Questão <span id="current-question">0</span> de <span id="total-questions">10</span>
+                    </div>
+                </div>
+                
+                <div id="start-screen">
+                    <p>Este simulado contém 10 questões de Português e Literatura que são comuns no Encceja. Você terá 60 minutos para concluir o teste. Ao final, receberá sua nota e um feedback detalhado.</p>
+                    <button class="start-btn" id="start-btn">
+                        <i class="fas fa-play"></i> Iniciar Simulado
+                    </button>
+                </div>
+                
+                <div id="question-container" class="question-container">
+                    <div id="question-1" class="question">
+                        <h3><span class="question-number">1</span> Qual das seguintes frases está gramaticalmente correta?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q1" value="A"> A) Ele e ela foi ao cinema.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="B"> B) Ele e ela foiem ao cinema.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="C"> C) Ele e ela foram ao cinema.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="D"> D) Ele e ela foi ao cinema.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-1"></div>
+                    </div>
+                    
+                    <div id="question-2" class="question">
+                        <h3><span class="question-number">2</span> Qual o sinônimo de "indiferença"?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q2" value="A"> A) Afeição
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="B"> B) Desinteresse
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="C"> C) Apego
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="D"> D) Empatia
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-2"></div>
+                    </div>
+                    
+                    <div id="question-3" class="question">
+                        <h3><span class="question-number">3</span> Em qual palavra a letra "c" tem som de "ss"?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q3" value="A"> A) Cadeira
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="B"> B) Canto
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="C"> C) Cemitério
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="D"> D) Cisne
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-3"></div>
+                    </div>
+                    
+                    <div id="question-4" class="question">
+                        <h3><span class="question-number">4</span> Qual o antônimo de "abundante"?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q4" value="A"> A) Farto
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="B"> B) Rico
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="C"> C) Escasso
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="D"> D) Pleno
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-4"></div>
+                    </div>
+                    
+                    <div id="question-5" class="question">
+                        <h3><span class="question-number">5</span> Qual das seguintes frases utiliza corretamente a crase?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q5" value="A"> A) Fui à escola de manhã.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="B"> B) Vamos a praia amanhã.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="C"> C) Ele foi ao shopping.
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="D"> D) Ela foi a farmácia.
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-5"></div>
+                    </div>
+                    
+                    <div id="question-6" class="question">
+                        <h3><span class="question-number">6</span> Qual o gênero literário de "Dom Quixote" de Miguel de Cervantes?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q6" value="A"> A) Romance
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6" value="B"> B) Poesia
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6" value="C"> C) Teatro
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q6" value="D"> D) Crônica
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-6"></div>
+                    </div>
+                    
+                    <div id="question-7" class="question">
+                        <h3><span class="question-number">7</span> Qual das seguintes palavras tem a consoante "s" com som de "z"?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q7" value="A"> A) Sapo
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q7" value="B"> B) Sino
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q7" value="C"> C) Mesa
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q7" value="D"> D) Sombra
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-7"></div>
+                    </div>
+                    
+                    <div id="question-8" class="question">
+                        <h3><span class="question-number">8</span> Qual o autor do livro "Memórias Póstumas de Brás Cubas"?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q8" value="A"> A) Machado de Assis
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q8" value="B"> B) José de Alencar
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q8" value="C"> C) Clarice Lispector
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q8" value="D"> D) Graciliano Ramos
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-8"></div>
+                    </div>
+                    
+                    <div id="question-9" class="question">
+                        <h3><span class="question-number">9</span> Qual das seguintes palavras está no plural?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q9" value="A"> A) Criança
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="B"> B) Peixe
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="C"> C) Crianças
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q9" value="D"> D) Paisagem
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-9"></div>
+                    </div>
+                    
+                    <div id="question-10" class="question">
+                        <h3><span class="question-number">10</span> Qual o tempo verbal da frase: "Eles irão ao cinema amanhã"?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q10" value="A"> A) Presente
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="B"> B) Pretérito Perfeito
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="C"> C) Futuro do Presente
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q10" value="D"> D) Futuro do Pretérito
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback-10"></div>
+                    </div>
+                    
+                    <div class="navigation-buttons">
+                        <button id="prev-btn" class="nav-btn" disabled>
+                            <i class="fas fa-arrow-left"></i> Questão Anterior
+                        </button>
+                        <button id="next-btn" class="nav-btn">
+                            Próxima Questão <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="result-container" class="result-container">
+                    <h2>Resultado do Simulado</h2>
+                    <p>Parabéns! Você completou o simulado de Português e Literatura.</p>
+                    <div class="score">0/10</div>
+                    <p class="result-message">Veja como você se saiu e onde pode melhorar.</p>
+                    <button class="retry-btn" id="retry-btn">
+                        <i class="fas fa-redo"></i> Tentar Novamente
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <div id="warning-modal" class="warning-modal">
+        <div class="warning-content">
+            <h3><i class="fas fa-exclamation-triangle"></i> Aviso Importante</h3>
+            <p id="warning-message">Você tentou sair da página do simulado. Esta ação não é permitida e o simulado será encerrado automaticamente.</p>
+            <button id="close-warning">OK</button>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos do DOM
+            const startBtn = document.getElementById('start-btn');
+            const startScreen = document.getElementById('start-screen');
+            const questionContainer = document.getElementById('question-container');
+            const resultContainer = document.getElementById('result-container');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const retryBtn = document.getElementById('retry-btn');
+            const currentQuestionEl = document.getElementById('current-question');
+            const timerEl = document.getElementById('timer');
+            const scoreEl = document.querySelector('.score');
+            const resultMessage = document.querySelector('.result-message');
+            const warningModal = document.getElementById('warning-modal');
+            const warningMessage = document.getElementById('warning-message');
+            const closeWarning = document.getElementById('close-warning');
+            
+            // Configurações do simulado
+            const totalQuestions = 10;
+            let currentQuestion = 1;
+            let timer;
+            let seconds = 0;
+            let minutes = 0;
+            let userAnswers = {};
+            let correctAnswers = {
+                q1: 'C',
+                q2: 'B',
+                q3: 'C',
+                q4: 'C',
+                q5: 'A',
+                q6: 'A',
+                q7: 'C',
+                q8: 'A',
+                q9: 'C',
+                q10: 'C'
+            };
+            let examStarted = false;
+            let warningCount = 0;
+            const maxWarnings = 1;
+            
+            // Iniciar o simulado
+            startBtn.addEventListener('click', function() {
+                startScreen.style.display = 'none';
+                questionContainer.style.display = 'block';
+                examStarted = true;
+                startTimer();
+                showQuestion(currentQuestion);
+                setupTabProtection();
+            });
+            
+            // Navegação entre questões
+            prevBtn.addEventListener('click', function() {
+                if (currentQuestion > 1) {
+                    saveAnswer();
+                    currentQuestion--;
+                    showQuestion(currentQuestion);
+                }
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                saveAnswer();
+                
+                if (currentQuestion < totalQuestions) {
+                    currentQuestion++;
+                    showQuestion(currentQuestion);
+                } else {
+                    finishSimulado();
+                }
+            });
+            
+            // Tentar novamente
+            retryBtn.addEventListener('click', function() {
+                resetSimulado();
+            });
+            
+            // Fechar aviso
+            closeWarning.addEventListener('click', function() {
+                warningModal.style.display = 'none';
+                
+                // Se excedeu o número máximo de avisos, encerrar o simulado
+                if (warningCount >= maxWarnings) {
+                    finishSimulado();
+                }
+            });
+            
+            // Configurar proteção contra mudança de aba
+            function setupTabProtection() {
+                // Evento para detectar quando a aba perde o foco
+                document.addEventListener('visibilitychange', function() {
+                    if (document.hidden && examStarted) {
+                        handleTabSwitch();
+                    }
+                });
+                
+                // Evento para detectar quando a janela perde o foco
+                window.addEventListener('blur', function() {
+                    if (examStarted) {
+                        handleTabSwitch();
+                    }
+                });
+                
+                // Bloquear menu de contexto (botão direito)
+                document.addEventListener('contextmenu', function(e) {
+                    if (examStarted) {
+                        e.preventDefault();
+                        showWarning('O uso do botão direito não é permitido durante o simulado.');
+                    }
+                });
+                
+                // Bloquear atalhos de teclado comuns
+                document.addEventListener('keydown', function(e) {
+                    if (!examStarted) return;
+                    
+                    // Ctrl+N (nova janela), Ctrl+T (nova aba), Ctrl+W (fechar aba)
+                    if ((e.ctrlKey || e.metaKey) && (e.key === 'n' || e.key === 't' || e.key === 'w')) {
+                        e.preventDefault();
+                        showWarning('Não é permitido abrir novas abas ou janelas durante o simulado.');
+                    }
+                    
+                    // F12 (ferramentas de desenvolvedor)
+                    if (e.key === 'F12') {
+                        e.preventDefault();
+                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante o simulado.');
+                    }
+                    
+                    // Ctrl+Shift+I (ferramentas de desenvolvedor)
+                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
+                        e.preventDefault();
+                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante o simulado.');
+                    }
+                    
+                    // Ctrl+Shift+J (console)
+                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'J') {
+                        e.preventDefault();
+                        showWarning('Não é permitido usar ferramentas de desenvolvedor durante o simulado.');
+                    }
+                    
+                    // Ctrl+U (exibir código fonte)
+                    if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
+                        e.preventDefault();
+                        showWarning('Não é permitido exibir o código fonte durante o simulado.');
+                    }
+                    
+                    // Alt+Setas (navegação)
+                    if (e.altKey && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+                        e.preventDefault();
+                        showWarning('Não é permitido usar navegação por atalhos durante o simulado.');
+                    }
+                });
+            }
+            
+            // Lidar com a tentativa de mudar de aba
+            function handleTabSwitch() {
+                warningCount++;
+                
+                if (warningCount <= maxWarnings) {
+                    showWarning('Você tentou sair da página do simulado. Esta ação não é permitida.');
+                    
+                    if (warningCount >= maxWarnings) {
+                        warningMessage.textContent = 'Você tentou sair da página do simulado. Esta ação não é permitida e o simulado será encerrado automaticamente.';
+                    }
+                }
+            }
+            
+            // Mostrar aviso
+            function showWarning(message) {
+                warningMessage.textContent = message;
+                warningModal.style.display = 'flex';
+            }
+            
+            // Funções auxiliares
+            function startTimer() {
+                timer = setInterval(function() {
+                    seconds++;
+                    if (seconds === 60) {
+                        minutes++;
+                        seconds = 0;
+                    }
+                    
+                    timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }, 1000);
+            }
+            
+            function showQuestion(number) {
+                // Esconder todas as questões
+                document.querySelectorAll('.question').forEach(q => {
+                    q.style.display = 'none';
+                });
+                
+                // Mostrar a questão atual
+                document.getElementById(`question-${number}`).style.display = 'block';
+                
+                // Atualizar o contador
+                currentQuestionEl.textContent = number;
+                
+                // Atualizar os botões de navegação
+                prevBtn.disabled = (number === 1);
+                nextBtn.textContent = (number === totalQuestions) ? 'Finalizar' : 'Próxima Questão';
+                nextBtn.innerHTML = (number === totalQuestions) ? 'Finalizar <i class="fas fa-check"></i>' : 'Próxima Questão <i class="fas fa-arrow-right"></i>';
+                
+                // Selecionar a opção salva, se houver
+                const savedAnswer = userAnswers[`q${number}`];
+                if (savedAnswer) {
+                    document.querySelector(`input[name="q${number}"][value="${savedAnswer}"]`).checked = true;
+                }
+                
+                // Limpar feedback
+                document.getElementById(`feedback-${number}`).style.display = 'none';
+            }
+            
+            function saveAnswer() {
+                const questionId = `q${currentQuestion}`;
+                const selectedOption = document.querySelector(`input[name="${questionId}"]:checked`);
+                
+                if (selectedOption) {
+                    userAnswers[questionId] = selectedOption.value;
+                }
+            }
+            
+            function finishSimulado() {
+                clearInterval(timer);
+                examStarted = false;
+
+                // Verificar se todas as questões foram respondidas
+                let allAnswered = true;
+                for (let i = 1; i <= totalQuestions; i++) {
+                    if (!userAnswers[`q${i}`]) {
+                        allAnswered = false;
+                        break;
+                    }
+                }
+                
+                if (!allAnswered && warningCount < maxWarnings) {
+                    if (!confirm('Você não respondeu a todas as questões. Deseja finalizar mesmo assim?')) {
+                        examStarted = true;
+                        return;
+                    }
+                }
+                
+                // Calcular a pontuação
+                let score = 0;
+                for (let i = 1; i <= totalQuestions; i++) {
+                    const questionId = `q${i}`;
+                    if (userAnswers[questionId] === correctAnswers[questionId]) {
+                        score++;
+                    }
+                }
+                
+                // Atualizar a pontuação no resultado
+                scoreEl.textContent = `${score}/${totalQuestions}`;
+                
+                // Mostrar mensagem personalizada
+                if (score === totalQuestions) {
+                    resultMessage.textContent = 'Parabéns! Você acertou todas as questões. Você está pronto para o Encceja!';
+                } else if (score >= totalQuestions * 0.7) {
+                    resultMessage.textContent = 'Ótimo desempenho! Você está bem preparado para o Encceja.';
+                } else if (score >= totalQuestions * 0.5) {
+                    resultMessage.textContent = 'Bom esforço! Continue estudando para melhorar sua pontuação no Encceja.';
+                } else {
+                    resultMessage.textContent = 'Você precisa estudar mais. Dedique mais tempo aos tópicos que você teve mais dificuldade.';
+                }
+                
+                // Mostrar o container de resultados
+                questionContainer.style.display = 'none';
+                resultContainer.style.display = 'block';
+            }
+            
+            function resetSimulado() {
+                // Resetar variáveis
+                currentQuestion = 1;
+                seconds = 0;
+                minutes = 0;
+                userAnswers = {};
+                warningCount = 0;
+                
+                // Resetar o timer
+                clearInterval(timer);
+                timerEl.textContent = '00:00';
+                
+                // Limpar todas as respostas
+                document.querySelectorAll('input[type="radio"]').forEach(input => {
+                    input.checked = false;
+                });
+                
+                // Esconder todos os feedbacks
+                document.querySelectorAll('.feedback').forEach(feedback => {
+                    feedback.style.display = 'none';
+                });
+                
+                // Mostrar a tela inicial
+                startScreen.style.display = 'block';
+                questionContainer.style.display = 'none';
+                resultContainer.style.display = 'none';
+                
+                // Resetar estado do exame
+                examStarted = false;
+            }
+        });
+
+    </script>
+
+</body>
+</html>

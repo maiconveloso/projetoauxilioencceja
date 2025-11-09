@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acompanhamento - Auxílio Encceja</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin-bottom: 80px; /* Espaço para o rodapé */
+        }
+        
+        /* Menu Moderno */
+        .sidebar {
+            background-color: #34495e;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            padding-top: 20px;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .sidebar.collapsed {
+            margin-left: -250px;
+        }
+        
+        .sidebar .btn-primary {
+            color: rgba(255, 255, 255, 0.8) !important; /* Usamos !important para garantir que sobreponha o estilo do Bootstrap */
+            background-color: transparent; /* Remove o fundo azul do Bootstrap */
+            border: none; /* Remove a borda do Bootstrap */
+            text-align: left; /* Alinha o texto à esquerda */
+            padding: 12px 15px; /* Mantém o mesmo padding do seu estilo original */
+        }
+
+        .sidebar .btn-primary:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+            transform: translateX(5px);
+        }
+        
+        .sidebar .nav-link.active {
+            background-color: #34495e;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            text-align: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .logo h4 {
+            margin: 0;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .logo .toggle-btn {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .content.expanded {
+            margin-left: 0;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background-color: #34495e;
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-header i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .session-title {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #212529;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+        }
+        
+        .resource-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        
+        .resource-item:hover {
+            background-color: #f1f3f5;
+            cursor: pointer;
+        }
+        
+        .resource-item i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .resource-item .title {
+            font-weight: 500;
+        }
+        
+        .resource-item .badge {
+            margin-left: auto;
+        }
+        
+        .card-footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid rgba(0,0,0,.125);
+            padding: 12px;
+        }
+        
+        /* Estilos do rodapé */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #34495e;
+            color: white;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #34495e;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 250px;
+                margin-left: -250px;
+            }
+            
+            .sidebar.expanded {
+                margin-left: 0;
+            }
+            
+            .content {
+                margin-left: 0;
+            }
+            
+            .content.shifted {
+                margin-left: 250px;
+            }
+            
+            .mobile-toggle {
+                display: block !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content.shifted {
+                margin-left: 0;
+            }
+        }
+        
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background-color: #34495e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Badges personalizados */
+        .badge-success {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .badge-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+        
+        .badge-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .badge-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .badge-warning {
+            background-color: #ffc107;
+            color: #212529;
+        }
+        
+        .badge-primary {
+            background-color: #0d6efd;
+            color: white;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        
+        /* Estilos para o gráfico de progresso */
+        .progress-chart {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+        
+        /* Estilos para a lista de atividades */
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        
+        .activity-item:hover {
+            background-color: #f1f3f5;
+            cursor: pointer;
+        }
+        
+        .activity-date {
+            color: #6c757d;
+            font-size: 0.85rem;
+            margin-left: auto;
+        }
+        
+        /* Estilos para o resumo de desempenho */
+        .performance-summary {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .performance-card {
+            flex: 1;
+            margin: 0 10px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            transition: transform 0.3s;
+        }
+        
+        .performance-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .performance-card.matematica {
+            background-color: #0d6efd;
+        }
+        
+        .performance-card.portugues {
+            background-color: #6610f2;
+        }
+        
+        .performance-card.historia {
+            background-color: #6f42c1;
+        }
+        
+        .performance-card.geografia {
+            background-color: #d63384;
+        }
+        
+        .performance-card.ciencias {
+            background-color: #fd7e14;
+        }
+        
+        .performance-card.humanas {
+            background-color: #20c997;
+        }
+        
+        .performance-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .performance-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Estilos para a lista de simulados */
+        .simulado-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        
+        .simulado-item:hover {
+            background-color: #f1f3f5;
+            cursor: pointer;
+        }
+        
+        .simulado-status {
+            margin-left: auto;
+            font-weight: 500;
+        }
+        
+        .simulado-status.completed {
+            color: #28a745;
+        }
+        
+        .simulado-status.in-progress {
+            color: #ffc107;
+        }
+        
+        .simulado-status.not-started {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão de toggle para mobile -->
+    <button class="mobile-toggle" id="mobileToggle">
+        <i class="bi bi-list"></i>
+    </button>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <h4><i class="bi bi-book"></i> Auxílio Encceja</h4>
+            <button class="toggle-btn" id="toggleSidebar">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="index.html">
+                    <i class="bi bi-house-door"></i>
+                    <span>Página Inicial</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="videoaula.html">
+                    <i class="bi bi-camera-video me-2"></i>
+                    <span>Video aulas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="apostila.html">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span>Apostilas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="exercicio.html">
+                    <i class="bi bi-pencil-square"></i>
+                    <span>Exercícios</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="simulado.html">
+                    <i class="bi bi-controller"></i>
+                    <span>Simulados</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="acompanhamento.html">
+                    <i class="bi bi-trophy"></i>
+                    <span>Acompanhamento</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-primary w-100 mb-2" href="config.html">
+                    <i class="bi bi-gear"></i>
+                    <span>Configurações</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Main Content -->
+    <div class="content" id="content">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="welcome-banner animate-in">
+                        <h2>Bem-vindo ao Acompanhamento do Auxílio Encceja</h2>
+                        <p class="mb-4">Veja como está sua preparação para a prova e ajuste sua estratégia de estudo.</p>
+                        <button class="btn btn-light">Personalizar Acompanhamento</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Resumo de Desempenho -->
+                <div class="col-12">
+                    <h4 class="session-title">Resumo de Desempenho</h4>
+                    <div class="performance-summary">
+                        <div class="performance-card matematica">
+                            <div class="performance-value">75%</div>
+                            <div class="performance-label">Matemática</div>
+                        </div>
+                        <div class="performance-card portugues">
+                            <div class="performance-value">82%</div>
+                            <div class="performance-label">Português</div>
+                        </div>
+                        <div class="performance-card historia">
+                            <div class="performance-value">68%</div>
+                            <div class="performance-label">História</div>
+                        </div>
+                        <div class="performance-card geografia">
+                            <div class="performance-value">70%</div>
+                            <div class="performance-label">Geografia</div>
+                        </div>
+                        <div class="performance-card ciencias">
+                            <div class="performance-value">65%</div>
+                            <div class="performance-label">Ciências</div>
+                        </div>
+                        <div class="performance-card humanas">
+                            <div class="performance-value">72%</div>
+                            <div class="performance-label">Humanas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <!-- Gráfico de Progresso -->
+                <div class="col-md-6 col-lg-8 mb-4 animate-in delay-1">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-graph-up"></i> Progresso Geral
+                        </div>
+                        <div class="card-body">
+                            <canvas id="progressChart" class="progress-chart"></canvas>
+                        </div>
+                        <div class="card-footer bg-white text-center">
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-outline-primary active" id="weeklyBtn">Semanal</button>
+                                <button class="btn btn-sm btn-outline-primary" id="monthlyBtn">Mensal</button>
+                                <button class="btn btn-sm btn-outline-primary" id="yearlyBtn">Anual</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Próximas Atividades -->
+                <div class="col-md-6 col-lg-4 mb-4 animate-in delay-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-calendar-check"></i> Próximas Atividades
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="activity-item">
+                                <i class="bi bi-play-circle text-primary"></i>
+                                <div class="title">Videoaula: Funções Matemáticas</div>
+                                <span class="activity-date">Hoje, 14:00</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="bi bi-pencil-square text-success"></i>
+                                <div class="title">Exercícios: Gramática e Vocabulário</div>
+                                <span class="activity-date">Amanhã, 10:00</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="bi bi-controller text-warning"></i>
+                                <div class="title">Simulado: História e Geografia</div>
+                                <span class="activity-date">Sex, 16:00</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="bi bi-file-earmark-text text-danger"></i>
+                                <div class="title">Apostila: Ciências da Natureza</div>
+                                <span class="activity-date">Sáb, 09:00</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="bi bi-camera-video text-info"></i>
+                                <div class="title">Videoaula: Economia e Sociedade</div>
+                                <span class="activity-date">Dom, 11:00</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white text-center">
+                            <a href="#" class="btn btn btn-outline-primary">Ver todas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <!-- Simulados Realizados -->
+                <div class="col-md-6 col-lg-6 mb-4 animate-in delay-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-controller"></i> Simulados Realizados
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="simulado-item">
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                                <div class="title">Simulado Completo 1</div>
+                                <div class="simulado-status completed">Concluído</div>
+                            </div>
+                            <div class="simulado-item">
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                                <div class="title">Simulado Matemática</div>
+                                <div class="simulado-status completed">Concluído</div>
+                            </div>
+                            <div class="simulado-item">
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                                <div class="title">Simulado Português</div>
+                                <div class="simulado-status completed">Concluído</div>
+                            </div>
+                            <div class="simulado-item">
+                                <i class="bi bi-dash-circle-fill text-warning"></i>
+                                <div class="title">Simulado História e Geografia</div>
+                                <div class="simulado-status in-progress">Em Progresso</div>
+                            </div>
+                            <div class="simulado-item">
+                                <i class="bi bi-x-circle-fill text-danger"></i>
+                                <div class="title">Simulado Ciências e Humanas</div>
+                                <div class="simulado-status not-started">Não Iniciado</div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white text-center">
+                            <a href="#" class="btn btn-sm btn-outline-primary">Ver resultados detalhados</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recursos Recomendados -->
+                <div class="col-md-6 col-lg-6 mb-4 animate-in delay-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="bi bi-lightbulb"></i> Recursos Recomendados
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="resource-item">
+                                <i class="bi bi-file-pdf text-danger"></i>
+                                <div class="title">Revisão de Cálculo</div>
+                                <span class="badge bg-primary">Matemática</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-play-circle text-primary"></i>
+                                <div class="title">Aulas de Gramática</div>
+                                <span class="badge bg-primary">Português</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-file-pdf text-danger"></i>
+                                <div class="title">História do Brasil</div>
+                                <span class="badge bg-primary">História</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-play-circle text-primary"></i>
+                                <div class="title">Mapas e Localização</div>
+                                <span class="badge bg-primary">Geografia</span>
+                            </div>
+                            <div class="resource-item">
+                                <i class="bi bi-file-pdf text-danger"></i>
+                                <div class="title">Biologia e Ecologia</div>
+                                <span class="badge bg-primary">Ciências</span>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white text-center">
+                            <a href="#" class="btn btn-sm btn-outline-primary">Ver mais recomendações</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <!-- Áreas de Melhoria -->
+                <div class="col-12">
+                    <h4 class="session-title">Áreas de Melhoria</h4>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="alert alert-info">
+                                <i class="bi bi-info-circle-fill me-2"></i>
+                                Com base em seu desempenho, identificamos áreas que precisam de mais atenção. Dedique tempo adicional a esses tópicos.
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><i class="bi bi-calculator me-2 text-primary"></i> Matemática</h5>
+                                            <p class="card-text">Seu desempenho em cálculo e geometria precisa de aprimoramento. Recomendamos revisar os conceitos básicos e resolver mais exercícios.</p>
+                                            <a href="#" class="btn btn-sm btn-outline-primary">Ver materiais</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><i class="bi bi-geo-alt me-2 text-primary"></i> Geografia</h5>
+                                            <p class="card-text">Você tem dificuldade com mapas e localização geográfica. Utilize os recursos de videoaulas e mapas interativos para melhorar.</p>
+                                            <a href="#" class="btn btn-sm btn-outline-primary">Ver materiais</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><i class="bi bi-flower1 me-2 text-primary"></i> Ciências</h5>
+                                            <p class="card-text">Seu conhecimento em biologia e ecologia pode ser aprimorado. Recomendamos os simulados específicos para essa área.</p>
+                                            <a href="#" class="btn btn-sm btn-outline-primary">Ver materiais</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Rodapé com redes sociais -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="footer-links">
+                        <a href="#">Termos de Uso</a>
+                        <a href="#">Política de Privacidade</a>
+                        <a href="#">Contato</a>
+                        <a href="#">Sobre Nós</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="social-icons">
+                        <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright text-center">
+                &copy; 2023 Plataforma de Estudos - Auxílio Encceja. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Função para toggle do sidebar
+        document.getElementById('toggleSidebar').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const toggleIcon = this.querySelector('i');
+            
+            sidebar.classList.toggle('collapsed');
+            content.classList.toggle('expanded');
+            
+            if (sidebar.classList.contains('collapsed')) {
+                toggleIcon.classList.remove('bi-chevron-left');
+                toggleIcon.classList.add('bi-chevron-right');
+            } else {
+                toggleIcon.classList.remove('bi-chevron-right');
+                toggleIcon.classList.add('bi-chevron-left');
+            }
+        });
+        
+        // Função para toggle do sidebar em mobile
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            sidebar.classList.toggle('expanded');
+            content.classList.toggle('shifted');
+        });
+        
+        // Adiciona funcionalidade de clique nos itens do menu
+        document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.sidebar .nav-link').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // No mobile, fecha o sidebar após selecionar um item
+                if (window.innerWidth < 992) {
+                    document.getElementById('sidebar').classList.remove('expanded');
+                    document.getElementById('content').classList.remove('shifted');
+                }
+            });
+        });
+        
+        // Adiciona funcionalidade de clique nos itens de recursos
+        document.querySelectorAll('.resource-item, .activity-item, .simulado-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const title = this.querySelector('.title').textContent;
+                const type = this.closest('.card').querySelector('.card-header').textContent.trim();
+                
+                // Aqui você pode adicionar a lógica para abrir o recurso
+                console.log(`Abrindo ${type} - ${title}`);
+                
+                // Exemplo de toast notification
+                const toastContainer = document.createElement('div');
+                toastContainer.className = 'position-fixed bottom-0 end-0 p-3';
+                toastContainer.style.zIndex = '11';
+                
+                toastContainer.innerHTML = `
+                    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                            <i class="bi bi-info-circle text-primary me-2"></i>
+                            <strong class="me-auto">Informação</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            Abrindo ${type}: ${title}
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(toastContainer);
+                
+                setTimeout(() => {
+                    toastContainer.remove();
+                }, 3000);
+            });
+        });
+        
+        // Adiciona funcionalidade aos links de redes sociais
+        document.querySelectorAll('.social-icons a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const platform = this.getAttribute('title');
+                console.log(`Redirecionando para ${platform}`);
+                
+                // Aqui você pode adicionar o redirecionamento para as redes sociais
+                // Exemplo: window.open('https://facebook.com', '_blank');
+            });
+        });
+        
+        // Responsividade
+        function handleResize() {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            
+            if (window.innerWidth < 992) {
+                sidebar.classList.remove('collapsed');
+                content.classList.remove('expanded');
+                sidebar.classList.remove('expanded');
+                content.classList.remove('shifted');
+                document.getElementById('toggleSidebar').style.display = 'none';
+            } else {
+                document.getElementById('toggleSidebar').style.display = 'block';
+            }
+        }
+        
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Chama na inicialização
+        
+        // Configuração do gráfico de progresso
+        const ctx = document.getElementById('progressChart').getContext('2d');
+        const progressChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                datasets: [
+                    {
+                        label: 'Matemática',
+                        data: [65, 70, 68, 72, 75, 73, 75],
+                        borderColor: '#0d6efd',
+                        backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    },
+                    {
+                        label: 'Português',
+                        data: [75, 78, 80, 82, 81, 83, 82],
+                        borderColor: '#6610f2',
+                        backgroundColor: 'rgba(102, 16, 242, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    },
+                    {
+                        label: 'História',
+                        data: [60, 62, 65, 64, 68, 67, 68],
+                        borderColor: '#6f42c1',
+                        backgroundColor: 'rgba(111, 66, 193, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    },
+                    {
+                        label: 'Geografia',
+                        data: [62, 65, 67, 69, 70, 71, 70],
+                        borderColor: '#d63384',
+                        backgroundColor: 'rgba(214, 51, 132, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    },
+                    {
+                        label: 'Ciências',
+                        data: [55, 58, 60, 62, 64, 65, 65],
+                        borderColor: '#fd7e14',
+                        backgroundColor: 'rgba(253, 126, 18, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    },
+                    {
+                        label: 'Humanas',
+                        data: [68, 70, 71, 72, 73, 74, 72],
+                        borderColor: '#20c997',
+                        backgroundColor: 'rgba(32, 201, 151, 0.1)',
+                        tension: 0.3,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Percentual de Acerto (%)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Dia da Semana'
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Função para trocar os dados do gráfico
+        document.getElementById('weeklyBtn').addEventListener('click', function() {
+            this.classList.add('active');
+            document.getElementById('monthlyBtn').classList.remove('active');
+            document.getElementById('yearlyBtn').classList.remove('active');
+            
+            progressChart.data.labels = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+            progressChart.data.datasets.forEach((dataset, index) => {
+                const baseData = [65, 70, 68, 72, 75, 73, 75];
+                dataset.data = baseData.map(value => Math.min(value + Math.random() * 10 - 5, 100));
+            });
+            progressChart.update();
+        });
+        
+        document.getElementById('monthlyBtn').addEventListener('click', function() {
+            this.classList.add('active');
+            document.getElementById('weeklyBtn').classList.remove('active');
+            document.getElementById('yearlyBtn').classList.remove('active');
+            
+            progressChart.data.labels = ['1', '5', '10', '15', '20', '25', '30'];
+            progressChart.data.datasets.forEach((dataset, index) => {
+                const baseData = [65, 70, 75, 80, 85, 90, 95];
+                dataset.data = baseData.map(value => Math.min(value + Math.random() * 5 - 2.5, 100));
+            });
+            progressChart.update();
+        });
+        
+        document.getElementById('yearlyBtn').addEventListener('click', function() {
+            this.classList.add('active');
+            document.getElementById('weeklyBtn').classList.remove('active');
+            document.getElementById('monthlyBtn').classList.remove('active');
+            
+            progressChart.data.labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            progressChart.data.datasets.forEach((dataset, index) => {
+                const baseData = [60, 65, 70, 75, 80, 85, 90, 85, 80, 85, 90, 95];
+                dataset.data = baseData.map(value => Math.min(value + Math.random() * 10 - 5, 100));
+            });
+            progressChart.update();
+        });
+    </script>
+</body>
+</html>
