@@ -23,41 +23,29 @@
 <body>
 
     <!-- Botão de configurações de acessibilidade -->
-        <button class="btn-accessibility" id="accessibilityBtn" aria-label="Configurações de Acessibilidade" title="Configurações de Acessibilidade">
-            <i class="bi bi-universal-access"></i>
-        </button>
-        
-        <!-- Modal de configurações de acessibilidade -->
-        <div class="accessibility-modal" id="accessibilityModal">
-            <div class="accessibility-modal-content">
-                <div class="accessibility-modal-header">
-                    <h3 class="accessibility-modal-title">
-                        <i class="bi bi-universal-access"></i>
-                        Configurações de Acessibilidade
-                    </h3>
-                    <button class="accessibility-modal-close" id="accessibilityModalClose">
-                        <i class="bi bi-x"></i>
-                    </button>
-                </div>
+    <button class="btn-accessibility" id="accessibilityBtn" aria-label="Configurações de Acessibilidade" title="Configurações de Acessibilidade">
+        <i class="bi bi-universal-access"></i>
+    </button>
+    
+    <!-- Modal de configurações de acessibilidade -->
+    <div class="accessibility-modal" id="accessibilityModal">
+        <div class="accessibility-modal-content">
+            <div class="accessibility-modal-header">
+                <h3 class="accessibility-modal-title"><i class="bi bi-universal-access"></i> Configurações de Acessibilidade</h3>
+                <button class="accessibility-modal-close" id="accessibilityModalClose"><i class="bi bi-x"></i></button>
+            </div>
             <div class="accessibility-modal-body">
 
-            <!-- Seção de Visual -->
-            <div class="accessibility-section">
-                <h4 class="accessibility-section-title">
-                    <i class="bi bi-eye"></i>
-                        Opções Visuais
-                        </h4>
-                <div class="accessibility-options">
-                    <div class="accessibility-option" id="highContrastOption">
-                        <div class="accessibility-option-header">
-                        <div class="accessibility-option-icon">
-                                <i class="bi bi-circle-half"></i>
-                        </div>
-                <div class="accessibility-option-title">Alto Contraste</div>
-                        </div>
-                    <div class="accessibility-option-description">
-                            Melhora a visibilidade com contraste elevado entre texto e fundo.
-                        </div>
+        <!-- Seção de Visual -->
+        <div class="accessibility-section">
+            <h4 class="accessibility-section-title"><i class="bi bi-eye"></i> Opções Visuais</h4>
+            <div class="accessibility-options">
+                <div class="accessibility-option" id="highContrastOption">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon"><i class="bi bi-circle-half"></i></div>
+                        <div class="accessibility-option-title">Alto Contraste</div>
+                    </div>
+            <div class="accessibility-option-description">Melhora a visibilidade com contraste elevado entre texto e fundo.</div>
                 <div class="accessibility-toggle">
                     <label class="accessibility-toggle-switch">
                         <input type="checkbox" id="highContrastToggle">
@@ -66,56 +54,41 @@
                         <span class="accessibility-toggle-label">Ativar</span>
                     </div>
                 </div>
-                            
-                <div class="accessibility-option" id="darkModeOption">
-                    <div class="accessibility-option-header">
-                        <div class="accessibility-option-icon">
-                            <i class="bi bi-moon-stars"></i>
-                        </div>
-                            <div class="accessibility-option-title">Modo Escuro</div>
-                    </div>
-                <div class="accessibility-option-description">
-                        Reduz a luminosidade da interface para maior conforto visual.
-                    </div>
-                <div class="accessibility-toggle">
-                        <label class="accessibility-toggle-switch">
-                            <input type="checkbox" id="darkModeToggle">
-                            <span class="accessibility-toggle-slider"></span>
-                        </label>
-                            <span class="accessibility-toggle-label">Ativar</span>
-                        </div>
-                    </div>
-                            
-                <div class="accessibility-option" id="readingModeOption">
-                    <div class="accessibility-option-header">
-                        <div class="accessibility-option-icon">
-                            <i class="bi bi-book"></i>
-                        </div>
-                <div class="accessibility-option-title">Modo de Leitura</div>
-                        </div>
-                <div class="accessibility-option-description">
-                            Aumenta o tamanho do texto e melhora o espaçamento para facilitar a leitura.
-                        </div>
-                <div class="accessibility-toggle">
-                    <label class="accessibility-toggle-switch">
-                        <input type="checkbox" id="readingModeToggle">
+            <div class="accessibility-option" id="darkModeOption">
+                <div class="accessibility-option-header">
+                    <div class="accessibility-option-icon"><i class="bi bi-moon-stars"></i></div>
+                    <div class="accessibility-option-title">Modo Escuro</div>
+                </div>
+                    <div class="accessibility-option-description">Reduz a luminosidade da interface para maior conforto visual.</div>
+                    <div class="accessibility-toggle">
+                <label class="accessibility-toggle-switch">
+                    <input type="checkbox" id="darkModeToggle">
                         <span class="accessibility-toggle-slider"></span>
                     </label>
                         <span class="accessibility-toggle-label">Ativar</span>
                     </div>
                 </div>
-                            
-                <div class="accessibility-option" id="highContrastCursorOption">
-                    <div class="accessibility-option-header">
-                        <div class="accessibility-option-icon">
-                            <i class="bi bi-cursor"></i>
-                        </div>
-                <div class="accessibility-option-title">Cursor de Alto Contraste</div>
-                        </div>
-                <div class="accessibility-option-description">
-                        Torna o cursor mais visível com um círculo de contraste ao redor.
-                        </div>
+            <div class="accessibility-option" id="readingModeOption">
+                <div class="accessibility-option-header">
+                    <div class="accessibility-option-icon"><i class="bi bi-book"></i></div>
+                    <div class="accessibility-option-title">Modo de Leitura</div>
+                </div>
+            <div class="accessibility-option-description">Aumenta o tamanho do texto e melhora o espaçamento para facilitar a leitura.</div>
                 <div class="accessibility-toggle">
+                    <label class="accessibility-toggle-switch">
+                        <input type="checkbox" id="readingModeToggle">
+                            <span class="accessibility-toggle-slider"></span>
+                    </label>
+                            <span class="accessibility-toggle-label">Ativar</span>
+                        </div>
+                    </div>
+            <div class="accessibility-option" id="highContrastCursorOption">
+                <div class="accessibility-option-header">
+                    <div class="accessibility-option-icon"><i class="bi bi-cursor"></i></div>
+                    <div class="accessibility-option-title">Cursor de Alto Contraste</div>
+                </div>
+                    <div class="accessibility-option-description">Torna o cursor mais visível com um círculo de contraste ao redor.</div>
+                    <div class="accessibility-toggle">
                         <label class="accessibility-toggle-switch">
                             <input type="checkbox" id="highContrastCursorToggle">
                             <span class="accessibility-toggle-slider"></span>
@@ -125,74 +98,55 @@
                     </div>
                 </div>
             </div>
-                    
-            <!-- Seção de Texto -->
-                <div class="accessibility-section">
-                    <h4 class="accessibility-section-title">
-                        <i class="bi bi-fonts"></i>
-                            Opções de Texto
-                    </h4>
-                <div class="accessibility-options">
-                    <div class="accessibility-option">
-                        <div class="accessibility-option-header">
-                            <div class="accessibility-option-icon">
-                                <i class="bi bi-textarea-resize"></i>
-                            </div>
-                <div class="accessibility-option-title">Tamanho da Fonte</div>
-                            </div>
-                <div class="accessibility-option-description">
-                            Ajuste o tamanho do texto para melhor legibilidade.
-                            </div>
-                <div class="accessibility-range-control">
-                    <div class="accessibility-range-label">
-                        <span>Pequeno</span>
-                        <span id="fontSizeValue">Médio</span>
-                        <span>Grande</span>
-                    </div>
-                <input type="range" min="1" max="4" value="2" class="accessibility-range" id="fontSizeRange">
-            </div>
-        </div>
-                            
+                
+        <!-- Seção de Texto -->
+        <div class="accessibility-section">
+            <h4 class="accessibility-section-title"><i class="bi bi-fonts"></i> Opções de Texto</h4>
+            <div class="accessibility-options">
                 <div class="accessibility-option">
                     <div class="accessibility-option-header">
-                        <div class="accessibility-option-icon">
-                            <i class="bi bi-text-paragraph"></i>
-                        </div>
-                    <div class="accessibility-option-title">Espaçamento entre Linhas</div>
-                        </div>
-                    <div class="accessibility-option-description">
-                            Ajuste o espaçamento entre linhas para melhor legibilidade.
-                        </div>
-                <div class="accessibility-range-control">
-                    <div class="accessibility-range-label">
-                        <span>Normal</span>
-                        <span id="lineHeightValue">Médio</span>
-                        <span>Alto</span>
-                </div>
-                    <input type="range" min="1" max="3" value="2" class="accessibility-range" id="lineHeightRange">
-                        </div>
+                        <div class="accessibility-option-icon"><i class="bi bi-textarea-resize"></i></div>
+                        <div class="accessibility-option-title">Tamanho da Fonte</div>
                     </div>
+                <div class="accessibility-option-description">Ajuste o tamanho do texto para melhor legibilidade.</div>
+                    <div class="accessibility-range-control">
+                        <div class="accessibility-range-label">
+                            <span>Pequeno</span>
+                            <span id="fontSizeValue">Médio</span>
+                            <span>Grande</span>
+                        </div>
+                    <input type="range" min="1" max="4" value="2" class="accessibility-range" id="fontSizeRange">
                 </div>
             </div>
-                    
-            <!-- Seção de Navegação -->
-                <div class="accessibility-section">
-                    <h4 class="accessibility-section-title">
-                        <i class="bi bi-mouse"></i>
-                            Opções de Navegação
-                    </h4>
-                <div class="accessibility-options">
-                    <div class="accessibility-option" id="visibleFocusOption">
-                        <div class="accessibility-option-header">
-                        <div class="accessibility-option-icon">
-                            <i class="bi bi-bullseye"></i>
-                       </div>
-                <div class="accessibility-option-title">Foco Visível</div>
+                <div class="accessibility-option">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon"><i class="bi bi-text-paragraph"></i></div>
+                        <div class="accessibility-option-title">Espaçamento entre Linhas</div>
                     </div>
-                <div class="accessibility-option-description">
-                           Destaca o elemento em foco para melhor navegação por teclado.
+                <div class="accessibility-option-description">Ajuste o espaçamento entre linhas para melhor legibilidade.</div>
+                    <div class="accessibility-range-control">
+                        <div class="accessibility-range-label">
+                            <span>Normal</span>
+                            <span id="lineHeightValue">Médio</span>
+                            <span>Alto</span>
+                        </div>
+                    <input type="range" min="1" max="3" value="2" class="accessibility-range" id="lineHeightRange">
+                </div>
+            </div>
+        </div>
+    </div>
+                
+        <!-- Seção de Navegação -->
+        <div class="accessibility-section">
+            <h4 class="accessibility-section-title"><i class="bi bi-mouse"></i> Opções de Navegação</h4>
+            <div class="accessibility-options">
+                <div class="accessibility-option" id="visibleFocusOption">
+                    <div class="accessibility-option-header">
+                        <div class="accessibility-option-icon"><i class="bi bi-bullseye"></i></div>
+                        <div class="accessibility-option-title">Foco Visível</div>
                     </div>
-                <div class="accessibility-toggle">
+                        <div class="accessibility-option-description">Destaca o elemento em foco para melhor navegação por teclado.</div>
+                        <div class="accessibility-toggle">
                     <label class="accessibility-toggle-switch">
                         <input type="checkbox" id="visibleFocusToggle">
                         <span class="accessibility-toggle-slider"></span>
@@ -200,18 +154,13 @@
                         <span class="accessibility-toggle-label">Ativar</span>
                     </div>
                 </div>
-                            
-               <div class="accessibility-option" id="reduceMotionOption">
-                    <div class="accessibility-option-header">
-                        <div class="accessibility-option-icon">
-                            <i class="bi bi-pause-circle"></i>
-                    </div>
-                        <div class="accessibility-option-title">Reduzir Movimentos</div>
-                    </div>
-                <div class="accessibility-option-description">
-                            Desativa animações e efeitos visuais para reduzir distrações.
-                    </div>
-                <div class="accessibility-toggle">
+            <div class="accessibility-option" id="reduceMotionOption">
+                <div class="accessibility-option-header">
+                    <div class="accessibility-option-icon"><i class="bi bi-pause-circle"></i></div>
+                    <div class="accessibility-option-title">Reduzir Movimentos</div>
+                </div>
+                    <div class="accessibility-option-description">Desativa animações e efeitos visuais para reduzir distrações.</div>
+                        <div class="accessibility-toggle">
                     <label class="accessibility-toggle-switch">
                         <input type="checkbox" id="reduceMotionToggle">
                         <span class="accessibility-toggle-slider"></span>
@@ -219,269 +168,223 @@
                         <span class="accessibility-toggle-label">Ativar</span>
                     </div>
                 </div>
-                            
-                <div class="accessibility-option" id="screenReaderOption">
-                    <div class="accessibility-option-header">
-                        <div class="accessibility-option-icon">
-                            <i class="bi bi-volume-up"></i>
-                        </div>
-                            <div class="accessibility-option-title">Leitor de Tela</div>
-                        </div>
-                    <div class="accessibility-option-description">
-                              Otimiza a interface para uso com leitores de tela.
-                        </div>
-                    <div class="accessibility-toggle">
-                        <label class="accessibility-toggle-switch">
-                            <input type="checkbox" id="screenReaderToggle">
-                            <span class="accessibility-toggle-slider"></span>
-                        </label>
-                            <span class="accessibility-toggle-label">Ativar</span>
-                            </div>
-                        </div>
+            <div class="accessibility-option" id="screenReaderOption">
+                <div class="accessibility-option-header">
+                    <div class="accessibility-option-icon"><i class="bi bi-volume-up"></i></div>
+                    <div class="accessibility-option-title">Leitor de Tela</div>
+                </div>
+                    <div class="accessibility-option-description">Otimiza a interface para uso com leitores de tela.</div>
+                        <div class="accessibility-toggle">
+                    <label class="accessibility-toggle-switch">
+                        <input type="checkbox" id="screenReaderToggle">
+                        <span class="accessibility-toggle-slider"></span>
+                    </label>
+                        <span class="accessibility-toggle-label">Ativar</span>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
         <div class="accessibility-modal-footer">
-            <button class="accessibility-reset-btn" id="resetAccessibilitySettings">
-                <i class="bi bi-arrow-counterclockwise"></i> Restaurar Padrões
-            </button>
-                <button class="accessibility-save-btn" id="saveAccessibilitySettings">
-                      <i class="bi bi-check-lg"></i> Salvar Configurações
-                </button>
-            </div>
+            <button class="accessibility-reset-btn" id="resetAccessibilitySettings"><i class="bi bi-arrow-counterclockwise"></i> Restaurar Padrões</button>
+            <button class="accessibility-save-btn" id="saveAccessibilitySettings"><i class="bi bi-check-lg"></i> Salvar Configurações</button>
         </div>
     </div>
-        
-        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="accessibilityToast">
-            <div class="toast-header">
-                <i class="bi bi-check-circle-fill me-2"></i>
-                <strong class="me-auto">Configurações de Acessibilidade</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fechar"></button>
-            </div>
-        <div class="toast-body" id="accessibilityToastMessage">
-                Configurações de acessibilidade salvas com sucesso!
-        </div>
-    </div>
+</div>
     
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="accessibilityToast">
+        <div class="toast-header">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            <strong class="me-auto">Configurações de Acessibilidade</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Fechar"></button>
+        </div>
+        <div class="toast-body" id="accessibilityToastMessage">Configurações de acessibilidade salvas com sucesso!</div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="plataforma.html">
+            <a class="navbar-brand" href="index.html">
                 <img src="Logo 3.0.png" alt="Logo do Auxílio Encceja">
                 Auxílio Encceja
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="bi bi-list"></i>
             </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="plataforma.html">
-                        <i class="bi bi-laptop"></i>
-                        <span>Plataforma</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="videoaula.html">
-                        <i class="bi bi-camera-video"></i>
-                        <span>Videoaulas</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="apostila.html">
-                        <i class="bi bi-file-earmark-text"></i>
-                        <span>Apostilas</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="exercicio.html">
-                        <i class="bi bi-pencil-square"></i>
-                        <span>Exercícios</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="simulado.html">
-                        <i class="bi bi-controller"></i>
-                        <span>Simulados</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="acompanhamento.html">
-                        <i class="bi bi-trophy"></i>
-                        <span>Acompanhamento</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="config.html">
-                        <i class="bi bi-gear"></i>
-                        <span>Configurações</span>
-                    </a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door"></i> <span>Plataforma</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="videoaula.html"><i class="bi bi-camera-video"></i> Videoaulas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="apostila.html"><i class="bi bi-file-earmark-text"></i> Apostilas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="exercicio.html"><i class="bi bi-pencil-square"></i> Exercícios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="simulado.html"><i class="bi bi-controller"></i> Simulados</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="acompanhamento.html"><i class="bi bi-trophy"></i> Acompanhamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="config.html"><i class="bi bi-gear"></i> Configurações</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
     
-    <!-- Main Content -->
+    <!-- Conteúdo Principal -->
     <div class="content" id="content">
         <div class="container-fluid">
             <div class="row mb-4">
                 <div class="col-12">
                     <div class="welcome-banner animate-in">
-                        <h2>Acompanhamento do Seu Estudo</h2>
-                        <p class="mb-4">Veja seu progresso, atividades e desempenho em um só lugar!</p>
-                        <button class="btn btn-light">Configurar Metas</button>
+                    <h2>Acompanhamento do Seu Estudo</h2>
+                    <p class="mb-4">Veja seu progresso, atividades e desempenho em um só lugar!</p>
+                    <button class="btn btn-light">Configurar Metas</button>
+                </div>
+            </div>
+        </div>
+            
+        <div class="row">
+            <div class="col-12">
+                <h4 class="session-title">Resumo do Progresso</h4>
+            </div>
+        </div>
+            
+        <!-- Resumo de desempenho -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="performance-summary animate-in">
+                    <div class="performance-item">
+                        <p>Matemática</p>
+                        <h3>78%</h3>
+                        <p>Desempenho</p>
+                    </div>
+                    <div class="performance-item">
+                        <p>Português</p>
+                        <h3>92%</h3>
+                        <p>Desempenho</p>
+                    </div>
+                    <div class="performance-item">
+                        <p>História</p>
+                        <h3>65%</h3>
+                        <p>Desempenho</p>
+                    </div>
+                    <div class="performance-item">
+                        <p>Geografia</p>
+                        <h3>71%</h3>
+                        <p>Desempenho</p>
                     </div>
                 </div>
             </div>
-            
-            <div class="row">
-                <div class="col-12">
-                    <h4 class="session-title">Resumo do Progresso</h4>
-                </div>
-            </div>
-            
-        <!-- Performance Summary -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="performance-summary animate-in">
-                <div class="performance-item">
-                    <p>Matemática</p>
-                    <h3>78%</h3>
-                    <p>Desempenho</p>
-                </div>
-            <div class="performance-item">
-                    <p>Português</p>
-                    <h3>92%</h3>
-                    <p>Desempenho</p>
-                </div>
-            <div class="performance-item">
-                    <p>História</p>
-                    <h3>65%</h3>
-                    <p>Desempenho</p>
-                </div>
-            <div class="performance-item">
-                    <p>Geografia</p>
-                    <h3>71%</h3>
-                    <p>Desempenho</p>
-                </div>
-            </div>
         </div>
-    </div>
             
-        <!-- Progress Chart -->
-            <div class="row mb-4">
-                <div class="col-md-6 animate-in delay-1">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="header-title">
-                                <i class="bi bi-graph-up"></i> Progresso Geral
-                            </div>
-                            <div class="header-buttons">
-                                <button class="btn btn-sm btn-outline-light" id="refreshProgress">
-                                    <i class="bi bi-arrow-clockwise"></i>
-                                </button>
-                            </div>
-                        </div>
-                    <div class="card-body">
-                        <div class="progress-chart">
-                            <div class="progress-bar-custom">
-                                <div class="progress-fill" style="width: 65%;"></div>
-                        </div>
-                            <div class="progress-label">65%</div>
-                        </div>
-                    <div class="mt-4">
-                        <h5>Áreas de Melhoria</h5>
-                        <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Matemática
-                            <span class="badge bg-warning rounded-pill">Foco</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            História
-                            <span class="badge bg-warning rounded-pill">Foco</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Ciências
-                            <span class="badge bg-success rounded-pill">Bom</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-                
-        <!-- Study Plan -->
-            <div class="col-md-6 animate-in delay-2">
+        <!-- Gráfico de progresso -->
+        <div class="row mb-4">
+            <div class="col-md-6 animate-in delay-1">
                 <div class="card">
                     <div class="card-header">
                         <div class="header-title">
-                            <i class="bi bi-calendar-check"></i> Plano de Estudos
+                            <i class="bi bi-graph-up"></i> Progresso Geral
                         </div>
-                        <div class="header-buttons">
-                            <button class="btn btn-sm btn-outline-light" id="addStudyPlan">
-                                <i class="bi bi-plus"></i> Adicionar
-                            </button>
-                        </div>
+                    <div class="header-buttons">
+                        <button class="btn btn-sm btn-outline-light" id="refreshProgress">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
                     </div>
-                    <div class="card-body p-0">
-                         <div class="study-plan-item">
-                            <div class="study-plan-checkbox">
-                        <input type="checkbox" class="form-check-input" id="study1">
-                            </div>
-                        <div class="study-plan-content">
-                            <div class="study-plan-title">Conceitos de Álgebra</div>
-                            <div class="study-plan-description">Funções, equações e sistemas lineares</div>
-                            <div class="study-plan-difficulty">Dificuldade: <span class="badge bg-warning">Média</span></div>
-                            </div>
-                        <div class="study-plan-actions">
-                                <button class="btn btn-sm btn-outline-primary">Estudar</button>
-                            </div>
+                </div>
+            <div class="card-body">
+                <div class="progress-chart">
+                    <div class="progress-bar-custom">
+                        <div class="progress-fill" style="width: 65%;"></div>
+                    </div>
+                        <div class="progress-label">65%</div>
+                    </div>
+                        <div class="mt-4">
+                            <h5>Áreas de Melhoria</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Matemática
+                                <span class="badge bg-warning rounded-pill">Foco</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                História
+                                <span class="badge bg-warning rounded-pill">Foco</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Ciências
+                                <span class="badge bg-success rounded-pill">Bom</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+                
+        <!-- Plano de Estudos -->
+        <div class="col-md-6 animate-in delay-2">
+            <div class="card">
+                <div class="card-header">
+                    <div class="header-title">
+                        <i class="bi bi-calendar-check"></i> Plano de Estudos
+                    </div>
+                <div class="header-buttons">
+                    <button class="btn btn-sm btn-outline-light" id="addStudyPlan">
+                        <i class="bi bi-plus"></i> Adicionar
+                    </button>
+                </div>
+            </div>
+                <div class="card-body p-0">
+                    <div class="study-plan-item">
+                        <div class="study-plan-checkbox">
+                            <input type="checkbox" class="form-check-input" id="study1">
                         </div>
+                    <div class="study-plan-content">
+                        <div class="study-plan-title">Conceitos de Álgebra</div>
+                        <div class="study-plan-description">Funções, equações e sistemas lineares</div>
+                        <div class="study-plan-difficulty">Dificuldade: <span class="badge bg-warning">Média</span></div>
+                    </div>
+                    <div class="study-plan-actions">
+                        <button class="btn btn-sm btn-outline-primary">Estudar</button>
+                    </div>
+                </div>
                     <div class="study-plan-item">
                         <div class="study-plan-checkbox">
                             <input type="checkbox" class="form-check-input" id="study2">
                         </div>
-                            <div class="study-plan-content">
-                                <div class="study-plan-title">Gramática e Ortografia</div>
-                                <div class="study-plan-description">Revisão completa da gramática portuguesa</div>
-                                <div class="study-plan-difficulty">Dificuldade: <span class="badge bg-success">Fácil</span></div>
-                            </div>
-                        <div class="study-plan-actions">
-                                <button class="btn btn-sm btn-outline-primary">Estudar</button>
-                            </div>
-                        </div>
-                    <div class="study-plan-item">
-                            <div class="study-plan-checkbox">
-                                <input type="checkbox" class="form-check-input" id="study3" checked>
-                            </div>
                     <div class="study-plan-content">
-                            <div class="study-plan-title">História do Brasil</div>
-                                <div class="study-plan-description">Período colonial e independência</div>
-                                <div class="study-plan-difficulty">Dificuldade: <span class="badge bg-warning">Média</span></div>
-                            </div>
+                        <div class="study-plan-title">Gramática e Ortografia</div>
+                        <div class="study-plan-description">Revisão completa da gramática portuguesa</div>
+                        <div class="study-plan-difficulty">Dificuldade: <span class="badge bg-success">Fácil</span></div>
+                    </div>
                     <div class="study-plan-actions">
-                            <button class="btn btn-sm btn-outline-primary">Revisar</button>
-                        </div>
+                        <button class="btn btn-sm btn-outline-primary">Estudar</button>
                     </div>
                 </div>
-                    <div class="card-footer bg-white text-center">
-                         <button class="btn btn-sm btn-outline-primary">Ver todas as atividades</button>
+                    <div class="study-plan-item">
+                        <div class="study-plan-checkbox">
+                            <input type="checkbox" class="form-check-input" id="study3" checked>
+                        </div>
+                    <div class="study-plan-content">
+                        <div class="study-plan-title">História do Brasil</div>
+                        <div class="study-plan-description">Período colonial e independência</div>
+                        <div class="study-plan-difficulty">Dificuldade: <span class="badge bg-warning">Média</span></div>
+                    </div>
+                    <div class="study-plan-actions">
+                        <button class="btn btn-sm btn-outline-primary">Revisar</button>
                     </div>
                 </div>
             </div>
+                <div class="card-footer bg-white text-center">
+                    <button class="btn btn-sm btn-outline-primary">Ver todas as atividades</button>
+                </div>
+            </div>
         </div>
+    </div>
             
-        <!-- Activity Table -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="card animate-in delay-3">
-                        <div class="card-header">
-                            <i class="bi bi-journal-check"></i> Atividades Recentes
-                        <div class="dropdown d-inline-block ms-auto">
-                            <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="activityFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                Filtrar
-                            </button>
+        <!-- Atividades Recentes -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card animate-in delay-3">
+                    <div class="card-header">
+                        <i class="bi bi-journal-check"></i> Atividades Recentes
+                    <div class="dropdown d-inline-block ms-auto">
+                        <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="activityFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Filtrar
+                        </button>
                         <ul class="dropdown-menu" aria-labelledby="activityFilterDropdown">
                             <li><a class="dropdown-item" href="#">Todas as atividades</a></li>
                             <li><a class="dropdown-item" href="#">Concluídas</a></li>
@@ -489,217 +392,216 @@
                         </ul>
                     </div>
                 </div>
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table table-hover activity-table mb-0">
-                        <thead>
-                    <tr>
-                        <th class="activity-date">Data</th>
-                        <th class="activity-name">Atividade</th>
-                        <th class="activity-status">Status</th>
-                        <th class="activity-duration">Duração</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-            <tbody>
-                    <tr>
-                <td class="activity-date">Hoje, 10:30</td>
-                <td class="activity-name">Simulado de Matemática</td>
-                <td class="activity-status"><span class="badge bg-success">Concluída</span></td>
-                <td class="activity-duration">45 min</td>
-                    <td>
-                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#activityDetailsModal" data-activity="matematica">Detalhes</button>
-                    </td>
-                    </tr>
-                    <tr>
-                <td class="activity-date">Hoje, 09:15</td>
-                <td class="activity-name">Videoaula: Gramática</td>
-                <td class="activity-status"><span class="badge bg-success">Concluída</span></td>
-                <td class="activity-duration">30 min</td>
-                    <td>
-                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#activityDetailsModal" data-activity="portugues">Detalhes</button>
-                    </td>
-                    </tr>
-                    <tr>
-                <td class="activity-date">Ontem, 16:45</td>
-                <td class="activity-name">Exercícios de História</td>
-                <td class="activity-status"><span class="badge bg-success">Concluída</span></td>
-                <td class="activity-duration">60 min</td>
-                    <td>
-                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#activityDetailsModal" data-activity="historia">Detalhes</button>
-                    </td>
-                    </tr>
-                    <tr>
-                <td class="activity-date">Ontem, 14:20</td>
-                <td class="activity-name">Simulado de Geografia</td>
-                <td class="activity-status"><span class="badge bg-warning">Em andamento</span></td>
-                <td class="activity-duration">60 min</td>
-                    <td>
-                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#activityDetailsModal" data-activity="geografia">Detalhes</button>
-                    </td>
-                    </tr>
-                    <tr>
-                <td class="activity-date">Seg, 10:00</td>
-                <td class="activity-name">Apostila: Ciências</td>
-                <td class="activity-status"><span class="badge bg-danger">Pendente</span></td>
-                <td class="activity-duration">90 min</td>
-                    <td>
-                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#activityDetailsModal" data-activity="ciencias">Detalhes</button>
-                    </td>
-                    </tr>
-                </tbody>
-            </table>
-                </div>
-                    </div>
-                        <div class="card-footer bg-white text-center">
-                            <button class="btn btn-sm btn-outline-primary">Ver todas as atividades</button>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover activity-table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="activity-date">Data</th>
+                                        <th class="activity-name">Atividade</th>
+                                        <th class="activity-status">Status</th>
+                                        <th class="activity-duration">Duração</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="activity-date">Hoje, 10:30</td>
+                                        <td class="activity-name">Simulado de Matemática</td>
+                                        <td class="activity-status"><span class="badge bg-success">Concluída</span></td>
+                                        <td class="activity-duration">45 min</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#activityDetailsModal" data-activity="matematica">Detalhes</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="activity-date">Hoje, 09:15</td>
+                                        <td class="activity-name">Videoaula: Gramática</td>
+                                        <td class="activity-status"><span class="badge bg-success">Concluída</span></td>
+                                        <td class="activity-duration">30 min</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#activityDetailsModal" data-activity="portugues">Detalhes</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="activity-date">Ontem, 16:45</td>
+                                        <td class="activity-name">Exercícios de História</td>
+                                        <td class="activity-status"><span class="badge bg-success">Concluída</span></td>
+                                        <td class="activity-duration">60 min</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#activityDetailsModal" data-activity="historia">Detalhes</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="activity-date">Ontem, 14:20</td>
+                                        <td class="activity-name">Simulado de Geografia</td>
+                                        <td class="activity-status"><span class="badge bg-warning">Em andamento</span></td>
+                                        <td class="activity-duration">60 min</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#activityDetailsModal" data-activity="geografia">Detalhes</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="activity-date">Seg, 10:00</td>
+                                        <td class="activity-name">Apostila: Ciências</td>
+                                        <td class="activity-status"><span class="badge bg-danger">Pendente</span></td>
+                                        <td class="activity-duration">90 min</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#activityDetailsModal" data-activity="ciencias">Detalhes</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            <!-- Calendar -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="card animate-in delay-4">
-                        <div class="card-header">
-                            <i class="bi bi-calendar3"></i> Calendário de Estudos
-                        </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="calendar">
-                                <div class="calendar-header">
-                            <button class="btn btn-sm btn-outline-light me-2">
-                                    <i class="bi bi-chevron-left"></i>
-                                </button>
-                                    <span>Maio 2025</span>
-                            <button class="btn btn-sm btn-outline-light ms-2">
-                                    <i class="bi bi-chevron-right"></i>
-                            </button>
-                        </div>
-                <div class="calendar-grid">
-                    <div class="calendar-day">Dom</div>
-                    <div class="calendar-day">Seg</div>
-                    <div class="calendar-day">Ter</div>
-                    <div class="calendar-day">Qua</div>
-                    <div class="calendar-day">Qui</div>
-                    <div class="calendar-day">Sex</div>
-                    <div class="calendar-day">Sáb</div>
-                                            
-                    <div class="calendar-day weekend"></div>
-                    <div class="calendar-day weekend"></div>
-                    <div class="calendar-day weekend"></div>
-                    <div class="calendar-day has-activity has-completed">1</div>
-                    <div class="calendar-day has-activity has-completed">2</div>
-                    <div class="calendar-day has-activity has-completed">3</div>
-                    <div class="calendar-day weekend">4</div>
-                                        
-                    <div class="calendar-day has-activity has-completed">5</div>
-                    <div class="calendar-day has-activity has-completed">6</div>
-                    <div class="calendar-day weekend">7</div>
-                    <div class="calendar-day has-activity has-completed">8</div>
-                    <div class="calendar-day has-activity has-completed">9</div>
-                    <div class="calendar-day has-activity has-completed">10</div>
-                    <div class="calendar-day weekend">11</div>
-                                            
-                    <div class="calendar-day has-activity has-pending">12</div>
-                    <div class="calendar-day has-activity has-completed">13</div>
-                    <div class="calendar-day weekend">14</div>
-                    <div class="calendar-day has-activity has-completed">15</div>
-                    <div class="calendar-day has-activity has-completed">16</div>
-                    <div class="calendar-day has-activity has-completed">17</div>
-                    <div class="calendar-day weekend">18</div>
-                                            
-                    <div class="calendar-day has-activity has-completed">19</div>
-                    <div class="calendar-day has-activity has-completed">20</div>
-                    <div class="calendar-day weekend">21</div>
-                    <div class="calendar-day has-activity has-completed">22</div>
-                    <div class="calendar-day has-activity has-completed">23</div>
-                    <div class="calendar-day has-activity has-completed">24</div>
-                    <div class="calendar-day weekend">25</div>
-                                            
-                    <div class="calendar-day has-activity has-completed">26</div>
-                    <div class="calendar-day has-activity has-completed">27</div>
-                    <div class="calendar-day weekend">28</div>
-                    <div class="calendar-day has-activity has-completed">29</div>
-                    <div class="calendar-day has-activity has-completed">30</div>
-                    <div class="calendar-day has-activity has-completed today">31</div>
-                    <div class="calendar-day weekend"></div>
-                </div>
-            </div>
-        </div>
-                <div class="col-md-4">
-                    <h5>Próximas Atividades</h5>
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                <div>
-                    <i class="bi bi-play-circle text-primary me-2"></i>
-                        Videoaula: Geografia
-                </div>
-                    <span class="badge bg-primary">Hoje, 14:00</span>
-                </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                <div>
-                    <i class="bi bi-file-earmark-text text-danger me-2"></i>
-                        Apostila: Matemática
-                </div>
-                    <span class="badge bg-primary">Hoje, 16:30</span>
-                </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                <div>
-                    <i class="bi bi-controller text-warning me-2"></i>
-                        Simulado: Português
-                </div>
-                    <span class="badge bg-primary">Amanhã, 10:00</span>
-                </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                <div>
-                    <i class="bi bi-pencil-square text-success me-2"></i>
-                        Exercícios: Ciências
-                </div>
-                    <span class="badge bg-primary">Amanhã, 14:00</span>
-                </li>
-                </ul>
-                    </div>
+                <div class="card-footer bg-white text-center">
+                    <button class="btn btn-sm btn-outline-primary">Ver todas as atividades</button>
                 </div>
             </div>
         </div>
     </div>
-</div>
             
-        <!-- Study Tips -->
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="card animate-in delay-1">
-                <div class="card-header">
-                    <i class="bi bi-lightbulb"></i> Dicas de Estudo
-                </div>
-                    <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title"><i class="bi bi-clock text-primary me-2"></i>Temporização</h5>
-                        <p class="card-text">Divida seus estudos em sessões de 25 minutos de estudo e 5 minutos de descanso para melhorar a concentração.</p>
+        <!-- Calendario -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card animate-in delay-4">
+                    <div class="card-header">
+                        <i class="bi bi-calendar3"></i> Calendário de Estudos
                     </div>
-                </div>
-            </div>
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="bi bi-journal-text text-primary me-2"></i>Revisão</h5>
-                            <p class="card-text">Revisar os conteúdos estudados no dia seguinte reforça o aprendizado e ajuda a identificar pontos que precisam de mais atenção.</p>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="calendar">
+                        <div class="calendar-header">
+                                <button class="btn btn-sm btn-outline-light me-2">
+                                    <i class="bi bi-chevron-left"></i>
+                                </button>
+                                    <span>Maio 2025</span>
+                                <button class="btn btn-sm btn-outline-light ms-2">
+                                    <i class="bi bi-chevron-right"></i>
+                                </button>
+                                    </div>
+                                <div class="calendar-grid">
+                                    <div class="calendar-day">Dom</div>
+                                    <div class="calendar-day">Seg</div>
+                                    <div class="calendar-day">Ter</div>
+                                    <div class="calendar-day">Qua</div>
+                                    <div class="calendar-day">Qui</div>
+                                    <div class="calendar-day">Sex</div>
+                                    <div class="calendar-day">Sáb</div>
+                                            
+                                    <div class="calendar-day weekend"></div>
+                                    <div class="calendar-day weekend"></div>
+                                    <div class="calendar-day weekend"></div>
+                                    <div class="calendar-day has-activity has-completed">1</div>
+                                    <div class="calendar-day has-activity has-completed">2</div>
+                                    <div class="calendar-day has-activity has-completed">3</div>
+                                    <div class="calendar-day weekend">4</div>
+                                            
+                                    <div class="calendar-day has-activity has-completed">5</div>
+                                    <div class="calendar-day has-activity has-completed">6</div>
+                                    <div class="calendar-day weekend">7</div>
+                                    <div class="calendar-day has-activity has-completed">8</div>
+                                    <div class="calendar-day has-activity has-completed">9</div>
+                                    <div class="calendar-day has-activity has-completed">10</div>
+                                    <div class="calendar-day weekend">11</div>
+                                            
+                                    <div class="calendar-day has-activity has-pending">12</div>
+                                    <div class="calendar-day has-activity has-completed">13</div>
+                                    <div class="calendar-day weekend">14</div>
+                                    <div class="calendar-day has-activity has-completed">15</div>
+                                    <div class="calendar-day has-activity has-completed">16</div>
+                                    <div class="calendar-day has-activity has-completed">17</div>
+                                    <div class="calendar-day weekend">18</div>
+                                            
+                                    <div class="calendar-day has-activity has-completed">19</div>
+                                    <div class="calendar-day has-activity has-completed">20</div>
+                                    <div class="calendar-day weekend">21</div>
+                                    <div class="calendar-day has-activity has-completed">22</div>
+                                    <div class="calendar-day has-activity has-completed">23</div>
+                                    <div class="calendar-day has-activity has-completed">24</div>
+                                    <div class="calendar-day weekend">25</div>
+                                            
+                                    <div class="calendar-day has-activity has-completed">26</div>
+                                    <div class="calendar-day has-activity has-completed">27</div>
+                                    <div class="calendar-day weekend">28</div>
+                                    <div class="calendar-day has-activity has-completed">29</div>
+                                    <div class="calendar-day has-activity has-completed">30</div>
+                                    <div class="calendar-day has-activity has-completed today">31</div>
+                                    <div class="calendar-day weekend"></div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-md-4">
+                                <h5>Próximas Atividades</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="bi bi-play-circle text-primary me-2"></i>
+                                    Videoaula: Geografia
+                                </div>
+                                    <span class="badge bg-primary">Hoje, 14:00</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="bi bi-file-earmark-text text-danger me-2"></i>
+                                    Apostila: Matemática
+                                </div>
+                                    <span class="badge bg-primary">Hoje, 16:30</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="bi bi-controller text-warning me-2"></i>
+                                    Simulado: Português
+                                </div>
+                                    <span class="badge bg-primary">Amanhã, 10:00</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <i class="bi bi-pencil-square text-success me-2"></i>
+                                    Exercícios: Ciências
+                                </div>
+                                    <span class="badge bg-primary">Amanhã, 14:00</span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                    <div class="col-md-4 mb-3">
-                             <div class="card h-100">
-                                    <div class="card-body">
-                                            <h5 class="card-title"><i class="bi bi-people text-primary me-2"></i>Estudo em Grupo</h5>
-                                            <p class="card-text">Discutir os conteúdos com outros estudantes pode ajudar a esclarecer dúvidas e a ter diferentes perspectivas sobre os assuntos.</p>
-                                        </div>
-                                    </div>
+            </div>
+        </div>
+            
+        <!-- Dicas de Estudo -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card animate-in delay-1">
+                    <div class="card-header">
+                        <i class="bi bi-lightbulb"></i> Dicas de Estudo
+                    </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="bi bi-clock text-primary me-2"></i>Temporização</h5>
+                                    <p class="card-text">Divida seus estudos em sessões de 25 minutos de estudo e 5 minutos de descanso para melhorar a concentração.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="bi bi-journal-text text-primary me-2"></i>Revisão</h5>
+                                    <p class="card-text">Revisar os conteúdos estudados no dia seguinte reforça o aprendizado e ajuda a identificar pontos que precisam de mais atenção.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="bi bi-people text-primary me-2"></i>Estudo em Grupo</h5>
+                                    <p class="card-text">Discutir os conteúdos com outros estudantes pode ajudar a esclarecer dúvidas e a ter diferentes perspectivas sobre os assuntos.</p>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -708,152 +610,93 @@
             </div>
         </div>
     </div>
+</div>
     
     <!-- Rodapé com redes sociais -->
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-            <div class="col-md-6">
-                <div class="footer-links">
-                    <a href="termos.html">Termos de Uso</a>
-                    <a href="politica.html">Política de Privacidade</a>
-                    <a href="contato.html">Contato</a>
-                    <a href="sobre.html">Sobre Nós</a>
-                </div>
-            </div>
-        <div class="col-md-6">
-            <div class="social-icons">
-                    <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                    <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
-                    <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
-                    <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
-                </div>
-            </div>
-        </div>
-          <div class="copyright text-center">
-            &copy; 2025 Plataforma de Estudos - Auxílio Encceja. Todos os Direitos Reservados.
-                </div>
-            </div>
-        </footer>
-    
-   <!-- Modal de Detalhes da Atividade -->
-<div class="modal fade" id="activityDetailsModal" tabindex="-1" aria-labelledby="activityDetailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="activityDetailsModalLabel">Detalhes da Atividade</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-        <div class="modal-body">
+    <footer class="footer">
+        <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="detail-item">
-                        <div class="detail-label">Tipo de Atividade</div>
-                        <div class="detail-value" id="activityType">Simulado</div>
-                    </div>
-
-                <div class="detail-item">
-                        <div class="detail-label">Data</div>
-                        <div class="detail-value" id="activityDate">Hoje, 10:30</div>
-                    </div>
-                <div class="detail-item">
-                        <div class="detail-label">Duração</div>
-                        <div class="detail-value" id="activityDuration">45 minutos</div>
-                    </div>
-                <div class="detail-item">
-                        <div class="detail-label">Status</div>
-                        <div class="detail-value" id="activityStatus"><span class="badge bg-success">Concluída</span></div>
-                    </div>
-                <div class="detail-item">
-                        <div class="detail-label">Descrição</div>
-                        <div class="detail-value" id="activityDescription">Descrição da atividade</div>
+                    <div class="footer-links">
+                        <a href="termos.html">Termos de Uso</a>
+                        <a href="politica.html">Política de Privacidade</a>
+                        <a href="contato.html">Contato</a>
+                        <a href="sobre.html">Sobre Nós</a>
                     </div>
                 </div>
-
-            <div class="col-md-6">
-                <div class="detail-item">
-                    <div class="detail-label">Notas</div>
-                        <div class="detail-value" id="activityScore">
-                            <div class="progress mb-2">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <span>78% - Bem acima da média esperada!</span>
+                <div class="col-md-6">
+                    <div class="social-icons">
+                        <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" title="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" title="Facebook"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright text-center">&copy; 2025 Plataforma de Estudos - Auxílio Encceja. Todos os Direitos Reservados.</div>
+        </div>
+    </footer>
+    
+    <!-- Modal de Detalhes da Atividade -->
+    <div class="modal fade" id="activityDetailsModal" tabindex="-1" aria-labelledby="activityDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="activityDetailsModalLabel">Detalhes da Atividade</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <div class="detail-label">Tipo de Atividade</div>
+                            <div class="detail-value" id="activityType">Simulado</div>
+                        </div>
+                    <div class="detail-item">
+                            <div class="detail-label">Data</div>
+                            <div class="detail-value" id="activityDate">Hoje, 10:30</div>
+                        </div>
+                    <div class="detail-item">
+                            <div class="detail-label">Duração</div>
+                            <div class="detail-value" id="activityDuration">45 minutos</div>
+                        </div>
+                    <div class="detail-item">
+                            <div class="detail-label">Status</div>
+                            <div class="detail-value" id="activityStatus"><span class="badge bg-success">Concluída</span></div>
+                        </div>
+                    <div class="detail-item">
+                            <div class="detail-label">Descrição</div>
+                            <div class="detail-value" id="activityDescription">Descrição da atividade</div>
                         </div>
                     </div>
-                    
-                <div class="detail-item">
-                    <div class="detail-label">Áreas Fortes</div>
-                    <div class="detail-value" id="strongAreas">
-                        <span class="badge bg-primary me-1">Funções</span>
-                        <span class="badge bg-primary me-1">Geometria</span>
-                        <span class="badge bg-primary">Estatística</span>
-                    </div>
-                </div>
-
-                <div class="detail-item">
-                    <div class="detail-label">Áreas a Melhorar</div>
-                    <div class="detail-value" id="weakAreas">
-                        <span class="badge bg-warning me-1">Álgebra</span>
-                        <span class="badge bg-warning">Trigonometria</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-                
-            <div class="row mt-4">
-                <div class="col-12">
-                    <h5>Conteúdos Abordados</h5>
-                    <div id="activityContents">
-                        <ul class="list-group">
-                        <!-- Conteúdos serão inseridos aqui via JavaScript -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
-                
-            <div class="row mt-4">
-                <div class="col-12">
-                    <h5>Recursos Utilizados</h5>
-                    <div id="activityResources">
-                        <ul class="list-group">
-                        <!-- Recursos serão inseridos aqui via JavaScript -->
-                        </ul>
+                    <div class="col-md-6">
+                        <div class="detail-item">
+                            <div class="detail-label">Notas</div>
+                            <div class="detail-value" id="activityScore">
+                                <div class="progress mb-2">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span>78% - Bem acima da média esperada!</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Áreas Fortes</div>
+                            <div class="detail-value" id="strongAreas">
+                                <span class="badge bg-primary me-1">Funções</span>
+                                <span class="badge bg-primary me-1">Geometria</span>
+                                <span class="badge bg-primary">Estatística</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Áreas a Melhorar</div>
+                            <div class="detail-value" id="weakAreas">
+                                <span class="badge bg-warning me-1">Álgebra</span>
+                                <span class="badge bg-warning">Trigonometria</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-                
-            <div class="row mt-4">
-                <div class="col-12">
-                    <h5>Questões Resolvidas</h5>
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Número</th>
-                                    <th>Questão</th>
-                                    <th>Resposta</th>
-                                    <th>Correto</th>
-                                </tr>
-                            </thead>
-                            <tbody id="questionsTableBody">
-                            <!-- Questões serão inseridas aqui via JavaScript -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-                
-            <div class="row mt-4">
-                <div class="col-12">
-                    <h5>Recomendações de Estudo</h5>
-                    <div id="studyRecommendations">
-                        <!-- Recomendações serão inseridas aqui via JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 <button type="button" class="btn btn-primary">Ver Exercícios Relacionados</button>
@@ -870,38 +713,38 @@
                     <h5 class="modal-title" id="addStudyPlanModalLabel">Adicionar Atividade</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form>
-                <div class="mb-3">
-                    <label for="activityTitle" class="form-label">Título da Atividade</label>
-                    <input type="text" class="form-control" id="activityTitle" placeholder="Ex: Estudo de Matemática">
-                </div>
-                <div class="mb-3">
-                    <label for="activityDescription" class="form-label">Descrição</label>
-                    <textarea class="form-control" id="activityDescription" rows="3" placeholder="Descreva o conteúdo que será estudado"></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="activityDate" class="form-label">Data</label>
-                    <input type="date" class="form-control" id="activityDate">
-                </div>
-                <div class="mb-3">
-                    <label for="activityTime" class="form-label">Horário</label>
-                    <input type="time" class="form-control" id="activityTime">
-                </div>
-                <div class="mb-3">
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="activityTitle" class="form-label">Título da Atividade</label>
+                        <input type="text" class="form-control" id="activityTitle" placeholder="Ex: Estudo de Matemática">
+                    </div>
+                    <div class="mb-3">
+                        <label for="activityDescription" class="form-label">Descrição</label>
+                        <textarea class="form-control" id="activityDescription" rows="3" placeholder="Descreva o conteúdo que será estudado"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="activityDate" class="form-label">Data</label>
+                        <input type="date" class="form-control" id="activityDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="activityTime" class="form-label">Horário</label>
+                        <input type="time" class="form-control" id="activityTime">
+                    </div>
+                    <div class="mb-3">
                         <label for="activityDuration" class="form-label">Duração (minutos)</label>
                         <input type="number" class="form-control" id="activityDuration" min="15" step="15" value="30">
-                </div>
-                <div class="mb-3">
+                    </div>
+                    <div class="mb-3">
                         <label for="activityDifficulty" class="form-label">Dificuldade</label>
                         <select class="form-select" id="activityDifficulty">
-                        <option value="easy">Fácil</option>
-                        <option value="medium" selected>Média</option>
-                        <option value="hard">Difícil</option>
-                    </select>
-                </div>
-            </form>
-        </div>
+                            <option value="easy">Fácil</option>
+                            <option value="medium" selected>Média</option>
+                            <option value="hard">Difícil</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" id="saveStudyPlan">Salvar</button>
@@ -914,12 +757,12 @@
     <script src="JS/acompanhamento.js"></script>
 
     <!-- Início do VLibras -->
-    <div vw="true" class="enabled">
-        <div vw-access-button="true" class="active"></div>
-        <div vw-plugin-wrapper="true">
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
     </div>
+</div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');

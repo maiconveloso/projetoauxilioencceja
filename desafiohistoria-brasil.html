@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desafios Encceja - Português</title>
+    <title>Desafios Encceja - História do Brasil</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
-    <link rel="stylesheet" href="CSS/desafioportugues.css">
+    <link rel="stylesheet" href="CSS/desafiohistoria-brasil.css">
 
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SRNKXZCX54"></script>
@@ -20,15 +20,16 @@
 
 </head>
 <body>
+
     <div class="container">
         <div class="header">
             <button class="btn btn-back" onclick="history.back()">
                 <i class="fas fa-arrow-left"></i>
-                Voltar
+                 Voltar
             </button>
-            <h1>Desafios Encceja - Português</h1>
-            <p>Identifique os erros gramaticais em frases e textos</p>
-            <div class="timer-container" id="timer">15:00</div>
+            <h1>Desafios Encceja - História do Brasil</h1>
+            <p>Teste seus conhecimentos sobre a República Brasileira</p>
+            <div class="timer-container" id="timer">20:00</div>
             <div class="progress-container">
                 <div class="progress-bar" id="progressBar"></div>
             </div>
@@ -36,14 +37,14 @@
         
         <div class="challenge-container">
             <div class="question" id="question">
-                Qual é o erro gramatical na frase: "O livro que você me emprestou foi muito interessante."?
+                Em que ano foi proclamada a República no Brasil?
             </div>
             
             <div class="options" id="options">
-                <div class="option" data-value="a">a) Nenhum erro</div>
-                <div class="option" data-value="b">b) Erro na concordância verbal</div>
-                <div class="option" data-value="c">c) Erro na crase</div>
-                <div class="option" data-value="d">d) Erro na regência verbal</div>
+                <div class="option" data-value="a">a) 1870</div>
+                <div class="option" data-value="b">b) 1889</div>
+                <div class="option" data-value="c">c) 1891</div>
+                <div class="option" data-value="d">d) 1900</div>
             </div>
             
             <div class="feedback" id="feedback"></div>
@@ -81,15 +82,15 @@
     <div class="modal" id="timeUpModal">
         <div class="modal-content">
             <h2>Tempo Esgotado!</h2>
-            <p>O tempo de 15 minutos terminou.</p>
+            <p>O tempo de 20 minutos terminou.</p>
             <p>Sua pontuação final: <span id="timeUpScore">0/10</span></p>
             <button class="btn" id="restartBtnTimeUp">
                 <i class="fas fa-redo"></i> Refazer Desafios
             </button>
         </div>
     </div>
-
-    <script src="JS/desafioportugues.js"></script>
+    
+<script src="JS/desafiohistoria-brasil.js"></script>
 
 </body>
 </html>

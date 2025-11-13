@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafios Encceja - Redação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="Logo 3.0.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/desafioredacao.css">
+    
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SRNKXZCX54"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SRNKXZCX54');
+</script>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <button class="btn btn-back" onclick="history.back()">
+                <i class="fas fa-arrow-left"></i>
+                Voltar
+            </button>
+            <h1>Desafios de Encceja - Redação</h1>
+            <p>Desenvolva uma redação dissertativa-argumentativa sobre o tema proposto</p>
+            <div class="timer-container" id="timer">60:00</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+        
+        <div class="challenge-container">
+            <div class="instructions">
+                <div class="instructions-title">Instruções:</div>
+                <ul class="instructions-list">
+                    <li>Escreva uma redação dissertativa-argumentativa sobre o tema proposto</li>
+                    <li>Apresente uma tese, desenvolva argumentos e apresente uma proposta de intervenção</li>
+                    <li>Respeite os direitos humanos</li>
+                    <li>Utilize entre 20 e 30 linhas</li>
+                    <li>Elabore seu texto em norma padrão da língua portuguesa</li>
+                </ul>
+            </div>
+            
+            <div class="prompt-container">
+                <div class="prompt-title">Tema da Redação:</div>
+                <div class="prompt-text">
+                    "O impacto das redes sociais na formação da identidade dos jovens brasileiros"
+                </div>
+                
+                <div class="supporting-texts">
+                    <div class="supporting-text-title">Textos de Apoio:</div>
+                    
+                    <div class="supporting-text">
+                        <div class="supporting-text-title">Texto I</div>
+                        As redes sociais transformaram a maneira como os jovens se comunicam e se relacionam. Plataformas como Instagram, TikTok e Twitter se tornaram espaços de expressão, mas também de pressão social, onde a busca por validação e aceitação pode afetar a autoestima e a construção da identidade.
+                    </div>
+                    
+                    <div class="supporting-text">
+                        <div class="supporting-text-title">Texto II</div>
+                        Estudos recentes apontam que o tempo médio de uso de redes sociais por adolescentes no Brasil ultrapassa 3 horas diárias. Esse cenário levanta debates sobre os efeitos na saúde mental, na capacidade de concentração e no desenvolvimento de habilidades sociais presenciais.
+                    </div>
+                    
+                    <div class="supporting-text">
+                        <div class="supporting-text-title">Texto III</div>
+                        Por outro lado, as redes sociais também oferecem oportunidades para a formação de comunidades, acesso a informações diversificadas e engajamento em causas sociais. Muitos jovens encontram nessas plataformas um canal para expressar suas opiniões e se conectar com pessoas com interesses semelhantes.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="essay-container">
+                <div class="essay-title">Sua Redação:</div>
+                <textarea class="essay-textarea" id="essayText" placeholder="Digite sua redação aqui..."></textarea>
+                <div class="word-count" id="wordCount">Palavras: 0 | Linhas: 0</div>
+            </div>
+            
+            <div class="navigation">
+                <button class="btn btn-secondary" id="saveBtn">
+                    <i class="fas fa-save"></i> Salvar Rascunho
+                </button>
+                <button class="btn" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> Enviar Redação
+                </button>
+            </div>
+            
+            <div class="stats">
+                <span id="currentStatus">Status: Aguardando</span>
+                <span id="timeElapsed">Tempo decorrido: 00:00</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="completionModal">
+        <div class="modal-content">
+            <h2>Redação Enviada!</h2>
+            <p>Sua redação foi enviada com sucesso.</p>
+            <p>Tempo utilizado: <span id="timeUsed">00:00</span></p>
+            <p>Palavras escritas: <span id="finalWordCount">0</span></p>
+            <button class="btn" id="restartBtn">
+                <i class="fas fa-redo"></i> Fazer Nova Redação
+            </button>
+        </div>
+    </div>
+    
+    <div class="modal" id="timeUpModal">
+        <div class="modal-content">
+            <h2>Tempo Esgotado!</h2>
+            <p>O tempo de 60 minutos terminou.</p>
+            <p>Sua redação foi salva automaticamente.</p>
+            <p>Palavras escritas: <span id="timeUpWordCount">0</span></p>
+            <button class="btn" id="restartBtnTimeUp">
+                <i class="fas fa-redo"></i> Fazer Nova Redação
+            </button>
+        </div>
+    </div>
+    
+    <div class="save-notification" id="saveNotification">
+        <i class="fas fa-check-circle"></i> Rascunho salvo com sucesso!
+    </div>
+    
+<script src="JS/desafioredacao.js"></script>
+
+</body>
+</html>
