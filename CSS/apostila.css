@@ -748,7 +748,7 @@
         }
         
         .social-icons a:hover {
-            color: #34495e;
+            color: white;
         }
         
         .footer-links a {
@@ -769,36 +769,6 @@
             margin-top: 10px;
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
-        }
-        
-        /* Responsividade */
-        @media (max-width: 992px) {
-            .sidebar {
-                width: 250px;
-                margin-left: -250px;
-            }
-            
-            .sidebar.expanded {
-                margin-left: 0;
-            }
-            
-            .content {
-                margin-left: 0;
-            }
-            
-            .content.shifted {
-                margin-left: 250px;
-            }
-            
-            .mobile-toggle {
-                display: block !important;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .content.shifted {
-                margin-left: 0;
-            }
         }
         
         .mobile-toggle {
@@ -858,116 +828,6 @@
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
         
-        /* Estilos para o gráfico de progresso */
-        .progress-chart {
-            height: 250px;
-            position: relative;
-        }
-        
-        .progress-bar-custom {
-            height: 100%;
-            background-color: #e9ecef;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #34495e, #3498db);
-            border-radius: 5px;
-            transition: width 1s ease-in-out;
-        }
-        
-        .progress-label {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #34495e;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-        
-        /* Estilos para a tabela de atividades */
-        .activity-table th {
-            background-color: #34495e;
-            color: white;
-        }
-        
-        .activity-table .activity-date {
-            width: 150px;
-        }
-        
-        .activity-table .activity-name {
-            width: 250px;
-        }
-        
-        .activity-table .activity-status {
-            width: 150px;
-        }
-        
-        .activity-table .activity-duration {
-            width: 100px;
-        }
-        
-        /* Estilos para o calendário */
-        .calendar {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        .calendar-header {
-            background-color: #34495e;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
-        }
-        
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 1px;
-            background-color: #f8f9fa;
-        }
-        
-        .calendar-day {
-            background-color: white;
-            padding: 10px;
-            text-align: center;
-            min-height: 60px;
-            position: relative;
-        }
-        
-        .calendar-day.weekend {
-            background-color: #f8f9fa;
-        }
-        
-        .calendar-day.today {
-            background-color: #e8f4fd;
-            font-weight: bold;
-        }
-        
-        .calendar-day.has-activity::after {
-            content: '';
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 8px;
-            height: 8px;
-            background-color: #3498db;
-            border-radius: 50%;
-        }
-        
-        .calendar-day.has-activity.has-completed::after {
-            background-color: #2ecc71;
-        }
-        
-        .calendar-day.has-activity.has-pending::after {
-            background-color: #f39c12;
-        }
-        
         /* Estilos para o modal de detalhes */
         .modal-header {
             background-color: #34495e;
@@ -985,75 +845,6 @@
         .detail-label {
             font-weight: bold;
             color: #34495e;
-        }
-        
-        /* Estilos para o resumo de desempenho */
-        .performance-summary {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        
-        .performance-item {
-            text-align: center;
-            padding: 15px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            flex: 1;
-            margin: 0 5px;
-        }
-        
-        .performance-item h3 {
-            font-size: 2rem;
-            margin: 10px 0;
-            color: #34495e;
-        }
-        
-        .performance-item p {
-            color: #6c757d;
-            margin: 0;
-        }
-        
-        /* Estilos para o plano de estudo */
-        .study-plan-item {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .study-plan-item:last-child {
-            border-bottom: none;
-        }
-        
-        .study-plan-checkbox {
-            margin-right: 15px;
-        }
-        
-        .study-plan-content {
-            flex: 1;
-        }
-        
-        .study-plan-title {
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-        
-        .study-plan-description {
-            color: #6c757d;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-        
-        .study-plan-difficulty {
-            font-size: 0.8rem;
-            color: #6c757d;
-        }
-        
-        .study-plan-actions {
-            display: flex;
-            gap: 10px;
         }
 
         /* Estilos do botão de configurações de acessibilidade */
@@ -1621,50 +1412,6 @@
                 font-size: 1rem;
             }
             
-            .user-profile {
-                padding: 6px 10px;
-            }
-            
-            .user-avatar {
-                width: 30px;
-                height: 30px;
-            }
-            
-            .user-name {
-                font-size: 0.8rem;
-            }
-            
-            .user-role {
-                font-size: 0.7rem;
-            }
-            
-            .countdown-item {
-                min-width: 60px;
-                padding: 8px;
-            }
-            
-            .countdown-value {
-                font-size: 1.5rem;
-            }
-            
-            .countdown-label {
-                font-size: 0.7rem;
-            }
-            
-            .qr-code-container {
-                width: 80px;
-                height: 100px;
-                padding: 5px;
-            }
-            
-            .qr-code-container .qr-title {
-                font-size: 0.7rem;
-            }
-            
-            .qr-code-container .qr-instruction {
-                font-size: 0.6rem;
-            }
-            
             .footer {
                 padding: 10px 0;
             }
@@ -1718,32 +1465,6 @@
                 display: inline;
             }
             
-            .user-profile {
-                top: 15px;
-                right: 10px;
-                padding: 5px 10px;
-            }
-            
-            .user-avatar {
-                width: 25px;
-                height: 25px;
-            }
-            
-            .user-info {
-                display: none;
-            }
-            
-            .user-menu {
-                top: 40px;
-                width: 180px;
-            }
-            
-            .popover {
-                width: 200px;
-                top: 40px;
-                right: 10px;
-            }
-            
             .welcome-banner {
                 padding: 15px;
                 margin-bottom: 20px;
@@ -1755,24 +1476,6 @@
             
             .welcome-banner p {
                 font-size: 0.9rem;
-            }
-            
-            .countdown-container {
-                gap: 10px;
-                margin: 15px 0;
-            }
-            
-            .countdown-item {
-                min-width: 50px;
-                padding: 5px;
-            }
-            
-            .countdown-value {
-                font-size: 1.2rem;
-            }
-            
-            .countdown-label {
-                font-size: 0.6rem;
             }
             
             .btn-primary, .btn-outline-primary {
@@ -1828,10 +1531,6 @@
             .session-title {
                 font-size: 1.1rem;
                 margin-bottom: 15px;
-            }
-            
-            .qr-code-container {
-                display: none; /* Oculta em telas muito pequenas */
             }
             
             .btn-accessibility {
@@ -1976,17 +1675,6 @@
                 font-size: 0.8rem;
             }
             
-            .user-profile {
-                top: 12px;
-                right: 5px;
-                padding: 3px 5px;
-            }
-            
-            .user-avatar {
-                width: 20px;
-                height: 20px;
-            }
-            
             .welcome-banner {
                 padding: 10px;
                 margin-bottom: 15px;
@@ -1998,25 +1686,7 @@
             
             .welcome-banner p {
                 font-size: 0.8rem;
-            }
-            
-            .countdown-container {
-                gap: 5px;
-                margin: 10px 0;
-            }
-            
-            .countdown-item {
-                min-width: 40px;
-                padding: 3px;
-            }
-            
-            .countdown-value {
-                font-size: 1rem;
-            }
-            
-            .countdown-label {
-                font-size: 0.5rem;
-            }
+            }    
             
             .btn-primary, .btn-outline-primary {
                 padding: 5px 10px;
@@ -2071,14 +1741,13 @@
             .session-title {
                 font-size: 1rem;
                 margin-bottom: 10px;
-            }
-            
-            /* CORREÇÃO: Reposicionar botão de acessibilidade em telas muito pequenas */
+            } 
+        
             .btn-accessibility {
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
-                bottom: 45px; /* Ajustado para não cobrir o rodapé */
+                bottom: 45px; 
             }
             
             .footer {

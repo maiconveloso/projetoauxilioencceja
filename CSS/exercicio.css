@@ -102,45 +102,44 @@
             }
 
             body.high-contrast .subject-box {
-    background-color: #000000 !important;
-    color: #ffffff !important;
-    border: 2px solid #ffffff !important;
-}
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                border: 2px solid #ffffff !important;
+            }
 
-body.high-contrast .subject-box::before {
-    background-color: #ffffff !important;
-}
+            body.high-contrast .subject-box::before {
+                background-color: #ffffff !important;
+            }
 
-body.high-contrast .subject-box .subject-icon {
-    color: #ffffff !important;
-}
+            body.high-contrast .subject-box .subject-icon {
+                color: #ffffff !important;
+            }
 
-body.high-contrast .subject-box .subject-title {
-    color: #ffffff !important;
-}
+            body.high-contrast .subject-box .subject-title {
+                color: #ffffff !important;
+            }
 
-body.high-contrast .subject-box .subject-description {
-    color: #ffffff !important;
-}
+            body.high-contrast .subject-box .subject-description {
+                color: #ffffff !important;
+            }
 
-body.high-contrast .subject-box .subject-stats {
-    border-top-color: #ffffff !important;
-}
+            body.high-contrast .subject-box .subject-stats {
+                border-top-color: #ffffff !important;
+            }                
 
-body.high-contrast .subject-box .stat-value {
-    color: #ffffff !important;
-}
+            body.high-contrast .subject-box .stat-value {
+                color: #ffffff !important;
+            }
 
-body.high-contrast .subject-box .stat-label {
-    color: #ffffff !important;
-}
+            body.high-contrast .subject-box .stat-label {
+                color: #ffffff !important;
+            }
 
-body.high-contrast .subject-box .btn-start-study {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-    border-color: #ffffff !important;
-}
-
+            body.high-contrast .subject-box .btn-start-study {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+                border-color: #ffffff !important;
+            }
 
             body.high-contrast .hero-subtitle {
                 color: #ffffff !important;
@@ -769,7 +768,7 @@ body.high-contrast .subject-box .btn-start-study {
         }
         
         .social-icons a:hover {
-            color: #34495e;
+            color: white;
         }
         
         .footer-links a {
@@ -1747,32 +1746,31 @@ body.high-contrast .subject-box .btn-start-study {
                 outline: 3px solid #28a745 !important;
                 outline-offset: 2px !important;
             }
-        
 
-            /* Diminuir tamanho das letras nas seções específicas */
+            /* Diminui o tamanho das letras nas seções específicas */
             .filter-title,
             .exercise-title,
             .recommendation-title {
-                font-size: 1.2rem !important; /* Reduz o tamanho dos títulos */
+                font-size: 1.2rem !important; 
             }
 
             .table th {
-                font-size: 0.9rem !important; /* Reduz os cabeçalhos da tabela */
+                font-size: 0.9rem !important; 
             }
 
             .table td {
-                font-size: 0.85rem !important; /* Reduz o conteúdo da tabela */
+                font-size: 0.85rem !important; 
             }
 
             .card-header h5 {
-                font-size: 1.1rem !important; /* Reduz títulos dos cards de recomendações */
+                font-size: 1.1rem !important; 
             }
 
             .list-group-item {
-                font-size: 0.9rem !important; /* Reduz itens da lista de recomendações */
+                font-size: 0.9rem !important; 
             }
 
-            /* Media Queries para Responsividade */
+        /* Media Queries para Responsividade */
         @media (max-width: 1200px) {
             .subject-box .subject-stats {
                 flex-wrap: wrap;
@@ -1798,36 +1796,6 @@ body.high-contrast .subject-box .btn-start-study {
             .navbar-nav .nav-link i {
                 margin-right: 5px;
                 font-size: 1rem;
-            }
-            
-            .user-profile {
-                padding: 6px 10px;
-            }
-            
-            .user-avatar {
-                width: 30px;
-                height: 30px;
-            }
-            
-            .user-name {
-                font-size: 0.8rem;
-            }
-            
-            .user-role {
-                font-size: 0.7rem;
-            }
-            
-            .countdown-item {
-                min-width: 60px;
-                padding: 8px;
-            }
-            
-            .countdown-value {
-                font-size: 1.5rem;
-            }
-            
-            .countdown-label {
-                font-size: 0.7rem;
             }
             
             .footer {
@@ -1882,33 +1850,7 @@ body.high-contrast .subject-box .btn-start-study {
             .navbar-nav .nav-link span {
                 display: inline;
             }
-            
-            .user-profile {
-                top: 15px;
-                right: 10px;
-                padding: 5px 10px;
-            }
-            
-            .user-avatar {
-                width: 25px;
-                height: 25px;
-            }
-            
-            .user-info {
-                display: none;
-            }
-            
-            .user-menu {
-                top: 40px;
-                width: 180px;
-            }
-            
-            .popover {
-                width: 200px;
-                top: 40px;
-                right: 10px;
-            }
-            
+        
             .welcome-banner {
                 padding: 15px;
                 margin-bottom: 20px;
@@ -1920,24 +1862,6 @@ body.high-contrast .subject-box .btn-start-study {
             
             .welcome-banner p {
                 font-size: 0.9rem;
-            }
-            
-            .countdown-container {
-                gap: 10px;
-                margin: 15px 0;
-            }
-            
-            .countdown-item {
-                min-width: 50px;
-                padding: 5px;
-            }
-            
-            .countdown-value {
-                font-size: 1.2rem;
-            }
-            
-            .countdown-label {
-                font-size: 0.6rem;
             }
             
             .btn-primary, .btn-outline-primary {
@@ -2103,7 +2027,6 @@ body.high-contrast .subject-box .btn-start-study {
                 font-size: 0.8rem;
             }
             
-            /* Melhorias para a tabela em dispositivos móveis */
             .table-responsive {
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
@@ -2117,7 +2040,6 @@ body.high-contrast .subject-box .btn-start-study {
                 padding: 0.5rem;
             }
             
-            /* Ajustes para as caixas de matérias */
             .subject-box {
                 padding: 15px;
             }
@@ -2138,7 +2060,6 @@ body.high-contrast .subject-box .btn-start-study {
                 font-size: 0.8rem;
             }
             
-            /* Ajustes para as estatísticas */
             .stats-card {
                 padding: 15px;
             }
@@ -2151,7 +2072,6 @@ body.high-contrast .subject-box .btn-start-study {
                 font-size: 0.9rem;
             }
             
-            /* Ajustes para as recomendações */
             .recommendations {
                 padding: 15px;
             }
@@ -2198,17 +2118,6 @@ body.high-contrast .subject-box .btn-start-study {
                 font-size: 0.8rem;
             }
             
-            .user-profile {
-                top: 12px;
-                right: 5px;
-                padding: 3px 5px;
-            }
-            
-            .user-avatar {
-                width: 20px;
-                height: 20px;
-            }
-            
             .welcome-banner {
                 padding: 10px;
                 margin-bottom: 15px;
@@ -2220,24 +2129,6 @@ body.high-contrast .subject-box .btn-start-study {
             
             .welcome-banner p {
                 font-size: 0.8rem;
-            }
-            
-            .countdown-container {
-                gap: 5px;
-                margin: 10px 0;
-            }
-            
-            .countdown-item {
-                min-width: 40px;
-                padding: 3px;
-            }
-            
-            .countdown-value {
-                font-size: 1rem;
-            }
-            
-            .countdown-label {
-                font-size: 0.5rem;
             }
             
             .btn-primary, .btn-outline-primary {
@@ -2356,7 +2247,7 @@ body.high-contrast .subject-box .btn-start-study {
             .table td:nth-child(3),
             .table th:nth-child(4),
             .table td:nth-child(4) {
-                display: none; /* Oculta colunas menos importantes em telas muito pequenas */
+                display: none; 
             }
             
             .subject-box {
@@ -2392,7 +2283,6 @@ body.high-contrast .subject-box .btn-start-study {
                 font-size: 0.9rem;
             }
             
-            /* Ajustes para as estatísticas */
             .stats-card {
                 padding: 10px;
             }
@@ -2405,7 +2295,6 @@ body.high-contrast .subject-box .btn-start-study {
                 font-size: 0.8rem;
             }
             
-            /* Ajustes para as recomendações */
             .recommendations {
                 padding: 10px;
             }
@@ -2428,7 +2317,6 @@ body.high-contrast .subject-box .btn-start-study {
                 font-size: 0.8rem;
             }
             
-            /* Ajustes para os filtros */
             .btn-group .btn {
                 padding: 5px 10px;
                 font-size: 0.8rem;

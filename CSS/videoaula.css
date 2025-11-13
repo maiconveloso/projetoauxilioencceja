@@ -14,7 +14,7 @@
         .modal-video-container {
             width: 100%;
             height: 0;
-            padding-bottom: 56.25%; /* Proporção 16:9 */
+            padding-bottom: 56.25%; 
             position: relative;
         }
         
@@ -101,7 +101,7 @@
                 background-color: #000000 !important;
                 color: #ffffff !important;
                 border: 2px solid #ffffff !important;
-    }
+            }
 
             body.high-contrast .filter-title {
                 color: #ffffff !important;
@@ -111,30 +111,30 @@
                 background-color: #000000 !important;
                 color: #ffffff !important;
                 border: 1px solid #ffffff !important;
-    }
+            }
 
             body.high-contrast .filter-option:hover,
             body.high-contrast .filter-option.active {
                 background-color: #ffffff !important;
                 color: #000000 !important;
                 border-color: #ffffff !important;
-    }
+            }
 
             body.high-contrast .search-box input {
                 background-color: #000000 !important;
                 color: #ffffff !important;
                 border: 1px solid #ffffff !important;
-    }
+            }
 
             body.high-contrast .search-box i {
                 color: #ffffff !important;
-    }
+            }
 
             body.high-contrast .benefits-section {
                 background-color: #000000 !important;
                 color: #ffffff !important;
                 border: 2px solid #ffffff !important;
-    }
+            }
 
             body.high-contrast .benefits-section {
                 background-color: #000000 !important;
@@ -709,7 +709,7 @@
             transition: all 0.3s;
         }
 
-        /* Otimizações para cards de recursos */
+        /* Cards de recursos */
         .resource-card {
             position: relative;
             overflow: hidden;
@@ -780,7 +780,6 @@
             transition: transform 0.3s ease;
         }
 
-        
         /* Estilos do rodapé */
         .footer {
             position: fixed;
@@ -801,7 +800,7 @@
         }
         
         .social-icons a:hover {
-            color: #34495e;
+            color: white;
         }
         
         .footer-links a {
@@ -822,36 +821,6 @@
             margin-top: 10px;
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
-        }
-        
-        /* Responsividade */
-        @media (max-width: 992px) {
-            .sidebar {
-                width: 250px;
-                margin-left: -250px;
-            }
-            
-            .sidebar.expanded {
-                margin-left: 0;
-            }
-            
-            .content {
-                margin-left: 0;
-            }
-            
-            .content.shifted {
-                margin-left: 250px;
-            }
-            
-            .mobile-toggle {
-                display: block !important;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .content.shifted {
-                margin-left: 0;
-            }
         }
         
         .mobile-toggle {
@@ -1713,8 +1682,6 @@
                 outline-offset: 2px !important;
             }
 
-            /* Adicione estes estilos na seção CSS do seu arquivo */
-
         .alert {
             border-radius: 10px;
             margin-bottom: 20px;
@@ -1743,7 +1710,7 @@
             color: #ffffff;
         }
 
-        /* Estilo para modo escuro */
+        /* Estilo para Modo Escuro */
         body.dark-mode .alert-info {
             background-color: rgba(13, 202, 240, 0.2);
             border-color: #0dcaf0;

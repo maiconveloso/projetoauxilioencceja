@@ -1,4 +1,4 @@
-body {
+        body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 background-color: #D3D3D3;
                 margin-bottom: 80px; /* Espaço para o rodapé */
@@ -417,6 +417,7 @@ body {
             }
 
             body.dark-mode .btn-outline-primary {
+                background-color: #3d3d3d !important;
                 color: #e0e0e0 !important;
                 border-color: #e0e0e0 !important;
             }
@@ -746,7 +747,7 @@ body {
                 overflow: hidden;
             }
             
-            /* Relógio em tempo real */
+            /* Relógio */
             .countdown-container {
                 display: flex;
                 justify-content: center;
@@ -791,7 +792,8 @@ body {
             }
             
             .btn-outline-primary {
-                color: #34495e;
+                background-color: #34495e;
+                color: white;
                 border-color: #34495e;
                 padding: 8px 20px;
                 font-weight: 500;
@@ -828,7 +830,7 @@ body {
             }
             
             .social-icons a:hover {
-                color: #34495e;
+                color: white;
             }
             
             .footer-links a {
@@ -902,202 +904,6 @@ body {
             .delay-2 { animation-delay: 0.2s; }
             .delay-3 { animation-delay: 0.3s; }
             .delay-4 { animation-delay: 0.4s; }
-            
-            /* Estilos do perfil do usuário */
-            .user-profile {
-                position: fixed;
-                top: 20px;
-                right: 15px;
-                z-index: 1001;
-                display: flex;
-                align-items: center;
-                background-color: #34495e;
-                border-radius: 50px;
-                padding: 8px 15px;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-                transition: all 0.3s;
-            }
-            
-            .user-profile.hidden {
-                opacity: 0;
-                transform: translateY(-10px);
-                pointer-events: none;
-                transition: opacity 0.3s, transform 0.3s;
-            }
-            
-            .user-avatar {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                margin-right: 10px;
-                border: 2px solid white;
-            }
-            
-            .user-info {
-                color: white;
-                display: flex;
-                flex-direction: column;
-            }
-            
-            .user-name {
-                font-weight: 600;
-                font-size: 0.9rem;
-            }
-            
-            .user-role {
-                font-size: 0.75rem;
-                opacity: 0.8;
-            }
-            
-            .user-menu {
-                position: absolute;
-                top: 50px;
-                right: 0;
-                background-color: white;
-                border-radius: 8px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-                width: 200px;
-                display: none;
-                z-index: 1002;
-            }
-            
-            .user-menu.show {
-                display: block;
-                animation: fadeIn 0.3s ease-out forwards;
-            }
-            
-            .user-menu-item {
-                padding: 12px 15px;
-                display: flex;
-                align-items: center;
-                color: #212529;
-                text-decoration: none;
-                transition: background-color 0.2s;
-            }
-            
-            .user-menu-item:hover {
-                background-color: #f1f3f5;
-            }
-            
-            .user-menu-item i {
-                margin-right: 10px;
-                font-size: 1.1rem;
-                width: 20px;
-                text-align: center;
-                color: #34495e;
-            }
-            
-            .user-menu-divider {
-                height: 1px;
-                background-color: #e9ecef;
-            }
-            
-            .logout-btn {
-                color: #dc3545;
-                font-weight: 500;
-            }
-            
-            .logout-btn:hover {
-                background-color: #f8d7fa;
-            }
-            
-            /* Popover do Perfil */
-            .popover {
-                position: absolute;
-                top: 60px;
-                right: 15px;
-                background-color: white;
-                border-radius: 8px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-                width: 250px;
-                display: none;
-                z-index: 1002;
-            }
-            
-            .popover.show {
-                display: block;
-                animation: fadeIn 0.3s ease-out forwards;
-            }
-            
-            .popover-header {
-                background-color: #34495e;
-                color: white;
-                padding: 12px 15px;
-                border-radius: 8px 8px 0 0;
-                display: flex;
-                align-items: center;
-            }
-            
-            .popover-header img {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                margin-right: 10px;
-            }
-            
-            .popover-body {
-                padding: 0;
-            }
-            
-            .profile-stats {
-                display: flex;
-                justify-content: space-between;
-                padding: 15px;
-                border-bottom: 1px solid #e9ecef;
-            }
-            
-            .stat-item {
-                text-align: center;
-            }
-            
-            .stat-value {
-                font-weight: 600;
-                font-size: 1.1rem;
-                color: #34495e;
-            }
-            
-            .stat-label {
-                font-size: 0.8rem;
-                color: #6c757d;
-            }
-            
-            .profile-menu {
-                padding: 0;
-            }
-            
-            .profile-menu-item {
-                padding: 12px 15px;
-                display: flex;
-                align-items: center;
-                color: #212529;
-                text-decoration: none;
-            }
-            
-            .profile-menu-item:hover {
-                background-color: #f1f3f5;
-            }
-            
-            .profile-menu-item i {
-                margin-right: 10px;
-                font-size: 1.1rem;
-                width: 20px;
-                text-align: center;
-                color: #34495e;
-            }
-            
-            .profile-menu-divider {
-                height: 1px;
-                background-color: #e9ecef;
-            }
-            
-            .logout-btn-profile {
-                color: #dc3545;
-                font-weight: 500;
-            }
-            
-            .logout-btn-profile:hover {
-                background-color: #f8d7fa;
-            }
             
             /* Estilos do botão de configurações de acessibilidade */
             .btn-accessibility {

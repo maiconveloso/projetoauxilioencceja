@@ -196,72 +196,6 @@
             border-color: var(--bs-btn-active-border-color);
         }
         
-        /* Estilos do rodapé */
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #34495e;
-            color: white;
-            padding: 15px 0;
-            z-index: 1000;
-        }
-        
-        .social-icons a {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: color 0.3s;
-        }
-        
-        .social-icons a:hover {
-            color: #34495e;
-        }
-        
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            margin: 0 15px;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        /* Responsividade */
-        @media (max-width: 992px) {
-            .sidebar {
-                width: 250px;
-                margin-left: -250px;
-            }
-            
-            .sidebar.expanded {
-                margin-left: 0;
-            }
-            
-            .content {
-                margin-left: 0;
-            }
-            
-            .content.shifted {
-                margin-left: 250px;
-            }
-            
-            .mobile-toggle {
-                display: none;
-            }
-        }
-        
         .mobile-toggle {
             display: none;
             position: fixed;
@@ -822,7 +756,6 @@
                 font-size: 0.7rem;
             }
             
-            /* Abas responsivas em tablets */
             .config-tabs .nav-tabs .nav-link {
                 padding: 8px 12px;
                 font-size: 0.9rem;
@@ -937,15 +870,14 @@
             .copyright {
                 font-size: 0.6rem;
             }
-            
-            /* Abas responsivas em celulares */
+        
             .config-tabs .nav-tabs .nav-link {
                 padding: 6px 10px;
                 font-size: 0.8rem;
             }
             
             .config-tabs .nav-tabs .nav-link i {
-                display: block; /* Ícones em linha separada */
+                display: block;
                 margin-right: 0;
                 margin-bottom: 5px;
             }
@@ -955,7 +887,6 @@
                 height: 80px;
             }
             
-            /* Layout de cards em celulares */
             .settings-card .card-body {
                 padding: 1rem;
             }

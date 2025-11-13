@@ -1,4 +1,4 @@
-:root {
+    :root {
             --primary-color: #3a5a78;
             --secondary-color: #D3D3D3;
             --accent-color: #e63946;
@@ -131,7 +131,7 @@
             }
         }
         
-        /* Estilos para a modal de visualização */
+        /* Estilos para o modal de visualização */
         .modal-content {
             border-radius: 8px;
             border: none;

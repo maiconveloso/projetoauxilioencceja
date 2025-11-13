@@ -757,7 +757,7 @@
         }
         
         .social-icons a:hover {
-            color: #34495e;
+            color: white;
         }
         
         .footer-links a {
@@ -1611,36 +1611,6 @@
                 font-size: 1rem;
             }
             
-            .user-profile {
-                padding: 6px 10px;
-            }
-            
-            .user-avatar {
-                width: 30px;
-                height: 30px;
-            }
-            
-            .user-name {
-                font-size: 0.8rem;
-            }
-            
-            .user-role {
-                font-size: 0.7rem;
-            }
-            
-            .countdown-item {
-                min-width: 60px;
-                padding: 8px;
-            }
-            
-            .countdown-value {
-                font-size: 1.5rem;
-            }
-            
-            .countdown-label {
-                font-size: 0.7rem;
-            }
-            
             .footer {
                 padding: 10px 0;
             }
@@ -1703,32 +1673,6 @@
                 display: inline;
             }
             
-            .user-profile {
-                top: 15px;
-                right: 10px;
-                padding: 5px 10px;
-            }
-            
-            .user-avatar {
-                width: 25px;
-                height: 25px;
-            }
-            
-            .user-info {
-                display: none;
-            }
-            
-            .user-menu {
-                top: 40px;
-                width: 180px;
-            }
-            
-            .popover {
-                width: 200px;
-                top: 40px;
-                right: 10px;
-            }
-            
             .welcome-banner {
                 padding: 15px;
                 margin-bottom: 20px;
@@ -1740,24 +1684,6 @@
             
             .welcome-banner p {
                 font-size: 0.9rem;
-            }
-            
-            .countdown-container {
-                gap: 10px;
-                margin: 15px 0;
-            }
-            
-            .countdown-item {
-                min-width: 50px;
-                padding: 5px;
-            }
-            
-            .countdown-value {
-                font-size: 1.2rem;
-            }
-            
-            .countdown-label {
-                font-size: 0.6rem;
             }
             
             .btn-primary, .btn-outline-primary {
@@ -1923,7 +1849,6 @@
                 font-size: 0.8rem;
             }
             
-            /* Melhorias para o resumo de desempenho */
             .performance-summary {
                 flex-direction: column;
             }
@@ -1954,8 +1879,7 @@
                 text-align: right;
                 margin-bottom: 0;
             }
-            
-            /* Melhorias para o calendário */
+        
             .calendar-grid {
                 font-size: 0.8rem;
             }
@@ -1965,7 +1889,6 @@
                 padding: 5px 2px;
             }
             
-            /* Melhorias para a tabela de atividades */
             .activity-table {
                 font-size: 0.8rem;
             }
@@ -1974,7 +1897,6 @@
                 padding: 5px;
             }
             
-            /* Melhorias para o gráfico de progresso */
             .progress-chart {
                 height: 200px;
             }
@@ -2007,17 +1929,6 @@
                 font-size: 0.8rem;
             }
             
-            .user-profile {
-                top: 12px;
-                right: 5px;
-                padding: 3px 5px;
-            }
-            
-            .user-avatar {
-                width: 20px;
-                height: 20px;
-            }
-            
             .welcome-banner {
                 padding: 10px;
                 margin-bottom: 15px;
@@ -2029,24 +1940,6 @@
             
             .welcome-banner p {
                 font-size: 0.8rem;
-            }
-            
-            .countdown-container {
-                gap: 5px;
-                margin: 10px 0;
-            }
-            
-            .countdown-item {
-                min-width: 40px;
-                padding: 3px;
-            }
-            
-            .countdown-value {
-                font-size: 1rem;
-            }
-            
-            .countdown-label {
-                font-size: 0.5rem;
             }
             
             .btn-primary, .btn-outline-primary {
@@ -2153,7 +2046,6 @@
                 bottom: 70px;
             }
             
-            /* Melhorias para o resumo de desempenho */
             .performance-item {
                 padding: 10px;
             }
@@ -2162,7 +2054,6 @@
                 font-size: 1.5rem;
             }
             
-            /* Melhorias para o calendário */
             .calendar-grid {
                 font-size: 0.7rem;
             }
@@ -2172,7 +2063,6 @@
                 padding: 3px 1px;
             }
             
-            /* Melhorias para a tabela de atividades */
             .activity-table {
                 font-size: 0.7rem;
             }
@@ -2181,7 +2071,6 @@
                 padding: 3px;
             }
             
-            /* Melhorias para o gráfico de progresso */
             .progress-chart {
                 height: 150px;
             }
@@ -2189,8 +2078,7 @@
             .progress-label {
                 font-size: 1rem;
             }
-            
-            /* Melhorias para o modal de acessibilidade */
+
             .accessibility-modal-content {
                 width: 98%;
                 max-height: 98vh;

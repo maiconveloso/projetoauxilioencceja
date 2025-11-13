@@ -113,9 +113,9 @@ nav {
 }
 
 .section-title {
-    text-align: center;
     margin-bottom: 40px;
     position: relative;
+    text-align: center;
 }
 
 .section-title h2 {
@@ -136,27 +136,19 @@ nav {
 }
 
 .about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 40px;
     align-items: center;
+    padding-left: 0;
+    margin-left: 0;
 }
 
-.about-image {
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.about-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.5s;
-}
-
-.about-image:hover img {
-    transform: scale(1.03);
+.about-text {
+    text-align: center;
+    padding-left: 0;
+    margin-left: 0;
+    max-width: 800px;
 }
 
 .about-text h3 {

@@ -1,4 +1,4 @@
-:root {
+    :root {
             --primary-color: #4a6fa5;
             --secondary-color: #6b8cbb;
             --accent-color: #ff9a3c;
@@ -178,7 +178,7 @@
             background-color: var(--accent-color);
             color: white;
             margin-top: 15px;
-            display: none; /* Escondendo o botão Próximo Exercício */
+            display: none; 
         }
         
         .progress-container {

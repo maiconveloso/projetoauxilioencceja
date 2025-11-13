@@ -8,22 +8,26 @@
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --border-radius: 8px;
 }
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 body {
     background-color: #D3D3D3;
     color: var(--text-color);
     line-height: 1.6;
 }
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
+
 header {
     background-color: var(--primary-color);
     color: var(--white);
@@ -33,11 +37,13 @@ header {
     top: 0;
     z-index: 100;
 }
+
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .logo {
     display: flex;
     align-items: center;
@@ -45,14 +51,17 @@ header {
     font-size: 1.5rem;
     font-weight: bold;
 }
+
 .logo i {
     color: var(--accent-color);
 }
+
 nav ul {
     display: flex;
     list-style: none;
     gap: 20px;
 }
+
 nav a {
     color: var(--white);
     text-decoration: none;
@@ -60,14 +69,17 @@ nav a {
     border-radius: var(--border-radius);
     transition: background-color 0.3s;
 }
+
 nav a:hover {
     background-color: var(--secondary-color);
 }
+
 .user-actions {
     display: flex;
     align-items: center;
     gap: 15px;
 }
+
 .btn-login, .btn-signup {
     display: inline-block;
     text-decoration: none;
@@ -78,20 +90,25 @@ nav a:hover {
     transition: background-color 0.3s;
     text-align: center;
 }
+
 .btn-login {
     background-color: var(--accent-color);
     color: var(--text-color);
 }
+
 .btn-signup {
     background-color: var(--secondary-color);
     color: var(--white);
 }
+
 .btn-login:hover {
     background-color: #e09012;
 }
+
 .btn-signup:hover {
     background-color: #5a7aa9;
 }
+
 .search-bar {
     display: flex;
     align-items: center;
@@ -100,21 +117,25 @@ nav a:hover {
     padding: 5px 10px;
     width: 250px;
 }
+
 .search-bar input {
     border: none;
     outline: none;
     flex-grow: 1;
     padding: 5px;
 }
+
 .search-bar button {
     background: none;
     border: none;
     cursor: pointer;
     color: var(--primary-color);
 }
+
 main {
     padding: 30px 0;
 }
+
 .welcome-section {
     background-color: var(--white);
     border-radius: var(--border-radius);
@@ -122,23 +143,28 @@ main {
     margin-bottom: 30px;
     box-shadow: var(--shadow);
 }
+
 .welcome-content {
     display: flex;
     align-items: center;
     gap: 20px;
 }
+
 .welcome-text {
     flex: 1;
 }
+
 .welcome-text h1 {
     color: var(--primary-color);
     margin-bottom: 10px;
     font-size: 2rem;
 }
+
 .welcome-text p {
     color: #666;
     margin-bottom: 15px;
 }
+
 .welcome-btn {
     background-color: var(--primary-color);
     color: var(--white);
@@ -149,12 +175,15 @@ main {
     font-weight: bold;
     transition: background-color 0.3s;
 }
+
 .welcome-btn:hover {
     background-color: var(--secondary-color);
 }
+
 .resources-section {
     margin-bottom: 30px;
 }
+
 .section-title {
     color: var(--primary-color);
     margin-bottom: 20px;
@@ -163,11 +192,13 @@ main {
     padding-bottom: 5px;
     display: inline-block;
 }
+
 .resources-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
 }
+
 .resource-card {
     background-color: var(--white);
     border-radius: var(--border-radius);
@@ -175,9 +206,11 @@ main {
     box-shadow: var(--shadow);
     transition: transform 0.3s;
 }
+
 .resource-card:hover {
     transform: translateY(-5px);
 }
+
 .resource-img {
     height: 150px;
     background-color: var(--light-bg);
@@ -187,18 +220,22 @@ main {
     color: var(--primary-color);
     font-size: 3rem;
 }
+
 .resource-content {
     padding: 15px;
 }
+
 .resource-content h3 {
     color: var(--primary-color);
     margin-bottom: 10px;
 }
+
 .resource-content p {
     color: #666;
     margin-bottom: 15px;
     font-size: 0.9rem;
 }
+
 .resource-btn {
     display: inline-block;
     background-color: var(--primary-color);
@@ -209,9 +246,11 @@ main {
     font-size: 0.9rem;
     transition: background-color 0.3s;
 }
+
 .resource-btn:hover {
     background-color: var(--secondary-color);
 }
+
 .forum-section {
     background-color: var(--white);
     border-radius: var(--border-radius);
@@ -225,41 +264,50 @@ main {
     align-items: center;
     margin-bottom: 20px;
 }
+
 .forum-list {
     list-style: none;
 }
+
 .forum-item {
     border-bottom: 1px solid #eee;
     padding: 15px 0;
 }
+
 .forum-item:last-child {
     border-bottom: none;
 }
+
 .forum-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
 }
+
 .forum-title a {
     color: var(--primary-color);
     text-decoration: none;
     font-weight: bold;
 }
+
 .forum-title a:hover {
     text-decoration: underline;
 }
+
 .forum-meta {
     display: flex;
     gap: 15px;
     color: #888;
     font-size: 0.85rem;
 }
+
 .forum-meta span {
     display: flex;
     align-items: center;
     gap: 5px;
 }
+
 .create-post-btn {
     background-color: var(--accent-color);
     color: var(--text-color);
@@ -270,9 +318,11 @@ main {
     font-weight: bold;
     transition: background-color 0.3s;
 }
+
 .create-post-btn:hover {
     background-color: #e09012;
 }
+
 .timer-section {
     background-color: var(--white);
     border-radius: var(--border-radius);
@@ -281,18 +331,21 @@ main {
     box-shadow: var(--shadow);
     text-align: center;
 }
+
 .timer-display {
     font-size: 2.5rem;
     color: var(--primary-color);
     margin: 15px 0;
     font-weight: bold;
 }
+
 .timer-controls {
     display: flex;
     justify-content: center;
     gap: 15px;
     margin-top: 20px;
 }
+
 .timer-btn {
     background-color: var(--primary-color);
     color: var(--white);
@@ -303,15 +356,19 @@ main {
     font-weight: bold;
     transition: background-color 0.3s;
 }
+
 .timer-btn:hover {
     background-color: var(--secondary-color);
 }
+
 .timer-btn.reset {
     background-color: #e74c3c;
 }
+
 .timer-btn.reset:hover {
     background-color: #c0392b;
 }
+
 .notification {
     position: fixed;
     bottom: 20px;
@@ -326,10 +383,12 @@ main {
     transition: transform 0.3s, opacity 0.3s;
     z-index: 1000;
 }
+
 .notification.show {
     transform: translateY(0);
     opacity: 1;
 }
+
 footer {
     background-color: #34495e;
     padding: 20px 0;
@@ -339,19 +398,23 @@ footer {
     margin-top: 30px;
     border-top: 1px solid var(--light-gray);
 }
+
 .social-links {
     display: flex;
     gap: 15px;
     margin-top: 10px;
 }
+
 .social-links a {
     color: var(--white);
     font-size: 1.2rem;
     transition: color 0.3s;
 }
+
 .social-links a:hover {
     color: var(--accent-color);
 }
+
 .copyright {
     text-align: center;
     margin-top: 30px;
@@ -360,7 +423,8 @@ footer {
     font-size: 0.9rem;
     opacity: 0.8;
 }
-/* Modal styles */
+
+/* Estilos do Modal */
 .modal {
     display: none;
     position: fixed;
@@ -373,6 +437,7 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
 .modal-content {
     background-color: var(--white);
     border-radius: var(--border-radius);
@@ -382,6 +447,7 @@ footer {
     box-shadow: var(--shadow);
     position: relative;
 }
+
 .close-modal {
     position: absolute;
     top: 15px;
@@ -391,26 +457,32 @@ footer {
     color: #888;
     transition: color 0.3s;
 }
+
 .close-modal:hover {
     color: var(--text-color);
 }
+
 .modal-title {
     margin-bottom: 20px;
     color: var(--primary-color);
 }
+
 .modal-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
+
 .form-group {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
+
 .form-group label {
     font-weight: bold;
 }
+
 .form-group input,
 .form-group textarea {
     padding: 10px;
@@ -418,10 +490,12 @@ footer {
     border-radius: var(--border-radius);
     outline: none;
 }
+
 .form-group textarea {
     resize: vertical;
     min-height: 100px;
 }
+
 .submit-btn {
     background-color: var(--primary-color);
     color: var(--white);
@@ -433,39 +507,48 @@ footer {
     transition: background-color 0.3s;
     margin-top: 10px;
 }
+
 .submit-btn:hover {
     background-color: var(--secondary-color);
 }
-/* Responsive styles */
+
+/* Responsividade */
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
         gap: 15px;
     }
+
     nav ul {
         flex-wrap: wrap;
         justify-content: center;
     }
+
     .search-bar {
         width: 100%;
         margin-top: 10px;
     }
+
     .welcome-content {
         flex-direction: column;
         text-align: center;
     }
+
     .user-actions {
         flex-direction: column;
         width: 100%;
     }
+
     .user-actions button {
         width: 100%;
     }
+
     .forum-header {
         flex-direction: column;
         gap: 15px;
         align-items: flex-start;
     }
+
     .create-post-btn {
         width: 100%;
     }
