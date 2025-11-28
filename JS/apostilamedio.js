@@ -1,4 +1,9 @@
-// Função para mostrar preview da apostila
+    // Função para voltar para à página anterior
+        function goBack() {
+            window.history.back();
+        }
+    
+    // Função para mostrar preview da apostila
         function showPreview(apostila) {
             const apostilaModal = new bootstrap.Modal(document.getElementById('apostilaModal'));
             document.getElementById('previewTitle').textContent = apostila;

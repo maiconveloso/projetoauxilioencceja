@@ -72,22 +72,6 @@
             });
         });
         
-        // Responsividade
-        function handleResize() {
-            const sidebar = document.getElementById('sidebar');
-            const content = document.getElementById('content');
-            
-            if (window.innerWidth < 992) {
-                sidebar.classList.remove('collapsed');
-                content.classList.remove('expanded');
-                sidebar.classList.remove('expanded');
-                content.classList.remove('shifted');
-                document.getElementById('toggleSidebar').style.display = 'none';
-            } else {
-                document.getElementById('toggleSidebar').style.display = 'block';
-            }
-        }
-        
         // Modal de configurações de acessibilidade
         const accessibilityModal = document.getElementById('accessibilityModal');
         const accessibilityModalClose = document.getElementById('accessibilityModalClose');

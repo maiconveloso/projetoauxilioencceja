@@ -36,7 +36,6 @@
         // Função para abrir modal de confirmação
         function openConfirmModal(message, confirmAction) {
             const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
-            document.getElementById('confirmModalText').textContent = message;
             
             // Limpar qualquer evento anterior
             const confirmBtn = document.getElementById('confirmModalBtn');
