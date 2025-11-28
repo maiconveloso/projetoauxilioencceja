@@ -1,7 +1,7 @@
     body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #D3D3D3;
-            margin-bottom: 80px; /* Espaço para o rodapé */
+            margin-bottom: 90px; /* Espaço para o rodapé */
             padding-top: 80px; /* Espaço para a navbar */
             transition: background-color 0.3s, color 0.3s; /* Adiciona transição suave para mudanças de cor */
         }
@@ -789,6 +789,11 @@
             margin-top: 10px;
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
+        }
+
+        .logo {
+            height: 3rem;
+            padding-left: 10rem;
         }
         
         .mobile-toggle {

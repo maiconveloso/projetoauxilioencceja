@@ -1,6 +1,7 @@
-    :root {
-            --primary-color: #3a5a78;
+        :root {
+            --primary-color: #34495e;
             --secondary-color: #D3D3D3;
+            --hero-color: #3a5a78;
             --accent-color: #e63946;
             --text-color: #333;
             --light-text: #6c757d;
@@ -24,10 +25,16 @@
         }
         
         .hero-section {
-            background: linear-gradient(135deg, var(--primary-color), #2c3e50);
+            background: linear-gradient(135deg, var(--hero-color));
             color: #f8f9fa;
             padding: 3rem 0;
             margin-bottom: 2rem;
+        }
+
+        .logo {
+            margin-top: -0.3rem;
+            width: 18%;
+            height: auto;
         }
         
         .apostila-card {
@@ -184,18 +191,43 @@
             padding: 3rem 0;
         }
         
-        .subject-section h2 {
+        .subject-section h3 {
             position: relative;
-            display: inline-block;
             margin-bottom: 2rem;
         }
         
-        .subject-section h2:after {
+        .subject-section h3:after {
             content: '';
             position: absolute;
-            width: 50%;
+            width: 6%;
             height: 3px;
             background-color: var(--accent-color);
             bottom: -10px;
-            left: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Botão de Voltar */
+        .btn-back {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px; 
+            position: relative;
+            left: -80px;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn-back:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-back i {
+            margin-right: 0.5rem;
         }
